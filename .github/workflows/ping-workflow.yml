@@ -8,20 +8,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  ping-pong:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: PING - Dispatch initiating repository event
-        if: github.event.action != 'pong'
+      - name: INIT - Dispatch initiating repository event
+        if: github.event.action != 'formula-response'
         run: |
           curl -X POST https://api.github.com/repos/GuillaumeFalourd/ritchie-formulas-scheduler-demo/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
-      - name: ACK - Acknowledge pong from remote repository
-        if: github.event.action == 'pong'
+          --data '{"event_type": "formula-init", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+
+      - name: ACK - Acknowledge response from remote repository
+        if: github.event.action == 'formula-response'
         run: |
-          echo "PONG received from '${{ github.event.client_payload.repository }}'" && \
+          echo "RESPONSE received from '${{ github.event.client_payload.repository }}'" && \
           curl -X POST https://api.github.com/repos/GuillaumeFalourd/ritchie-formulas-scheduler-demo/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
