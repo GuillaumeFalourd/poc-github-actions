@@ -11,4 +11,12 @@ response = requests.get("https://covid-api.mmediagroup.fr/v1/cases?country=Brazi
 
 datas = response.json()
 
-print(datas)
+all_country = datas["All"]
+
+confirmed_cases = all_country["confirmed"]
+recovered_cases = all_country["recovered"]
+deaths = all_country["deaths"]
+
+print("🤒 Confirmed cases:", confirmed_cases)
+print("🥳 Recovered cases:", recovered_cases)
+print("😢 Deaths:", deaths)
