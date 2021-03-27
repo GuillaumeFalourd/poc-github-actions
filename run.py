@@ -11,7 +11,6 @@ datas = response.json()
 
 country_summary = datas["All"]
 
-print("\033[1m🇧🇷 Brazil extracted datas:\033[0m")
-print("🤒 Confirmed cases:", country_summary["confirmed"])
-print("🥳 Recovered cases:", country_summary["recovered"])
-print("😢 Deaths:", country_summary["deaths"])
+print("🤒 🇧🇷 Confirmed cases:", country_summary["confirmed"])
+print("🥳 🇧🇷 Recovered cases:", country_summary["recovered"])
+print("😢 🇧🇷 Deaths:", country_summary["deaths"])
