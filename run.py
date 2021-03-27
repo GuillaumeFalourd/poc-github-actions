@@ -5,7 +5,7 @@ print("✅ You can add your script rules here to execute them with the GH workfl
 
 ### SCRIPT SAMPLE BELOW
 
-print(f"💡 Example: Getting Brazil Covid-19 datas.")
+print(f"💡 \033[36mExample: Getting Brazil Covid-19 datas\033[0m")
 
 response = requests.get("https://covid-api.mmediagroup.fr/v1/cases?country=Brazil")
 
