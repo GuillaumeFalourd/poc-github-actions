@@ -1,11 +1,9 @@
 import requests
 import json
 
-print("✅ You can add your script rules here to execute them with the GH workflow.")
+### SCRIPT SAMPLE EXECUTED THROUGH GH WORKFLOW
 
-### SCRIPT SAMPLE BELOW
-
-print(f"💡 \033[36mExample: Getting Brazil Covid-19 datas\033[0m")
+print(f"💡 \033[36mScript example: Getting Brazil Covid-19 datas\033[0m")
 
 response = requests.get("https://covid-api.mmediagroup.fr/v1/cases?country=Brazil")
 
