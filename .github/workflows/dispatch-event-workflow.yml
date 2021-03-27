@@ -1,7 +1,7 @@
 name: Remote Dispatch Action Initiator
 
 on:
-  push:
+#  push:
   schedule:
     - cron: '0 20 * * *'
   repository_dispatch:
