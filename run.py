@@ -18,6 +18,7 @@ datas = response.json()
 collaborators = []
 
 for d in datas:
+    print(d)
     collaborators.append(d["login"])
 
 print(collaborators)
