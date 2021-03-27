@@ -7,12 +7,21 @@ import requests
 ### SCRIPT SAMPLE EXECUTED THROUGH GH WORKFLOW
 print(f"💡 \033[36mScript example: Getting Brazil Covid-19 datas\033[0m")
 
-response = requests.get("https://covid-api.mmediagroup.fr/v1/cases?country=Brazil")
+response1 = requests.get("https://covid-api.mmediagroup.fr/v1/cases?country=Brazil")
 
-datas = response.json()
+country_datas = response1.json()
 
-country_summary = datas["All"]
+cases = country_datas["All"]
 
-print("🤒 🇧🇷 Confirmed cases:", country_summary["confirmed"])
-print("🥳 🇧🇷 Recovered cases:", country_summary["recovered"])
-print("😢 🇧🇷 Deaths:", country_summary["deaths"])
+print("🤒 🇧🇷 Confirmed cases:", cases["confirmed"])
+print("🥳 🇧🇷 Recovered cases:", cases["recovered"])
+print("😢 🇧🇷 Deaths:", cases["deaths"])
+
+response2 = requests.get("https://covid-api.mmediagroup.fr/v1/vaccines?country=Brazil")
+
+vaccines_datas = response2.json()
+
+vaccines = vaccines_datas["All"]
+
+print("📦 🇧🇷 Vaccines quantity:", vaccines["administered"])
+print("💉 🇧🇷 Vaccinated people:", vaccines["people_vaccinated"])
