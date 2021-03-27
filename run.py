@@ -15,10 +15,9 @@ response = requests.get(
         )
 
 datas = response.json()
-collaborators = {}
+collaborators = []
 
 for d in datas:
-    collaborator_name = d["login"]
-    collaborators[collaborator_name] = d["url"]
+    collaborators.append(d["login"])
 
 print(collaborators)
