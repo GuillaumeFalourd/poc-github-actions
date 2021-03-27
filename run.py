@@ -17,4 +17,4 @@ response = requests.get(
 datas = response.json()
 
 for d in datas:
-    print(d["login"])
+    print(d)
