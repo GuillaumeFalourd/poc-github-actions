@@ -19,8 +19,8 @@ jobs:
           python-version: 3.8 # Install the python version needed
 
       - name: Install dependencies
-        run: python -m pip install --upgrade pip #dependency1 dependency2 ...
+        run: python -m pip install --upgrade pip requests
 
-      - name: Execute py script # Run the run.py to get the latest data
+      - name: Execute Python script # Run the run.py to get the latest data
         run: |
           python run.py
