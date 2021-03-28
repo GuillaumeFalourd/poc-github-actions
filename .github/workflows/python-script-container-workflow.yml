@@ -13,4 +13,8 @@ jobs:
     steps:
       - name: Execute Python script # Run the run.py to get the latest data
         run: |
-          sudo python run.py
+          echo "PATH -------------"
+          ls -lha
+          echo "PATH -------------"
+          find ~/ -type f -name "run.py"
+          python run.py
