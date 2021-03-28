@@ -1,4 +1,4 @@
-name: Python Script Workflow
+name: Python Script Default Workflow
 
 on:
   schedule:
