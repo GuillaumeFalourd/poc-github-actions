@@ -17,7 +17,9 @@ jobs:
           ls -lha /github
           echo "GITHUB HOME -------------"
           ls -lha /github/home
-          echo "GITHUB WORKSPACE -------------"
-          ls -lha /github/workspace
+          echo "GITHUB WORKFLOW -------------"
+          ls -lha /github/workflow
+          echo "DEV -------------"
+          ls -lha /dev
           echo "SCRIPT -------------"
           python /github/workspace/run.py
