@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Execute Linux Command
+      - name: Run Commands
         run: |
           echo "Hello World"
           echo "You can run any command in your workflow that way with Github Actions"
