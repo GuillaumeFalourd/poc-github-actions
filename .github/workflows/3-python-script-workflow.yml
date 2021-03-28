@@ -1,4 +1,4 @@
-name: Python Script Workflow
+name: 3 - Python Script Workflow
 
 on:
   schedule:

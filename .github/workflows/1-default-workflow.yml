@@ -1,4 +1,4 @@
-name: Default Workflow
+name: 1 - Default Workflow
 
 on:
   schedule:
