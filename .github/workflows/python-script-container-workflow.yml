@@ -17,5 +17,7 @@ jobs:
           ls -lha /dev
           echo "DEV NULL -------------"
           ls -lha /dev/null
+          echo "DEV FULL -------------"
+          ls -lha /dev/full
           echo "SCRIPT -------------"
           python /github/workspace/run.py
