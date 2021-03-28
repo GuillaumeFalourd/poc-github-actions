@@ -13,4 +13,4 @@ jobs:
       - name: Execute Linux Command
         run: |
           echo "Hello World"
-          echo "You can run command in workflow that way with Github Actions"
+          echo "You can run any command in your workflow that way with Github Actions"
