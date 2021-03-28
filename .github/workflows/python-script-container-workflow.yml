@@ -13,13 +13,9 @@ jobs:
     steps:
       - name: Execute Python script # Run the run.py to get the latest data
         run: |
-          echo "GITHUB -------------"
-          ls -lha /github
-          echo "GITHUB HOME -------------"
-          ls -lha /github/home
-          echo "GITHUB WORKFLOW -------------"
-          ls -lha /github/workflow
           echo "DEV -------------"
           ls -lha /dev
+          echo "DEV NULL -------------"
+          ls -lha /dev/null
           echo "SCRIPT -------------"
           python /github/workspace/run.py
