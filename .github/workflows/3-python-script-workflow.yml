@@ -1,8 +1,8 @@
-name: Python Script Default Workflow
+name: Python Script Workflow
 
 on:
   schedule:
-  - cron: "0 4 * * *" # Runs at 04:00 UTC everyday
+  - cron: "0 8 * * *" # Runs at 08:00 UTC everyday
   workflow_dispatch:
 
 jobs:
