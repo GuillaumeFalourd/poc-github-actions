@@ -1,4 +1,4 @@
-name: Formulas Scheduler (with Secrets)
+name: Python Script Container Workflow
 
 on:
   schedule:
