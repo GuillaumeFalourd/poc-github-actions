@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-        image: docker://python/3.8-slim
+        image: docker://python:3.8-slim-buster
     steps:
       - name: Execute Python script # Run the run.py to get the latest data
         run: |
