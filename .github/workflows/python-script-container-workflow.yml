@@ -13,8 +13,9 @@ jobs:
     steps:
       - name: Execute Python script # Run the run.py to get the latest data
         run: |
-          echo "PATH -------------"
-          ls -lha
+          echo "ROOT -------------"
+          ls -lha /root
           echo "PATH -------------"
           find ~/ -type f -name "run.py"
+          echo "SCRIPT -------------"
           python run.py
