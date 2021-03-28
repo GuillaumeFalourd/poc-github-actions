@@ -1,0 +1,16 @@
+name: Default Workflow
+
+on:
+  schedule:
+  - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Execute Linux Command
+        run: |
+          echo "Hello World"
+          echo "You can run command in workflow that way with Github Actions"
