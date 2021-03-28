@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Execute Python script # Run the run.py to get the latest data
         run: |
-          python run.py
+          sudo python run.py
