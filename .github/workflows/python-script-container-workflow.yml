@@ -1,0 +1,16 @@
+name: Formulas Scheduler (with Secrets)
+
+on:
+  schedule:
+  - cron: "0 8 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+        image: docker://guillaumefalourd/ritchiecli:py-3.8
+    steps:
+      - name: Execute Python script # Run the run.py to get the latest data
+        run: |
+          python run.py
