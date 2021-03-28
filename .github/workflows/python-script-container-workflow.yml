@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-        image: docker://guillaumefalourd/ritchiecli:py-3.8
+        image: docker://python/3.8-slim
     steps:
       - name: Execute Python script # Run the run.py to get the latest data
         run: |
