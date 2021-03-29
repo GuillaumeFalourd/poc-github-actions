@@ -1,5 +1,7 @@
 # Poc-github-actions
 
+This repository is a Github Actions POC with various examples regarding how to create workflows 🤖 
+
 ## Workflow YAML Structure Explanation
 
 ```bash
