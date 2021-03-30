@@ -1,4 +1,4 @@
-# Poc-github-actions
+# poc-github-actions
 
 ![title](/docs/github-actions.png)
 
