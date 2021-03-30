@@ -1,5 +1,7 @@
 # Poc-github-actions
 
+![title](/docs/github-actions.png)
+
 ## Examples
 
 [![1 - Default Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/1-default-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/1-default-workflow.yml)
