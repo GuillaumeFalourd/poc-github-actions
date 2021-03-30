@@ -38,7 +38,6 @@ jobs: # All workflows need at list one job
           echo "This is a shell command"
           
 ```
->>>>>>> 62c7eeacdab756d8df8a8ea2c9bf922ab87cba44
 
 ## Examples
 
