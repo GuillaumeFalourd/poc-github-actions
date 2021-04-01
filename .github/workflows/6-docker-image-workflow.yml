@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run Ritchie version
-      uses: docker://guillaumefalourd/ritchiecli:go-1.15.8
+    - name: Run box version
+      uses: docker://foundeo/minibox:latest
       with:
-        entrypoint: /.rit
+        entrypoint: /opt/box/box
         args: version
