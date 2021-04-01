@@ -22,7 +22,7 @@ jobs: # All workflows need at list one job
     runs-on: ubuntu-latest # Set the type of machine the workflow will run on
 
     steps: # Each job can be divided in many steps
-      
+
       - name: Checkout code # Step name
         uses: actions/checkout@v2 # Action used on the step
 
@@ -31,12 +31,12 @@ jobs: # All workflows need at list one job
         env:  # Environment variables used on the step
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Run specific commands # Another step name
         run: |
           ls -lha
           echo "This is a shell command"
-          
+
 ```
 
 ## Examples
@@ -56,3 +56,7 @@ This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to execute a specific
 [![4 - Remote Dispatch Action Initiator](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/4-dispatch-event-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/4-dispatch-event-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to dispatch an event to the [ritchie-formulas-scheduler-demo repository](https://github.com/GuillaumeFalourd/ritchie-formulas-scheduler-demo).
+
+[![5 - Container Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/5-container-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/5-container-workflow.yml)
+
+This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) with a docker image where Ritchie CLI and Golang are installed, then check Ritchie CLI and Golang versions through commands.

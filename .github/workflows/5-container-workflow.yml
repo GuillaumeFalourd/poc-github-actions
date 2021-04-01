@@ -2,7 +2,7 @@ name: 5 - Container Workflow
 
 on:
   schedule:
-  - cron: "0 0 * * *" # Runs at 00:00 UTC everyday
+  - cron: "0 16 * * *" # Runs at 16:00 UTC everyday
   workflow_dispatch:
 
 jobs:
