@@ -59,11 +59,11 @@ This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to dispatch an event 
 
 [![5 - Container Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/5-container-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/5-container-workflow.yml)
 
-This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) with a docker image where Ritchie CLI and Golang are installed, then check Ritchie CLI and Golang versions through commands.
+This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) with a docker container where Ritchie CLI and Golang are installed, then check Ritchie CLI and Golang versions through commands.
 
 [![6 - Docker Image Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/6-docker-image-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/6-docker-image-workflow.yml)
 
-This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) and the docker image `foundeo/minibox:latest`. It also specify an `entrypoint` (the command to run inside the container) and `args` (command line arguments to pass to the command specified in entrypoint). It is possible to omit the `entrypoint` if the container already species the entrypoint you want to use.
+This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) and a docker image `foundeo/minibox:latest`. It also specify an `entrypoint` (the command to run inside the container) and `args` (command line arguments to pass to the command specified in entrypoint). It is possible to omit the `entrypoint` if the container already species the entrypoint you want to use.
 
 [![7 - Action workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml)
 
