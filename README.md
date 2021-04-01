@@ -64,3 +64,7 @@ This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) with a docker image w
 [![6 - Docker Image Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/6-docker-image-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/6-docker-image-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) and the docker image `foundeo/minibox:latest`. It also specify an `entrypoint` (the command to run inside the container) and `args` (command line arguments to pass to the command specified in entrypoint). It is possible to omit the `entrypoint` if the container already species the entrypoint you want to use.
+
+[![7 - Action workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml)
+
+This workflow will run an Action each time a `PUSH` event occurs on the repository. This specific action runs a Ritchie CLI formula.
