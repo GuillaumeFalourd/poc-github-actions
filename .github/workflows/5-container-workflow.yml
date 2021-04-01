@@ -15,4 +15,4 @@ jobs:
       - name: Run Commands using Golang
         run: |
               sudo rit -v
-              sudo go --version
+              sudo go version
