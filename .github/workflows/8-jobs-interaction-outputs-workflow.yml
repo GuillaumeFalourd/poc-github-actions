@@ -1,4 +1,4 @@
-name: 8 - Jobs Interaction Workflow
+name: 8 - Jobs Interaction Outputs Workflow
 
 on:
   schedule:

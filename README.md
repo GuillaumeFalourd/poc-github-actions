@@ -69,6 +69,10 @@ This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) and a docker image `f
 
 This workflow will run an Action each time a `PUSH` event occurs on the repository. This specific action runs a Ritchie CLI formula.
 
-[![8 - Jobs Interaction workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-workflow.yml)
+[![8 - Jobs Interaction outputs workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-outputs-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-outputs-workflow.yml)
 
 This workflow contains many jobs and show how to set outputs in a job to use them on another job. This specific workflow just print Hello-World.
+
+[![9 - Jobs Interaction artifacts workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-artifacts-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-artifacts-workflow.yml)
+
+This workflow illustrates how to pass data between jobs in the same workflow. For more information, see the [actions/upload-artifact](https://github.com/actions/upload-artifact) and [download-artifact](https://github.com/actions/download-artifact) actions.
