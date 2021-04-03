@@ -68,3 +68,7 @@ This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) and a docker image `f
 [![7 - Action workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml)
 
 This workflow will run an Action each time a `PUSH` event occurs on the repository. This specific action runs a Ritchie CLI formula.
+
+[![8 - Jobs Interaction workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-jobs-interaction-workflow.yml)
+
+This workflow contains many jobs and show how to set outputs in a job to use them on another job. This specific workflow just print Hello-World.
