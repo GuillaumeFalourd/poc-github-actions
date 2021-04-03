@@ -1,4 +1,4 @@
-name: 9 - Jobs Interaction Artifacts Workflow
+name: 9 - Artifacts Workflow
 
 on:
   push:
