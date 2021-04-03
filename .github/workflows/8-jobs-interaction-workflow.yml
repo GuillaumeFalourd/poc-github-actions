@@ -2,7 +2,7 @@ name: 8 - Jobs Interaction Workflow
 
 on:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron: "0 6 * * *" # Runs at 6:00 UTC everyday
   workflow_dispatch:
 
 jobs:

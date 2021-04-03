@@ -17,10 +17,10 @@ on:
   workflow_dispatch: # Run this workflow on demand (manually)
 
 jobs: # All workflows need at list one job
-  job-key:
+
+  job-key: #First job
     name: Job Name
     runs-on: ubuntu-latest # Set the type of machine the workflow will run on
-
     steps: # Each job can be divided in many steps
 
       - name: Checkout code # Step name
