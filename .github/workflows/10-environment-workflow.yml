@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "Hello World"
           echo "This is the $WORKFLOW_VARIABLE environment"
-          echo "This is a step variable: $STEP_VALUE"
+          echo "This is a step variable: $STEP_VARIABLE"
         env:
           STEP_VARIABLE: my step variable value that could also be a secret
 
