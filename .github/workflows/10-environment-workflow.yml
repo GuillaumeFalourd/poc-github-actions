@@ -26,7 +26,7 @@ jobs:
           STEP_VARIABLE: my step variable value that could also be a secret
 
       - name: Run Commands with JOB variable
-        if: ${{ env.JOB_VARIABLE == 'PRODUCTION' }}
+        if: ${{ env.JOB_VARIABLE == 'DEVELOPMENT' }}
         run: |
           echo "Hello World"
           echo "This is the $JOB_ENVIRONMENT environment"
