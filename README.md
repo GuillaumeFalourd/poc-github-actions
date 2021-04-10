@@ -76,3 +76,7 @@ This workflow illustrates how to set outputs in a job to use them on another job
 [![9 - Artifacts workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/9-artifacts-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/9-artifacts-workflow.yml)
 
 This workflow illustrates how to pass data between jobs in the same workflow. For more information, see the [actions/upload-artifact](https://github.com/actions/upload-artifact) and [download-artifact](https://github.com/actions/download-artifact) actions. The full math operation performed in this workflow example is `(3 + 7) x 9 = 90`.
+
+[![10 - Environment workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/10-environment-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/10-environment-workflow.yml)
+
+This workflow illustrates how to use `environment variables` from the whole workflow, a specific job, or a specific step.
