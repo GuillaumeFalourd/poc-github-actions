@@ -1,0 +1,36 @@
+name: 10 - Environment Workflow
+
+on:
+  schedule:
+  - cron: "0 8 * * *" # Runs at 08:00 UTC everyday
+  workflow_dispatch:
+
+env:
+  WORKFLOW_VARIABLE: PRODUCTION
+
+jobs:
+
+  job_example:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VARIABLE: DEVELOPMENT
+
+    steps:
+      - name: Run Commands with WORKFLOW variable
+        if: ${{ env.WORKFLOW_VARIABLE != 'DEVELOPMENT' }}
+        run: |
+          echo "Hello World"
+          echo "This is the $WORKFLOW_VARIABLE environment"
+          echo "This is a step variable: $STEP_VALUE"
+        env:
+          STEP_VARIABLE: my step variable value that could also be a secret
+
+      - name: Run Commands with JOB variable
+        if: ${{ env.JOB_VARIABLE == 'PRODUCTION' }}
+        run: |
+          echo "Hello World"
+          echo "This is the $JOB_ENVIRONMENT environment"
+          echo "My name is $FIRST_STEP_VARIABLE $second_step_variable"
+        env:
+          FIRST_STEP_VARIABLE: Guillaume
+          second_step_variable: Falourd
