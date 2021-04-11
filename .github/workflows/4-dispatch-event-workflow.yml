@@ -12,13 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: INIT WORKFLOW - Dispatch init event to REMOTE repository
-        if: github.event.action != 'formula-response'
+        if: github.event.action != 'Formula Response'
         run: |
           curl -X POST https://api.github.com/repos/GuillaumeFalourd/ritchie-formulas-scheduler-demo/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "formula-init", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          --data '{"event_type": "Start Formula", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
 
       - name: FORMULA RESPONSE - Response event from REMOTE repository
-        if: github.event.action == 'formula-response'
+        if: github.event.action == 'Formula Response'
         run: echo "RESPONSE received from '${{ github.event.client_payload.repository }}'"
