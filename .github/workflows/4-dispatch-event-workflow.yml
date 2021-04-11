@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: INIT - Dispatch init event to REMOTE repository
+      - name: INIT WORKFLOW - Dispatch init event to REMOTE repository
         if: github.event.action != 'formula-response'
         run: |
           curl -X POST https://api.github.com/repos/GuillaumeFalourd/ritchie-formulas-scheduler-demo/dispatches \
@@ -19,11 +19,11 @@ jobs:
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "formula-init", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
 
-      - name: ACK - Acknowledge response event from REMOTE repository
+      - name: CONFIRMATION - Acknowledge response event from REMOTE repository
         if: github.event.action == 'formula-response'
         run: |
           echo "RESPONSE received from '${{ github.event.client_payload.repository }}'" && \
           curl -X POST https://api.github.com/repos/GuillaumeFalourd/ritchie-formulas-scheduler-demo/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "ack", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          --data '{"event_type": "Thanks", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
