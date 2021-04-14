@@ -20,6 +20,4 @@ jobs:
       - run: |
           cd $GITHUB_WORKSPACE
           ls -lha
-          export LICENSED_PATH=$GITHUB_WORKSPACE
-          PATH=$LICENSED_PATH/bin:$PATH
-          licensed list
+          $GITHUB_WORKSPACE/licensed list
