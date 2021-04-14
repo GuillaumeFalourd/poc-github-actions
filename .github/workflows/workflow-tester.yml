@@ -28,5 +28,5 @@ jobs:
           version: 2.x
           install-dir: ${{ github.workspace}}
       - run: |
-          ls -lha
+          cd $GITHUB_WORKSPACE
           licensed list
