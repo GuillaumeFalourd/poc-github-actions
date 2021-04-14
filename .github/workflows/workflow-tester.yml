@@ -21,4 +21,4 @@ jobs:
           cd /usr/local/bin
           ls -lha
           echo "LICENSED LIST ----------"
-          licensed list
+          sudo licensed list
