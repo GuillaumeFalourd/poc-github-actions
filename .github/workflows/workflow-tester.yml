@@ -13,9 +13,7 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
 #          install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
       - name: Install
-        run: |
-          npm install
-          gem install
+        run: npm install
       - name: Licensed List
         run: |
           echo "CD ----------"
