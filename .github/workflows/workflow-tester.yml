@@ -13,9 +13,7 @@ jobs:
       - uses: jonabc/setup-licensed@v1
         with:
           version: 2.x
-          github_token: ${{ secrets.ACCESS_TOKEN }}
-
+          install-dir: github.workspace
       - run: |
-          sudo cd /usr/local/bin/licensed
           ls -lha
-          sudo licensed list
+          licensed list
