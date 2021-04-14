@@ -20,6 +20,4 @@ jobs:
       - run: |
           cd $GITHUB_WORKSPACE
           ls -lha
-          cat licensed
-          cd licensed
-          licensed list
+          ./licensed list
