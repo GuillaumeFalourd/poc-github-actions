@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: CD
-        run: |
-          cd /usr/local/bin
-          ls -lha
+
+      - uses: jonabc/setup-licensed@v1
+        with:
+          version: 2.x
+      - run: licensed list
