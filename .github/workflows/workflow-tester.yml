@@ -19,4 +19,5 @@ jobs:
       
       - run: |
           cd $GITHUB_WORKSPACE
-          licensed list
+          ls -lha
+          sudo licensed list
