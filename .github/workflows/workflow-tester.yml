@@ -6,7 +6,7 @@ jobs:
   licensed:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1
       - uses: jonabc/setup-licensed@v1
         with:
           version: '2.x' # required: must satisfy semver.validRange
@@ -16,9 +16,9 @@ jobs:
       - name: Licensed List
         run: |
           echo "LICENSED LIST 1 ----------"
-          sudo licensed list
+          licensed list
           echo "CD ----------"
-          cd /usr/local/bin
-          ls -lha
-          echo "LICENSED LIST 2 ----------"
-          sudo licensed list
+          # cd /usr/local/bin
+          # ls -lha
+          # echo "LICENSED LIST 2 ----------"
+          # sudo licensed list
