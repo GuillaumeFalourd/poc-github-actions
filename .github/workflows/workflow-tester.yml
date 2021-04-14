@@ -12,7 +12,10 @@ jobs:
           version: '2.x' # required: must satisfy semver.validRange
           github_token: ${{ secrets.ACCESS_TOKEN }}
 #          install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
-      - run: npm install
+      - name: Install
+        run: |
+          npm install
+          gem install
       - name: Licensed List
         run: |
           echo "CD ----------"
