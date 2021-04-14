@@ -3,7 +3,7 @@ name: Workflow Tester
 on: [push, workflow_dispatch]
 
 jobs:
-  licensed:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
