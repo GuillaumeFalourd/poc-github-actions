@@ -15,10 +15,10 @@ jobs:
       - run: npm install
       - name: Licensed List
         run: |
-          echo "LS ----------"
-          ls -lha
+          echo "LICENSED LIST 1 ----------"
+          sudo licensed list
           echo "CD ----------"
           cd /usr/local/bin
           ls -lha
-          echo "LICENSED LIST ----------"
+          echo "LICENSED LIST 2 ----------"
           sudo licensed list
