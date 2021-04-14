@@ -1,0 +1,27 @@
+name: 11 - Input Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      myInput:
+        description: 'User Input:'
+        required: true
+        default: "Hello World"
+
+jobs:
+  run-python-test:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.8
+      
+      - name: Execute Test Script
+        run: |
+          echo "Store: ${{ github.event.inputs.myInput }}"
+          INPUT_STORE=${{ github.event.inputs.myInput }} python3 input.py
