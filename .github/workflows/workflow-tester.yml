@@ -9,15 +9,16 @@ jobs:
       - uses: actions/checkout@master
       - uses: jonabc/setup-licensed@v1
         with:
-          version: '2.1' # required: must satisfy semver.validRange
+          version: '2.x' # required: must satisfy semver.validRange
           github_token: ${{ secrets.ACCESS_TOKEN }}
 #          install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
       - run: npm install
-      - run: |
+      - name: Licensed List
+        run: |
           echo "LS ----------"
           ls -lha
           echo "CD ----------"
-          cd $GITHUB_WORKSPACE/usr/local/bin
+          cd /usr/local/bin
           ls -lha
           echo "LICENSED LIST ----------"
           licensed list
