@@ -13,7 +13,7 @@ jobs:
       - uses: jonabc/setup-licensed@v1
         with:
           version: 2.x
-          install-dir: ${{ GITHUB_WORKSPACE}}
+          install-dir: ${{ github.workspace}}
       - run: |
           ls -lha
           licensed list
