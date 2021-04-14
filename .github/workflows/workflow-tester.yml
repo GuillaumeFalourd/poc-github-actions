@@ -13,4 +13,11 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
 #          install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
       - run: npm install
-      - run: licensed list
+      - run: |
+      echo "LS ----------"
+      ls -lha
+      echo "CD ----------"
+      cd $GITHUB_WORKSPACE/usr/local/bin
+      ls -lha
+      echo "LICENSED LIST ----------"
+      licensed list
