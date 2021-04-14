@@ -14,10 +14,10 @@ jobs:
 #          install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
       - run: npm install
       - run: |
-      echo "LS ----------"
-      ls -lha
-      echo "CD ----------"
-      cd $GITHUB_WORKSPACE/usr/local/bin
-      ls -lha
-      echo "LICENSED LIST ----------"
-      licensed list
+          echo "LS ----------"
+          ls -lha
+          echo "CD ----------"
+          cd $GITHUB_WORKSPACE/usr/local/bin
+          ls -lha
+          echo "LICENSED LIST ----------"
+          licensed list
