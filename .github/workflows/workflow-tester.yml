@@ -16,6 +16,6 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
 
       - run: |
-          cd /usr/local/bin
+          cd /usr/local/bin/licensed
           ls -lha
-          sudo ./licensed list
+          sudo licensed list
