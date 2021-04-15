@@ -1,0 +1,24 @@
+name: Run Workflow
+
+on:
+  workflow_run:
+    workflows: ["Workflow Tester"]
+    types: [completed] #requested
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo "First workflow was a success"
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: |
+      echo "First workflow was a failure"
+      echo "Let's dispatch another event for backup"
+      curl -X POST https://api.github.com/repos/GuillaumeFalourd/poc-github-actions/dispatches \
+      -H 'Accept: application/vnd.github.everest-preview+json' \
+      -u ${{ secrets.ACCESS_TOKEN }} \
+      --data '{"event_type": "Start Formula Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'

@@ -80,3 +80,7 @@ This workflow illustrates how to pass data between jobs in the same workflow. Fo
 [![10 - Environment workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/10-environment-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/10-environment-workflow.yml)
 
 This workflow illustrates how to use `environment variables` from the whole workflow, a specific job, or a specific step.
+
+[![12 - Run workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/12-run-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/12-run-workflow.yml)
+
+This workflow illustrates how to run a workflow once another specific one has been completed (with success or failure)
