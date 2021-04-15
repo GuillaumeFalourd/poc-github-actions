@@ -1,4 +1,4 @@
-name: Pull Request Check
+name: Workflow Tester
 
 on:
   workflow_dispatch:
