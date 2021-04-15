@@ -1,25 +1,38 @@
-name: Workflow Tester
+name: Pull Request Check
 
-on: 
-#  push:
+on:
   workflow_dispatch:
+    inputs:
+      body:
+        default: ""
+      test:
+        default: "false"
+  pull_request_target:
 
 jobs:
-  test:
+  check-body-length:
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
-      - uses: actions/checkout@v1
-        with:
-          ref: ${{github.ref}}
-
-      - uses: jonabc/setup-licensed@v1
-        with:
-          version: 2.x
-          install-dir: ${{ github.workspace}}
-      
-      - run: |
-          cd $GITHUB_WORKSPACE
-          ls -lha
-          licensed list
+      - name: check
+        env:
+          PRNUM: ${{ github.event.pull_request.number }}
+          PRBODY: ${{ github.event.pull_request.body }}
+          TESTBODY: ${{ github.event.inputs.body }}
+          TEST: ${{ github.event.inputs.test }}
+        run: |
+          if [ "$TEST" = "true" ]
+          then
+            PRBODY=$TESTBODY
+          fi
+          commentPR () {
+            if [ "$TEST" = "true" ]
+            then
+              echo "would comment: '${1}'"
+            else
+              gh pr comment $PRNUM -b "${1}"
+            fi
+          }
+          if [ "$PRBODY" = "" ]
+          then
+            commentPR "Thanks! Please add a body so we can better review your contribution."
+          fi
