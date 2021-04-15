@@ -85,6 +85,6 @@ This workflow illustrates how to use `environment` variables from the whole work
 
 This workflow illustrates how to use `input` variables on a `workflow_dispatch` event.
 
-[![12 - Run workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/12-run-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/12-run-workflow.yml)
+[![12 - Run Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/12-run-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/12-run-workflow.yml)
 
 This workflow illustrates how to run a workflow once another specific one has been completed (with success or failure).
