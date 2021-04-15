@@ -4,7 +4,7 @@
 
 This repository is a Github Actions POC with various examples regarding how to create workflows 🤖 
 
-## Workflow YAML Structure Explanation
+## Workflow YAML Basic Structure Explanation
 
 ```bash
 name: Github action workflow name
