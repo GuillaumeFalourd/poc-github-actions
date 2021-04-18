@@ -89,6 +89,10 @@ This workflow illustrates how to use `input` variables on a `workflow_dispatch` 
 
 This workflow illustrates how to run a workflow once another specific one has been completed (with success or failure).
 
-[![13 - Cretae Pull Request](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/13-create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/13-create-pull-request.yml)
+[![13 - Create Pull Request](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/13-create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/13-create-pull-request.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to automatically create a Pull Request committing updated files.
+
+[![14 - Auto Approve](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-approve.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-approve.yml)
+
+This workflow illustrates how to automatically approve a Pull Request from a specific user.
