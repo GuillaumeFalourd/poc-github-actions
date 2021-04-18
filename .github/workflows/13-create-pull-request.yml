@@ -33,7 +33,6 @@ jobs:
             automerge
             automated pr
           assignees: GuillaumeFalourd
-          reviewers: GuillaumeFalourd
           draft: false
 
       - name: Check outputs

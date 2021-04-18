@@ -93,6 +93,6 @@ This workflow illustrates how to run a workflow once another specific one has be
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to automatically create a Pull Request committing updated files.
 
-[![14 - Auto Approve](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-approve.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-approve.yml)
+[![14 - Auto Merge](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-merge.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-merge.yml)
 
-This workflow illustrates how to automatically approve a Pull Request from a specific user.
+This workflow illustrates how to automatically merge a Pull Request with a specific label `automerge`.
