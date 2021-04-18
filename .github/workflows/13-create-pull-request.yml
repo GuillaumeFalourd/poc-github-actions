@@ -23,8 +23,6 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches
-          delete-branch: true
           title: '[Example] Update report'
           body: |
             Update report
@@ -34,13 +32,10 @@ jobs:
             [1]: https://github.com/GuillaumeFalourd/poc-github-actions
           labels: |
             report
+            automerge
             automated pr
           assignees: GuillaumeFalourd
           reviewers: GuillaumeFalourd
-          team-reviewers: |
-            owners
-            maintainers
-          milestone: 1
           draft: false
 
       - name: Check outputs
