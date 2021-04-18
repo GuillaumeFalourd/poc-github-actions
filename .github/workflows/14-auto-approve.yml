@@ -1,0 +1,13 @@
+name: 14 - Auto approve
+
+on: [pull_request, pull_request_target]
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: hmarr/auto-approve-action@v2
+      if: github.actor == 'GuillaumeFalourd'
+      with:
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
