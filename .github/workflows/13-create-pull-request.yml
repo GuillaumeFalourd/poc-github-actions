@@ -1,0 +1,30 @@
+name: 13 - Create Pull Request
+
+on:
+  schedule:
+  - cron: "0 9 * * *" # Runs at 09:00 UTC everyday
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Create commits
+        run: |
+          git config user.name 'GuillaumeFalourd'
+          git config user.email 'guillaumefalourd@users.noreply.github.com'
+          date +%s > report.txt
+          git add -A
+          git commit -m "Automated report commit"
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
