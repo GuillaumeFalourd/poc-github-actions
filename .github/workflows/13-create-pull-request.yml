@@ -20,9 +20,9 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           commit-message: Update report
-          committer: GitHub <noreply@github.com>
+          committer: GuillaumeFalourd
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
+          signoff: true
           title: '[Example] Update report'
           delete-branch: true
           body: |
