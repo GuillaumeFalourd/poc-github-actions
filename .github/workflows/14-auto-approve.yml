@@ -1,6 +1,6 @@
 name: 14 - Auto approve
 
-on: [pull_request, pull_request_target]
+on: [pull_request, pull_request_target, workflow_dispatch]
 
 jobs:
   auto-approve:
@@ -8,6 +8,6 @@ jobs:
     steps:
 
     - uses: hmarr/auto-approve-action@v2
-      if: github.actor == 'GuillaumeFalourd'
+      if: github.actor == 'GuillaumeFalourd' || github.actor == 'github-actions[bot]'
       with:
         github-token: "${{ secrets.GITHUB_TOKEN }}"
