@@ -24,6 +24,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           title: '[Example] Update report'
+          delete-branch: true
           body: |
             Update report
             - Updated with *today's* date
