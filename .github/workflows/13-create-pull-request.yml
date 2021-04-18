@@ -1,9 +1,6 @@
 name: 13 - Create Pull Request
 
-on:
-  schedule:
-  - cron: "0 9 * * *" # Runs at 09:00 UTC everyday
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   createPullRequest:
