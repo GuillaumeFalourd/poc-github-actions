@@ -96,3 +96,8 @@ This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to automatically crea
 [![14 - Auto Merge](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-merge.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/14-auto-merge.yml)
 
 This workflow illustrates how to automatically merge a Pull Request with a specific label `automerge`.
+
+[![15 - Push Dev](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/15-push-dev.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/15-push-dev.yml)
+
+This workflow only run when a push is made to the `dev` branch.
+Note that with this implementation, the workflow needs to be present on the specific branch as well (here `dev`).
