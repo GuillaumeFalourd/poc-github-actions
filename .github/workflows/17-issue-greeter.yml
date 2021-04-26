@@ -17,3 +17,4 @@ jobs:
           curl -s -X POST https://api.github.com/repos/$OWNER/$REPO/issues/$ISSUE_NUMBER/comments \
             -d '{"body":"Hello ${{ github.event.issue.user.login }}, thanks for opening this issue!"}'
             -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
