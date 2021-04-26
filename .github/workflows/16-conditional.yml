@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  my-job:
+  job1:
     runs-on: ubuntu-latest
     steps:
       - name: handle-all-issues
@@ -19,3 +19,19 @@ jobs:
       - if: startsWith(github.event.issue.title, 'feature request')
         name: handle-feature-requests
         run: echo "This step runs only for feature requests"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - if: true
+        name: step-1
+        run: echo "Step 1"
+      - if: always()
+        name: step-2
+        run: echo "Step 2"
+      - if: 1 == 1
+        name: step-3
+        run: echo "Step 3"
+      - if: startsWith('foo', 'f')
+        name: step-4
+        run: echo "Step 4"
