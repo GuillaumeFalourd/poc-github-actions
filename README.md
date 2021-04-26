@@ -105,3 +105,7 @@ Note that with this implementation, the workflow needs to be present on the spec
 [![16 - Conditional](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/16-conditional.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/16-conditional.yml)
 
 This workflow illustrates how to use conditional through the `if` variable.
+
+[![17 - Issue Greeter](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/17-issue-greeter.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/17-issue-greeter.yml)
+
+This workflow illustrates how to write an automatic comment on a new issue, without using action, through the github API.
