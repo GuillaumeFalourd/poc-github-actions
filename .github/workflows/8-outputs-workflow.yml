@@ -31,3 +31,12 @@ jobs:
     needs: [job1, job2]
     steps:
     - run: echo "Goodbye"
+
+  job4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-1
+        id: xyz
+        run: echo "::set-output name=ip-address::$(curl -s ifconfig.me)"
+      - name: step-2
+        run: echo "${{ steps.xyz.outputs.ip-address }}"
