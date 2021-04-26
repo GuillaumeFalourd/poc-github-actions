@@ -3,6 +3,7 @@ name: 16 - Conditional
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
 
 jobs:
   my-job:
