@@ -18,5 +18,5 @@ jobs:
             -X POST \
             -H "Accept: application/vnd.github.v3+json"  \
             -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}"  \
-            https://api.github.com/repos/octocat/hello-world/issues/42/comments \
+            https://api.github.com/repos/$OWNER/$REPO/issues/$ISSUE_NUMBER/comments \
             -d '{"body":"Hello ${{ github.event.issue.user.login }}, thanks for opening this issue!"}'
