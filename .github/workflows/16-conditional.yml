@@ -1,0 +1,20 @@
+name: 16 - Conditional
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: handle-all-issues
+        run: echo "This step runs for all issues"
+      
+      - if: startsWith(github.event.issue.title, 'bug')
+        name: handle-bug-reports
+        run: echo "This step runs only for bug reports"
+      
+      - if: startsWith(github.event.issue.title, 'feature request')
+        name: handle-feature-requests
+        run: echo "This step runs only for feature requests"
