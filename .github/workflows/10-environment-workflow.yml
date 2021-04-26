@@ -10,7 +10,7 @@ env:
 
 jobs:
 
-  job_example:
+  job1:
     runs-on: ubuntu-latest
     env:
       JOB_VARIABLE: DEVELOPMENT
@@ -34,3 +34,11 @@ jobs:
         env:
           FIRST_STEP_VARIABLE: Guillaume
           second_step_variable: Falourd
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-1
+        run: echo "::set-env name=IP_ADDRESS::$(curl -s ifconfig.me)"
+      - name: step-2
+        run: echo "$IP_ADDRESS"
