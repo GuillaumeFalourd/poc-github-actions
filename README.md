@@ -101,3 +101,7 @@ This workflow illustrates how to automatically merge a Pull Request with a speci
 
 This workflow only run when a push is made to the `dev` branch.
 Note that with this implementation, the workflow needs to be present on the specific branch as well (here `dev`).
+
+[![16 - Conditional](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/16-conditional.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/16-conditional.yml)
+
+This workflow illustrates how to use conditional through the `if` variable.
