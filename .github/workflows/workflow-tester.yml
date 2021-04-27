@@ -16,9 +16,8 @@ jobs:
     steps:
       - name: replacement
         run: |
-          DB_NAME = "${GITHUB_REF_SLUG}"
-          DB_NAME_REPLACED = echo "${DB_NAME//-/_}"
-          echo $DB_NAME_REPLACED
+          DB_NAME = echo "${GITHUB_REF_SLUG//-/_}"
+          echo $DB_NAME
 
   check-body-length:
     runs-on: ubuntu-latest
