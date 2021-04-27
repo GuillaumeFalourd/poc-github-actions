@@ -19,8 +19,8 @@ jobs:
           VARIABLE=my-repo-test
           echo "${VARIABLE//-/_}"
           DB_NAME=$GITHUB_REPOSITORY
-          echo "${DB_NAME//-/_}"
-          echo "${$GITHUB_REPOSITORY//-/_}"
+          TEST="${DB_NAME//-/_}"
+          echo $TEST
 
   check-body-length:
     runs-on: ubuntu-latest
