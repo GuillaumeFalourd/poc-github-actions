@@ -10,6 +10,15 @@ on:
   pull_request_target:
 
 jobs:
+
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: replacement
+        run: |
+          DB_NAME="${GITHUB_REF_SLUG//-/_}"
+          echo $DB_NAME
+
   check-body-length:
     runs-on: ubuntu-latest
     steps:
