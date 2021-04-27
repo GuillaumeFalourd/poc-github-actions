@@ -16,8 +16,10 @@ jobs:
     steps:
       - name: replacement
         run: |
-          DB_NAME="${GITHUB_REF_SLUG//-/_}"
+          DB_NAME = "${{GITHUB_REF_SLUG}}"
           echo $DB_NAME
+          DB_NAME_REPLACED = echo "${DB_NAME//-/_}"
+          echo $DB_NAME_REPLACED
 
   check-body-length:
     runs-on: ubuntu-latest
