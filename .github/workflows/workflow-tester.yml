@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: replacement
         run: |
+          VARIABLE=my-repo
+          echo "${VARIABLE//-/_}"
           DB_NAME="${GITHUB_REPOSITORY_SLUG//-/_}"
           echo $DB_NAME
 
