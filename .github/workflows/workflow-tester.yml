@@ -20,6 +20,7 @@ jobs:
           echo "${VARIABLE//-/_}"
           DB_NAME=$GITHUB_REPOSITORY
           echo "${DB_NAME//-/_}"
+          echo "${$GITHUB_REPOSITORY//-/_}"
 
   check-body-length:
     runs-on: ubuntu-latest
