@@ -16,10 +16,10 @@ jobs:
     steps:
       - name: replacement
         run: |
-          VARIABLE=my-repo
+          VARIABLE=my-repo-test
           echo "${VARIABLE//-/_}"
-          DB_NAME="${GITHUB_REPOSITORY_SLUG//-/_}"
-          echo $DB_NAME
+          DB_NAME="${GITHUB_REPOSITORY}"
+          echo "${DB_NAME//-/_}""
 
   check-body-length:
     runs-on: ubuntu-latest
