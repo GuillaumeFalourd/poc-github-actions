@@ -38,7 +38,21 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-      - name: step-1
-        run: echo "::set-env name=IP_ADDRESS::$(curl -s ifconfig.me)"
-      - name: step-2
-        run: echo "$IP_ADDRESS"
+      - name: Set the value
+        id: step_1
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_2
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
+
+  # Deprecated with https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/
+  
+  # job3:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: step-1
+  #       run: echo "::set-env name=IP_ADDRESS::$(curl -s ifconfig.me)"
+  #     - name: step-2
+  #       run: echo "$IP_ADDRESS"
