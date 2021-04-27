@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: replacement
         run: |
-          DB_NAME = "${GITHUB_REF_SLUG//-/_}"
+          DB_NAME="${GITHUB_REF_SLUG//-/_}"
           echo $DB_NAME
 
   check-body-length:
