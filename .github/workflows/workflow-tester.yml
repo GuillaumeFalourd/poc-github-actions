@@ -18,7 +18,7 @@ jobs:
         run: |
           VARIABLE=my-repo-test
           echo "${VARIABLE//-/_}"
-          DB_NAME=$GITHUB_REF_SLUG
+          DB_NAME=$GITHUB_REPOSITORY
           echo "${DB_NAME//-/_}"
 
   check-body-length:
