@@ -16,6 +16,7 @@ jobs:
       JOB_VARIABLE: JOB
     steps:
       - name: Run Commands with various variables
+        if: ${{ env.WORKFLOW_VARIABLE == 'WORKFLOW' }}
         env:
           STEP_VARIABLE: STEP
         run: |
