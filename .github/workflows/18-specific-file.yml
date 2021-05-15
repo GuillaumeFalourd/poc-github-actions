@@ -1,0 +1,15 @@
+name: 18 - Specific File
+
+on:
+  push:
+    paths:
+      - 'report.txt'
+  pull_request:
+    paths:
+      - 'report.txt'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The report.txt file has been updated"
