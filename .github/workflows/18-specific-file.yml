@@ -14,8 +14,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Show the Github context for the triggered event
-        run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-      - run: echo "The ... file has been updated"
+      - name: Pull Request Event
+        if: ${{ github.event_name == 'push' }}
+        run: echo "File(s) updated with a PUSH event"
+      - name: Push Event
+        if: ${{ github.event_name == 'pull_request' }}
+        run: echo "File(s) updated with a PR event"
