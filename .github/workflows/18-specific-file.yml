@@ -3,10 +3,10 @@ name: 18 - Specific File
 on:
   push:
     paths:
-      - 'report.txt'
+      - '**/report.txt'
   pull_request:
     paths:
-      - 'report.txt'
+      - '**/report.txt'
 
 jobs:
   job1:
