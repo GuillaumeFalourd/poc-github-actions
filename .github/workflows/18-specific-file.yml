@@ -18,4 +18,4 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-      - run: echo "The report.txt file has been updated"
+      - run: echo "The ... file has been updated"
