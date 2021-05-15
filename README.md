@@ -112,7 +112,7 @@ This workflow illustrates how to write an automatic comment on a new issue, with
 
 [![18 - Specific File](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/18-specific-file.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/18-specific-file.yml)
 
-This workflow illustrates how to trigger a workflow when a specific file is updated.
+This workflow illustrates how to trigger a workflow when specific files are updated.
 
 [![19 - Checkout Action](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-checkout-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-checkout-action.yml)
 
