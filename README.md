@@ -116,4 +116,4 @@ This workflow illustrates how to trigger a workflow when specific files are upda
 
 [![19 - Checkout Action](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-checkout-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-checkout-action.yml)
 
-This workflow illustrates how use the `checkout action` to update a file and commit it to the branch.
+This workflow illustrates how use the [checkout action](https://github.com/actions/checkout) to update a file and commit it to the branch.
