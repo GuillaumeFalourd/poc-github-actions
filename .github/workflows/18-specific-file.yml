@@ -4,12 +4,15 @@ on:
   push:
     paths:
       - '**/report.txt'
+      - '**/README.md'
   pull_request:
     paths:
       - '**/report.txt'
+      - '**/README.md'
 
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - run: echo $GITHUB_CONTEXT
       - run: echo "The report.txt file has been updated"
