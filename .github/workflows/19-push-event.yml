@@ -1,0 +1,23 @@
+name: 19 - Push Event
+
+on:
+  push:
+    branches:
+      - '*' # for all branches
+      - '!main' # Except the main branch
+  schedule:
+    - cron: "0 0 * * *" # Runs at 00:00 UTC everyday
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          date > report.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated checkout workflow file"
+          git push

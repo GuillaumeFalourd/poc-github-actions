@@ -114,6 +114,6 @@ This workflow illustrates how to write an automatic comment on a new issue, with
 
 This workflow illustrates how to trigger a workflow when specific files are updated by a `push` or `pull_request` event.
 
-[![19 - Checkout Action](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-checkout-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-checkout-action.yml)
+[![19 - Push Event](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-push-event.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-push-event.yml)
 
-This workflow illustrates how use the [checkout action](https://github.com/actions/checkout) to update a file and commit it to the branch.
+This workflow illustrates how use the [checkout action](https://github.com/actions/checkout) to create a push event, updating a file and committing it to the branch.
