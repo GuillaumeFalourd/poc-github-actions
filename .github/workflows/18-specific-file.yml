@@ -14,9 +14,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull Request Event
+      - name: Push Event
         if: ${{ github.event_name == 'push' }}
         run: echo "File(s) updated with a PUSH event"
-      - name: Push Event
+      - name: Pull Request Event
         if: ${{ github.event_name == 'pull_request' }}
         run: echo "File(s) updated with a PR event"
