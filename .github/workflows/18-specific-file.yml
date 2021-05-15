@@ -14,5 +14,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$GITHUB_CONTEXT"
+      - name: Show the Github context for the triggered event
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - run: echo "The report.txt file has been updated"
