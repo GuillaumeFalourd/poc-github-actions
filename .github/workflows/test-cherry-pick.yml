@@ -23,7 +23,9 @@ jobs:
       
       - name: Execute Cherry Pick commands
         run: |
-          git checkout tags/${{ github.event.inputs.reference-tag }} -b release-${{ github.event.inputs.new-tag }}
+          git checkout -b release-${{ github.event.inputs.new-tag }} ${{ github.event.inputs.reference-tag }}
           git cherry-pick ${{ github.event.inputs.commit-hash }}
           git tag ${{ github.event.inputs.new-tag }}
           git push --tags
+
+#         git checkout tags/${{ github.event.inputs.reference-tag }} -b release-${{ github.event.inputs.new-tag }}
