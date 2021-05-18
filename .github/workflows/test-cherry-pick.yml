@@ -25,6 +25,8 @@ jobs:
       
       - name: Execute Cherry Pick commands
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git fetch -a
           git checkout tags/${{ github.event.inputs.reference-tag }} -b release-${{ github.event.inputs.new-tag }}
           git cherry-pick ${{ github.event.inputs.commit-hash }}
