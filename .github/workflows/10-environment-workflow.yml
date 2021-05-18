@@ -6,18 +6,33 @@ on:
   workflow_dispatch:
 
 env:
-  WORKFLOW_VARIABLE: PRODUCTION
+  WORKFLOW_VARIABLE: WORKFLOW
 
 jobs:
 
   job1:
     runs-on: ubuntu-latest
     env:
-      JOB_VARIABLE: DEVELOPMENT
+      JOB_VARIABLE: JOB
+    steps:
+      - name: Run Commands with various variables
+        if: ${{ env.WORKFLOW_VARIABLE == 'WORKFLOW' }}
+        env:
+          STEP_VARIABLE: STEP
+        run: |
+          echo "Hello World"
+          echo "This is the $WORKFLOW_VARIABLE environment variable"
+          echo "This is the $JOB_VARIABLE environment variable"
+          echo "This is the $STEP_VARIABLE environment variable"
+
+  job2:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VARIABLE: JOB2
 
     steps:
       - name: Run Commands with WORKFLOW variable
-        if: ${{ env.WORKFLOW_VARIABLE != 'DEVELOPMENT' }}
+        if: ${{ env.WORKFLOW_VARIABLE != 'WORKFLOW' }}
         run: |
           echo "Hello World"
           echo "This is the $WORKFLOW_VARIABLE environment"
@@ -26,16 +41,16 @@ jobs:
           STEP_VARIABLE: my step variable value that could also be a secret
 
       - name: Run Commands with JOB variable
-        if: ${{ env.JOB_VARIABLE == 'DEVELOPMENT' }}
+        if: ${{ env.JOB_VARIABLE == 'JOB2' }}
         run: |
           echo "Hello World"
-          echo "This is the $JOB_ENVIRONMENT environment"
+          echo "This is the $JOB_VARIABLE environment"
           echo "My name is $FIRST_STEP_VARIABLE $second_step_variable"
         env:
           FIRST_STEP_VARIABLE: Guillaume
           second_step_variable: Falourd
 
-  job2:
+  job3:
     runs-on: ubuntu-latest
     steps:
       - name: Set the value

@@ -7,21 +7,30 @@ import requests
 ### SCRIPT SAMPLE EXECUTED THROUGH GH WORKFLOW
 print(f"💡 \033[36mScript example: Getting Brazil Covid-19 datas\033[0m")
 
-response1 = requests.get("https://covid-api.mmediagroup.fr/v1/cases?country=Brazil")
+try:
+  response1 = requests.get("https://covid-api.mmediagroup.fr/v1/cases?country=Brazil")
 
-country_datas = response1.json()
+  country_datas = response1.json()
 
-cases = country_datas["All"]
+  cases = country_datas["All"]
 
-print("🤒 🇧🇷 Confirmed cases:", cases["confirmed"])
-print("🥳 🇧🇷 Recovered cases:", cases["recovered"])
-print("😢 🇧🇷 Deaths:", cases["deaths"])
+  print("🤒 🇧🇷 Confirmed cases:", cases["confirmed"])
+  print("🥳 🇧🇷 Recovered cases:", cases["recovered"])
+  print("😢 🇧🇷 Deaths:", cases["deaths"])
 
-response2 = requests.get("https://covid-api.mmediagroup.fr/v1/vaccines?country=Brazil")
+except:
+   print("Couldn't extract Brazil cases datas") 
 
-vaccines_datas = response2.json()
+try:    
+  response2 = requests.get("https://covid-api.mmediagroup.fr/v1/vaccines?country=Brazil")
 
-vaccines = vaccines_datas["All"]
+  vaccines_datas = response2.json()
 
-print("📦 🇧🇷 Vaccines quantity:", vaccines["administered"])
-print("💉 🇧🇷 Vaccinated people:", vaccines["people_vaccinated"])
+  vaccines = vaccines_datas["All"]
+
+  print("📦 🇧🇷 Vaccines quantity:", vaccines["administered"])
+  print("💉 🇧🇷 Vaccinated people:", vaccines["people_vaccinated"])
+
+except:
+  print("Couldn't extract Brazil vaccines datas") 
+  
