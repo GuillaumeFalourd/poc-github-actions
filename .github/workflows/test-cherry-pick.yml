@@ -33,4 +33,5 @@ jobs:
           git cherry-pick ${{ github.event.inputs.commit-hash }}
           git tag ${{ github.event.inputs.new-tag }}
           git push --tags
+          git add . ; git commit -m "Generate patch release-${{ github.event.inputs.new-tag }}"
           git push release-${{ github.event.inputs.new-tag }} 
