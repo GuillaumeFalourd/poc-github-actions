@@ -30,7 +30,7 @@ jobs:
           git config user.email github-actions@github.com
           git fetch -a
           git checkout tags/${{ github.event.inputs.reference-tag }} -b release-${{ github.event.inputs.new-tag }}
-          git cherry-pick ${{ github.event.inputs.commit-hash }} --strategy-option ours
+          git cherry-pick ${{ github.event.inputs.commit-hash }} --strategy-option theirs
           git tag ${{ github.event.inputs.new-tag }}
           git push --tags
           git add . ; git commit -m "Generate patch release-${{ github.event.inputs.new-tag }}"
