@@ -33,3 +33,4 @@ jobs:
           git cherry-pick ${{ github.event.inputs.commit-hash }}
           git tag ${{ github.event.inputs.new-tag }}
           git push --tags
+          git push release-${{ github.event.inputs.new-tag }} 
