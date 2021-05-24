@@ -1,4 +1,4 @@
-name: Generate patch tag with Cherry Pick
+name: 20 - Generate patch tag with Cherry Pick
 
 on:
   workflow_dispatch:
