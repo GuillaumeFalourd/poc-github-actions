@@ -117,3 +117,7 @@ This workflow illustrates how to trigger a workflow when specific files are upda
 [![19 - Push Event](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-push-event.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/19-push-event.yml)
 
 This workflow illustrates how use the [checkout action](https://github.com/actions/checkout) to create a push event, updating a file and committing it to the branch.
+
+[![20 - Generate Patch Tag with Cherry Pick](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/20-generate-patch-tag-cherry-pick.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/20-generate-patch-tag-cherry-pick.yml)
+
+This workflow illustrates how use cherry-pick to generate a new repository tag informing 3 inputs (`reference tag`, `new tag`, and `commit hash`).
