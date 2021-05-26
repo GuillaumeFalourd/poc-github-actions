@@ -14,7 +14,7 @@ on:
         required: true
 
 jobs:
-  cherry-pick:
+  generate-patch-release-branch:
     runs-on: ubuntu-latest
     steps:
       
@@ -31,6 +31,4 @@ jobs:
           git fetch -a
           git checkout tags/${{ github.event.inputs.reference-tag }} -b release-${{ github.event.inputs.new-tag }}
           git cherry-pick ${{ github.event.inputs.commit-hash }} --strategy-option=ours 
-          git add .
-          git commit -m "Generating release-${{ github.event.inputs.new-tag }}"
-          git push
+          git push --set-upstream origin release-${{ github.event.inputs.new-tag }}
