@@ -56,3 +56,20 @@ jobs:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: step-6
       #   run: echo "${{ steps.wxyz.outputs.html_url }}"
+
+  job5:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-1
+        id: xyz
+        run: echo "::set-output name=acc::$(echo $RANDOM)"
+      - name: step-2
+        if: ${{steps.get_acc.outputs.acc < 1 }}
+        run: |
+          echo "Number lower than 1"
+          echo "${{ steps.xyz.outputs.acc }}"
+      - name: step-3
+        if: ${{steps.xyz.outputs.acc > 1 }}
+        run: |
+          echo "Number higher than 1"
+          echo "${{ steps.xyz.outputs.acc }}"
