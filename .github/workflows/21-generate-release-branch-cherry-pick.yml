@@ -1,4 +1,4 @@
-name: Generate patch branch with Cherry Pick
+name: 21 - Generate patch branch with Cherry Pick
 
 on:
   workflow_dispatch:
