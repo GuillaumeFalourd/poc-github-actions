@@ -121,3 +121,11 @@ This workflow illustrates how use the [checkout action](https://github.com/actio
 [![20 - Generate Patch Tag with Cherry Pick](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/20-generate-patch-tag-cherry-pick.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/20-generate-patch-tag-cherry-pick.yml)
 
 This workflow illustrates how use cherry-pick to generate a new repository tag informing 3 inputs (`reference tag`, `new tag`, and `commit hash`).
+
+[![21 - Generate Release Branch with Cherry Pick](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/21-generate-release-branch-cherry-pick.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/21-generate-release-branch-cherry-pick.yml)
+
+This workflow illustrates how use cherry-pick to generate a new release branch informing 3 inputs (`reference tag`, `new tag`, and `commit hash`).
+
+[![22 - Install runner tools](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/22-install-runner-tools.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/22-install-runner-tools.yml)
+
+This workflow illustrates how to install tools not supported by the ubuntu runner using `apt-get install`.
