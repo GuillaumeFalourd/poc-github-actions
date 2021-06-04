@@ -8,6 +8,6 @@ jobs:
     steps:
       - name: Run Install Commands
         run: |
-          apt update
-          apt install devscripts
-          apt install dput
+          apt-cache update
+          apt-cache install devscripts
+          apt-cache install dput
