@@ -6,7 +6,7 @@ on:
     inputs:
       git-sha:
         description: Release SHA
-        default: ${{ env.GITHUB_SHA }}
+        # default: ${{ env.GITHUB_SHA }}
         required: true
 
 jobs:
