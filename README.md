@@ -132,7 +132,7 @@ This workflow illustrates how to install tools not supported by the ubuntu runne
 
 [![23 - Upload reset Asset](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/23-upload-release-asset.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/23-upload-release-asset.yml)
 
-This workflow illustrates how to upload a release asset.
+This workflow illustrates how to upload a release asset (Example: https://github.com/GuillaumeFalourd/poc-github-actions/releases/tag/821d0256)
 
 [![24 - Github Context](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/24-contexts.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/24-contexts.yml)
 
