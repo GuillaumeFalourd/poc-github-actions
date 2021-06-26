@@ -1,8 +1,7 @@
 name: 23 - Upload Release Asset
 
 on:
-  # push:
-    # Runs on every pushed commit
+  push:
   workflow_dispatch:
     inputs:
       git-sha:
