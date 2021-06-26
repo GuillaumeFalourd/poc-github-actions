@@ -130,6 +130,10 @@ This workflow illustrates how use cherry-pick to generate a new release branch i
 
 This workflow illustrates how to install tools not supported by the ubuntu runner using `apt-get install`.
 
+[![23 - Upload reset Asset](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/23-upload-release-asset.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/23-upload-release-asset.yml)
+
+This workflow illustrates how to upload a release asset.
+
 [![24 - Github Context](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/24-contexts.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/24-contexts.yml)
 
 This workflow illustrates how to access various context variables on a workflow.
