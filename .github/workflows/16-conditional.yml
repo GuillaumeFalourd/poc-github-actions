@@ -23,6 +23,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     needs: job1
+    continue-on-error: true
     steps:
       - if: true
         name: step-1
@@ -40,9 +41,9 @@ jobs:
   job3:
       runs-on: ubuntu-latest
       needs: job2
-      if: always
       steps:
-       - run: echo "THis command will always be executed even if previous job2 fails"
+       - if: always
+         run: echo "THis command will always be executed even if previous job2 fails"
       
 
   
