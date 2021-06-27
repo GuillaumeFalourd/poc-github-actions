@@ -22,6 +22,7 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
+    needs: job1
     steps:
       - if: true
         name: step-1
@@ -35,3 +36,13 @@ jobs:
       - if: startsWith('foo', 'f')
         name: step-4
         run: echo "Step 4"
+        
+  job3:
+      runs-on: ubuntu-latest
+      needs: job2
+      if: always
+      steps:
+       - run: echo "THis command will always be executed even if previous job2 fails"
+      
+
+  
