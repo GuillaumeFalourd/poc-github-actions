@@ -41,9 +41,9 @@ jobs:
   job3:
       runs-on: ubuntu-latest
       needs: job2
+      if: always()
       steps:
-       - if: always
-         run: echo "THis command will always be executed even if previous job2 fails"
+         - run: echo "THis command will always be executed even if previous job2 fails"
       
 
   
