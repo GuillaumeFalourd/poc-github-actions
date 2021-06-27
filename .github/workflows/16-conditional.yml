@@ -37,6 +37,7 @@ jobs:
       - if: startsWith('foo', 'f')
         name: step-4
         run: echo "Step 4"
+      - run: cat ERROR.md
         
   job3:
       runs-on: ubuntu-latest
