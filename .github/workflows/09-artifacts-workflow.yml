@@ -1,4 +1,4 @@
-name: 9 - Artifacts Workflow
+name: 09 - Artifacts Workflow
 
 on:
   push:

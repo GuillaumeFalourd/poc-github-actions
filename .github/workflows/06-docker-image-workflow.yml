@@ -1,4 +1,4 @@
-name: 6 - Docker Image Workflow
+name: 06 - Docker Image Workflow
 
 on:
   schedule:

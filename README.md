@@ -41,39 +41,39 @@ jobs: # All workflows need at list one job
 
 ## Examples
 
-[![1 - Default Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/1-default-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/1-default-workflow.yml)
+[![01 - Default Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/01-default-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/01-default-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to run some basic commands.
 
-[![2 - Secret Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/2-secret-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/2-secret-workflow.yml)
+[![02 - Secret Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/02-secret-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/02-secret-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to run some basic commands using repository secrets.
 
-[![3 - Python Script Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/3-python-script-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/3-python-script-workflow.yml)
+[![03 - Python Script Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/03-python-script-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/03-python-script-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to execute a specific script [run.py](https://github.com/GuillaumeFalourd/poc-github-actions/blob/main/run.py) located on the repository.
 
-[![4 - Remote Dispatch Action Initiator](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/4-dispatch-event-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/4-dispatch-event-workflow.yml)
+[![04 - Remote Dispatch Action Initiator](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/04-dispatch-event-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/04-dispatch-event-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) to dispatch an event to the [ritchie-formulas-scheduler-demo repository](https://github.com/GuillaumeFalourd/ritchie-formulas-scheduler-demo).
 
-[![5 - Container Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/5-container-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/5-container-workflow.yml)
+[![05 - Container Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/05-container-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/05-container-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) with a docker container where Ritchie CLI and Golang are installed, then check Ritchie CLI and Golang versions through commands.
 
-[![6 - Docker Image Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/6-docker-image-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/6-docker-image-workflow.yml)
+[![06 - Docker Image Workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/06-docker-image-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/06-docker-image-workflow.yml)
 
 This workflow uses [CRON](https://crontab.guru/#*_*_*_*_*) and a docker image `foundeo/minibox:latest`. It also specify an `entrypoint` (the command to run inside the container) and `args` (command line arguments to pass to the command specified in entrypoint). It is possible to omit the `entrypoint` if the container already species the entrypoint you want to use.
 
-[![7 - Action workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/7-action-workflow.yml)
+[![07 - Action workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/07-action-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/07-action-workflow.yml)
 
 This workflow will run an Action each time a `PUSH` event occurs on the repository. This specific action runs a Ritchie CLI formula.
 
-[![8 - Outputs workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-outputs-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/8-outputs-workflow.yml)
+[![08 - Outputs workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/08-outputs-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/08-outputs-workflow.yml)
 
 This workflow illustrates how to set outputs in a job to use them on another job. This specific workflow prints `Hello-World`.
 
-[![9 - Artifacts workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/9-artifacts-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/9-artifacts-workflow.yml)
+[![09 - Artifacts workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/09-artifacts-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/09-artifacts-workflow.yml)
 
 This workflow illustrates how to pass data between jobs in the same workflow. For more information, see the [actions/upload-artifact](https://github.com/actions/upload-artifact) and [download-artifact](https://github.com/actions/download-artifact) actions. The full math operation performed in this workflow example is `(3 + 7) x 9 = 90`.
 

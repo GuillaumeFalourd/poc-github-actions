@@ -1,12 +1,16 @@
-name: Workflow Tester
+name: Test 2
 
 on:
   workflow_dispatch:
     inputs:
       body:
+        description: ""
         default: ""
+        required: false
       test:
+        description: ""
         default: "false"
+        required: false
   pull_request_target:
 
 jobs:

@@ -1,4 +1,4 @@
-name: 8 - Outputs Workflow
+name: 08 - Outputs Workflow
 
 on:
   schedule:
