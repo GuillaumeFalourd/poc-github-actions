@@ -28,8 +28,9 @@ jobs:
     runs-on: windows-latest
     name: Ritchie CLI Action Windows
     steps:
+    
     - name: Run Ritchie Formula Command
       uses: GuillaumeFalourd/ritchie-cli-action@v1
       with:
         rit_repo_url: https://github.com/ZupIT/ritchie-formulas-demo
-        rit_formula_command: ./rit.exe demo coffee-shell --rit_name=Dennis --rit_coffee_type=espresso --rit_delivery=false
+        rit_formula_command: ./rit.exe demo coffee-python --rit_name=Dennis --rit_coffee_type=espresso --rit_delivery=false
