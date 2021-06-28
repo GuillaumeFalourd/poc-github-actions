@@ -137,3 +137,7 @@ This workflow illustrates how to upload a release asset. [Example]( https://gith
 [![24 - Github Context](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/24-contexts.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/24-contexts.yml)
 
 This workflow illustrates how to access various context variables on a workflow.
+
+[![25 - Artifacts between Workflows 1](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-1.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-1.yml) [![25 - Artifacts between Workflows 2](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-2.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-2.yml)
+
+This workflow illustrates how to share datas between workflows using artifacts.
