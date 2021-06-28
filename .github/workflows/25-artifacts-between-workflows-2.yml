@@ -1,0 +1,26 @@
+name: "Artifacts between workflows 2"
+
+on:
+  workflow_run:
+    workflows: ['Artifacts between workflows 1']
+    types: 
+      - completed
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.11.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: peek_icons.yml
+          run_id: ${{ github.event.workflow_run.id }}
+
+      - name: Read the pr_num file
+        id: pr_num_reader
+        uses: juliangruber/read-file-action@v1.0.0
+        with:
+          path: ./pr_num/pr_num.txt
+
+      - run: echo Original PR number is ${{ steps.pr_num_reader.outputs.content }}
