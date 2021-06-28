@@ -5,12 +5,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  action_job:
+  action_job_ubuntu:
     runs-on: ubuntu-latest
-    name: Ritchie Action
+    name: Ritchie CLI Action Ubuntu
     steps:
-    - name: Run Ritchie Action Command
-      uses: GuillaumeFalourd/ritchie-action-shell@v2.1
+    - name: Run Ritchie Formula Command
+      uses: GuillaumeFalourd/ritchie-cli-action@v1
       with:
         rit-repo-url: https://github.com/ZupIT/ritchie-formulas-demo
         rit-formula-command: rit demo coffee-shell --rit_name=Dennis --rit_coffee_type=espresso --rit_delivery=false
+        
+  action_job_macos:
+    runs-on: macos-latest
+    name: Ritchie CLI Action MacOS
+    steps:
+    - name: Run Ritchie Formula Command
+      uses: GuillaumeFalourd/ritchie-cli-action@v1
+      with:
+        rit-repo-url: https://github.com/ZupIT/ritchie-formulas-demo
+        rit-formula-command: rit demo coffee-shell --rit_name=Dennis --rit_coffee_type=espresso --rit_delivery=false
+        
+  action_job_windows:
+    runs-on: windows-latest
+    name: Ritchie CLI Action Windows
+    steps:
+    - name: Run Ritchie Formula Command
+      uses: GuillaumeFalourd/ritchie-cli-action@v1
+      with:
+        rit-repo-url: https://github.com/ZupIT/ritchie-formulas-demo
+        rit-formula-command: ./rit.exe demo coffee-shell --rit_name=Dennis --rit_coffee_type=espresso --rit_delivery=false
