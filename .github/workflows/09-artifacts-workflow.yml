@@ -1,7 +1,6 @@
 name: 09 - Artifacts Workflow
 
 on:
-  push:
   schedule:
     - cron: "0 7 * * *" # Runs at 7:00 UTC everyday
   workflow_dispatch:

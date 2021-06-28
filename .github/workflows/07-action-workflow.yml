@@ -1,7 +1,6 @@
 name: 07 - Action workflow
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
