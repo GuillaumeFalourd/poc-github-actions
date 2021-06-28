@@ -1,36 +1,25 @@
-name: Firebase Deployment
+name: Deployment
 
 on:
-#   push:
-#     branches:
-#       - main
   workflow_dispatch:
+    inputs:
+      should_deploy_input:
+        description: "Whether or not the product will be deployed to AppStoreConnect => true/false"
+        required: true
+        default: "true"
 
 jobs:
-  deploy:
-    name: Build & Deployment
+  tests:
     runs-on: macos-latest
+    steps:
+      - run: echo Hello World
 
+  deploy:
+    name: Deployment
+    runs-on: macos-latest
+    if: ${{ github.event.inputs.should_deploy_input == 'true' }} # Also tried github.env.SHOULD_DEPLOY == 'true'
+    needs: tests
     steps:
       - name: get the source code
         uses: actions/checkout@v2
-
-      - name: install node
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-
-      - name: install node packages
-        run: npm i
-
-      - name: Build
-        run: npm run build
-        env:
-          CI: false
-
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
+      - run: echo Deployment Job
