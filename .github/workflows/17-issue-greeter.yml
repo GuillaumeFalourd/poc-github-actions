@@ -1,0 +1,22 @@
+name: 17 - Issue Greeter
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step
+        env:
+          REPO: ${{ github.event.repository.name }}
+          OWNER: ${{ github.event.repository.owner.login }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          curl \
+            -X POST \
+            -H "Accept: application/vnd.github.v3+json"  \
+            -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}"  \
+            https://api.github.com/repos/$OWNER/$REPO/issues/$ISSUE_NUMBER/comments \
+            -d '{"body":"Hello ${{ github.event.issue.user.login }}, thanks for opening this issue!"}'

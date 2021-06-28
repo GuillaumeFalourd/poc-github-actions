@@ -1,0 +1,12 @@
+name: 22 - Install Runner tools
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Install Commands
+        run: |
+          sudo apt-get install devscripts
+          sudo apt-get install dput

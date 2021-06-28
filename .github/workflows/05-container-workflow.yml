@@ -1,4 +1,4 @@
-name: 5 - Container Workflow
+name: 05 - Container Workflow
 
 on:
   schedule:

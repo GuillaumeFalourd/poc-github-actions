@@ -1,4 +1,4 @@
-name: 7 - Action workflow
+name: 07 - Action workflow
 
 on:
   push:

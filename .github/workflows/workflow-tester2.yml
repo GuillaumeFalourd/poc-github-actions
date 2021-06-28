@@ -1,15 +1,31 @@
-name: Workflow Tester
+name: Test 2
 
 on:
   workflow_dispatch:
     inputs:
       body:
+        description: ""
         default: ""
+        required: false
       test:
+        description: ""
         default: "false"
+        required: false
   pull_request_target:
 
 jobs:
+
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: replacement
+        run: |
+          VARIABLE=my-repo-test
+          echo "${VARIABLE//-/_}"
+          DB_NAME=$GITHUB_REPOSITORY
+          TEST="${DB_NAME//-/_}"
+          echo $TEST
+
   check-body-length:
     runs-on: ubuntu-latest
     steps:

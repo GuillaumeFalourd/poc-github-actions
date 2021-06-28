@@ -1,0 +1,50 @@
+name: 16 - Conditional
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: handle-all-issues
+        run: echo "This step runs for all issues"
+      
+      - if: startsWith(github.event.issue.title, 'bug')
+        name: handle-bug-reports
+        run: echo "This step runs only for bug reports"
+      
+      - if: startsWith(github.event.issue.title, 'feature request')
+        name: handle-feature-requests
+        run: echo "This step runs only for feature requests"
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    continue-on-error: true
+    steps:
+      - if: true
+        name: step-1
+        run: echo "Step 1"
+      - if: always()
+        name: step-2
+        run: echo "Step 2"
+      - if: 1 == 1
+        name: step-3
+        run: echo "Step 3"
+      - if: startsWith('foo', 'f')
+        name: step-4
+        run: echo "Step 4"
+      - run: cat ERROR.md
+        
+  job3:
+      runs-on: ubuntu-latest
+      needs: job2
+      if: always()
+      steps:
+         - run: echo "THis command will always be executed even if previous job2 fails"
+      
+
+  

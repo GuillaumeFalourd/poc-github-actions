@@ -1,0 +1,25 @@
+name: Test 1
+
+on:
+  workflow_dispatch:
+    inputs:
+      should_deploy_input:
+        description: "Whether or not the product will be deployed to AppStoreConnect => true/false"
+        required: true
+        default: "true"
+
+jobs:
+  tests:
+    runs-on: macos-latest
+    steps:
+      - run: echo Hello World
+
+  deploy:
+    name: Deployment
+    runs-on: macos-latest
+    if: ${{ github.event.inputs.should_deploy_input == 'true' }} # Also tried github.env.SHOULD_DEPLOY == 'true'
+    needs: tests
+    steps:
+      - name: get the source code
+        uses: actions/checkout@v2
+      - run: echo Deployment Job
