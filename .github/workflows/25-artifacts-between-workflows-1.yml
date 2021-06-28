@@ -1,4 +1,4 @@
-name: "Artifacts between workflows 1"
+name: "25 - Artifacts between workflows 1"
 
 on: pull_request
 
