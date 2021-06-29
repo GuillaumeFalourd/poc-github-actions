@@ -27,8 +27,6 @@ jobs:
       - name: Generate release on documentation repo
         run: |
           cd docs-ritchie
-          git config user.name github-actions
-          git config user.email github-actions@github.com
           git checkout -b test-${{ steps.vars.outputs.tag }}
           git add . ; git commit -m "Creating new release according the Ritchie CLI tag ${{ steps.vars.outputs.tag }}"
           git push origin test-${{ steps.vars.outputs.tag }}
