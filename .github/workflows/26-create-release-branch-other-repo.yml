@@ -13,21 +13,12 @@ jobs:
       - name: Set output
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      - name: Check output
-        env:
-          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ steps.vars.outputs.tag }}
-      - name: Clone ZupIT/docs-ritchie PUBLIC repository
-        uses: GuillaumeFalourd/clone-github-repo-action@v1
-        with:
-          owner: 'ZupIT'
-          repository: 'docs-ritchie'
-          access-token: ${{ secrets.ACCESS_TOKEN }}
       - name: Generate release on documentation repo
         run: |
-          cd docs-ritchie
+          git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/ZupIT/$docs-ritchie.git
+          cd docs-ritchie/
+          ls -lha
+          git init
           git checkout -b test-${{ steps.vars.outputs.tag }}
           git add . ; git commit -m "Creating new release according the Ritchie CLI tag ${{ steps.vars.outputs.tag }}"
           git push origin test-${{ steps.vars.outputs.tag }}
