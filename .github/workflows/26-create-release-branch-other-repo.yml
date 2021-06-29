@@ -15,7 +15,7 @@ jobs:
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
       - name: Generate release on documentation repo
         run: |
-          git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/ZupIT/$docs-ritchie.git
+          git clone https://${{ secrets.ACCESS_TOKEN }}@github.com/ZupIT/docs-ritchie.git
           cd docs-ritchie/
           ls -lha
           git init
