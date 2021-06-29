@@ -20,5 +20,7 @@ jobs:
           ls -lha
           git init
           git checkout -b test-${{ steps.vars.outputs.tag }}
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add . ; git commit -m "Creating new release according the Ritchie CLI tag ${{ steps.vars.outputs.tag }}"
           git push origin test-${{ steps.vars.outputs.tag }}
