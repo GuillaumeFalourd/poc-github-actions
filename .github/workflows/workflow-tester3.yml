@@ -15,7 +15,8 @@ jobs:
       - name: Ritchie Installation & Initialization
         run: |
             curl -fsSL https://commons-repo.ritchiecli.io/install.sh | bash
-            rit init --sendMetrics="no" --addCommons="no" --runType="local"
+            echo '{"addCommons":false, "sendMetrics":false, "runType":"local"}' | rit init --stdin
+            # rit init --sendMetrics="no" --addCommons="no" --runType="local"
       - name: Ritchie Formula Hello World (Golang) Execution
         run: |
             rit add repo --provider="Github" --name="demo" --repoUrl="https://github.com/ZupIT/ritchie-formulas-demo" --priority=1
@@ -40,5 +41,5 @@ jobs:
           go-version: '1.16.0'
       - uses: GuillaumeFalourd/ritchie-cli-action@v1
         with:
-          rit_formula_command: rit demo hello-world --rit_input_text="Dennis" --rit_input_boolean=true --rit_input_list="everything" --rit_input_password="Ritchie"
+          rit_formula_command: rit demo coffee-go --rit_name="Dennis" --rit_coffee_type="espresso" --rit_delivery=false
           rit_repo_url: https://github.com/ZupIT/ritchie-formulas-demo
