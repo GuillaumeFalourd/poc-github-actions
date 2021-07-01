@@ -1,0 +1,44 @@
+name: Test 3
+
+on: [workflow_dispatch]
+
+
+jobs:
+
+  demo-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Golang Version
+        uses: actions/setup-go@v1
+        with:
+          go-version: '1.16.0'
+      - name: Ritchie Installation & Initialization
+        run: |
+            curl -fsSL https://commons-repo.ritchiecli.io/install.sh | bash
+            rit init --sendMetrics="no" --addCommons="no" --runType="local"
+      - name: Ritchie Formula Hello World (Golang) Execution
+        run: |
+            rit add repo --provider="Github" --name="demo" --repoUrl="https://github.com/ZupIT/ritchie-formulas-demo" --priority=1
+            rit demo hello-world --rit_input_text="Dennis" --rit_input_boolean=true --rit_input_list="everything" --rit_input_password="Ritchie"
+
+  demo-2:
+      runs-on: ubuntu-latest
+      container:
+        image: docker://guillaumefalourd/ritchiecli:go-1.15.8
+      steps:
+        - name: Ritchie Formula Hello World (Golang) Execution
+          run: |
+            sudo rit add repo --provider="Github" --name="demo" --repoUrl="https://github.com/ZupIT/ritchie-formulas-demo" --priority=1
+            sudo rit demo hello-world --rit_input_text="Dennis" --rit_input_boolean=true --rit_input_list="everything" --rit_input_password="Ritchie"
+
+  demo-3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Golang Version
+        uses: actions/setup-go@v1
+        with:
+          go-version: '1.16.0'
+      - uses: GuillaumeFalourd/ritchie-cli-action@v1
+        with:
+          rit_formula_command: rit demo hello-world --rit_input_text="Dennis" --rit_input_boolean=true --rit_input_list="everything" --rit_input_password="Ritchie"
+          rit_repo_url: https://github.com/ZupIT/ritchie-formulas-demo
