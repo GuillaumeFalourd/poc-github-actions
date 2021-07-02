@@ -1,0 +1,13 @@
+name: Test 5
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Commands
+        run: |
+          echo "Hello World"
+          echo "This workflow only runs for push to the dev branch"
