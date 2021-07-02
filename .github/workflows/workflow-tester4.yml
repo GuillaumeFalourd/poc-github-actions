@@ -10,4 +10,4 @@ jobs:
       - name: Run Commands
         run: |
           echo "Hello World"
-          echo "This workflow only runs for push to the main branch"
+          echo "This workflow only runs for push to the DEV branch"
