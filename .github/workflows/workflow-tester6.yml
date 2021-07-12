@@ -11,9 +11,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Fetch latest data
       run: |-
-        echo "GITHUB_PRICE_LIMIT=${{8.81}}" >> $GITHUB_ENV
-        echo "GITHUB_CUR_PRICE=${{10.20}}" >> $GITHUB_ENV
-        echo "GITHUB_PREV_PRICE=${{9.88}}" >> $GITHUB_ENV
+        echo "GITHUB_PRICE_LIMIT=${{ 8.81 }}" >> $GITHUB_ENV
+        echo "GITHUB_CUR_PRICE=${{ 10.20 }}" >> $GITHUB_ENV
+        echo "GITHUB_PREV_PRICE=${{ 9.88 }}" >> $GITHUB_ENV
         echo "GITHUB_MAIL_UPDATE=0" >> $GITHUB_ENV
     - name: Print variables
       run: |
