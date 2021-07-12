@@ -14,10 +14,8 @@ jobs:
         echo "GITHUB_PRICE_LIMIT=${{ 8.81 }}" >> $GITHUB_ENV
         echo "GITHUB_CUR_PRICE=${{ 10.20 }}" >> $GITHUB_ENV
         echo "GITHUB_PREV_PRICE=${{ 9.88 }}" >> $GITHUB_ENV
-        echo "GITHUB_MAIL_UPDATE=0" >> $GITHUB_ENV
     - name: Print variables
       run: |
-        echo $GITHUB_ENV
         echo "CURRENT PRICE:" ${{ env.GITHUB_CUR_PRICE }}
         echo "PRICE LIMIT:" ${{ env.GITHUB_PRICE_LIMIT }}
         echo "PREVIOUS PRICE:" ${{ env.GITHUB_PREV_PRICE }}
@@ -29,7 +27,7 @@ jobs:
         echo "(1) AND (2):" ${{ (10.20 >= 8.81) && (9.88 < 8.81) }}
         echo "(3) AND (4):" ${{ (10.20 <= 8.81) && (9.88 > 8.81) }}
         echo "WITH ENV VARIABLES"
-        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT }}
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ ${{env.GITHUB_CUR_PRICE}} >= ${{env.GITHUB_PRICE_LIMIT}} }}
         echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT }}
         echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT }}
         echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT }}
