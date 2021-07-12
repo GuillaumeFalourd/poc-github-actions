@@ -11,11 +11,11 @@ jobs:
       uses: actions/checkout@v2
     - name: Fetch latest data
       run: |-
-        prev_price=9.88
-        cur_price=10.20
+        prev_price=${{9.88}}
+        cur_price=${{10.20}}
         echo "this is the current price ${cur_price}"
         echo "this is the previous price ${prev_price}"
-        price_limit=8.81
+        price_limit=${{8.81}}
         echo "this is the price limit ${price_limit}"
         echo "GITHUB_PRICE_LIMIT=${price_limit}" >> $GITHUB_ENV
         echo "GITHUB_CUR_PRICE=${cur_price}" >> $GITHUB_ENV
