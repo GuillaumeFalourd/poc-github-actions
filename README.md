@@ -144,4 +144,4 @@ These workflows illustrate how to share datas between workflows using artifacts.
 
 [![26 - Create branch on another repo](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/26-create-release-branch-other-repo.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/26-create-release-branch-other-repo.yml)
 
-This workflow illustrates how to create a new branch on another repository based on current repository tag.
+This workflow illustrates how to create a new branch on another repository based on the current repository tag.
