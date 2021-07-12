@@ -3,11 +3,6 @@ name: Test 6
 on:
   workflow_dispatch:
 
-env:
-  PRICE_LIMIT: 8.81
-  CUR_PRICE: 10.20
-  PREV_PRICE: 9.88
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,11 +10,11 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
 
-    # - name: Fetch latest data
-    #   run: |-
-    #     echo "PRICE_LIMIT=${{8.81}}" >> $GITHUB_ENV
-    #     echo "CUR_PRICE=${{10.20}}" >> $GITHUB_ENV
-    #     echo "PREV_PRICE=${{9.88}}" >> $GITHUB_ENV
+    - name: Fetch latest data
+      run: |-
+        echo "PRICE_LIMIT=${{8.81}}" >> $GITHUB_ENV
+        echo "CUR_PRICE=${{10.20}}" >> $GITHUB_ENV
+        echo "PREV_PRICE=${{9.88}}" >> $GITHUB_ENV
 
     - name: Print variables
       run: |
