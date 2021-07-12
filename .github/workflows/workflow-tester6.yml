@@ -13,10 +13,7 @@ jobs:
       run: |-
         prev_price=${{9.88}}
         cur_price=${{10.20}}
-        echo "this is the current price ${cur_price}"
-        echo "this is the previous price ${prev_price}"
         price_limit=${{8.81}}
-        echo "this is the price limit ${price_limit}"
         echo "GITHUB_PRICE_LIMIT=${price_limit}" >> $GITHUB_ENV
         echo "GITHUB_CUR_PRICE=${cur_price}" >> $GITHUB_ENV
         echo "GITHUB_PREV_PRICE=${prev_price}" >> $GITHUB_ENV
@@ -26,6 +23,8 @@ jobs:
         echo "CURRENT PRICE:" ${{ env.GITHUB_CUR_PRICE }}
         echo "PRICE LIMIT:" ${{ env.GITHUB_PRICE_LIMIT }}
         echo "PREVIOUS LIMIT:" ${{ env.GITHUB_PREV_PRICE }}
+        echo ${{ 10.20 >= 8.81 }}
+        echo ${{ 9.99 < 8.81 }}
         echo "(1) CURRENT PRICE > PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT }}
         echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT }}
         echo "(3) CURRENT PRICE < PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT }}
@@ -36,10 +35,6 @@ jobs:
       if: ${{ (((env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT)) || ((env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT) &&  (env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT))) }}
       run: |-
         echo "limit event occurred "
-
-# prev_price=9.88
-# cur_price=10.2
-# price_limit=8.81
 
 # When the current price is higher than or equal to the price limit and the previous price is lower than the price limit
 # env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT && env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT
