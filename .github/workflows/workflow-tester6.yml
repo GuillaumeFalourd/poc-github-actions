@@ -67,7 +67,7 @@ jobs:
 
     - name: With Env Variables
       run: |
-        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT }}
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ "env.GITHUB_CUR_PRICE" >= "env.GITHUB_PRICE_LIMIT" }}
         echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT }}
         echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT }}
         echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT }}
