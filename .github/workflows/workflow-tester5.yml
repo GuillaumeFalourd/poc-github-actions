@@ -8,9 +8,9 @@ env:
 on:
   push:
     paths:
-      - ${{ env.REPORT_PATH }}
-      - ${{ env.README_PATH }}
-      - ${{ env.WORKFLOW_PATH }}
+      - $REPORT_PATH
+      - $README_PATH
+      - $WORKFLOW_PATH
   pull_request:
     paths:
       - $REPORT_PATH
