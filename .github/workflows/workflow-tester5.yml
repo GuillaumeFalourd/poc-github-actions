@@ -1,0 +1,27 @@
+name: Test 5
+
+env:
+  REPORT_PATH: '**/report.txt'
+  README_PATH: '**/README.md'
+
+on:
+  push:
+    paths:
+      - $REPORT_PATH
+      - $README_PATH
+  pull_request:
+    paths:
+      - $REPORT_PATH
+      - $README_PATH
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo $REPORT_PATH
+          echo $README_PATH
+      - run: |
+          echo ${{ env.REPORT_PATH }}
+          echo ${{ env.README_PATH }}
