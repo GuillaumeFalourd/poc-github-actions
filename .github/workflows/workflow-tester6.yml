@@ -18,6 +18,7 @@ jobs:
 
     - name: Create Outputs
       id: datas
+      run: |
         echo "::set-output name=limit::${{ env.GITHUB_PRICE_LIMIT }}"
         echo "::set-output name=current::${{ env.GITHUB_CUR_PRICE }}"
         echo "::set-output name=previous::${{ env.GITHUB_PREV_PRICE }}"
