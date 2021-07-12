@@ -21,12 +21,12 @@ jobs:
         echo "PRICE LIMIT:" ${{ env.GITHUB_PRICE_LIMIT }}
         echo "PREVIOUS PRICE:" ${{ env.GITHUB_PREV_PRICE }}
         echo "WITH NUMBERS"
-        echo ${{ 10.20 >= 8.81 }}
-        echo ${{ 9.88 < 8.81 }}
-        echo ${{ 10.20 <= 8.81 }}
-        echo ${{ 9.88 > 8.81 }}
-        echo ${{ (10.20 >= 8.81) && (9.88 < 8.81) }}
-        echo ${{ (10.20 <= 8.81) && (9.88 > 8.81) }}
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ 10.20 >= 8.81 }}
+        echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ 9.88 < 8.81 }}
+        echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ 10.20 <= 8.81 }}
+        echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ 9.88 > 8.81 }}
+        echo "(1) AND (2):" ${{ (10.20 >= 8.81) && (9.88 < 8.81) }}
+        echo "(3) AND (4):" ${{ (10.20 <= 8.81) && (9.88 > 8.81) }}
         echo "WITH ENV VARIABLES"
         echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT }}
         echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT }}
