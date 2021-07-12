@@ -30,6 +30,8 @@ jobs:
         echo ${{ env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT }}
         echo ${{ env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT }}
         echo ${{ env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT }}
+        echo ${{ (env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT) }}
+        echo ${{ (env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT) &&  (env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT) }}
     - name: test for limit event
       if: ${{ (((env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT)) || ((env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT) &&  (env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT))) }}
       run: |-
