@@ -17,6 +17,7 @@ jobs:
         echo "GITHUB_MAIL_UPDATE=0" >> $GITHUB_ENV
     - name: Print variables
       run: |
+        echo $GITHUB_ENV
         echo "CURRENT PRICE:" ${{ env.GITHUB_CUR_PRICE }}
         echo "PRICE LIMIT:" ${{ env.GITHUB_PRICE_LIMIT }}
         echo "PREVIOUS PRICE:" ${{ env.GITHUB_PREV_PRICE }}
