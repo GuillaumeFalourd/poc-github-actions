@@ -3,16 +3,19 @@ name: Test 5
 env:
   REPORT_PATH: '**/report.txt'
   README_PATH: '**/README.md'
+  WORKFLOW_PATH: '**/workflow-tester5.yml'
 
 on:
   push:
     paths:
-      - ${{ env.REPORT_PATH }}
-      - ${{ env.README_PATH }}
+      - ${{ REPORT_PATH }}
+      - ${{ README_PATH }}
+      - ${{ WORKFLOW_PATH }}
   pull_request:
     paths:
-      - ${{ env.REPORT_PATH }}
-      - ${{ env.README_PATH }}
+      - ${{ REPORT_PATH }}
+      - ${{ README_PATH }}
+      - ${{ WORKFLOW_PATH }}
   workflow_dispatch:
 
 jobs:
@@ -22,6 +25,12 @@ jobs:
       - run: |
           echo $REPORT_PATH
           echo $README_PATH
+          echo $WORKFLOW_PATH
       - run: |
           echo ${{ env.REPORT_PATH }}
           echo ${{ env.README_PATH }}
+          echo ${{ env.WORKFLOW_PATH }}
+      - run: |
+          echo ${{ REPORT_PATH }}
+          echo ${{ README_PATH }}
+          echo ${{ WORKFLOW_PATH }}
