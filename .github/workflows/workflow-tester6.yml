@@ -41,9 +41,9 @@ jobs:
         echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ steps.datas.outputs.previous < steps.datas.outputs.limit }}
         echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ steps.datas.outputs.current <= steps.datas.outputs.limit }}
         echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ steps.datas.outputs.previous > steps.datas.outputs.limit }}
-        # echo "(1) AND (2):" ${{ (steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit) }}
-        # echo "(3) AND (4):" ${{ (steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit) }}
-        # echo "(1) AND (2) OR (3) AND (4):" ${{ (((steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit)) || ((steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit))) }}
+        echo "(1) AND (2):" ${{ (steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit) }}
+        echo "(3) AND (4):" ${{ (steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit) }}
+        echo "(1) AND (2) OR (3) AND (4):" ${{ (((steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit)) || ((steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit))) }}
 
     - name: TEST for limit event (Outputs)
       if: ${{ (((steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit)) || ((steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit))) }}
