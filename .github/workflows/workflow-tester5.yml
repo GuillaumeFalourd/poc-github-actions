@@ -30,7 +30,3 @@ jobs:
           echo ${{ env.REPORT_PATH }}
           echo ${{ env.README_PATH }}
           echo ${{ env.WORKFLOW_PATH }}
-      - run: |
-          echo ${{ REPORT_PATH }}
-          echo ${{ README_PATH }}
-          echo ${{ WORKFLOW_PATH }}
