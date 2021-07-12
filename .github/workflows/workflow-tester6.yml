@@ -12,16 +12,16 @@ jobs:
 
     - name: Fetch latest data
       run: |-
-        echo "GITHUB_PRICE_LIMIT=8.81" >> $GITHUB_ENV
-        echo "GITHUB_CUR_PRICE=10.20" >> $GITHUB_ENV
-        echo "GITHUB_PREV_PRICE=9.88" >> $GITHUB_ENV
+        echo "PRICE_LIMIT=${{8.81}}" >> $GITHUB_ENV
+        echo "CUR_PRICE=${{10.20}}" >> $GITHUB_ENV
+        echo "PREV_PRICE=${{9.88}}" >> $GITHUB_ENV
 
     - name: Create Outputs
       id: datas
       run: |
-        echo "::set-output name=limit::${{ env.GITHUB_PRICE_LIMIT }}"
-        echo "::set-output name=current::${{ env.GITHUB_CUR_PRICE }}"
-        echo "::set-output name=previous::${{ env.GITHUB_PREV_PRICE }}"
+        echo "::set-output name=limit::${{ env.PRICE_LIMIT }}"
+        echo "::set-output name=current::${{ env.CUR_PRICE }}"
+        echo "::set-output name=previous::${{ env.PREV_PRICE }}"
 
     - name: Tests outputs
       run: |
@@ -31,9 +31,9 @@ jobs:
 
     - name: Print variables
       run: |
-        echo "CURRENT PRICE:" ${{ env.GITHUB_CUR_PRICE }}
-        echo "PRICE LIMIT:" ${{ env.GITHUB_PRICE_LIMIT }}
-        echo "PREVIOUS PRICE:" ${{ env.GITHUB_PREV_PRICE }}
+        echo "CURRENT PRICE:" ${{ env.CUR_PRICE }}
+        echo "PRICE LIMIT:" ${{ env.PRICE_LIMIT }}
+        echo "PREVIOUS PRICE:" ${{ env.PREV_PRICE }}
 
     - name: With Outputs
       run: |
@@ -67,16 +67,16 @@ jobs:
 
     - name: With Env Variables
       run: |
-        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ "${{ env.GITHUB_CUR_PRICE }}" >= " ${{env.GITHUB_PRICE_LIMIT }}" }}
-        echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT }}
-        echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT }}
-        echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT }}
-        echo "(1) AND (2):" ${{ (env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT) }}
-        echo "(3) AND (4):" ${{ (env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT) }}
-        echo "(1) AND (2) OR (3) AND (4):" ${{ (((env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT)) || ((env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT))) }}
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ env.CUR_PRICE >= env.PRICE_LIMIT }}
+        echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.PREV_PRICE < env.PRICE_LIMIT }}
+        echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ env.CUR_PRICE <= env.PRICE_LIMIT }}
+        echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ env.PREV_PRICE > env.PRICE_LIMIT }}
+        echo "(1) AND (2):" ${{ (env.CUR_PRICE >= env.PRICE_LIMIT) && (env.PREV_PRICE < env.PRICE_LIMIT) }}
+        echo "(3) AND (4):" ${{ (env.CUR_PRICE <= env.PRICE_LIMIT) && (env.PREV_PRICE > env.PRICE_LIMIT) }}
+        echo "(1) AND (2) OR (3) AND (4):" ${{ (((env.CUR_PRICE >= env.PRICE_LIMIT) && (env.PREV_PRICE < env.PRICE_LIMIT)) || ((env.CUR_PRICE <= env.PRICE_LIMIT) && (env.PREV_PRICE > env.PRICE_LIMIT))) }}
 
     - name: TEST for limit event (Variables)
-      if: ${{ (((env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT)) || ((env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT) && (env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT))) }}
+      if: ${{ (((env.CUR_PRICE >= env.PRICE_LIMIT) && (env.PREV_PRICE < env.PRICE_LIMIT)) || ((env.CUR_PRICE <= env.PRICE_LIMIT) && (env.PREV_PRICE > env.PRICE_LIMIT))) }}
       run: |-
         echo "limit event occurred (Variables)"
 
