@@ -12,9 +12,9 @@ jobs:
 
     - name: Fetch latest data
       run: |-
-        echo "GITHUB_PRICE_LIMIT=${{ 8.81 }}" >> $GITHUB_ENV
-        echo "GITHUB_CUR_PRICE=${{ 10.20 }}" >> $GITHUB_ENV
-        echo "GITHUB_PREV_PRICE=${{ 9.88 }}" >> $GITHUB_ENV
+        echo "GITHUB_PRICE_LIMIT=8.81" >> $GITHUB_ENV
+        echo "GITHUB_CUR_PRICE=10.20" >> $GITHUB_ENV
+        echo "GITHUB_PREV_PRICE=9.88" >> $GITHUB_ENV
 
     - name: Create Outputs
       id: datas
@@ -67,7 +67,7 @@ jobs:
 
     - name: With Env Variables
       run: |
-        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ $((env.GITHUB_CUR_PRICE)) >= $((env.GITHUB_PRICE_LIMIT)) }}
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT }}
         echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT }}
         echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT }}
         echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT }}
