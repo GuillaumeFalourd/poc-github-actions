@@ -8,6 +8,7 @@ on:
         required: true
 
 jobs:
+
   job-a:
     name: job-a
     if: ${{ github.event.inputs.job-name == github.job }}
@@ -23,3 +24,12 @@ jobs:
     steps:
     - name: Print something
       run: echo ${{github.event.inputs.job-name }} ${{github.job }}
+
+  job-c:
+    name: job-c
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print something
+      run: |
+        echo ${{github.event.inputs.job-name }} ${{github.job }}
+        echo ${{ github.event.inputs.job-name == github.job }}
