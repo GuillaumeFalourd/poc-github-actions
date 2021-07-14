@@ -1,0 +1,25 @@
+name: Test 7
+
+on:
+  workflow_dispatch:
+    inputs:
+      job-name:
+        description: 'Job id'
+        required: true
+
+jobs:
+  job-a:
+    name: job-a
+    if: ${{ github.event.inputs.job-name == github.job }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print something
+      run: echo ${{github.event.inputs.job-name }} ${{github.job }}
+
+  job-b:
+    name: job-b
+    if: ${{ github.event.inputs.job-name == github.job }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print something
+      run: echo ${{github.event.inputs.job-name }} ${{github.job }}
