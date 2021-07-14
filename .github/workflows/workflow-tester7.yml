@@ -11,14 +11,13 @@ jobs:
 
   job-a:
     name: job-a
-    if: ${{ github.event.inputs.job-name }} == ${{ github.job-a.name }}
     runs-on: ubuntu-latest
     steps:
     - name: Print something
       run: |
-        echo ${{ github.job-a.name }}
         echo ${{ github.job }}
-        echo ${{ github.event.inputs.job-name }} == ${{ github.job }}
+        echo ${{ github.event.inputs.job-name == github.job }}
+        echo ${{ github.event.inputs.job-name == github.job.name }}
 
   job-b:
     name: job-b
