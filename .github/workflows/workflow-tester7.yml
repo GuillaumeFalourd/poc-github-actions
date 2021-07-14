@@ -11,19 +11,19 @@ jobs:
 
   job-a:
     name: job-a
-    if: ${{ github.event.inputs.job-name }} == ${{ github.job }}
+    if: ${{ github.event.inputs.job-name }} == ${{ github.job-a.name }}
     runs-on: ubuntu-latest
     steps:
     - name: Print something
-      run: echo ${{github.event.inputs.job-name }} ${{github.job }}
+      run: echo ${{github.event.inputs.job-name }} ${{github.job-a.name }}
 
   job-b:
     name: job-b
-    if: ${{ (github.event.inputs.job-name == github.job) }}
+    if: ${{ github.event.inputs.job-name == github.job-b.name }}
     runs-on: ubuntu-latest
     steps:
     - name: Print something
-      run: echo ${{github.event.inputs.job-name }} ${{github.job }}
+      run: echo ${{github.event.inputs.job-name }} ${{github.job-b.name }}
 
   job-c:
     name: job-c
@@ -31,5 +31,5 @@ jobs:
     steps:
     - name: Print something
       run: |
-        echo ${{github.event.inputs.job-name }} ${{github.job }}
-        echo ${{ github.event.inputs.job-name == github.job }}
+        echo ${{github.event.inputs.job-name }} ${{github.job-c.name }}
+        echo ${{ github.event.inputs.job-name == github.job-c.name }}
