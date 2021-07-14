@@ -19,7 +19,7 @@ jobs:
       run: |
         echo ${{ github.job }}
         echo ${{ github.event.inputs.job-name == github.job }}
-        echo ${{ github.event.inputs.job-name == github.job.name }}
+        echo ${{ github.event.inputs.job-name }} {{ github.job }}
 
   job-b:
     name: job-b
@@ -30,7 +30,6 @@ jobs:
       run: |
         echo ${{ github.job }}
         echo ${{ github.event.inputs.job-name == github.job }}
-        echo ${{ github.event.inputs.job-name == github.job.name }}
 
   job-c:
     name: job-c
