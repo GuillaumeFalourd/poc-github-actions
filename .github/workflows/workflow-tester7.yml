@@ -15,7 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print something
-      run: echo ${{github.event.inputs.job-name }} ${{github.job-a.name }}
+      run: |
+        echo ${{ github.job-a.name }}
+        echo ${{ github.job }}
+        echo ${{ github.event.inputs.job-name }} == ${{ github.job }}
 
   job-b:
     name: job-b
