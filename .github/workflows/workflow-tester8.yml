@@ -20,13 +20,13 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     needs: [job1]
-    if: contains( ${{needs.job1.outputs.tag_version}} , 'dev-')
+    if: contains( needs.job1.outputs.tag_version , 'dev-')
     steps:
       - run: echo "${{needs.job1.outputs.tag_version}}"
 
   job3:
     runs-on: ubuntu-latest
     needs: [job1]
-    if: contains( ${{needs.job1.outputs.tag_version}} , 'prod-')
+    if: contains( needs.job1.outputs.tag_version , 'prod-')
     steps:
       - run: echo "${{needs.job1.outputs.tag_version}}"
