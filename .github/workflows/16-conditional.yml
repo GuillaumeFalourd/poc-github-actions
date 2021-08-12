@@ -49,13 +49,13 @@ jobs:
   job4:
     runs-on: ubuntu-latest
     needs: [job1, job2, job3]
-    if: ${{ jobs.job1.conclusion == 'success' || jobs.job2.conclusion == 'success' || jobs.job3.conclusion == 'success' }}
+    if: ${{ ${{jobs.job1.conclusion}} == 'success' || ${{jobs.job2.conclusion}} == 'success' || ${{jobs.job3.conclusion}} == 'success' }}
     steps:
          - run: |
               echo "One of the previous job succeeded"
-              echo "Job1: {{$jobs.job1.conclusion}}"
-              echo "Job2: {{$jobs.job2.conclusion}}"
-              echo "Job3: {{$jobs.job3.conclusion}}"
+              echo "Job1: ${{jobs.job1.conclusion}}"
+              echo "Job2: ${{jobs.job2.conclusion}}"
+              echo "Job3: ${{jobs.job3.conclusion}}"
       
 
   
