@@ -83,7 +83,6 @@ jobs:
     needs: [job1, job2, job3]
     if: always()
     steps:
-steps:
       - name: Download artifact pass_status_job1
         uses: actions/download-artifact@v1
         with:
