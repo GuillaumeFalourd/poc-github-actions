@@ -103,7 +103,7 @@ jobs:
         run: |
           echo "::set-output name=status_job1::$(<pass_status_job1/status_job1.txt)"
           echo "::set-output name=status_job2::$(<pass_status_job2/status_job2.txt)"
-          echo "::set-output name=status_job3::$(<pass_status_job3/status_job2.txt)"
+          echo "::set-output name=status_job3::$(<pass_status_job3/status_job3.txt)"
 
       - name: Show the values of the outputs
         run: |
