@@ -1,5 +1,7 @@
 name: Test
 
+// This workflow won't be recognized by Github Actions as not located in .github/workflows directory (sub-directory are not working).
+
 on:
   workflow_dispatch:
 
