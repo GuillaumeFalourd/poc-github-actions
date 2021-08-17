@@ -1,0 +1,15 @@
+name: 00 - Workflow Dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      input:
+        description: "Test"
+        required: false
+        default: "World"
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello ${{ github.event.inputs.input }}
