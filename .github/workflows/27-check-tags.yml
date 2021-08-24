@@ -1,4 +1,4 @@
-name: 27 - Outputs Between Jobs
+name: 27 - Check Tags
 
 on:
   workflow_dispatch:
