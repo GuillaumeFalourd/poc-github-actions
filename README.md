@@ -151,3 +151,7 @@ These workflows illustrate how to share datas between various workflows using ar
 [![26 - Create branch on another repo](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/26-create-release-branch-other-repo.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/26-create-release-branch-other-repo.yml)
 
 This workflow illustrates how to create a new branch on another repository based on the current repository tag.
+
+[![27 - Outputs between jobs](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/27-outputs-between-jobs.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/27-outputs-between-jobs.yml)
+
+This workflow illustrates how to use outputs between jobs using the `needs` context.
