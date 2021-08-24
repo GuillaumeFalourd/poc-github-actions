@@ -1,4 +1,4 @@
-name: Test 8
+name: 27 - Outputs Between Jobs
 
 on:
   release:
