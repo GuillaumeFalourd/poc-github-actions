@@ -14,3 +14,10 @@ jobs:
         run: |
           echo "Hello World"
           echo "This workflow only runs for push to the dev branch"
+          
+  test:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/dev' }}
+    steps:
+      - name: Run Commands
+        run: echo "This workflow also only runs for push to the dev branch"
