@@ -12,7 +12,7 @@ jobs:
           brew upgrade
           brew info gcc
           brew install gcc
-          gcc
+          gcc -v
 
   test2:
     runs-on: ${{ matrix.os }}
@@ -32,4 +32,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: install-dependencies
         run: ${{ matrix.INSTALL_DEPS }}
-      - run: gcc
+      - run: gcc -v
