@@ -7,20 +7,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Run Commands
-        run: |
-          brew update
-          brew upgrade
-          brew info gcc
-          brew install gcc
-          gcc -v
-
-  test2:
-    runs-on: macos-latest
-    steps:
-      - name: Run Commands
         run: gcc -v
 
-  test3:
+  test2:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
