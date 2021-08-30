@@ -3,9 +3,8 @@ name: Test 9
 on: [push, workflow_dispatch]
 
 jobs:
-  test:
+  test1:
     runs-on: macos-latest
-
     steps:
       - name: Run Commands
         run: |
@@ -14,3 +13,23 @@ jobs:
           brew info gcc
           brew install gcc
           gcc
+
+  test2:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        include:
+        - os: ubuntu-latest
+          INSTALL_DEPS: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" && date && brew install gcc && date
+          CC: gcc
+          CXX: g++
+        - os: macos-latest
+          INSTALL_DEPS: brew install gcc
+          CC: clang
+          CXX: clang++
+    steps:
+      - uses: actions/checkout@v2
+      - name: install-dependencies
+        run: ${{ matrix.INSTALL_DEPS }}
+      - run: gcc
