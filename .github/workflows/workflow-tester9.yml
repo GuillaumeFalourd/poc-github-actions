@@ -15,6 +15,12 @@ jobs:
           gcc -v
 
   test2:
+    runs-on: macos-latest
+    steps:
+      - name: Run Commands
+        run: gcc -v
+
+  test3:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
