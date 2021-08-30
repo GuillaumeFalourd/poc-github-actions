@@ -1,0 +1,16 @@
+name: Test 9
+
+on: [push, workflow_dispatch]
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Run Commands
+        run: |
+          brew update
+          brew upgrade
+          brew info gcc
+          brew install gcc
+          gcc
