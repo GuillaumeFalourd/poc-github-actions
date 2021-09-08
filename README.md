@@ -156,6 +156,6 @@ This workflow illustrates how to create a new branch on another repository based
 
 This workflow illustrates how to use outputs between jobs with the `needs` context to check tags and manage them to perfom some operation according to their name.
 
-[![28 - Create Pull Request](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create_pull_request.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create_pull_request.yml)
+[![28 - Create Pull Request (Workflow)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create-pull-request.yml)
 
 This workflow illustrates how to create a new Pull Request based on a branch name after a push event.
