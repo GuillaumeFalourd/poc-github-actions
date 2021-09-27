@@ -29,8 +29,9 @@ jobs:
           $pwd = echo pwd
           [Environment]::SetEnvironmentVariable("PATH", "$PATH;$pwd")
         shell: powershell
-      - name: Teste
-        run: |
-          .\rit.exe --version
-          echo teste
-          rit -v
+      - name: Teste 1
+        if: always()
+        run: .\rit.exe --version
+      - name: Teste 2
+        if: always()
+        run: rit --version
