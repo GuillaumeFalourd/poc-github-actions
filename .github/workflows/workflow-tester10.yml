@@ -30,7 +30,7 @@ jobs:
           echo "PWD:" $PWD
           echo "= = = SET PATH = = = "
           $PATH = [Environment]::GetEnvironmentVariable("PATH")
-          [Environment]::SetEnvironmentVariable("PATH", "$PATH;$CurrentDir")
+          [Environment]::SetEnvironmentVariable("PATH", "$PATH;$PWD")
         shell: powershell
       - name: Teste 1
         if: always()
