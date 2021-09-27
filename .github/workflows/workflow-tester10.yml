@@ -25,5 +25,12 @@ jobs:
           echo "= = = PWD = = = "
           pwd
           echo "= = = PATH = = = "
-          set PATH=%PATH%;C:~\\.os
+          $PATH = [Environment]::GetEnvironmentVariable("PATH")
+          $pwd = echo pwd
+          [Environment]::SetEnvironmentVariable("PATH", "$PATH;$pwd")
         shell: powershell
+      - name: Teste
+        run: |
+          .\rit.exe --version
+          echo teste
+          rit -v
