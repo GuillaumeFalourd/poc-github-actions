@@ -1,7 +1,8 @@
-name: Test Windows commands
+name: Test 10
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   windows:
@@ -11,10 +12,10 @@ jobs:
       - name: Create binary from branch
         run: |
           md .os
-          ls -lha
+          ls
           curl -SLO https://v3.ritchiecli.io/3.1.0/windows/rit.exe
-          ls -lha
+          ls
           move .\\rit.exe .\\.os
-          ls -lha
+          ls
           set PATH=%PATH%;C:.\\.os
         shell: powershell
