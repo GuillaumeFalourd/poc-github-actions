@@ -31,6 +31,8 @@ jobs:
           echo "= = = SET PATH = = = "
           $PATH = [Environment]::GetEnvironmentVariable("PATH")
           [Environment]::SetEnvironmentVariable("PATH", "$PATH;$PWD")
+          echo "= = = ALIAS = = = "
+          Set-Alias -Name rit -Value $PWD
         shell: powershell
       - name: Teste 1
         if: always()
@@ -39,4 +41,5 @@ jobs:
           .\rit.exe --version
       - name: Teste 2
         if: always()
-        run: rit --version
+        run: |
+          rit --version
