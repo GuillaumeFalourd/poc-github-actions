@@ -27,14 +27,16 @@ jobs:
           echo "= = = PATH = = = "
           set CurrentDir="%~dp0"
           echo The current file path this bat file is executing in is the following:
-          echo %CurrentDir%
+          echo $CurrentDir
           echo "= = = SET PATH = = = "
           $PATH = [Environment]::GetEnvironmentVariable("PATH")
           [Environment]::SetEnvironmentVariable("PATH", "$PATH;$CurrentDir")
         shell: powershell
       - name: Teste 1
         if: always()
-        run: .\rit.exe --version
+        run: |
+          ls
+          .\rit.exe --version
       - name: Teste 2
         if: always()
         run: rit --version
