@@ -19,7 +19,10 @@ jobs:
           echo "= = = MOVE = = = "
           ls
           move .\\rit.exe .\\.os
+          echo "= = = OS = = = "
+          ls
+          cd .os
           echo "= = = PATH = = = "
           ls
-          set PATH=%PATH%;C:\\.os
+          set PATH=%PATH%;C:~\\.os
         shell: powershell
