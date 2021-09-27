@@ -35,7 +35,7 @@ jobs:
       - name: Teste 1
         if: always()
         run: |
-          ls
+          cd .os
           .\rit.exe --version
       - name: Teste 2
         if: always()
