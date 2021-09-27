@@ -25,9 +25,12 @@ jobs:
           echo "= = = PWD = = = "
           pwd
           echo "= = = PATH = = = "
+          set CurrentDir="%~dp0"
+          echo The current file path this bat file is executing in is the following:
+          echo %CurrentDir%
+          echo "= = = SET PATH = = = "
           $PATH = [Environment]::GetEnvironmentVariable("PATH")
-          $pwd = echo pwd
-          [Environment]::SetEnvironmentVariable("PATH", "$PATH;$pwd")
+          [Environment]::SetEnvironmentVariable("PATH", "$PATH;$CurrentDir")
         shell: powershell
       - name: Teste 1
         if: always()
