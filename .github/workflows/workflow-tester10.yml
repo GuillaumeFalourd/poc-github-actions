@@ -32,7 +32,7 @@ jobs:
           $PATH = [Environment]::GetEnvironmentVariable("PATH")
           [Environment]::SetEnvironmentVariable("PATH", "$PATH;$PWD")
           echo "= = = ALIAS = = = "
-          Set-Alias -Name rit -Value $PWD
+          Set-Alias -Name rit -Value $PWD\rit.exe
         shell: powershell
       - name: Teste 1
         if: always()
