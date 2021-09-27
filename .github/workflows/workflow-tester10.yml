@@ -23,14 +23,12 @@ jobs:
           cd .os
           ls
           echo "= = = PWD = = = "
-          pwd
-          echo "= = = PATH = = = "
-          set CurrentDir="%~dp0"
+          # set CurrentDir="%~dp0"
           $PWD = Get-Location
           echo "PWD:" $PWD
-          echo "= = = SET PATH = = = "
-          $PATH = [Environment]::GetEnvironmentVariable("PATH")
-          [Environment]::SetEnvironmentVariable("PATH", "$PATH;$PWD")
+          # echo "= = = SET PATH = = = "
+          # $PATH = [Environment]::GetEnvironmentVariable("PATH")
+          # [Environment]::SetEnvironmentVariable("PATH", "$PATH;$PWD")
           echo "= = = ALIAS = = = "
           Set-Alias -Name rit -Value $PWD\rit.exe
           rit --version
@@ -40,7 +38,3 @@ jobs:
         run: |
           cd .os
           .\rit.exe --version
-      - name: Teste 2
-        if: always()
-        run: |
-          rit --version
