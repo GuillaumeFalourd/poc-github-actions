@@ -13,10 +13,13 @@ jobs:
         run: |
           ls
           md .os
+          echo "= = = DOWNLOAD = = = "
           ls
           Invoke-WebRequest -Uri "https://v3.ritchiecli.io/3.1.0/windows/rit.exe" -OutFile rit.exe
+          echo "= = = MOVE = = = "
           ls
           move .\\rit.exe .\\.os
+          echo "= = = PATH = = = "
           ls
-          set PATH=%PATH%;C:.\\.os
+          set PATH=%PATH%;C:\\.os
         shell: powershell
