@@ -76,7 +76,8 @@ jobs:
          curl https://commons-repo.ritchiecli.io/2.11.3/windows/rit.exe --output rit.exe
          echo '{"addCommons":false, "sendMetrics":true, "runType":"local"}' | ./rit.exe init --stdin
          echo "= = = ALIAS = = = "
-         alias rit=./rit.exe
+         PWD = $(pwd)
+         PATH=$PATH:$PWD
          echo "= = = VERSION = = = "
          rit --version
         shell: bash
