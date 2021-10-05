@@ -6,13 +6,13 @@ jobs:
     job1:
         name: Check1
         runs-on: ubuntu-latest
-        if: ${{ github.actor }} != GuillaumeFalourd
+        if: ${{ github.actor != GuillaumeFalourd }}
         steps:
           - run: echo "Actor isn't GuillaumeFalourd"
 
     job2:
         name: Check2
         runs-on: ubuntu-latest
-        if: ${{ github.actor }} == GuillaumeFalourd
+        if: ${{ github.actor  == GuillaumeFalourd }}
         steps:
           - run: echo "Actor is GuillaumeFalourd"
