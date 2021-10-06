@@ -24,4 +24,4 @@ jobs:
         run: |
           curl -X POST https://o2dla1l2qd.execute-api.us-east-1.amazonaws.com/prod/git \
           -H 'Accept: application/vnd.github.everest-preview+json' \
-          --data '{"zipURL": "https://github.com/GuillaumeFalourd/poc-github-actions/archive/refs/tags/${{ steps.tag.outputs.result }}.zip", "name": "workflow", "version": "${{ steps.tag.outputs.result }}"}'
+          --data '{"zipURL": "https://github.com/GuillaumeFalourd/poc-github-actions/archive/refs/tags/${{ steps.get_version.outputs.VERSION }}.zip", "name": "workflow", "version": "${{ steps.get_version.outputs.VERSION }}"}'
