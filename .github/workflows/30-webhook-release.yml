@@ -13,16 +13,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Extract tag name
-        id: tag
-        uses: actions/github-script@0.2.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            return context.payload.ref.replace(/\/refs\/tags\//, '');
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
             
       - name: Echo
-        run: echo "Tag Name" ${{ steps.tag.outputs.result }}
+        run: echo "Tag Name" ${{ steps.get_version.outputs.VERSION }}
         
       - name: Trigger webhook
         run: |
