@@ -3,11 +3,6 @@ name: 30 - Webhook Release
 on:
   release:
     types: [published]
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'New tag that will be created (ex: v1.2.4)'
-        required: true
 
 jobs:
   build:
@@ -18,7 +13,7 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
             
       - name: Echo
-        run: echo "Tag Name" ${{ steps.get_version.outputs.VERSION }}
+        run: echo "Tag:" ${{ steps.get_version.outputs.VERSION }}
         
       - name: Trigger webhook
         run: |
