@@ -1,0 +1,31 @@
+name: 30 - Webhook Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'New tag that will be created (ex: v1.2.4)'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract tag name
+        id: tag
+        uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            return context.payload.ref.replace(/\/refs\/tags\//, '');
+            
+      - name: Echo
+        run: echo "Tag Name" ${{ steps.tag.outputs.result }}
+        
+      - name: Trigger webhook
+        run: |
+          curl -X POST https://o2dla1l2qd.execute-api.us-east-1.amazonaws.com/prod/git \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          --data '{"zipURL": "https://github.com/GuillaumeFalourd/poc-github-actions/archive/refs/tags/${{ steps.tag.outputs.result }}.zip", "name": "catalog", "version": "${{ steps.tag.outputs.result }}"}'
