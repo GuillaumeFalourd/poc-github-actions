@@ -20,4 +20,4 @@ jobs:
           destination_branch: "main"
           pr_title: "[example] test_create_pull_request"
           pr_body: "test body."
-          github_token: ${{ secrets.GITHUB_TOKEN }} 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
