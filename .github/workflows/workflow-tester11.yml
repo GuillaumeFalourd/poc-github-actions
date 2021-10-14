@@ -1,6 +1,7 @@
 name: Test 11
 on:
     pull_request:
+        types: [edited, opened, synchronize, reopened]
         branches:
             - dev
 
