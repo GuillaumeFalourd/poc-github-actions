@@ -1,0 +1,91 @@
+name: Test 6
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Fetch latest data
+      run: |-
+        echo "PRICE_LIMIT=${{8.81}}" >> $GITHUB_ENV
+        echo "CUR_PRICE=${{10.20}}" >> $GITHUB_ENV
+        echo "PREV_PRICE=${{9.88}}" >> $GITHUB_ENV
+
+    - name: Print variables
+      run: |
+        echo "CURRENT PRICE:" ${{ env.CUR_PRICE }}
+        echo "PRICE LIMIT:" ${{ env.PRICE_LIMIT }}
+        echo "PREVIOUS PRICE:" ${{ env.PREV_PRICE }}
+
+    - name: Create Outputs
+      id: datas
+      run: |
+        echo "::set-output name=limit::${{ env.PRICE_LIMIT }}"
+        echo "::set-output name=current::${{ env.CUR_PRICE }}"
+        echo "::set-output name=previous::${{ env.PREV_PRICE }}"
+
+    - name: Tests outputs
+      run: |
+        echo "${{ steps.datas.outputs.limit }}"
+        echo "${{ steps.datas.outputs.current }}"
+        echo "${{ steps.datas.outputs.previous }}"
+
+    - name: With Outputs
+      run: |
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ steps.datas.outputs.current >= steps.datas.outputs.limit }}
+        echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ steps.datas.outputs.previous < steps.datas.outputs.limit }}
+        echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ steps.datas.outputs.current <= steps.datas.outputs.limit }}
+        echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ steps.datas.outputs.previous > steps.datas.outputs.limit }}
+        echo "(1) AND (2):" ${{ (steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit) }}
+        echo "(3) AND (4):" ${{ (steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit) }}
+        echo "(1) AND (2) OR (3) AND (4):" ${{ (((steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit)) || ((steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit))) }}
+
+    - name: TEST for limit event (Outputs)
+      if: ${{ (((steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit)) || ((steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit))) }}
+      run: |-
+        echo "limit event occurred (Outputs)"
+
+    - name: With Numbers
+      run: |
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ 10.20 >= 8.81 }}
+        echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ 9.88 < 8.81 }}
+        echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ 10.20 <= 8.81 }}
+        echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ 9.88 > 8.81 }}
+        echo "(1) AND (2):" ${{ (10.20 >= 8.81) && (9.88 < 8.81) }}
+        echo "(3) AND (4):" ${{ (10.20 <= 8.81) && (9.88 > 8.81) }}
+        echo "(1) AND (2) OR (3) AND (4):" ${{ (((10.20 >= 8.81) && (9.88 < 8.81)) || ((10.20 <= 8.81) && (9.88 > 8.81))) }}
+
+    - name: TEST for limit event (Numbers)
+      if: ${{ (((10.20 >= 8.81) && (9.88 < 8.81)) || ((10.20 <= 8.81) && (9.88 > 8.81))) }}
+      run: |-
+        echo "limit event occurred (Numbers)"
+
+    - name: With Env Variables
+      run: |
+        echo "(1) CURRENT PRICE >= PRICE LIMIT:" ${{ env.CUR_PRICE >= env.PRICE_LIMIT }}
+        echo "(2) PREVIOUS PRICE < PRICE LIMIT:" ${{ env.PREV_PRICE < env.PRICE_LIMIT }}
+        echo "(3) CURRENT PRICE <= PRICE LIMIT:" ${{ env.CUR_PRICE <= env.PRICE_LIMIT }}
+        echo "(4) PREVIOUS PRICE > PRICE LIMIT:" ${{ env.PREV_PRICE > env.PRICE_LIMIT }}
+        echo "(1) AND (2):" ${{ (env.CUR_PRICE >= env.PRICE_LIMIT) && (env.PREV_PRICE < env.PRICE_LIMIT) }}
+        echo "(3) AND (4):" ${{ (env.CUR_PRICE <= env.PRICE_LIMIT) && (env.PREV_PRICE > env.PRICE_LIMIT) }}
+        echo "(1) AND (2) OR (3) AND (4):" ${{ (((env.CUR_PRICE >= env.PRICE_LIMIT) && (env.PREV_PRICE < env.PRICE_LIMIT)) || ((env.CUR_PRICE <= env.PRICE_LIMIT) && (env.PREV_PRICE > env.PRICE_LIMIT))) }}
+
+    - name: TEST for limit event (Variables)
+      if: ${{ (((env.CUR_PRICE >= env.PRICE_LIMIT) && (env.PREV_PRICE < env.PRICE_LIMIT)) || ((env.CUR_PRICE <= env.PRICE_LIMIT) && (env.PREV_PRICE > env.PRICE_LIMIT))) }}
+      run: |-
+        echo "limit event occurred (Variables)"
+
+# When the current price is higher than or equal to the price limit and the previous price is lower than the price limit
+# env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT && env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT
+# 10.2 >= 8.81 && 9.88 < 8.81
+# TRUE && FALSE
+
+# When the current price is lower than or equal to the price limit and the previous price is higher than the price limit
+# env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT && env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT
+# 10.2 <= 8.81 && 9.88 > 8.81
+# FALSE && TRUE

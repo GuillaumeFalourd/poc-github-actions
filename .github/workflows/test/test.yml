@@ -1,0 +1,16 @@
+name: Test
+
+// This workflow won't be recognized by Github Actions as not located in .github/workflows directory (sub-directory are not working).
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Commands
+        run: |
+          echo "Hello World"
+          echo "You can run any command in your workflow that way with Github Actions"

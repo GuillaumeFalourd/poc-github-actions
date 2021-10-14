@@ -1,0 +1,17 @@
+name: Test 11
+on:
+    pull_request:
+        branches:
+            - dev
+
+on: [pull_request]
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    somting:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Test"

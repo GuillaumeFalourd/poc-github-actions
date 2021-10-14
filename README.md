@@ -4,6 +4,12 @@
 
 This repository is a Github Actions POC with various examples regarding how to create workflows 🤖 
 
+## Contents 🇧🇷
+
+- [Introdução ao Github Actions](https://www.zup.com.br/blog/github-actions-ci-cd)
+- [Como executar um script usando GitHub Actions](https://www.zup.com.br/blog/executar-script-github-actions)
+- [Github Actions – variáveis de ambiente e secrets](https://www.zup.com.br/blog/github-actions-variaveis-de-ambiente-e-secrets)
+
 ## Workflow YAML Basic Structure Explanation
 
 ```bash
@@ -140,8 +146,20 @@ This workflow illustrates how to access various context variables on a workflow.
 
 [![25 - Artifacts between Workflows 1](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-1.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-1.yml) [![25 - Artifacts between Workflows 2](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-2.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/25-artifacts-between-workflows-2.yml)
 
-These workflows illustrate how to share datas between workflows using artifacts.
+These workflows illustrate how to share datas between various workflows using artifacts.
 
 [![26 - Create branch on another repo](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/26-create-release-branch-other-repo.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/26-create-release-branch-other-repo.yml)
 
-This workflow illustrates how to create a new branch on another repository based on current repo tag.
+This workflow illustrates how to create a new branch on another repository based on the current repository tag.
+
+[![27 - Check Tags](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/27-check-tags.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/27-check-tags.yml)
+
+This workflow illustrates how to use outputs between jobs with the `needs` context to check tags and manage them to perfom some operation according to their name.
+
+[![28 - Create Pull Request (Workflow)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create-pull-request.yml)
+
+This workflow illustrates how to create a new Pull Request based on a branch name after a push event.
+
+[![29 - Check Actor on PR or PUSH (Workflow)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-check-actor-on-pr-or-push.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-check-actor-on-pr-or-push.yml.yml)
+
+This workflow illustrates how to add a comment on a new Pull Request based on the github actor name after a PR event.
