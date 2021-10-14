@@ -10,7 +10,7 @@ defaults:
         shell: bash
 
 jobs:
-    somting:
+    test:
         runs-on: ubuntu-latest
         steps:
             - run: echo "Test"
