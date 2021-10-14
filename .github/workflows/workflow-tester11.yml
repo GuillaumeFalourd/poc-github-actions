@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [edited, opened, synchronize, reopened]
         branches:
-            - dev
+            - main
 
 defaults:
     run:
