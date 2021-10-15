@@ -1,4 +1,4 @@
-name: 31 - Untouchable file
+name: 31 - Untouchable file (Workflow)
 
 on:
   pull_request_target:
