@@ -4,7 +4,7 @@ on:
   pull_request_target:
     types: [opened, reopened]
     paths:
-      - '*/29-untouchable-file.yml'
+      - '*/31-untouchable-file.yml'
 
 jobs:
   test:
@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: superbrothers/close-pull-request@v3
         with:
-          comment: "Hi, this PR will be closed automatically. Please do not touch the '29-untouchable-file.yml' file."
+          comment: "Hi, this PR will be closed automatically. Please do not touch the '31-untouchable-file.yml' file."
