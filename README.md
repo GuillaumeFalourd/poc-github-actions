@@ -159,3 +159,7 @@ This workflow illustrates how to use outputs between jobs with the `needs` conte
 [![28 - Create Pull Request](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create_pull_request.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/28-create_pull_request.yml)
 
 This workflow illustrates how to create a new Pull Request based on a branch name after a push event.
+
+[![29 - Untouchable file](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-untouchable-file.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-untouchable-file.yml)
+
+This workflow illustrates how to close a Pull Request automatically if it updates on file that shouldn't be modified.
