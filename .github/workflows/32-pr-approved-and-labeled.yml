@@ -10,6 +10,10 @@ jobs:
     if: ${{ (github.event.review.state == 'approved') && (contains(github.event.pull_request.labels.*.name, 'test')) }}
     steps:
       - run: echo "Do something"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - run: ${{ github.event.review.state }}
 
   no-build:
@@ -17,4 +21,8 @@ jobs:
     if: ${{ (github.event.review.state != 'approved') || (!contains(github.event.pull_request.labels.*.name, 'test')) }}
     steps:
       - run: echo "Don't do it"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - run: ${{ github.event.review.state }}
