@@ -1,0 +1,12 @@
+name: Workflow call
+
+on:
+  push:
+
+jobs:
+  call-workflow-passing-data:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@172239021f7ba04fe7327647b213799853a9eb89
+    with:
+      username: Guillaume
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

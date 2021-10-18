@@ -1,0 +1,21 @@
+name: Reusable workflow example
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
+
+jobs:
+  example_job:
+    name: Pass input and secrets to my-action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/my-action@v1
+        with:
+          username: ${{ inputs.username }}
+          token: ${{ secrets.token }}
