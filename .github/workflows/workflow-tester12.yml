@@ -2,9 +2,9 @@ name: Test 12 #https://stackoverflow.com/questions/69608041/run-command-taking-o
 
 on:
   push:
-    branches: [ main ]
+    branches: [ dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ dev ]
   workflow_dispatch:
 
 jobs:
