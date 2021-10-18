@@ -7,14 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ (github.event.review.state == 'approved') && (contains(github.event.pull_request.labels.*.name, 'Deployed for QA')) }}
+    if: ${{ (github.event.review.state == 'approved') && (contains(github.event.pull_request.labels.*.name, 'test')) }}
     steps:
       - run: echo "Do something"
       - run: ${{ github.event.review.state }}
 
   no-build:
     runs-on: ubuntu-latest
-    if: ${{ (github.event.review.state != 'approved') || (!contains(github.event.pull_request.labels.*.name, 'Deployed for QA')) }}
+    if: ${{ (github.event.review.state != 'approved') || (!contains(github.event.pull_request.labels.*.name, 'test')) }}
     steps:
       - run: echo "Don't do it"
       - run: ${{ github.event.review.state }}
