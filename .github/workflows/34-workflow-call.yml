@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@172239021f7ba04fe7327647b213799853a9eb89
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@d11026c2ae2d5a56411b6b263514616d465ce406
     with:
       username: Guillaume
     secrets:
