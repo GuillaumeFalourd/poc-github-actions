@@ -9,6 +9,11 @@ on:
     secrets:
       token:
         required: true
+  workflow_dispatch:
+    inputs:
+      username:
+        required: true
+        type: string
 
 jobs:
   example_job:
