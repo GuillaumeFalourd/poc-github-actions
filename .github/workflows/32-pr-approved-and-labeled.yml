@@ -36,4 +36,5 @@ jobs:
   test-2:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.labels.*.name, 'test')
+    steps:
       - run: echo "Contains test label!"
