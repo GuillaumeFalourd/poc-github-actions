@@ -171,3 +171,15 @@ This workflow illustrates how to call a webhook on each release extracting the r
 [![31 - Untouchable file](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/31-untouchable-file.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/31-untouchable-file.yml)
 
 This workflow illustrates how to close a Pull Request automatically if it updates on file that shouldn't be modified.
+
+[![32 - PR approved and labeled](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/32-pr-approved-and-labeled.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/32-pr-approved-and-labeled.yml)
+
+This workflow illustrates how to perform a specific action when approving a Pull request if it contains a specific label.
+
+[![33 - Reusable workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/33-reusable-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/33-reusable-workflow.yml)
+
+This workflow illustrates how to implement a [reusable workflow](https://docs.github.com/en/actions/learn-github-actions/reusing-workflows).
+
+[![34 - Workflow Call](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/34-workflow-call.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/34-workflow-call.yml)
+
+This workflow illustrates how to use and call a reusable workflow (cf workflow 33 above).
