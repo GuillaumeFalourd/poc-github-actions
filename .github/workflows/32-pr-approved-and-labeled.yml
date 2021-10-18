@@ -38,3 +38,12 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'test')
     steps:
       - run: echo "Contains test label!"
+
+  test-3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: approved or not
+        if: github.event.review.state == 'approved'
+        run: |
+          echo "approved" ...
