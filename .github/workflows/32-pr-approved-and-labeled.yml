@@ -16,7 +16,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - run: ${{ github.event.review.state }}
+      - run: echo ${{ github.event.review.state }}
 
   no-build:
     runs-on: ubuntu-latest
