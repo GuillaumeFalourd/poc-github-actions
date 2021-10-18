@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      ipfs-pin: ${{ steps.ipfs-pin.outputs.hash }}
+      hash: ${{ steps.ipfs-pin.outputs.hash }}
     steps:
       - uses: actions/checkout@master
       - uses: jakejarvis/hugo-build-action@master
@@ -35,4 +35,4 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: echo ${{steps.build.ipfs-pin.hash}} > /.github/ipfs-hash.txt
+      - run: echo ${{steps.build.outputs.hash}} > /.github/ipfs-hash.txt
