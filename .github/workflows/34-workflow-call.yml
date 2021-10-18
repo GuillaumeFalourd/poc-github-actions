@@ -4,8 +4,15 @@ on:
   push:
 
 jobs:
-  call-workflow-passing-data:
+  call-workflow-commit-hash:
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@ba6294c776b98a3b4f28e8a0b804b71e4b8d0b48
+    with:
+      username: Guillaume
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  call-workflow-branch-ref:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@main
     with:
       username: Guillaume
     secrets:
