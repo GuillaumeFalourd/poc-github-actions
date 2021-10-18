@@ -160,7 +160,7 @@ This workflow illustrates how to use outputs between jobs with the `needs` conte
 
 This workflow illustrates how to create a new Pull Request based on a branch name after a push event.
 
-[![29 - Check Actor on PR or PUSH (Workflow)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-check-actor-on-pr-or-push.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-check-actor-on-pr-or-push.yml)
+[![29 - Check Actor on PR or PUSH](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-check-actor-pr-or-push.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/29-check-actor-pr-or-push.yml)
 
 This workflow illustrates how to add a comment on a new Pull Request based on the github actor name after a PR event.
 
