@@ -1,15 +1,11 @@
 name: Test 13
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        required: true
-        type: string
+  push:
 
 jobs:
   call-workflow:
-    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@"${{ github.event.inputs.branch }}"
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@main
     with:
       username: Guillaume
     secrets:
