@@ -17,3 +17,10 @@ jobs:
       username: Guillaume
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
+
+  call-workflow-tag:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@1.1.0
+    with:
+      username: Guillaume
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
