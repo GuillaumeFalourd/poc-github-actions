@@ -4,6 +4,7 @@ on: [workflow_dispatch, push, pull_request, issues, deployment_status]
 
 jobs:
   github-context:
+    name: job-context
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
