@@ -85,7 +85,7 @@ This workflow illustrates how to pass data between jobs in the same workflow. Fo
 
 [![10 - Environment workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/10-environment-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/10-environment-workflow.yml)
 
-This workflow illustrates how to use `environment` variables from the whole workflow, a specific job, or a specific step.
+This workflow illustrates how to use `environment` variables from the whole workflow, a specific job, or a specific step, as well as for an environment secret.
 
 [![11 - Input workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/11-input-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/11-input-workflow.yml)
 
