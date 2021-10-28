@@ -66,10 +66,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     env:
-      key1:${{ secrets.TEST }}
+      KEY1:${{ secrets.TEST }}
     steps:
       - name: Show repo env secret
-        id: step_1
         run: |
           echo ${{ env.KEY1 }}
 
