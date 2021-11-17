@@ -183,3 +183,11 @@ This workflow illustrates how to implement a [reusable workflow](https://docs.gi
 [![34 - Workflow Call](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/34-workflow-call.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/34-workflow-call.yml)
 
 This workflow illustrates how to use and call a reusable workflow (cf workflow 33 above).
+
+[![35 - Github Config](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/35-github-config.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/35-github-config.yml)
+
+This workflow illustrates how to extract and use the user email and username from the commit using github config log commands.
+
+[![36 - Local Action](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/36-local-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/36-local-action.yml)
+
+This workflow illustrates how to use a `local action` file in one (or multiple workflows) and extract its outputs to perform other operations.
