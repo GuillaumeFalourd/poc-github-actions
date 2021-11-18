@@ -2,7 +2,7 @@
 
 ![title](/docs/github-actions.png)
 
-This repository is a Github Actions POC with various examples regarding how to create workflows 🤖 
+This repository contains various proofs of concept using a Github Actions through workflows 🤖 
 
 ## Contents 🇧🇷
 
