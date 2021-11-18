@@ -25,5 +25,9 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip requests
       - name: Run script
+        id: script
         continue-on-error: ${{ contains( '${{env.PYTHON_VERSION }}', '${{ matrix.python-version }}') }}
         run: python run.py
+      - name: Last step
+        if: always()
+        run: echo "The run script step was a ${{ steps.script.outcome }}"
