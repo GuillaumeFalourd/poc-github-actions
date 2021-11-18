@@ -9,6 +9,8 @@ This repository is a Github Actions POC with various examples regarding how to c
 - [Introdução ao Github Actions](https://www.zup.com.br/blog/github-actions-ci-cd)
 - [Como executar um script usando GitHub Actions](https://www.zup.com.br/blog/executar-script-github-actions)
 - [Github Actions – variáveis de ambiente e secrets](https://www.zup.com.br/blog/github-actions-variaveis-de-ambiente-e-secrets)
+- [Como manipular outputs no GitHub Actions](https://www.zup.com.br/blog/manipular-outputs-github-actions)
+- [Workflows no GitHub Actions: como usar events e triggers](https://www.zup.com.br/blog/workflows-no-github-actions)
 
 ## Workflow YAML Basic Structure Explanation
 
