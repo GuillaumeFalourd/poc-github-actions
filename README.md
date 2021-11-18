@@ -193,3 +193,7 @@ This workflow illustrates how to extract and use the user email and username fro
 [![36 - Local Action](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/36-local-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/36-local-action.yml)
 
 This workflow illustrates how to use a `local action` file in one (or multiple workflows) and extract its outputs to perform other operations.
+
+[![37 - Continue On Error Matrix](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/37-continue-on-error-matrix.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/37-continue-on-error-matrix.yml)
+
+This workflow illustrates how to use matrix as well as expressions with `continue-on-error` and `if` conditionnal fields.
