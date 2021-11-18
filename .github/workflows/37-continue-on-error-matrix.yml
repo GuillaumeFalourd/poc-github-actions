@@ -25,10 +25,10 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip requests
       - name: Run script
-        if: always() && ${{ contains( '3.', '${{ matrix.python-version }}') }}
+        if: ${{ contains( '3.', '${{ matrix.python-version }}') }}
         id: script
         continue-on-error: ${{ contains( '${{env.PYTHON_VERSION }}', '${{ matrix.python-version }}') }}
         run: python run.py
       - name: Last step
-        if: always() && ${{ contains( '3.', '${{ matrix.python-version }}') }}
+        if: ${{ contains( '3.', '${{ matrix.python-version }}') }}
         run: echo "The run script step was a ${{ steps.script.outcome }}"
