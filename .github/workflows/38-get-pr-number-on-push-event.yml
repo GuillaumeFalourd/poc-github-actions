@@ -15,10 +15,10 @@ jobs:
         run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "${{ steps.pr.outputs.pull_request_number }}"
+      - run: echo ${{ steps.pr.outputs.pull_request_number }}
 
   pull-request:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
     steps:
-      - run: echo "${{ github.event.number }}""
+      - run: echo ${{ github.event.number }}
