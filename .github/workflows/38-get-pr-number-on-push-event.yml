@@ -2,7 +2,6 @@ name: 38 - Get PR Number on PUSH event
 
 on: [push, pull_request]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
