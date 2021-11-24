@@ -197,3 +197,7 @@ This workflow illustrates how to use a `local action` file in one (or multiple w
 [![37 - Continue On Error Matrix](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/37-continue-on-error-matrix.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/37-continue-on-error-matrix.yml)
 
 This workflow illustrates how to use matrix as well as expressions with `continue-on-error` and `if` conditionnal fields.
+
+[![38 - Get PR number from PUSH event](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/38-get-pr-number-on-push-event.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/38-get-pr-number-on-push-event.yml)
+
+This workflow illustrates how to get the related PR number to a push event.
