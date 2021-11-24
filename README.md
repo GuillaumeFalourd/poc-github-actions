@@ -201,3 +201,5 @@ This workflow illustrates how to use matrix as well as expressions with `continu
 [![38 - Get PR number from PUSH event](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/38-get-pr-number-on-push-event.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/38-get-pr-number-on-push-event.yml)
 
 This workflow illustrates how to get the related PR number to a push event.
+
+[PR event](https://github.com/GuillaumeFalourd/poc-github-actions/runs/4317001308?check_suite_focus=true) and [Related PUSH event](https://github.com/GuillaumeFalourd/poc-github-actions/runs/4317001027?check_suite_focus=true)
