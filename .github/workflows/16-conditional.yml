@@ -120,7 +120,7 @@ jobs:
           - id: my-key
             env:
                 MY_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            if: "${{ env.AWS_ACCESS_KEY_ID != '' }}"
+            if: "${{ env.MY_KEY != '' }}"
             run: echo "::set-output name=defined::true"
 
   job5:
