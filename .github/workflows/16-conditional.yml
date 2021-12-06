@@ -111,6 +111,15 @@ jobs:
           echo "status_job1 = ${{ steps.set_outputs.outputs.status_job1 }}"
           echo "status_job2 = ${{ steps.set_outputs.outputs.status_job2 }}"
           echo "status_job3 = ${{ steps.set_outputs.outputs.status_job3 }}"
-      
 
-  
+  job5:
+      runs-on: ubuntu-latest
+      if: ${{ secrets.AWS_ACCESS_KEY_ID }} != ''
+      steps:
+        - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS NOT empty"
+
+  job6:
+      runs-on: ubuntu-latest
+      if: ${{ secrets.AWS_ACCESS_KEY_ID }} == ''
+      steps:
+        - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS empty"
