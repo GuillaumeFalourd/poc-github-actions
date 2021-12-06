@@ -112,14 +112,27 @@ jobs:
           echo "status_job2 = ${{ steps.set_outputs.outputs.status_job2 }}"
           echo "status_job3 = ${{ steps.set_outputs.outputs.status_job3 }}"
 
+  check-secret:
+      runs-on: ubuntu-latest
+      outputs:
+        my-key: ${{ steps.my-key.outputs.defined }}
+      steps:
+          - id: my-key
+            env:
+                MY_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            if: "${{ env.AWS_ACCESS_KEY_ID != '' }}"
+            run: echo "::set-output name=defined::true"
+
   job5:
       runs-on: ubuntu-latest
-      if: ${{ secrets.AWS_ACCESS_KEY_ID != '' }}
+      needs: [check-secret]
+      if: needs.check-secret.outputs.my-key == 'true'
       steps:
         - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS NOT empty"
 
   job6:
       runs-on: ubuntu-latest
-      if: ${{ secrets.AWS_ACCESS_KEY_ID == '' }}
+      needs: [check-secret]
+      if: needs.check-secret.outputs.my-key != 'true'
       steps:
         - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS empty"
