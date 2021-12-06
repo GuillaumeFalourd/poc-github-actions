@@ -9,7 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch tag
+        id: version
         run: |
           BRANCH=${GITHUB_REF##*/}
           VERSION="${BRANCH//release-/""}"
           echo $VERSION
+          echo ::set-output name=tag::$(echo $VERSION)
+
+      - name: Invoke Release PROD workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Release PROD
+          repo: GuillaumeFalourd/poc-github-actions
+          token: ${{ secrets.ACCESS_TOKEN }}
+          inputs: '{ "tag": "${{ steps.version.outputs.tag }}" }'
