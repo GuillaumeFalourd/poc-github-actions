@@ -11,5 +11,5 @@ jobs:
       - name: Extract branch tag
         run: |
           BRANCH=${GITHUB_REF##*/}
-          VERSION="${REPO//release-/}"
+          VERSION="${BRANCH//release-/""}"
           echo $VERSION
