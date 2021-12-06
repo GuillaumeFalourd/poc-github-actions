@@ -114,12 +114,12 @@ jobs:
 
   job5:
       runs-on: ubuntu-latest
-      if: ${{ secrets.AWS_ACCESS_KEY_ID }} != ''
+      if: ${{ ${{ secrets.AWS_ACCESS_KEY_ID }} != '' }}
       steps:
         - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS NOT empty"
 
   job6:
       runs-on: ubuntu-latest
-      if: ${{ secrets.AWS_ACCESS_KEY_ID }} == ''
+      if: ${{ ${{ secrets.AWS_ACCESS_KEY_ID }} == '' }}
       steps:
         - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS empty"
