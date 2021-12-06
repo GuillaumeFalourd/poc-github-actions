@@ -19,7 +19,7 @@ jobs:
       - name: Invoke Release PROD workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Release PROD
+          workflow: 40 - Invoked Workflow Dispatch
           repo: GuillaumeFalourd/poc-github-actions
           token: ${{ secrets.ACCESS_TOKEN }}
           inputs: '{ "tag": "${{ steps.version.outputs.tag }}" }'
