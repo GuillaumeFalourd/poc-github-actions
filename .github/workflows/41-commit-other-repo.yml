@@ -17,3 +17,7 @@ jobs:
                   git add .
                   git commit -m "$(date)"
                   git push
+
+                # Example to copy file from current repo
+                # cp index.js clonedFolder/ -f
+                # cd clonedFolder

@@ -207,3 +207,7 @@ This workflow illustrates how to get the related PR number to a push event.
 [![39 - Extract From Branch](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/39-extract-from-branch.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/39-extract-from-branch.yml) [![40 - Invoked Workflow Dispatch](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/40-invoked-workflow-dispatch.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/40-invoked-workflow-dispatch.yml)
 
 This workflows illustrate how to extract the tag version when a specific branch is created (e.g: `release-1.2.3`), and how to invoke another workflow through a disptach event sending this tag as input.
+
+[![41 - Commit other repo](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/41-commit-other-repo.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/41-commit-other-repo.yml)
+
+This workflow illustrates how to commit files from the current repo to another repo.
