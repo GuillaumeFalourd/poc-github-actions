@@ -17,13 +17,11 @@ jobs:
         if [ ${{ github.ref }} != 'refs/heads/main' ]; then
           echo "IS NOT main branch"
           echo "environment a"
-          ENV_A = "environment a"
-          echo "::set-output name=environment::$ENV_A"
+          echo "::set-output name=environment::a"
         else
           echo "IS main branch"
           echo "environment b"
-          ENV_B = "environment b"
-          echo "::set-output name=environment::$ENV_B"
+          echo "::set-output name=environment::b"
         fi
       shell: bash
     # - name: My action
