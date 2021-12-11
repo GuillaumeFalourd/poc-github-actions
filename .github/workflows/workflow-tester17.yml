@@ -16,7 +16,7 @@ jobs:
       if: github.ref == 'refs/heads/main'
       id: check
       run: |
-        if [ github.ref != 'refs/heads/main' ]; then
+        if [ ${{github.ref}} != 'refs/heads/main' ]; then
           echo "IS NOT main branch"
           echo "environment a"
           ENV_A = echo "environment a"
@@ -26,6 +26,7 @@ jobs:
           echo "environment b"
           ENV_B = echo "environment b"
           echo "::set-output name=environment::$(echo $ENV_B)"
+      shell: bash
     # - name: My action
     #   uses: myAction@v1
     #   with:
