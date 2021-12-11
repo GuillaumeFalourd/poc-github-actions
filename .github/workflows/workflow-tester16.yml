@@ -1,6 +1,7 @@
 name: Test 16 #https://stackoverflow.com/questions/60364190/invalid-workflow-file
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
     - main
