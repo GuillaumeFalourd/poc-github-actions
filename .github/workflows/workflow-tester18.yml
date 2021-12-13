@@ -1,0 +1,39 @@
+name: Test 18 #https://stackoverflow.com/questions/70326569/github-workflow-how-to-conditionally-setup-env-for-all-subsequent-jobs
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set exported variable
+        id: test-env
+        run: |
+          if [ ${{ github.ref }} != 'refs/heads/main' ]; then
+            echo "IS NOT main branch"
+            echo "test=abc" >> $GITHUB_ENV
+          else
+            echo "IS main branch"
+            echo "test=123" >> $GITHUB_ENV
+          fi
+        shell: bash
+
+      - name: Read exported variable
+        run: |
+          echo "$test"
+          echo "${{ env.test }}"
+
+  test2:
+    runs-on: ubuntu-latest
+    needs: [test1]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read exported variable
+        run: |
+          echo "$test"
+          echo "${{ env.test }}"
+
