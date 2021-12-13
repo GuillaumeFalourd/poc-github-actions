@@ -26,7 +26,7 @@ jobs:
         shell: bash
       - name: Read exported variable
         run: |
-          echo "ENV ${{ env.test }}"
+          echo "ENV: ${{ env.test }}"
           echo "OUTPUT: ${{ steps.check.test-env.test }}"
 
   subsequent-job:
@@ -36,5 +36,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Read exported variable
         run: |
-          echo "ENV ${{ env.test }}"
+          echo "ENV: ${{ env.test }}"
           echo "OUTPUT: ${{needs.setup-job.outputs.var1}}"
