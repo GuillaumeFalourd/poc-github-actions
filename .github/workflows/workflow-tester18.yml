@@ -5,15 +5,14 @@ on:
   push:
 
 jobs:
-  test1:
+  setup-job:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.test-env.outputs.test }}
+      var1: ${{ steps.set-variable.outputs.test }}
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set exported variable
-        id: test-env
+      - name: Set test variable
+        id: set-variable
         run: |
           if [ ${{ github.ref }} != 'refs/heads/main' ]; then
             echo "IS NOT main branch"
@@ -25,19 +24,17 @@ jobs:
             echo "::set-output name=test::123"
           fi
         shell: bash
-
       - name: Read exported variable
         run: |
-          echo "$test"
-          echo "ENV: ${{ env.test }}"
+          echo "ENV ${{ env.test }}"
           echo "OUTPUT: ${{ steps.check.test-env.test }}"
 
-  test2:
+  subsequent-job:
     runs-on: ubuntu-latest
-    needs: [test1]
+    needs: [setup-job]
     steps:
       - uses: actions/checkout@v2
       - name: Read exported variable
         run: |
           echo "ENV ${{ env.test }}"
-          echo "OUTPUT: ${{needs.test1.outputs.output1}}"
+          echo "OUTPUT: ${{needs.setup-job.outputs.var1}}"
