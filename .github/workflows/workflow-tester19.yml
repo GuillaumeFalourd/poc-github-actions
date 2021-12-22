@@ -12,7 +12,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - run: |
+      - name: Run Python commands
+        run: |
           pip install --upgrade pip
           python3.8 -m venv env
           source env/bin/activate
