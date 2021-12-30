@@ -71,11 +71,11 @@
             echo "::set-output name=ECS_CONTAINER_NAME::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
 
   setup2:
-    name: Setup ENV Variables
+    name: Setup PROD Variables
     runs-on: ubuntu-latest
     environment:
-      name: dev
-      url: https://dev.test.com
+      name: Production
+      url: 'http://dev.myapp.com'
     outputs:
       APP_NAME: ${{ steps.setvars.outputs.APP_NAME }}
       AWS_REGION: ${{ steps.setvars.outputs.AWS_REGION }}
@@ -139,9 +139,9 @@
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}         
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
-          aws-region: ${{ needs.setup.outputs.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ needs.setup1.outputs.AWS_REGION }}
   
       - name: Login to Amazon ECR
         id: login-ecr
@@ -151,10 +151,10 @@
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ needs.setup.outputs.ECR_REPOSITORY }}
+          ECR_REPOSITORY: ${{ needs.setup1.outputs.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          cd ${{ needs.setup.outputs.BUILD_DIR }}
+          cd ${{ needs.setup1.outputs.BUILD_DIR }}
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
@@ -162,22 +162,22 @@
   
       - name: Download task definition
         run: |
-          aws ecs describe-task-definition --task-definition ${{ needs.setup.outputs.ECS_TASK_DEFINITION }} --query taskDefinition > ${{ needs.setup.outputs.ECS_TASK_DEFINITION_FILE }}
+          aws ecs describe-task-definition --task-definition ${{ needs.setup1.outputs.ECS_TASK_DEFINITION }} --query taskDefinition > ${{ needs.setup1.outputs.ECS_TASK_DEFINITION_FILE }}
   
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ${{ needs.setup.outputs.ECS_TASK_DEFINITION_FILE }}
-          container-name: ${{ needs.setup.outputs.ECS_CONTAINER_NAME }}
+          task-definition: ${{ needs.setup1.outputs.ECS_TASK_DEFINITION_FILE }}
+          container-name: ${{ needs.setup1.outputs.ECS_CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
   
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ${{ needs.setup.outputs.ECS_SERVICE }}
-          cluster: ${{ needs.setup.outputs.ECS_CLUSTER }}
+          service: ${{ needs.setup1.outputs.ECS_SERVICE }}
+          cluster: ${{ needs.setup1.outputs.ECS_CLUSTER }}
           wait-for-service-stability: true
   
   
@@ -216,9 +216,9 @@
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}         
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
-          aws-region: ${{ needs.setup.outputs.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ needs.setup2.outputs.AWS_REGION }}
   
       - name: Login to Amazon ECR
         id: login-ecr
@@ -228,29 +228,29 @@
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ needs.setup.outputs.ECR_REPOSITORY }}
+          ECR_REPOSITORY: ${{ needs.setup2.outputs.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          cd ${{ needs.setup.outputs.BUILD_DIR }}
+          cd ${{ needs.setup2.outputs.BUILD_DIR }}
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
       - name: Download task definition
         run: |
-          aws ecs describe-task-definition --task-definition ${{ needs.setup.outputs.ECS_TASK_DEFINITION }} --query taskDefinition > ${{ needs.setup.outputs.ECS_TASK_DEFINITION_FILE }}
+          aws ecs describe-task-definition --task-definition ${{ needs.setup2.outputs.ECS_TASK_DEFINITION }} --query taskDefinition > ${{ needs.setup2.outputs.ECS_TASK_DEFINITION_FILE }}
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ${{ needs.setup.outputs.ECS_TASK_DEFINITION_FILE }}
-          container-name: ${{ needs.setup.outputs.ECS_CONTAINER_NAME }}
+          task-definition: ${{ needs.setup2.outputs.ECS_TASK_DEFINITION_FILE }}
+          container-name: ${{ needs.setup2.outputs.ECS_CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
   
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ${{ needs.setup.outputs.ECS_SERVICE }}
-          cluster: ${{ needs.setup.outputs.ECS_CLUSTER }}
+          service: ${{ needs.setup2.outputs.ECS_SERVICE }}
+          cluster: ${{ needs.setup2.outputs.ECS_CLUSTER }}
           wait-for-service-stability: true
