@@ -104,7 +104,7 @@
 
     DeployDev:
       name: Deploy to Dev 
-      needs: setup
+      needs: setup1
       runs-on: ubuntu-latest
       permissions:
         packages: write
@@ -183,7 +183,7 @@
   
     DeployProd:
       name: Deploy to Production 
-      needs: [setup, DeployDev]
+      needs: [setup2, DeployDev]
       runs-on: ubuntu-latest
       permissions:
         packages: write
