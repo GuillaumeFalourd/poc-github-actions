@@ -1,7 +1,6 @@
   name: 'Test 20' # Related to https://stackoverflow.com/questions/70531237/github-actions-yaml-for-multiple-deployment-images-for-different-stages-with-the?noredirect=1#comment124678457_70531237
   
   on:
-    workflow_dispatch:
     # push:
     #   branches-ignore:
     #     - '**'
