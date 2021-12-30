@@ -84,17 +84,6 @@
             echo "::set-output name=ECS_TASK_DEFINITION::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
             echo "::set-output name=ECS_TASK_DEFINITION_FILE::task-definition-${{ github.event.inputs.microservice }}.json"
             echo "::set-output name=ECS_CONTAINER_NAME::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
-      outputs:
-        APP_NAME: ${{ steps.setprodvars.outputs.APP_NAME }}
-        AWS_REGION: ${{ steps.setprodvars.outputs.AWS_REGION }}
-        SHA8: ${{ steps.setprodvars.outputs.SHA8 }}
-        BUILD_DIR: ${{ steps.setprodvars.outputs.BUILD_DIR }}
-        ECR_REPOSITORY: ${{ steps.setprodvars.outputs.ECR_REPOSITORY }}
-        ECS_CLUSTER: ${{ steps.setprodvars.outputs.ECS_CLUSTER }}
-        ECS_SERVICE: ${{ steps.setprodvars.outputs.ECS_SERVICE }}
-        ECS_TASK_DEFINITION: ${{ steps.setprodvars.outputs.ECS_TASK_DEFINITION }}
-        ECS_TASK_DEFINITION_FILE: ${{ steps.setprodvars.outputs.ECS_TASK_DEFINITION_FILE }}
-        ECS_CONTAINER_NAME: ${{ steps.setprodvars.outputs.ECS_CONTAINER_NAME }}
         
     DeployDev:
       name: Deploy to Dev 
