@@ -2,7 +2,7 @@ name: 10 - Environment Workflow
 
 on:
   schedule:
-  - cron: "0 8 * * *" # Runs at 08:00 UTC everyday
+  - cron: "0 8 * * MON-FRI" # Runs at 08:00 UTC
   workflow_dispatch:
 
 env:

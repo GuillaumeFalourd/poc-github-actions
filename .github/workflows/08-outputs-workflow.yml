@@ -2,7 +2,7 @@ name: 08 - Outputs Workflow
 
 on:
   schedule:
-    - cron: "0 6 * * *" # Runs at 6:00 UTC everyday
+    - cron: "0 6 * * MON-FRI" # Runs at 6:00 UTC
   workflow_dispatch:
 
 jobs:

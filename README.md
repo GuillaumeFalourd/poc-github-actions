@@ -21,7 +21,7 @@ on:
   push: # Run this workflow every time a new commit pushed to the repository
   pull_request:  # Run this workflow every time a new pull request is opened to the repository
   scheduled: # Run this workflow as a cron job
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * MON-FRI"
   workflow_dispatch: # Run this workflow on demand (manually)
 
 jobs: # All workflows need at list one job

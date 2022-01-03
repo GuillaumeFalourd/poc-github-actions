@@ -2,7 +2,7 @@ name: 09 - Artifacts Workflow
 
 on:
   schedule:
-    - cron: "0 7 * * *" # Runs at 7:00 UTC everyday
+    - cron: "0 7 * * MON-FRI" # Runs at 7:00 UTC
   workflow_dispatch:
 
 jobs:

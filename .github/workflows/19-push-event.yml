@@ -6,7 +6,7 @@ on:
       - '*' # for all branches
       - '!main' # Except the main branch
   schedule:
-    - cron: "0 2 * * *" # Runs at 02:00 UTC everyday
+    - cron: "0 2 * * MON-FRI" # Runs at 02:00 UTC from Monday to Friday
   workflow_dispatch:
 
 jobs:
