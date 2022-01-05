@@ -1,7 +1,6 @@
 name: 36 - Local Action
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:

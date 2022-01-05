@@ -2,7 +2,6 @@ name: Test 17 #https://stackoverflow.com/questions/60316124/is-it-possible-to-cr
 
 on:
   workflow_dispatch:
-  push:
 
 env:
   IMAGE_NAME: api

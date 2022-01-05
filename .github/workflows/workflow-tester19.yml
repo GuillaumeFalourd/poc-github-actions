@@ -1,7 +1,7 @@
 name: Test 19 #https://stackoverflow.com/questions/65893608/github-actions-unable-to-set-up-python-virtual-environment
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   build:
