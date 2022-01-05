@@ -1,4 +1,4 @@
-name: Download Release
+name: 42 - Download Release Private Repo
 
 # Controls when the workflow will run
 on: [workflow_dispatch]
@@ -12,8 +12,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Fetch asset
-        run: gh release download --repo GuillaumeFalourd/formulas-training 2.13.3
+      - name: Fetch latest asset
+        run: gh release download --repo GuillaumeFalourd/formulas-training
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
