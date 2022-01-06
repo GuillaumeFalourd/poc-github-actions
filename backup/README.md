@@ -95,6 +95,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Compress Images](https://github.com/marketplace/actions/image-actions): Github Action to automatically compresses JPEGs, PNGs and WebPs in Pull Requests.
 
+[![Copycat](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/copycat.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/copycat.yml)
+
+[Copycat](https://github.com/marketplace/actions/copycat-action): GitHub action to copy files from your repository to another external repository. It is also possible to copy files from/to repository Wikis.
+
 [![Create Pull Request](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml)
 
 [Create Pull Request](https://github.com/marketplace/actions/create-pull-request): GitHub action to create a pull request for changes to your repository in the actions workspace.
@@ -121,7 +125,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Git Auto Commit](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml)
 
-[Git Auto Commit](https://github.com/marketplace/actions/git-auto-commit): A GitHub Action to detect changed files during a Workflow run and to commit and push them back to the GitHub repository. By default, the commit is made in the name of "GitHub Actions" and co-authored by the user that made the last commit.
+[Git Auto Commit](https://github.com/marketplace/actions/git-auto-commit): GitHub Action to detect changed files during a Workflow run and to commit and push them back to the GitHub repository. By default, the commit is made in the name of "GitHub Actions" and co-authored by the user that made the last commit.
 
 [![Github Script](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/github-script.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/github-script.yml)
 
