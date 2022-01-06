@@ -1,0 +1,26 @@
+name: Phonito
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set tag var
+        id: vars
+        run: echo ::set-output name=docker_tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag myapp:${{ steps.vars.outputs.docker_tag }}
+
+      # Comment as PHONITO secret not set
+      # - name: Scan with Phonito Security
+      #   uses: phonito/phonito-scanner-action@master
+      #   with:
+      #     image: myapp:${{ steps.vars.outputs.docker_tag }}
+      #     phonito-token: ${{ secrets.PHONITO_TOKEN }}

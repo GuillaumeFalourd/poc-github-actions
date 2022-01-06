@@ -1,0 +1,20 @@
+name: Retry Action
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Retry action
+        uses : Wandalen/wretry.action@0.2.7
+        with :
+          action : actions/setup-node@v1
+          with : |
+            node-version : 16.x
+          attempt_limit : 3
+          attempt_delay: 1000
