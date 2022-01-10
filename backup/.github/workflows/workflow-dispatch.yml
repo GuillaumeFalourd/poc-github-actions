@@ -4,13 +4,13 @@ name: Workflow Dispatch
 on: [workflow_dispatch]
 
 jobs:
-  run:
+  job1:
     runs-on: ubuntu-latest
     steps:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: workflow-dispatch
+          workflow: 'Workflow Dispatch Triggered'
           token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Invoke workflow with inputs
