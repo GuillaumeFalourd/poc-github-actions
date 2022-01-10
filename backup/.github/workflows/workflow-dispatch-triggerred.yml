@@ -1,6 +1,13 @@
 name: Workflow Dispatch Triggered
 
-on: [workflow_dispatch, repository_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      input:
+        description: "Test"
+        required: false
+        default: "World"
+  repository_dispatch:
 
 jobs:
   build:
@@ -9,3 +16,4 @@ jobs:
       - name: Repository Dispatch Triggered
         run: |
           echo "Workflow triggered successfully by workflow dispatch action!"
+          echo Hello ${{ github.event.inputs.input }}

@@ -21,7 +21,7 @@ jobs:
         with:
           workflow: 'Workflow Dispatch Triggered'
           token: ${{ secrets.ACCESS_TOKEN }}
-          inputs: '{ "message": "blah blah", "debug": true }'
+          inputs: '{ "input": "You" }'
 
   job3:
     runs-on: ubuntu-latest
@@ -29,7 +29,7 @@ jobs:
       - name: Invoke workflow in another repo with inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: '04 - Remote Dispatch Action Initiator'
+          workflow: '00 - Workflow Dispatch'
           repo: GuillaumeFalourd/poc-github-actions
           token: ${{ secrets.ACCESS_TOKEN }}
-          inputs: '{ "message": "blah blah", "debug": true }'
+          inputs: '{ "input": "You" }'
