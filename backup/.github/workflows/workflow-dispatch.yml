@@ -1,0 +1,29 @@
+
+name: Workflow Dispatch
+
+on: [workflow_dispatch]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: workflow-dispatch
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Invoke workflow with inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: 'Workflow Dispatch Triggered'
+          token: ${{ secrets.ACCESS_TOKEN }}
+          inputs: '{ "message": "blah blah", "debug": true }'
+
+      - name: Invoke workflow in another repo with inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: '04 - Remote Dispatch Action Initiator'
+          repo: GuillaumeFalourd/poc-github-actions
+          token: ${{ secrets.ACCESS_TOKEN }}
+          inputs: '{ "message": "blah blah", "debug": true }'

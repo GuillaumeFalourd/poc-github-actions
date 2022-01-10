@@ -1,0 +1,11 @@
+name: Workflow Dispatch Triggered
+
+on: [workflow_dispatch, repository_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch Triggered
+        run: |
+          echo "Workflow triggered successfully by workflow dispatch action!"
