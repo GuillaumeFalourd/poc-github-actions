@@ -191,6 +191,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Download Artifact](https://github.com/marketplace/actions/download-a-build-artifact): Github Action to download artifacts from your build ([example](https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts#passing-data-between-jobs-in-a-workflow)).
 
+[![Workflow Dispatch](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/workflow-dispatch.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/workflow-dispatch.yml) [![Workflow Dispatch Triggered](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/workflow-dispatch-triggerred.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/workflow-dispatch-triggerred.yml)
+
+[Workflow Dispatch](https://github.com/marketplace/actions/workflow-dispatch): Github Action to trigger another GitHub Actions workflow, using the `workflow_dispatch` event. The workflow must be configured for this event type `e.g. on: [workflow_dispatch]`. This allows you to chain workflows, the classic use case is have a CI build workflow, trigger a CD release/deploy workflow when it completes. Allowing you to maintain separate workflows for CI and CD, and pass data between them as required.
+
 ***
 
 ## 🐳 Docker Actions
