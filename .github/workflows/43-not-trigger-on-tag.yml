@@ -1,4 +1,4 @@
-name: Not trigger on tag
+name: 43 - Not trigger on tag
 
 on:
   push:
