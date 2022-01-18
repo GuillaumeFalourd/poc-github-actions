@@ -211,3 +211,7 @@ This workflows illustrate how to extract the tag version when a specific branch 
 [![41 - Commit other repo](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/41-commit-other-repo.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/41-commit-other-repo.yml)
 
 This workflow illustrates how to commit files from the current repo to another repo.
+
+[![43 - Not trigger on tag](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/43-not-trigger-on-tag.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/43-not-trigger-on-tag.yml)
+
+This workflow illustrates how to trigger a workflow on different event but NOT on tag.
