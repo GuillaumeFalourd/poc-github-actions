@@ -215,3 +215,7 @@ This workflow illustrates how to commit files from the current repo to another r
 [![43 - Not trigger on tag](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/43-not-trigger-on-tag.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/43-not-trigger-on-tag.yml)
 
 This workflow illustrates how to trigger a workflow on different event but NOT on tag.
+
+[![44 - Check if PR from Fork](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/44-check-if-pr-from-fork.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/44-check-if-pr-from-fork.yml)
+
+This workflow illustrates how to check if a PR is opened from a FORK repository or not.
