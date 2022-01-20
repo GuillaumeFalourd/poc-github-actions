@@ -7,6 +7,7 @@ jobs:
   job:
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
       - name: Read checkout-workflow.txt
         id: txt
         uses: juliangruber/read-file-action@v1
