@@ -79,6 +79,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Cancel Workflow](https://github.com/marketplace/actions/cancel-workflow-action): Github Action cancel any previous runs that are not `completed` for a given workflow. This includes runs with a status of `queued` or `in_progress`.
 
+[![Changed Files](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/changed-files.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/changed-files.yml)
+
+[Changed Files](https://github.com/marketplace/actions/changed-files): Github Action to retrieve all changed files relative to the default branch (`pull_request*` based events) or the last remote commit (`push` based event) returning the **absolute path** to all changed files from the project root.
+
 [![Checkout](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/checkout.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/checkout.yml)
 
 [Checkout](https://github.com/marketplace/actions/checkout): Github Action to checks-out your repository under `$GITHUB_WORKSPACE`, so your workflow can access it.
