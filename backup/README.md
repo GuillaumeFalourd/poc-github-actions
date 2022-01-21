@@ -79,6 +79,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Cancel Workflow](https://github.com/marketplace/actions/cancel-workflow-action): Github Action cancel any previous runs that are not `completed` for a given workflow. This includes runs with a status of `queued` or `in_progress`.
 
+[![Changed Files](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/changed-files.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/changed-files.yml)
+
+[Changed Files](https://github.com/marketplace/actions/changed-files): Github Action to retrieve all changed files relative to the default branch (`pull_request*` based events) or the last remote commit (`push` based event) returning the **absolute path** to all changed files from the project root.
+
 [![Checkout](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/checkout.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/checkout.yml)
 
 [Checkout](https://github.com/marketplace/actions/checkout): Github Action to checks-out your repository under `$GITHUB_WORKSPACE`, so your workflow can access it.
@@ -155,19 +159,9 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Purge Artifacts](https://github.com/marketplace/actions/purge-artifacts): Github Action responsible for deleting old artifacts by setting expire duration.
 
-[![Set Secrets](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/set-secrets.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/set-secrets.yml)
+[![Read File](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/read-file.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/read-file.yml)
 
-[Set Secrets](https://github.com/marketplace/actions/set-action-secret): Github Action to Create or edit actions secrets in repository or organizations.
-
-<img width="731" alt="Example" src="https://user-images.githubusercontent.com/22433243/114315936-ac0b4d00-9ad7-11eb-8841-4e61b75b44ed.png">
-
-[![Skip duplicate](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/skip-duplicate.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/skip-duplicate.yml)
-
-[Skip duplicate](https://github.com/marketplace/actions/skip-duplicate-actions): GitHub Action to skip duplicate workflow-runs (after merges, pull requests or similar), skip concurrent or parallel workflow-runs for things that you do not want to run twice, skip ignored paths to speedup documentation-changes or similar, skip if paths not changed for something like directory-specific tests, cancel outdated workflow-runs after branch-pushes.
-
-[![Stale](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/stale.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/stale.yml)
-
-[Stale](https://github.com/marketplace/actions/close-stale-issues): GitHub Action to warn and then close issues and PRs that have had no activity for a specified amount of time.
+[Read File](https://github.com/marketplace/actions/read-file): Github Action to read file contents.
 
 [![Recreate Release](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/recreate-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/recreate-release.yml)
 
@@ -184,6 +178,20 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Retry Action](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/retry-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/retry-action.yml)
 
 [Retry Action](https://github.com/marketplace/actions/retry-action): GitHub Action to rerun another GitHub Actions and commands.
+
+[![Set Secrets](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/set-secrets.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/set-secrets.yml)
+
+[Set Secrets](https://github.com/marketplace/actions/set-action-secret): Github Action to Create or edit actions secrets in repository or organizations.
+
+<img width="731" alt="Example" src="https://user-images.githubusercontent.com/22433243/114315936-ac0b4d00-9ad7-11eb-8841-4e61b75b44ed.png">
+
+[![Skip duplicate](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/skip-duplicate.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/skip-duplicate.yml)
+
+[Skip duplicate](https://github.com/marketplace/actions/skip-duplicate-actions): GitHub Action to skip duplicate workflow-runs (after merges, pull requests or similar), skip concurrent or parallel workflow-runs for things that you do not want to run twice, skip ignored paths to speedup documentation-changes or similar, skip if paths not changed for something like directory-specific tests, cancel outdated workflow-runs after branch-pushes.
+
+[![Stale](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/stale.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/stale.yml)
+
+[Stale](https://github.com/marketplace/actions/close-stale-issues): GitHub Action to warn and then close issues and PRs that have had no activity for a specified amount of time.
 
 [![Super Linter](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/super-linter.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/super-linter.yml)
 
