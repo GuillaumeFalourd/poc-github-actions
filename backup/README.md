@@ -235,6 +235,30 @@ The [Github tutorial](https://docs.github.com/en/actions/creating-actions) is gr
 
 ***
 
+## 🕵️ How to debug workflows
+
+The [action-upterm](https://github.com/lhotari/action-upterm) uses [upterm](https://upterm.dev/) and [tmux](https://github.com/tmux/tmux/wiki) offers you a direct way to interact with the host system on which the actual actions will run.
+
+By using this minimal example a upterm session will be created.
+
+```yaml
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
+```
+
+To get the `ssh` connection string, just open the workflow `Checks` tab and scroll to the bottom.
+
+_Note: If you want to continue a workflow and you are inside a upterm session, just create a empty file with the name `continue` either in the root directory or in the workspace directory by running `touch continue` or `sudo touch /continue`. Closing the terminal will also continue the workflow. However you won't be able to reconnect in that case. It's possible to detach from the terminal and not continue by first pressing C-b and then d (tmux detach command keys)._
+
+***
+
 ## 🤖 How to test actions locally
 
 This tool can be used to test actions locally: [Act](https://github.com/nektos/act)
