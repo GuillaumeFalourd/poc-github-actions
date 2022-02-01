@@ -237,7 +237,7 @@ The [Github tutorial](https://docs.github.com/en/actions/creating-actions) is gr
 
 ## 🕵️ How to debug workflows
 
-The [action-upterm](https://github.com/lhotari/action-upterm) uses [upterm](https://upterm.dev/) and [tmux](https://github.com/tmux/tmux/wiki) offers you a direct way to interact with the host system on which the actual actions will run.
+The [action-upterm](https://github.com/lhotari/action-upterm) uses [upterm](https://upterm.dev/) and [tmux](https://github.com/tmux/tmux/wiki) to offer a direct way to interact with the host system on which the actual actions will run.
 
 By using this minimal example a upterm session will be created.
 
