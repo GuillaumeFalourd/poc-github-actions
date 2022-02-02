@@ -1,0 +1,21 @@
+name: Test 21
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  rpm:
+    runs-on: ubuntu-latest
+    container:
+      image: centos:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup dependencies
+        run: |
+          sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-*
+          sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Linux-*
+          yum install -y git tar curl wget sudo make yum-utils device-mapper-persistent-data lvm2 rpm-build
+          yum clean all
+      - run: echo "Success"
