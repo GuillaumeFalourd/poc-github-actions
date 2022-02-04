@@ -11,6 +11,7 @@ This repository lists some useful generic Actions to use in your Github workflow
   - [Global Actions](https://github.com/GuillaumeFalourd/useful-actions#-global-actions)
   - [Docker Actions](https://github.com/GuillaumeFalourd/useful-actions#-docker-actions)
 - [How to create new actions](https://github.com/GuillaumeFalourd/useful-actions#-how-to-create-new-actions)
+- [How to debug workflows](https://github.com/GuillaumeFalourd/useful-actions#%EF%B8%8F-how-to-debug-workflows)
 - [How to test actions locally](https://github.com/GuillaumeFalourd/useful-actions#-how-to-test-actions-locally)
 - [Contribution](CONTRIBUTING.md)
 
