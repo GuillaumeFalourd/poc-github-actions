@@ -12,7 +12,7 @@ jobs:
       - name: Check list
         run: cat yml-files.txt
       - name: Upload yml-files
-          uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
           with:
             name: yml-files
             path: yml-files.txt
@@ -26,7 +26,7 @@ jobs:
       - name: Check list
         run: cat yaml-files.txt
       - name: Upload yaml-files
-          uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
           with:
             name: yaml-files
             path: yaml-files.txt
