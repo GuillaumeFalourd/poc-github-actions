@@ -13,9 +13,9 @@ jobs:
         run: cat yml-files.txt
       - name: Upload yml-files
         uses: actions/upload-artifact@v2
-          with:
-            name: yml-files
-            path: yml-files.txt
+        with:
+          name: yml-files
+          path: yml-files.txt
 
   yaml:
     runs-on: ubuntu-latest
@@ -27,6 +27,6 @@ jobs:
         run: cat yaml-files.txt
       - name: Upload yaml-files
         uses: actions/upload-artifact@v2
-          with:
-            name: yaml-files
-            path: yaml-files.txt
+        with:
+          name: yaml-files
+          path: yaml-files.txt
