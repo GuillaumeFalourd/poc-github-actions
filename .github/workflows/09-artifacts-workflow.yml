@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  job_1:
+  sum:
     name: Add 3 and 7
     runs-on: ubuntu-latest
     steps:
@@ -20,9 +20,9 @@ jobs:
           name: homework
           path: math-homework.txt
 
-  job_2:
+  multiplication:
     name: Multiply by 9
-    needs: job_1
+    needs: sum
     runs-on: windows-latest
     steps:
       - name: Download math result for job 1
@@ -39,9 +39,9 @@ jobs:
           name: homework
           path: math-homework.txt
 
-  job_3:
+  result:
     name: Display results
-    needs: job_2
+    needs: multiplication
     runs-on: macOS-latest
     steps:
       - name: Download math result for job 2
