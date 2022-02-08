@@ -1,6 +1,6 @@
-name: 45 - Get all yaml files
+name: 45 - Get all yaml files #Related to https://stackoverflow.com/questions/71036449/how-to-scan-entire-github-repository-for-certain-files
 
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
   yml:
