@@ -219,3 +219,7 @@ This workflow illustrates how to trigger a workflow on different event but NOT o
 [![44 - Check if PR from Fork](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/44-check-if-pr-from-fork.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/44-check-if-pr-from-fork.yml)
 
 This workflow illustrates how to check if a PR is opened from a FORK repository or not.
+
+[![45 - Get all yaml files](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/45-get-all-yaml-files.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/45-get-all-yaml-files.yml)
+
+This workflow illustrates how to list all files from a specific extension (here, `.yaml` or `.yml`).
