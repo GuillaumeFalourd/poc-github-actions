@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Print variable if not empty
         if: ${{ github.event.inputs.test != "" }}
-        run: echo Test value is: ${{ github.event.inputs.test }}
+        run: echo Test value is ${{ github.event.inputs.test }}
 
       - name: Print message if empty
         if: ${{ github.event.inputs.test == "" }}
