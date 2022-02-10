@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-workflow-commit-hash:
-    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@ba6294c776b98a3b4f28e8a0b804b71e4b8d0b48
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@cbbb8b5aee55749081b51d947236e78a15e7dffe
     with:
       username: Guillaume
     secrets:
