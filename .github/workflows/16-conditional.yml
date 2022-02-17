@@ -136,3 +136,15 @@ jobs:
       if: needs.check-secret.outputs.my-key != 'true'
       steps:
         - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS empty"
+        
+  job7:
+      runs-on: ubuntu-latest
+      steps:
+          - id: step1
+            run: echo "::set-output name=test::hello"
+          - name: step 2
+            if: contains(steps.step1.outputs.test, 'hello')
+            run: echo 'is executed'
+          - name: step 3
+            if: contains(steps.step1.outputs.test, 'not_hello')
+            run: echo 'not executed'
