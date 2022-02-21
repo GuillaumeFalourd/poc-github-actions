@@ -223,3 +223,7 @@ This workflow illustrates how to check if a PR is opened from a FORK repository 
 [![45 - Get all yaml files](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/45-get-all-yaml-files.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/45-get-all-yaml-files.yml)
 
 This workflow illustrates how to list all files from a specific extension (here, `.yaml` or `.yml`).
+
+[![46 - Print env](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/46-print-env.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/46-print-env.yml)
+
+This workflow illustrates how to list all env variables set in the runner.
