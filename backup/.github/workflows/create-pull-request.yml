@@ -2,7 +2,7 @@ name: Create Pull Request
 
 on:
   schedule:
-  - cron: "0 1 * * MON-FRI" # Runs at 01:00 UTC
+  - cron: "0 6 * * MON-FRI" # Runs at 06:00 UTC
   workflow_dispatch:
 
 jobs:
