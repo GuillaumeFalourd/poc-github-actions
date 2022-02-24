@@ -1,0 +1,18 @@
+name: 46 - Force Failure
+
+on: [push, pull_request]
+
+jobs:
+  api-tests:
+    if: contains(github.event.commits[0].message, '[test_api]')
+    runs-on: ubuntu-latest
+    steps:
+      ...
+    
+  not-api-tests:
+    if: "!contains(github.event.commits[0].message, '[test_api]')"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - name: Fail the job
+      run: exit 1
