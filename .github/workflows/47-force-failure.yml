@@ -1,8 +1,14 @@
-name: 46 - Force Failure
+name: 47 - Force Failure
 
 on: [push, pull_request]
 
 jobs:
+
+  print-message:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.commits[0].message }}
+
   api-tests:
     if: contains(github.event.commits[0].message, '[test_api]')
     runs-on: ubuntu-latest
