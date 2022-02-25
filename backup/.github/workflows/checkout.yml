@@ -20,3 +20,6 @@ jobs:
           git add .
           git commit -m "generated checkout workflow file"
           git push
+       - run: |
+          echo "Waiting 2 minute..."
+          sleep 120

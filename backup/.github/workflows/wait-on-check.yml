@@ -3,16 +3,16 @@ name: Wait on Check
 on: [push]
 
 jobs:
-  test:
+  wait-on-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for the Assert Command Line Output workflow to finish
+      - name: Wait for the Checkout workflow to finish
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
-          running-workflow-name: 'Assert Command Line Output'
+          running-workflow-name: 'Checkout'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
           # allowed-conclusions: success,skipped,cancelled
       
-      - run: echo "Will run after Assert Command Line Output finished."
+      - run: echo "Will run after Checkout workflow finished."
