@@ -13,6 +13,6 @@ jobs:
           running-workflow-name: 'Assert Command Line Output'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
-          allowed-conclusions: success,skipped,cancelled
+          # allowed-conclusions: success,skipped,cancelled
       
       - run: echo "Will run after Assert Command Line Output finished."
