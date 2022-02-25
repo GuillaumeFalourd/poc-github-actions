@@ -17,11 +17,11 @@ jobs:
   wait-on-check-2:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Display results job (Upload Download Artifacts workflow) to succeed
+      - name: Wait for BUILD job to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: main
-          check-name: 'Display results'
+          check-name: 'build'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
