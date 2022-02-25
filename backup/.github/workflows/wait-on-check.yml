@@ -3,6 +3,15 @@ name: Wait on Check
 on: [push]
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: | 
+          sleep 10
+          curl -i -u username:${{ secrets.GITHUB_TOKEN }} \
+          https://api.github.com/repos/OWNER/REPO/commits/REF/check-runs \
+          -H 'Accept: application/vnd.github.antiope-preview+json' | jq '[.check_runs[].name]'
+
   wait-on-check-1:
     runs-on: ubuntu-latest
     steps:
