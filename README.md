@@ -227,3 +227,7 @@ This workflow illustrates how to list all files from a specific extension (here,
 [![46 - Print env](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/46-print-env.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/46-print-env.yml)
 
 This workflow illustrates how to list all env variables set in the runner.
+
+[![47 - Force Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml)
+
+This workflow illustrates how to force a workflow failure if a condition isn't met.
