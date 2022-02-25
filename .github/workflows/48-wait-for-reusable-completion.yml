@@ -7,7 +7,7 @@ jobs:
   wait-job-reusable-1:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for job_reusable-1 to succeed
+      - name: Wait for job-reusable-1 to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
@@ -18,7 +18,7 @@ jobs:
   wait-job-reusable-2:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for job_reusable-1 to succeed
+      - name: Wait for job-reusable-1 to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
@@ -29,7 +29,7 @@ jobs:
   wait-job-reusable-3:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for job_reusable-1 to succeed
+      - name: Wait for job-reusable-1 to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
@@ -39,9 +39,9 @@ jobs:
 
   finish:
     needs:
-      - wait-job_reusable-1
-      - wait-job_reusable-2
-      - wait-job_reusable-3
+      - wait-job-reusable-1
+      - wait-job-reusable-2
+      - wait-job-reusable-3
     runs-on: ubuntu-latest
     steps:
       - run: echo "Finish"
