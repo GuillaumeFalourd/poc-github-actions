@@ -1,0 +1,10 @@
+name: 48 - Reusable workflow 4
+
+on:
+  workflow_call:
+
+jobs:
+  job_reusable-3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World"

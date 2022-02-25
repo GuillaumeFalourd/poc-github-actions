@@ -1,0 +1,10 @@
+name: 48 - Wait for Reusable Completion
+
+on:
+  workflow_call:
+
+jobs:
+  job_reusable-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World"
