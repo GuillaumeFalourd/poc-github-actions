@@ -18,11 +18,11 @@ jobs:
   wait-on-check-2:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for commit-and-push job (Commit and Push workflow) to succeed
+      - name: Wait for Display results job (Upload Download Artifacts workflow) to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: main
-          check-name: 'commit-and-push'
+          check-name: 'Display results'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
