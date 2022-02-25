@@ -7,11 +7,11 @@ jobs:
   wait-on-check-1:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for BUILD job to succeed
+      - name: Wait for Multiply by 9 job to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
-          ref: main
-          check-name: 'build'
+          ref: ${{ github.ref }}
+          check-name: 'Multiply by 9'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
@@ -21,7 +21,7 @@ jobs:
       - name: Wait for the Assert Command Line Output workflow to finish
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
-          ref: main
+          ref: ${{ github.ref }}
           running-workflow-name: 'Assert Command Line Output'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
