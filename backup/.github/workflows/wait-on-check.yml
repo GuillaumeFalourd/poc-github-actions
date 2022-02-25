@@ -11,12 +11,13 @@ jobs:
       - name: Wait for Multiply by 9 job (Upload & Download Artifacts workflow) to succeed
         uses: lewagon/wait-on-check-action@v1.1.1
         with:
-          ref: ${{ github.ref }}
+          ref: main
           check-name: 'Multiply by 9'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10
+          wait-interval: 5
 
-  finish:
+  after-wait-on-check:
+    name: After wait on check
     needs:
       - wait-on-check
     runs-on: ubuntu-latest
