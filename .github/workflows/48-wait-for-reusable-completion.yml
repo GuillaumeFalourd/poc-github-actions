@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  wait-job_reusable-1:
+  wait-job-reusable-1:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for job_reusable-1 to succeed
@@ -15,7 +15,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
-  wait-job_reusable-2:
+  wait-job-reusable-2:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for job_reusable-1 to succeed
@@ -26,7 +26,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
-  wait-job_reusable-3:
+  wait-job-reusable-3:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for job_reusable-1 to succeed
