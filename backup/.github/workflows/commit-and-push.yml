@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  commit-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -28,3 +28,7 @@ jobs:
           files: commit-and-push-workflow.txt
           name: ${{ github.actor }}
           email: ${{ github.actor }}@users.noreply.github.com
+      
+      - run: |
+          echo "Waiting 1 minute..."
+          sleep 60

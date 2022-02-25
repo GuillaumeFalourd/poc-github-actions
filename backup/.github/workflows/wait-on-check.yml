@@ -13,16 +13,16 @@ jobs:
           running-workflow-name: 'Assert Command Line Output'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
-          # allowed-conclusions: success,skipped,cancelled
+          allowed-conclusions: success,skipped,cancelled
 
   wait-on-check-2:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for checkout job (Checkout workflow) to succeed
+      - name: Wait for commit-and-push job (Commit and Push workflow) to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
-          check-name: 'checkout'
+          check-name: 'commit-and-push'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
