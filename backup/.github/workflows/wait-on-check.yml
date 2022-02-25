@@ -3,16 +3,33 @@ name: Wait on Check
 on: [push]
 
 jobs:
-  wait-on-check:
+  wait-on-check-1:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for the Checkout workflow to finish
+      - name: Wait for the Assert Command Line Output workflow to finish
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
-          running-workflow-name: 'Checkout'
+          running-workflow-name: 'Assert Command Line Output'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
           # allowed-conclusions: success,skipped,cancelled
-      
-      - run: echo "Will run after Checkout workflow finished."
+
+  wait-on-check-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for checkout job (Checkout workflow) to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'checkout'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+  finish:
+    needs:
+      - wait-on-check-1
+      - wait-on-check-2
+    runs-on: ubuntu-latest
+    steps:      
+      - run: echo "Will run after other workflows or jobs finished."
