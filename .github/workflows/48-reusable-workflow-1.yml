@@ -1,4 +1,4 @@
-name: 48 - Wait for Reusable Completion
+name: 48 - Reusable workflow 1
 
 on:
   workflow_call:

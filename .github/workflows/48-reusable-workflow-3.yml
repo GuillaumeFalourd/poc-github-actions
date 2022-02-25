@@ -1,4 +1,4 @@
-name: 48 - Reusable workflow 4
+name: 48 - Reusable workflow 3
 
 on:
   workflow_call:
