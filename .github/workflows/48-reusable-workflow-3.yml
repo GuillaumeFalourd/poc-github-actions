@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        echo "Waiting 2 minutes..."
-        sleep 120
-        echo "Hello World"
+          echo "Waiting 2 minutes..."
+          sleep 120
+          echo "Hello World"
