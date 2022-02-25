@@ -11,7 +11,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
-          check-name: 'job_reusable-1'
+          check-name: 'workflow-1 / job-reusable-1'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
@@ -22,7 +22,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
-          check-name: 'job_reusable-2'
+          check-name: 'workflow-2 / job-reusable-2'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
@@ -33,7 +33,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
-          check-name: 'job_reusable-3'
+          check-name: 'workflow-3 / job-reusable-3'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 

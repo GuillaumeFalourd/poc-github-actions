@@ -4,7 +4,10 @@ on:
   workflow_call:
 
 jobs:
-  job_reusable-3:
+  job-reusable-3:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World"
+      - run: |
+        echo "Waiting 2 minutes..."
+        sleep 120
+        echo "Hello World"
