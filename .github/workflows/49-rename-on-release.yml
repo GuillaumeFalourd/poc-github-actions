@@ -13,3 +13,15 @@ jobs:
         run: env
       - run: echo ${{ env.GITHUB_REF_NAME }}
       - run: echo $GITHUB_REF_NAME
+      
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mv ./Code/.pio/build/attiny841/firmware.hex ./Code/.pio/build/attiny841/megadesk-${{ env.GITHUB_REF_NAME }}.hex
+      - run: cat ./Code/.pio/build/attiny841/megadesk-${{ env.GITHUB_REF_NAME }}.hex
+     
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo mv ./Code/.pio/build/attiny841/firmware.hex ./Code/.pio/build/attiny841/megadesk-${{ env.GITHUB_REF_NAME }}.hex
+      - run: cat ./Code/.pio/build/attiny841/megadesk-${{ env.GITHUB_REF_NAME }}.hex
