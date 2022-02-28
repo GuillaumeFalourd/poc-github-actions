@@ -23,13 +23,11 @@ jobs:
       - run: mv ./Code/.pio/build/attiny841/firmware.hex ./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
       - run: cat ./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
       - run: |
-          FILENAME=megadesk-$GITHUB_REF_NAME.hex
+          FILENAME=./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
           echo $FILENAME
           echo FILENAME=$FILENAME >> GITHUB_ENV
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ${{ env.FILE }}
-        env:
-          FILE: ${{ env.FILENAME }}
+          files: ./Code/.pio/build/attiny841/megadesk-V0.5.hex
