@@ -2,9 +2,9 @@ name: 49 - Rename on Release # https://stackoverflow.com/questions/71270252/rena
 
 on:
   push:
-#    tags:
-#      - '*'
-    
+    tags:
+      - '*'
+
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
       - name: env list
         run: env
       - run: echo $GITHUB_REF_NAME
-      
+
   job2:
     runs-on: ubuntu-latest
     steps:
@@ -22,8 +22,8 @@ jobs:
       - run: echo "test" >> ./Code/.pio/build/attiny841/firmware.hex
       - run: mv ./Code/.pio/build/attiny841/firmware.hex ./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
       - run: cat ./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
-      - name: Release 
-        uses: softprops/action-gh-release@v1 
-#       if: startsWith(github.ref, 'refs/tags/') 
-        with: 
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
           files: ./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex 
