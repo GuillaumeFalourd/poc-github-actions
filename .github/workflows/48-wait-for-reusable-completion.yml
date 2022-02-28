@@ -1,0 +1,47 @@
+name: 48 - Wait for Completion
+
+on:
+  push:
+
+jobs:
+  wait-job-reusable-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for job-reusable-1 to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'workflow-1 / job-reusable-1'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+  wait-job-reusable-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for job-reusable-1 to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'workflow-2 / job-reusable-2'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+  wait-job-reusable-3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for job-reusable-1 to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'workflow-3 / job-reusable-3'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+  finish:
+    needs:
+      - wait-job-reusable-1
+      - wait-job-reusable-2
+      - wait-job-reusable-3
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Finish"
