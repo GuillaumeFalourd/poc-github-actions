@@ -23,7 +23,7 @@ jobs:
       - run: mv ./Code/.pio/build/attiny841/firmware.hex ./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
       - run: cat ./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
       - run: |
-          FILE=./Code/.pio/build/attiny841/megadesk-$GITHUB_REF_NAME.hex
+          FILE=megadesk-$GITHUB_REF_NAME.hex
           echo $FILE
           echo FILE=$FILE >> GITHUB_ENV
       - name: Release
