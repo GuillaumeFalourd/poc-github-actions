@@ -2,8 +2,8 @@ name: 49 - Rename on Release # https://stackoverflow.com/questions/71270252/rena
 
 on:
   push:
-  tag:
-    - '*'
+#    tags:
+#      - '*'
     
 jobs:
   job1:
