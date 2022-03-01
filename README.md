@@ -231,3 +231,11 @@ This workflow illustrates how to list all env variables set in the runner.
 [![47 - Force Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml)
 
 This workflow illustrates how to force a workflow failure if a condition isn't met.
+
+[![48 - Wait for reusable completion](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml)
+
+This workflow illustrates how to wait for other workflows completion before executing some operation (using reusable workflows).
+
+[![49 - Rename on release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/49-rename-on-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/49-rename-on-release.yml)
+
+This workflow illustrates how to rename a file according to the `github ref name` (branch or tag name).
