@@ -17,7 +17,7 @@ jobs:
       
       - name: set up env var
         run: |
-          URL=$(python test_workflow24.py)
+          URL=$(python scripts/test_workflow24.py)
           echo $URL
           echo "URL=$URL" >> $GITHUB_ENV
       
@@ -37,7 +37,7 @@ jobs:
       
       - name: set up env var
         run: |
-          URL=$(node test_workflow24.js)
+          URL=$(node scripts/test_workflow24.js)
           echo $URL
           echo "URL=$URL" >> $GITHUB_ENV
       
