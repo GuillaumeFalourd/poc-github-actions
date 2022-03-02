@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1:
+  python:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository content
@@ -18,6 +18,26 @@ jobs:
       - name: set up env var
         run: |
           URL=$(python test_workflow24.py)
+          echo $URL
+          echo "URL=$URL" >> $GITHUB_ENV
+      
+      - name: use env var
+        run: echo ${{ env.URL }}
+
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2 # Checkout the repository content to github runner.
+
+      - name: Setup Python Version
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14 # Install the node version needed
+      
+      - name: set up env var
+        run: |
+          URL=$(node test_workflow24.js)
           echo $URL
           echo "URL=$URL" >> $GITHUB_ENV
       
