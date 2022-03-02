@@ -30,7 +30,7 @@ jobs:
       - name: Checkout repository content
         uses: actions/checkout@v2 # Checkout the repository content to github runner.
 
-      - name: Setup Python Version
+      - name: Setup Node Version
         uses: actions/setup-node@v2
         with:
           node-version: 14 # Install the node version needed
