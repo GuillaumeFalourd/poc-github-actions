@@ -22,4 +22,4 @@ jobs:
           echo "URL=$URL" >> $GITHUB_ENV
       
       - name: use env var
-        run: echo ${{ env.TAG }}
+        run: echo ${{ env.URL }}
