@@ -1,0 +1,25 @@
+name: Test 24 # Related to https://stackoverflow.com/questions/71327594/github-action-js-file-return-string-to-be-saved-in-a-variable
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2 # Checkout the repository content to github runner.
+
+      - name: Setup Python Version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 # Install the python version needed
+      
+      - name: set up env var
+        run: |
+          URL=$(python test_workflow24.py)
+          echo $URL
+          echo "URL=$URL" >> $GITHUB_ENV
+      
+      - name: use env var
+        run: echo ${{ env.TAG }}
