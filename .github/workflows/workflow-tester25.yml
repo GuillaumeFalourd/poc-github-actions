@@ -16,7 +16,6 @@ jobs:
           node-version: 14 # Install the node version needed
 
       - name: set multiline env var
-        continue-on-error: true
         run: |
           echo URL<<EOF' >> $GITHUB_ENV
           node scripts/test_workflow25.js >> $GITHUB_ENV
