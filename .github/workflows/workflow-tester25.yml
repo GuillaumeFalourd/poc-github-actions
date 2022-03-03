@@ -21,5 +21,8 @@ jobs:
           node scripts/test_workflow25.js >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - name: use env var
-        run: echo ${{ env.URL }}
+      # - name: use env var
+      #   run: echo ${{ env.URL }}
+
+      - name: print env
+        run: env
