@@ -17,7 +17,7 @@ jobs:
 
       - name: set multiline env var
         run: |
-          echo URL<<EOF' >> $GITHUB_ENV
+          echo 'URL<<EOF' >> $GITHUB_ENV
           node scripts/test_workflow25.js >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
