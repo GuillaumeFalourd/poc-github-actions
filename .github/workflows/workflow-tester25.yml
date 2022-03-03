@@ -19,9 +19,7 @@ jobs:
         run: |
           URL=$(node scripts/test_workflow25.js)
           echo $URL
-          echo 'URL<<EOF' >> $GITHUB_ENV
-          $URL >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+          echo "URL=$URL" >> $GITHUB_ENV
       
       - name: use env var
         run: echo ${{ env.URL }}
