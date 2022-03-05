@@ -13,7 +13,9 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-    - run: go run ./scripts/test_workflow26.go
+    - name: Calculate version
+      id: version
+      run: go run ./scripts/test_workflow26.go
 
   Build:
     needs:
