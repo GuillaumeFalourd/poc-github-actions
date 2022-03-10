@@ -31,15 +31,3 @@ jobs:
     if: contains( needs.job1.outputs.tag_version , 'prod-')
     steps:
       - run: echo "${{needs.job1.outputs.tag_version}}"
-
-  create-pull-request:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: GuillaumeFalourd/pull-request-action@v1
-        with:
-          destination_branch: "feature/test"
-          pr_title: "[example] test_create_pull_request"
-          pr_body: "test body."
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
