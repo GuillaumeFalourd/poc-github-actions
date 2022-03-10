@@ -18,6 +18,7 @@ jobs:
 
   create-pull-request-2:
     runs-on: ubuntu-latest
+    steps:
       - name: Create pull Request
         uses: TheRealWaldo/pull-request@v0.2.0
         env:
