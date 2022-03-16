@@ -1,0 +1,21 @@
+name: Create Tag
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  CREATE-TAG:
+    env:
+      RELEASE_VERSION: 1.1.1
+    runs-on: ubuntu-latest
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/$RELEASE_VERSION',
+              sha: context.sha
+            })
