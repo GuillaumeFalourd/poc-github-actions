@@ -1,4 +1,4 @@
-name: Create Tag
+name: 50 - Create Tag
 
 on:
   workflow_dispatch:
@@ -9,6 +9,7 @@ jobs:
     env:
       RELEASE_VERSION: 1.1.1
     runs-on: ubuntu-latest
+    steps:
       - name: Create tag
         uses: actions/github-script@v5
         with:
