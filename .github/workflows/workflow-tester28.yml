@@ -2,7 +2,6 @@ name: Test 28 # Related to https://stackoverflow.com/questions/71493577/how-can-
 
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   test:
