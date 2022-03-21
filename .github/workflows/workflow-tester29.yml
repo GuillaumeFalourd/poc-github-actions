@@ -14,17 +14,16 @@ on:
 jobs:
 
   LA_CHECKS:
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     la_checks: [[la, las331],[la2,las993]]
+    strategy:
+      fail-fast: false
+      matrix:
+        la_checks: [[la, las331],[la2,las993]]
     name: ${{ matrix.la[1] }}
     # runs-on: DOCKER
     runs-on: ubuntu-latest
     # container: scripts
     steps:
       - uses: actions/checkout@v2
-      - run: echo LA_CHECKS
       # - uses: ./.github/templates/la_check
       #   with:
       #     precondition: ${{ matrix.la_checks[0] }}
@@ -50,9 +49,9 @@ jobs:
     # container: scripts
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/templates/device
-        with:
-          d_id: fr1
+      # - uses: ./.github/templates/device
+      #   with:
+      #     d_id: fr1
 
   Uninstall_FR1:
     # if: ${{ always() && github.event.inputs.os == 'ANDROID' }}
