@@ -1,16 +1,15 @@
 name: Test 29 # Related to https://stackoverflow.com/questions/71561915/github-action-skipped-job
 on:
-  push:
-  # workflow_dispatch:
-  #   inputs:
-  #     os:
-  #       type: choice
-  #       required: true
-  #       description: the os that will be tested.
-  #       default: ANDROID
-  #       options:
-  #       - IOS
-  #       - ANDROID
+  workflow_dispatch:
+    inputs:
+      os:
+        type: choice
+        required: true
+        description: the os that will be tested.
+        default: ANDROID
+        options:
+        - IOS
+        - ANDROID
 jobs:
 
   LA_CHECKS:
@@ -30,7 +29,7 @@ jobs:
 
 
   Install_FR1:
-    # if: ${{ always() && github.event.inputs.os == 'ANDROID' }}
+    if: ${{ always() && github.event.inputs.os == 'ANDROID' }}
     needs: [LA_CHECKS]
     # runs-on: DOCKER
     runs-on: ubuntu-latest
