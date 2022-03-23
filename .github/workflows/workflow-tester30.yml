@@ -15,7 +15,9 @@ jobs:
           - ubuntu-18.04
           - ubuntu-20.04
     steps:
-      - run: echo "${{ github.job }}"
+      - run: echo ${{ github.job }}
+      - run: echo ${{ jobs.my-job.name }}
+      - run: echo ${{ jobs.${{ github.job }}.name }}
       - run: echo "${{ toJSON(github) }}"
       - run: echo "${{ toJSON(env) }}"
       - run: echo "${{ toJSON(job) }}"
