@@ -17,7 +17,7 @@ jobs:
     steps:
       - run: echo ${{ github.job }}
       - run: |
-          JOB_NAME=echo$(OS ${{ matrix.os }})
+          JOB_NAME="OS ${{ matrix.os }}"
           echo $JOB_NAME
           echo "JOB_NAME=$JOB_NAME" >> $GITHUB_ENV
 
