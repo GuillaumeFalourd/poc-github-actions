@@ -16,14 +16,13 @@ jobs:
           - ubuntu-20.04
     steps:
       - run: echo ${{ github.job }}
-      - run: echo ${{ github.job.name }}
-      - run: echo "${{ toJSON(github) }}"
-      - run: echo "${{ toJSON(env) }}"
-      - run: echo "${{ toJSON(job) }}"
-      - run: echo "${{ toJSON(steps) }}"
-      - run: echo "${{ toJSON(runner) }}"
-      - run: echo "${{ toJSON(secrets) }}"
-      - run: echo "${{ toJSON(strategy) }}"
-      - run: echo "${{ toJSON(matrix) }}"
-      - run: echo "${{ toJSON(needs) }}"
-      - run: echo "${{ toJSON(inputs) }}"
+      - run: echo ${{ toJSON(github) }}
+      - run: echo ${{ toJSON(env) }}
+      - run: echo ${{ toJSON(job) }}
+      - run: echo ${{ toJSON(steps) }}
+      - run: echo ${{ toJSON(runner) }}
+      - run: echo ${{ toJSON(secrets) }}
+      - run: echo ${{ toJSON(strategy) }}
+      - run: echo ${{ toJSON(matrix) }}
+      - run: echo ${{ toJSON(needs) }}
+      - run: echo ${{ toJSON(inputs) }}
