@@ -16,6 +16,9 @@ jobs:
           - ubuntu-20.04
     steps:
       - run: echo ${{ github.job }}
+      - run: |
+          JOB_NAME=OS ${{ matrix.os }}
+          echo $JOB_NAME
       - name: Dump GitHub context
         id: github_context_step
         run: echo $JSON
