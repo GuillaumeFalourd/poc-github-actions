@@ -16,7 +16,11 @@ jobs:
           - ubuntu-20.04
     steps:
       - run: echo ${{ github.job }}
-      - run: echo ${{ toJSON(github) }}
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
       - run: echo ${{ toJSON(env) }}
       - run: echo ${{ toJSON(job) }}
       - run: echo ${{ toJSON(steps) }}
