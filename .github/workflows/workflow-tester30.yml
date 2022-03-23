@@ -17,19 +17,10 @@ jobs:
     steps:
       - run: echo ${{ github.job }}
       - run: |
-          JOB_NAME=OS ${{ matrix.os }}
+          JOB_NAME=echo$(OS ${{ matrix.os }})
           echo $JOB_NAME
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo $JSON
-        env:
-          JSON: ${{ toJSON(github) }}
-      - run: echo ${{ toJSON(env) }}
-      - run: echo ${{ toJSON(job) }}
-      - run: echo ${{ toJSON(steps) }}
-      - run: echo ${{ toJSON(runner) }}
-      - run: echo ${{ toJSON(secrets) }}
-      - run: echo ${{ toJSON(strategy) }}
-      - run: echo ${{ toJSON(matrix) }}
-      - run: echo ${{ toJSON(needs) }}
-      - run: echo ${{ toJSON(inputs) }}
+          echo "JOB_NAME=$JOB_NAME" >> $GITHUB_ENV
+
+      - name: Print JOB_NAME
+        run: |
+          echo "JOB NAME:" ${{ env.JOB_NAME }}
