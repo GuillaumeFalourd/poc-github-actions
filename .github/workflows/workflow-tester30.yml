@@ -3,7 +3,8 @@ name: Test 30 # Related to https://stackoverflow.com/questions/71593861/how-to-g
 on:
   # pull_request:
   #   types: [opened, synchronize]
-  push:
+  workflow_dispatch:
+  # push:
 
 jobs:
   my-job:
