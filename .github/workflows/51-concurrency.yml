@@ -1,0 +1,19 @@
+name: 51 - Concurrency
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  concurrency:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait
+        run: |
+          echo "Start waiting..."
+          sleep 5m
+          echo "Wake up!"
