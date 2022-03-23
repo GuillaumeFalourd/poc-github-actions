@@ -1,0 +1,28 @@
+name: Test 30 # Related to https://stackoverflow.com/questions/71593861/how-to-get-github-actions-matrix-job-name-within-job
+
+on:
+  # pull_request:
+  #   types: [opened, synchronize]
+  push:
+
+jobs:
+  my-job:
+    name: OS ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-18.04
+          - ubuntu-20.04
+    steps:
+      - run: echo "${{ github.job }}"
+      - run: echo "${{ toJSON(github) }}"
+      - run: echo "${{ toJSON(env) }}"
+      - run: echo "${{ toJSON(job) }}"
+      - run: echo "${{ toJSON(steps) }}"
+      - run: echo "${{ toJSON(runner) }}"
+      - run: echo "${{ toJSON(secrets) }}"
+      - run: echo "${{ toJSON(strategy) }}"
+      - run: echo "${{ toJSON(matrix) }}"
+      - run: echo "${{ toJSON(needs) }}"
+      - run: echo "${{ toJSON(inputs) }}"
