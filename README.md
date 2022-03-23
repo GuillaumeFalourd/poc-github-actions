@@ -239,3 +239,7 @@ This workflow illustrates how to wait for other workflows completion before exec
 [![49 - Rename on release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/49-rename-on-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/49-rename-on-release.yml)
 
 This workflow illustrates how to rename a file according to the `github ref name` (branch or tag name).
+
+[![50 - Create tag](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/50-create-tag.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/50-create-tag.yml)
+
+This workflow illustrates how to simply create a tag in a job.
