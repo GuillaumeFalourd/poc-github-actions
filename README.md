@@ -239,3 +239,11 @@ This workflow illustrates how to wait for other workflows completion before exec
 [![49 - Rename on release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/49-rename-on-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/49-rename-on-release.yml)
 
 This workflow illustrates how to rename a file according to the `github ref name` (branch or tag name).
+
+[![50 - Create tag](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/50-create-tag.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/50-create-tag.yml)
+
+This workflow illustrates how to simply create a tag in a job.
+
+[![51 - Concurrency](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/51-concurrency.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/51-concurrency.yml)
+
+This workflow illustrates how to use concurrency to avoid the same workflow to run in parallel for different push to the same branch (for example to limit Github actions runner usage in private repo).
