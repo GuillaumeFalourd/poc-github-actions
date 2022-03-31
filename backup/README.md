@@ -136,6 +136,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Git Auto Commit](https://github.com/marketplace/actions/git-auto-commit): GitHub Action to detect changed files during a Workflow run and to commit and push them back to the GitHub repository. By default, the commit is made in the name of "GitHub Actions" and co-authored by the user that made the last commit.
 
+[![Github Environment Variables](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/github-environment-variables.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/github-environment-variables.yml)
+
+[Github Environment Variables](https://github.com/marketplace/actions/github-environment-variables-action): GitHub Action to expose useful environment variables.
+
 [![Github Script](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/github-script.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/github-script.yml)
 
 [Github Script](https://github.com/marketplace/actions/github-script): Github Action to make it easy to quickly write a script in your workflow that uses the GitHub API and the workflow run context.
