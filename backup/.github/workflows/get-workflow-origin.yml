@@ -19,7 +19,7 @@ jobs:
       sourceEvent: ${{ steps.workflow-run-info.outputs.sourceEvent }}
     steps:
       - name: "Get information about the current run"
-        uses: potiuk/get-workflow-origin@v1_1
+        uses: potiuk/get-workflow-origin@v1_3
         id: workflow-run-info
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
