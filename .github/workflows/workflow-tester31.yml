@@ -8,6 +8,6 @@ env:
 
 jobs:
   job1:
-    runs-on: [${{ env.RUNNER_NAME }}]
+    runs-on: ${{ contains(github.ref, 'main') && 'ubuntu-latest' || 'macos-latest' }}
     steps:
        - run: echo ${{ env.RUNNER_NAME }}
