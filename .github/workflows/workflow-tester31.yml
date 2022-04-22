@@ -1,7 +1,7 @@
 name: Test 31 # Related to https://stackoverflow.com/questions/71961921/specify-runner-to-be-used-depending-on-condition-in-a-github-actions-workflow?noredirect=1#comment127177119_71961921
 
 on:
-  workflow-dispatch:
+  workflow_dispatch:
 
 env:
   RUNNER_NAME: ${{ contains(github.ref, 'main') && 'ubuntu-latest' || 'macos-latest' }}
