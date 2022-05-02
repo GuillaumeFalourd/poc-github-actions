@@ -1,0 +1,10 @@
+name: Test 32 # Related to https://stackoverflow.com/questions/72067650/how-to-install-docker-on-github-actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker --version
