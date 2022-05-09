@@ -23,6 +23,7 @@ jobs:
         id: workflow-run-info
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          sourceRunId: ${{ github.event.workflow_run.id }}
 
   test-info:
     runs-on: ubuntu-latest
