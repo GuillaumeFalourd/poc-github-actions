@@ -11,6 +11,10 @@ This repository contains various proofs of concept using a Github Actions throug
 - [Github Actions – variáveis de ambiente e secrets](https://www.zup.com.br/blog/github-actions-variaveis-de-ambiente-e-secrets)
 - [Como manipular outputs no GitHub Actions](https://www.zup.com.br/blog/manipular-outputs-github-actions)
 - [Workflows no GitHub Actions: como usar events e triggers](https://www.zup.com.br/blog/workflows-no-github-actions)
+- [Como manipular outputs no GitHub Actions](https://www.zup.com.br/blog/manipular-outputs-github-actions)
+- [Como usar imagens do Docker com workflows no Github Actions](https://www.zup.com.br/blog/github-actions-docker)
+- [Como gerenciar artefatos nos workflows do Github Actions](https://www.zup.com.br/blog/artefatos-github-actions)
+- [Como usar condicionais nos workflows do Github Actions ](https://www.zup.com.br/blog/como-usar-condicionais-workflows-github-actions)
 
 ## Workflow YAML Basic Structure Explanation
 
