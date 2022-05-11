@@ -251,3 +251,7 @@ This workflow illustrates how to simply create a tag in a job.
 [![51 - Concurrency](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/51-concurrency.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/51-concurrency.yml)
 
 This workflow illustrates how to use concurrency to avoid the same workflow to run in parallel for different push to the same branch (for example to limit Github actions runner usage in private repo).
+
+[![52 - Print Secret](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/52-print-secret.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/52-print-secret.yml)
+
+This workflow illustrates how to print secrets values on a workflow run. To harden the security of your github actions, have a look at [this guide](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) on the Github Official Documentation.
