@@ -1,4 +1,4 @@
-name: Test workflow dispatch input check # Related to https://stackoverflow.com/questions/71045674/how-to-check-if-an-optional-workflow-dispatch-input-is-set-or-not
+name: Test 22 # Related to https://stackoverflow.com/questions/71045674/how-to-check-if-an-optional-workflow-dispatch-input-is-set-or-not
 
 on:
   workflow_dispatch:
