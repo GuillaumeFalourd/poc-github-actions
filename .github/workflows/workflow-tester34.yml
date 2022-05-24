@@ -11,7 +11,7 @@ jobs:
         with:
           owner: GuillaumeFalourd
           repository: formulas-4-tests
-          path-to-clone: ./backup
+          path-to-clone: ${{ github.workspace }}/backup
       - run: |
           cd ./backup
           ls -lha
