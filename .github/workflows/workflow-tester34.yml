@@ -7,7 +7,6 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - run: mkdir ${{ github.workspace }}/test
       - uses: GuillaumeFalourd/clone-github-repo-action@v3
         with:
           owner: GuillaumeFalourd
