@@ -7,14 +7,11 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          cd ${{ github.workspace }}
-          ls -lha
       - uses: GuillaumeFalourd/clone-github-repo-action@v3
         with:
           owner: GuillaumeFalourd
           repository: formulas-4-tests
-          path-to-clone: ${{ github.workspace }}/backup
+          path-to-clone: ${{ github.workspace }}/backup/formulas-4-tests
       - run: |
-          cd ./backup
+          cd ./backup/formulas-4-tests
           ls -lha
