@@ -15,4 +15,3 @@ jobs:
       - run: |
           cd ${{ github.workspace }}/test
           ls -lha
-        if: always()
