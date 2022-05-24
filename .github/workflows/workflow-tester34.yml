@@ -7,12 +7,13 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - run: mkdir ./test
+      - run: mkdir ${{ github.workspace }}/test
       - uses: GuillaumeFalourd/clone-github-repo-action@v3
         with:
           owner: GuillaumeFalourd
           repository: formulas-4-tests
-          path-to-clone: ./test
+          path-to-clone: ${{ github.workspace }}/test
       - run: |
-          cd ./test
+          cd ${{ github.workspace }}/test
           ls -lha
+        if: always()
