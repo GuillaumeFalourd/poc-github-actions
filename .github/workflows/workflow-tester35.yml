@@ -20,7 +20,6 @@ jobs:
     steps:
       - run: echo "Input 1 not empty"
 
-jobs:
   jobB:
     runs-on: ubuntu-latest
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.input1 == ''
