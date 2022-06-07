@@ -13,17 +13,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: Other variables directly
-        run: |
-          echo "Commits:" ${{ github.event.commits[0] }}
-          echo "Message:" ${{ toJSON(github.event.commits[0].message) }}
-          echo "Author Email:" $(echo ${{ toJSON(github.event.commits[0].author) }} | jq -r '.email')
-          echo "Author Name:" $(echo ${{ toJSON(github.event.commits[0].author) }} | jq -r '.name')
-          echo "Author Username:" $(echo ${{ toJSON(github.event.commits[0].author) }} | jq -r '.username')
-          echo "Committer Email:" $(echo ${{ toJSON(github.event.commits[0].committer) }} | jq -r '.email')
-          echo "Committer Name:" $(echo ${{ toJSON(github.event.commits[0].committer) }} | jq -r '.name')
-          echo "Committer Username:" $(echo ${{ toJSON(github.event.commits[0].committer) }} | jq -r '.username')
-
       - name: Other variables with ENV
         run: |
           echo "Commits:" ${{ github.event.commits[0] }}
