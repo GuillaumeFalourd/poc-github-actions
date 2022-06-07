@@ -1,0 +1,20 @@
+name: Test 36 # Related to https://stackoverflow.com/questions/72532083/how-to-access-this-json-object-field-in-github-actions
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.input1 != ''
+    steps:
+      - name: Access GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+          echo "Event:" ${{ github.event }}
+          echo "Commits:" ${{ github.event.commits }}
+          echo "Author:" ${{ github.event.commits.author }}
+          echo "Committer:" ${{ github.event.commits.committer }}
