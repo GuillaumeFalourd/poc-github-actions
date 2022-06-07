@@ -15,7 +15,7 @@ jobs:
 
       - name: Other variables with ENV
         run: |
-          echo "Commits:" $(echo ${{ toJSON(github.event.commits[0]) }})
+          echo "Commits:" $COMMITS
           echo "Message:" $MESSAGE
           echo "Author Email:" $(echo $AUTHOR | jq -r '.email')
           echo "Author Name:" $(echo $AUTHOR | jq -r '.name')
@@ -24,6 +24,7 @@ jobs:
           echo "Committer Name:" $(echo $COMMITTER | jq -r '.name')
           echo "Committer Username:" $(echo $COMMITTER | jq -r '.username')
         env:
+          COMMITS: ${{ toJSON(github.event.commits[0]) }}
           MESSAGE: ${{ toJSON(github.event.commits[0].message) }}
           AUTHOR: ${{ toJSON(github.event.commits[0].author) }}
           COMMITTER: ${{ toJSON(github.event.commits[0].committer) }}
