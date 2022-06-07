@@ -13,6 +13,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Other variables
+        run: |
           echo "Commits:" ${{ github.event.commits[0] }}
           echo "Message:" ${{ github.event.commits[0].message }}
           echo "Author:" ${{ github.event.commits[0].author }}
