@@ -12,8 +12,9 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: |
+          echo ${{ github.event.commits[0].message }}
           echo "$GITHUB_CONTEXT"
           echo "Event:" ${{ github.event }}
-          echo "Commits:" ${{ github.event.commits }}
-          echo "Author:" ${{ github.event.commits.author }}
-          echo "Committer:" ${{ github.event.commits.committer }}
+          echo "Commits:" ${{ github.event.push.commits[0] }}
+          echo "Author:" ${{ github.event.push.commits.author }}
+          echo "Committer:" ${{ github.event.push.commits.committer }}
