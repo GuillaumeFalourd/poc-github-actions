@@ -7,7 +7,6 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.input1 != ''
     steps:
       - name: Access GitHub context
         env:
