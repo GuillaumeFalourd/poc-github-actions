@@ -25,3 +25,6 @@ jobs:
       - name: Local Action Call Without Input
         id: local-action
         uses: ./.github/actions/local-action
+        with:
+          name: ${{ inputs.username }}
+
