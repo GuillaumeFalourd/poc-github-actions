@@ -13,8 +13,10 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Check out code
+      uses: actions/checkout@v2
     - name: Step operations
-      if: ${{ inputs.name }} != ''
+      if: ${{ inputs.name != '' }}
       id: step1
       run: |
         echo Hello ${{ inputs.name }}
@@ -23,7 +25,7 @@ runs:
         echo "::set-output name=random::$(echo $RANDOM)"
       shell: bash
     - name: Step operations 2
-      if: ${{ inputs.name }} == ''
+      if: ${{ inputs.name == '' }}
       run: |
         echo Input Name is empty: ${{ inputs.name }}
       shell: bash
