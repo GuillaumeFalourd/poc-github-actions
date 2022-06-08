@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       username:
-        required: true
+        required: false
         type: string
 
 jobs:
