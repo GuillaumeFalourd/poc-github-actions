@@ -6,7 +6,7 @@ on:
       release-notes:
         description: 'Release Notes'
         required: false
-        default: ${{ github.actor }}
+        default: ${{ github.event.actor }}
 
 env:
   DEFAULT_NOTES: Build by ${{ github.actor }}
