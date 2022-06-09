@@ -1,18 +1,10 @@
-name: 33 - Reusable workflow
+name: Test 37 #Related to https://stackoverflow.com/questions/72551501/using-if-statements-in-actions
 
 on:
-  workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
-    secrets:
-      token:
-        required: true
   workflow_dispatch:
     inputs:
       username:
-        required: true
+        required: false
         type: string
 
 jobs:
@@ -34,6 +26,5 @@ jobs:
         id: local-action
         uses: ./.github/actions/local-action
         with:
-          name: "World"
-      - name: Local Action Output
-        run: echo "${{ steps.local-action.outputs.random }}"
+          name: ${{ inputs.username }}
+
