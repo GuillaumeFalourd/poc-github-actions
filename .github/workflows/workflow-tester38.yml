@@ -3,16 +3,16 @@ name: Test 38 # Related to https://stackoverflow.com/questions/72558396/custom-d
 on:
   workflow_dispatch:
     inputs:
-      test:
+      release-notes:
         description: 'Release Notes'
         required: false
-        default: Build by ${{github.actor}}
+        default: 'Build by ${{ github.actor }}'
 
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
       - name: Print input value
-        run: echo "${{ inputs.test }}"
+        run: echo "${{ inputs.release-notes }}"
 
 
