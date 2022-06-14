@@ -14,9 +14,9 @@ jobs:
         if: ${{ env.BRANCH }}
         run: echo ${{ env.BRANCH }}
 
-  job2:
-    runs-on: ubuntu-latest
-    if: ${{ env.BRANCH == 'true' }}
-    steps:
-      - name: Print branch
-        run: echo ${{ env.BRANCH }}
+  # job2: 
+  #   runs-on: ubuntu-latest
+  #   if: ${{ env.BRANCH }} # Won't work
+  #   steps:
+  #     - name: Print branch
+  #       run: echo ${{ env.BRANCH }}
