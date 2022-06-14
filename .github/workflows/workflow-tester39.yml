@@ -16,7 +16,7 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
-    if: ${{ env.BRANCH }}
+    if: ${{ env.BRANCH }} == 'true'
     steps:
       - name: Print branch
         run: echo ${{ env.BRANCH }}
