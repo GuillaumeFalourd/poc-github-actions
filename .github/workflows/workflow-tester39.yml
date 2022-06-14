@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check branch
-        if: ${{ env BRANCH }}
-        run: echo $BRANCH
+        if: ${{ env.BRANCH }}
+        run: echo ${{ env.BRANCH }}
 
 
