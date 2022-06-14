@@ -10,6 +10,13 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Check branch
+      - name: Check branch and print it
         if: ${{ env.BRANCH }}
+        run: echo ${{ env.BRANCH }}
+
+  job2:
+    runs-on: ubuntu-latest
+    if: ${{ env.BRANCH }}
+    steps:
+      - name: Print branch
         run: echo ${{ env.BRANCH }}
