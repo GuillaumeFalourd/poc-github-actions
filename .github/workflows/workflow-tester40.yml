@@ -3,12 +3,15 @@ name: Test 40 # Related to https://stackoverflow.com/questions/72633058/paramete
 on:
   push:
 
+env:
+  MAC_OS_RUNNER: ${{ secrets.MAC_OS_RUNNER }}
+
 jobs:
   test-matrix:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, '${{ secrets.MAC_OS_RUNNER }}']
+        os: [ubuntu-latest, windows-latest, '${{ env.MAC_OS_RUNNER }}']
         python: [2.7, 3.7, 3.8, 3.9]
     steps:
       - uses: actions/setup-python@v2
