@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, '${{ env.MAC_OS_RUNNER }}']
+        os: [ubuntu-latest, windows-latest, $MAC_OS_RUNNER]
         python: [2.7, 3.7, 3.8, 3.9]
     steps:
       - uses: actions/setup-python@v2
