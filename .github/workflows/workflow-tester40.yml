@@ -1,0 +1,19 @@
+name: Test 40 # Related to https://stackoverflow.com/questions/72633058/parameterize-runs-on-value-for-github-action
+
+on:
+  push:
+
+jobs:
+  test-matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, '${{ secrets.MAC_OS_RUNNER }}']
+        python: [2.7, 3.7, 3.8, 3.9]
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      - run: |
+          echo $OSTYPE
+          python --version
