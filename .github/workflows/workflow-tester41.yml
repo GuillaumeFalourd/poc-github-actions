@@ -39,13 +39,13 @@ jobs:
     steps:
       - id: filter
         run: |
-          if [ '${{ needs.changes.outputs.aws }}' == 'true' ]
+          if [ '${{ needs.changes.outputs.aws }}' == 'true' ]; then
             echo "::set-output name=aws::aws"
           fi
-          if [ '${{ needs.changes.outputs.azure }}' == 'true' ]
+          if [ '${{ needs.changes.outputs.azure }}' == 'true' ]; then
             echo "::set-output name=azure::azure"
           fi
-          if [ '${{ needs.changes.outputs.gcp }}' == 'true' ]
+          if [ '${{ needs.changes.outputs.gcp }}' == 'true' ]; then
             echo "::set-output name=gcp::gcp"
           fi
 
