@@ -53,7 +53,7 @@ jobs:
           echo ${{steps.check.outputs.gcp}}
       - uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r result.zip "{{steps.check.outputs.aws}}" "{{steps.check.outputs.azure}}" "{{steps.check.outputs.gcp}}"
+          args: zip -qq -r result.zip "${{steps.check.outputs.aws}}" "${{steps.check.outputs.azure}}" "${{steps.check.outputs.gcp}}"
       - uses: actions/upload-artifact@v1
         with:
           name: my-artifact
