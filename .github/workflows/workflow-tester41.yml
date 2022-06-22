@@ -1,7 +1,7 @@
 name: Test 41 # Related to https://stackoverflow.com/questions/72704563/github-action-echo-within-an-expression
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   changes:
