@@ -1,4 +1,4 @@
-name: Test 42 # Related to https://stackoverflow.com/questions/72704563/github-action-echo-within-an-expression
+name: Test 41 # Related to https://stackoverflow.com/questions/72704563/github-action-echo-within-an-expression
 
 on:
   push:
