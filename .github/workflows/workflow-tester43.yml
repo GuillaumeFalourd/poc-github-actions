@@ -14,7 +14,6 @@ jobs:
           VERSION_NAME=$(echo MY_VERSION)
           LATEST_TAG=$(echo 1.0.0)
           CHANGE_LOG=$(echo changelog $LATEST_TAG)
-          GITHUB_RUN_NUMBER=${{ github.run_number }}
 
           # Check variables
           echo $VERSION_NAME
