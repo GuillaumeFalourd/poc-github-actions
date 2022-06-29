@@ -29,3 +29,4 @@ jobs:
           echo ${GITHUB_RUN_NUMBER}
           echo ${{ github.run_number }}
           echo $GITHUB_RUN_NUMBER
+          echo (100+$GITHUB_RUN_NUMBER)
