@@ -15,7 +15,7 @@ jobs:
         run: |
           # Config variables
           VERSION_NAME=$(echo MY_VERSION)
-          LATEST_TAG="$(git tag --list | head -n 1)"
+          LATEST_TAG=$(git tag --list | head -n 1)
           CHANGE_LOG=$(echo changelog $LATEST_TAG)
 
           # Check variables 
@@ -23,7 +23,6 @@ jobs:
           echo $LATEST_TAG
           echo $CHANGE_LOG
           echo $GITHUB_RUN_NUMBER
-          git tag --list | head -n 1
         shell: bash
 
   job2:
