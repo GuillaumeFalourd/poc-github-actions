@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Upload to firebase and increment git tag
+        with:
+          fetch-depth: 0
+      - name: Test
         if: github.ref == 'refs/heads/main'
         run: |
           # Config variables
@@ -16,8 +18,7 @@ jobs:
           LATEST_TAG="$(git tag --list | head -n 1)"
           CHANGE_LOG=$(echo changelog $LATEST_TAG)
 
-          # Check variables
-          
+          # Check variables 
           echo $VERSION_NAME
           echo $LATEST_TAG
           echo $CHANGE_LOG
