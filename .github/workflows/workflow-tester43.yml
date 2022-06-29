@@ -7,6 +7,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Upload to firebase and increment git tag
         if: github.ref == 'refs/heads/main'
         run: |
