@@ -13,10 +13,11 @@ jobs:
         run: |
           # Config variables
           VERSION_NAME=$(echo MY_VERSION)
-          LATEST_TAG=echo $(git tag --list | head -n 1)
+          LATEST_TAG=git tag --list | head -n 1
           CHANGE_LOG=$(echo changelog $LATEST_TAG)
 
           # Check variables
+          git tag --list | head -n 1
           echo $VERSION_NAME
           echo $LATEST_TAG
           echo $CHANGE_LOG
