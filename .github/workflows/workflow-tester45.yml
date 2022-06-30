@@ -11,6 +11,7 @@ jobs:
       - name: Extract branch number
         id: version
         run: |
-          BRANCH=${GITHUB_REF##*/}
-          BUILD_NUMBER="${BRANCH//fix\/NN-/""}"
+          BRANCH=${GITHUB_REF}
+          echo $BRANCH
+          BUILD_NUMBER="${BRANCH//refs\/heads\/fix\/NN-/}"
           echo $BUILD_NUMBER
