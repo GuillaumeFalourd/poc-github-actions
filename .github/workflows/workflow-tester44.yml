@@ -15,6 +15,9 @@ jobs:
           python-version: 3.8
 
       - name: Execute Python script to update test.py file
-        run: cat test.py
+        run: python .github/scripts/update_file.py
         env:
+          WORKSPACE: ${{ github.workspace }}
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
+
+      - run: cat test.py
