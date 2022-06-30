@@ -12,5 +12,6 @@ jobs:
         id: version
         run: |
           BRANCH=${GITHUB_REF##*/}
-          BUILD_NUMBER="${BRANCH//fix//NN-/""}"
+          echo $BRANCH
+          BUILD_NUMBER="${BRANCH//fix\/NN-/}"
           echo $BUILD_NUMBER
