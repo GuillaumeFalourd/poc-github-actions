@@ -18,6 +18,6 @@ content = re.sub(r"#placeholder1", importlib, content)
 with open(FILE, "w") as file:
     file.write(content)
 
-print(content)
+#print(content)
 
 print("END")
