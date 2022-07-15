@@ -1,0 +1,6 @@
+on:
+  schedule:
+    - cron: 0 23 1 * *
+jobs:
+  hcpkgrelease:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/48-reusable-workflow-1.yml@main
