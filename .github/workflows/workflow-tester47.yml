@@ -1,0 +1,11 @@
+name: Test 47
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: windows-latest
+    steps:
+      - run: c:\windows\system32\wbem\wmic.exe csproduct get uuid
+        
