@@ -8,4 +8,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: c:\windows\system32\wbem\wmic.exe csproduct get uuid
-        
+
+
+  job2:
+    runs-on: windows-latest
+    steps:
+      - run: /c/windows/system32/wbem/wmic.exe csproduct get uuid 
+        shell: bash     
