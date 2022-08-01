@@ -12,7 +12,7 @@ jobs:
         id: test1-action-true
         uses: ./.github/actions/test1
         with:
-          dry_run: 'true'
+          dry_run: true
       - name: Test1 Action Call FALSE
         id: test1-action-false
         uses: ./.github/actions/test1
