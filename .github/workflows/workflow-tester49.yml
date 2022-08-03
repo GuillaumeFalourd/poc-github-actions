@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Set variable
       run: |
-        RUNDATEOSX=$(date -d "-2 days" +%Y%m%d)
+        RUNDATEOSX=$(date -j -v-2d +%Y%m%d)
         echo "RUNDATEOSX=$RUNDATEOSX" >> $GITHUB_ENV
 
     - name: Print variable
