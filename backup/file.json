@@ -1,0 +1,4 @@
+{
+    "secret_token": "#{SECRET_TOKEN}#",
+    "apiId": "blabla"
+}

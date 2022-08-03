@@ -104,6 +104,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Copycat](https://github.com/marketplace/actions/copycat-action): GitHub action to copy files from your repository to another external repository. It is also possible to copy files from/to repository Wikis.
 
+[![Create JSON](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-json.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-json.yml)
+
+[Create JSON](https://github.com/marketplace/actions/create-json): GitHub Action to create a .json file dynamically on your workflow.
+
 [![Create Pull Request](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml)
 
 [Create Pull Request](https://github.com/marketplace/actions/create-pull-request): GitHub action to create a pull request for changes to your repository in the actions workspace.
@@ -175,6 +179,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Release](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/release.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/release.yml)
 
 [Release](https://github.com/marketplace/actions/gh-release): GitHub Action for creating GitHub Releases on Linux, Windows, and macOS virtual environments.
+
+[![Replace Token](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-token.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-token.yml)
+
+[Replace Token](https://github.com/marketplace/actions/replace-tokens): GitHub Action for replacing tokens in files.
 
 [![Repository-Dispatch](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml) [![Repository-Dispatch-Triggered](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml)
 
