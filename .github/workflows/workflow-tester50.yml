@@ -1,18 +1,16 @@
-name: Test 49 #Related to SO https://stackoverflow.com/questions/73213189/cannot-set-a-env-var-when-using-macos-runner
+name: Test 50 #Related to SO https://stackoverflow.com/questions/73232652/validate-crontab-with-github-action
 
 on:
   workflow_dispatch:
 
+env:
+  CRONTAB_FILE : './crontab'
+
 jobs:
   job1:
-    runs-on: macos-latest
+    name: Check Crontab file
+    runs-on: ubuntu-latest
     steps:
-    - name: Set variable
-      run: |
-        RUNDATEOSX=$(date -j -v-2d +%Y%m%d)
-        echo "RUNDATEOSX=$RUNDATEOSX" >> $GITHUB_ENV
-
-    - name: Print variable
-      run: |
-        echo "RUNDATEOSX:" ${{ env.RUNDATEOSX }}
-        echo "RUNDATEOSX:" $RUNDATEOSX
+      - uses: actions/checkout@v3
+      - name: 'run crontab command from file'
+        run : crontab < $CRONTAB_FILE
