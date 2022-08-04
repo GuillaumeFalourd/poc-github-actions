@@ -8,9 +8,8 @@ env:
 
 jobs:
   job1:
-    name: Check Crontab file
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: 'run crontab command from file'
+      - name: Run crontab command from file
         run : crontab < $CRONTAB_FILE
