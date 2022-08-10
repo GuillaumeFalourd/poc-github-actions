@@ -1,7 +1,7 @@
 name: Test 52 (reusable)
 
 on:
-  #workflow_dispatch:
+  workflow_dispatch:
   workflow_call:
     inputs:
       input_var:

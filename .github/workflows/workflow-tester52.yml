@@ -19,5 +19,5 @@ jobs:
   call_reusable:
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
     with:
-      input_var: $SOME_VAR
-      another_input_var: $ANOTHER_VAR
+      input_var: ${{ env.SOME_VAR }}
+      another_input_var: ${{ env.ANOTHER_VAR }}
