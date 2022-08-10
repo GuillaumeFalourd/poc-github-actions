@@ -10,14 +10,22 @@ env:
 jobs:
   print:
     runs-on: ubuntu-latest
+    outputs:
+      some_var: ${{ steps.step1.outputs.test }}
+      another_var: ${{ steps.step1.outputs.test }}   
     steps:
       - name: Print inputs passed to the reusable workflow
+        id: step1
         run: |
           echo "some var: $SOME_VAR"
+          echo "::set-output name=some_var::$SOME_VAR"
           echo "another var: $ANOTHER_VAR"
+          echo "::set-output name=another_var::$ANOTHER_VAR"
   
   call_reusable:
+    needs:
+      - print
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
     with:
-      input_var: ${{ env.SOME_VAR }}
-      another_input_var: ${{ env.ANOTHER_VAR }}
+      input_var: ${{ needs.print.outputs.some_var }}
+      another_input_var: ${{ needs.print.outputs.another_var }}
