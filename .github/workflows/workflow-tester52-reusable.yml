@@ -1,0 +1,21 @@
+name: Test 52 (reusable)
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      input_var:
+        required: true
+        type: string
+      another_input_var:
+        required: true
+        type: string
+
+jobs:
+  the_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        run: |
+          echo "input_var: ${{ inputs.input_var }}"
+          echo "another_input_var: ${{ inputs.another_input_var }}"
