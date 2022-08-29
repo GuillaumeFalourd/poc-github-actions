@@ -1,4 +1,6 @@
-name: Issue Form
+name: 56 - Issue Form
+
+# Example using the ISSUE FORM available on Github Enterprise (using the .github/ISSUE_TEMPLATE.yml file)
 
 on:
   issues:
