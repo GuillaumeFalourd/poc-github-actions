@@ -255,3 +255,15 @@ This workflow illustrates how to use concurrency to avoid the same workflow to r
 [![52 - Print Secret](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/52-print-secret.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/52-print-secret.yml)
 
 This workflow illustrates how to print secrets values on a workflow run. To harden the security of your github actions, have a look at [this guide](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) on the Github Official Documentation.
+
+[![53 - Concatenation](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/53-concatenation.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/53-concatenation.yml)
+
+This workflow illustrates how to concatenate `env` variables using the environment file.
+
+[![54 - Permissiom](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/54-permission.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/54-permission.yml)
+
+This workflow illustrates how to use the `permission` field at the workflow level. Giving the GITHUB_TOKEN a specific permission scope during the workflow execution.
+
+[![55 - Create Issue](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-create-issue.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-create-issue.yml) [![55 - Read Issue](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-read-issue.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-read-issue.yml)
+
+These workflows illustrate how to **create** and **read** an issue body variable according to a specific [issue template](https://github.com/GuillaumeFalourd/poc-github-actions/blob/main/.github/ISSUE_TEMPLATE_DEPLOYMENT.md).
