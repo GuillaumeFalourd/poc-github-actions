@@ -24,7 +24,7 @@ jobs:
             echo ${{ inputs.test2 }}
             echo ${{ github.event_name }}
 
-  job2: # will only run on dispatch event, if test1 input is true
+  job2: # will only run on a workflow_dispatch event, if test1 input is true
     runs-on: ubuntu-latest
     if: ${{ inputs.test1 }}
     steps:
@@ -33,7 +33,7 @@ jobs:
             echo ${{ inputs.test2 }}
             echo ${{ github.event_name }}
 
-  job3: # will only run on dispatch event, if test2 input is true
+  job3: # will only run on a workflow_dispatch event, if test2 input is true
     runs-on: ubuntu-latest
     if: ${{ inputs.test2 }}
     steps:
@@ -42,7 +42,7 @@ jobs:
             echo ${{ inputs.test2 }}
             echo ${{ github.event_name }}
 
-  job4: # will only run on push event
+  job4: # will only run on a push event
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
@@ -51,7 +51,7 @@ jobs:
             echo ${{ inputs.test2 }}
             echo ${{ github.event_name }}
 
-  job5: # will only run on push event or if inputs.test2 is true
+  job5: # will only run on a push event OR if inputs.test2 is true on a workflow_dispatch event
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' || inputs.test2 }}
     steps:
