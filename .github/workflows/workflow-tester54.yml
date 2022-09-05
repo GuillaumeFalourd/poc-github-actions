@@ -1,0 +1,23 @@
+name: Test 54 #Related to SO https://stackoverflow.com/questions/73611201/how-to-get-inputs-in-github-yml
+
+on:
+  workflow_dispatch:
+    inputs:
+       test1:
+         description: test1
+         required: true
+         default: false
+         type: boolean
+       test2:
+         description: test2 
+         required: true
+         default: true
+         type: boolean
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
