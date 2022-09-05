@@ -5,12 +5,12 @@ on:
     inputs:
        test1:
          description: test1
-         required: true
+         required: false
          default: false
          type: boolean
        test2:
          description: test2 
-         required: true
+         required: false
          default: true
          type: boolean
 
