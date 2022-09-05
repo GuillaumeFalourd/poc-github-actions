@@ -16,7 +16,7 @@ on:
          type: boolean
 
 jobs:
-  job1:
+  job1: # will always run
     runs-on: ubuntu-latest
     steps:
         - run: |
@@ -24,7 +24,7 @@ jobs:
             echo ${{ inputs.test2 }}
             echo ${{ github.event_name }}
 
-  job2:
+  job2: # will only run on dispatch event, if test1 input is true
     runs-on: ubuntu-latest
     if: ${{ inputs.test1 }}
     steps:
@@ -33,7 +33,7 @@ jobs:
             echo ${{ inputs.test2 }}
             echo ${{ github.event_name }}
 
-  job3:
+  job3: # will only run on dispatch event, if test2 input is true
     runs-on: ubuntu-latest
     if: ${{ inputs.test2 }}
     steps:
@@ -42,9 +42,18 @@ jobs:
             echo ${{ inputs.test2 }}
             echo ${{ github.event_name }}
 
-  job4:
+  job4: # will only run on push event
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
+
+  job5: # will only run on push event or if inputs.test2 is true
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || inputs.test2 }}
     steps:
         - run: |
             echo ${{ inputs.test1 }}
