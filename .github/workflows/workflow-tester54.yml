@@ -22,6 +22,7 @@ jobs:
         - run: |
             echo ${{ inputs.test1 }}
             echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
 
   job2:
     runs-on: ubuntu-latest
@@ -30,6 +31,7 @@ jobs:
         - run: |
             echo ${{ inputs.test1 }}
             echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
 
   job3:
     runs-on: ubuntu-latest
@@ -38,3 +40,13 @@ jobs:
         - run: |
             echo ${{ inputs.test1 }}
             echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
+
+  job4:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
