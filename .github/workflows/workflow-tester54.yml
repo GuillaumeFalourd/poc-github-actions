@@ -21,3 +21,19 @@ jobs:
         - run: |
             echo ${{ inputs.test1 }}
             echo ${{ inputs.test2 }}
+
+  job2:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.test1 }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+
+  job3:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.test2 }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
