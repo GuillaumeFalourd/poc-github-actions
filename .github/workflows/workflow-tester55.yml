@@ -13,9 +13,6 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub Event
-        run: echo ${{ github.event }}
-
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
