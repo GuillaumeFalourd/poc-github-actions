@@ -116,6 +116,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Debug](https://github.com/marketplace/actions/debug-action): GitHub action to print the environment variables and the event payload. Useful for developing or debugging GitHub Actions.
 
+[![Delete Artifacts](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml)
+
+[Delete Artifacts](https://github.com/marketplace/actions/delete-artifact): GitHub Action to delete artifacts within a workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
+
 [![Enforce PR labels](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml)
 
 [Enforce PR labels](https://github.com/marketplace/actions/enforce-pr-labels): GitHub action to enforce assigning labels before merging PR's. Useful for generating automatic changelog and release notes with `github-release-notes`.
