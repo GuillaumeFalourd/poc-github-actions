@@ -267,3 +267,7 @@ This workflow illustrates how to use the `permission` field at the workflow leve
 [![55 - Create Issue](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-create-issue.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-create-issue.yml) [![55 - Read Issue](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-read-issue.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-read-issue.yml)
 
 These workflows illustrate how to **create** and **read** an issue body variable according to a specific [issue template](https://github.com/GuillaumeFalourd/poc-github-actions/blob/main/.github/ISSUE_TEMPLATE_DEPLOYMENT.md).
+
+[![57 - Reusable outputs](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/57-reusable-outputs.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/57-reusable-outputs.yml)
+
+This workflow illustrate how to use **outputs** with reusable workflows.
