@@ -1,4 +1,4 @@
-name: Call a reusable workflow and use its outputs
+name: 57 - Reusable outputs
 
 on:
   workflow_dispatch:
