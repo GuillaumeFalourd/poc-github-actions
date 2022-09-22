@@ -270,4 +270,8 @@ These workflows illustrate how to **create** and **read** an issue body variable
 
 [![57 - Reusable outputs](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/57-reusable-outputs.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/57-reusable-outputs.yml)
 
-This workflow illustrate how to use **outputs** with reusable workflows.
+This workflow illustrates how to use **outputs** with reusable workflows.
+
+[![58 - Env Expressions](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/58-env-expressions.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/58-env-expressions.yml)
+
+This workflows illustrates how to use **expressions** when setting env variables ath the workflow level, according to the trigger event.
