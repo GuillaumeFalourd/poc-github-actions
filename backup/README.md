@@ -146,7 +146,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![GHAction Github Status](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml)
 
-[GHAction Github Status](https://github.com/marketplace/actions/github-status): GitHub Action to check [GitHub Status](https://www.githubstatus.com/) in workflows.
+[GHAction Github Status](https://github.com/marketplace/actions/github-status): GitHub Action to check [GitHub Status](https://www.githubstatus.com/) in workflows, allowinf to trigger error if GitHub services are down.
 
 [![Git Auto Commit](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml)
 
