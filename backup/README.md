@@ -240,6 +240,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 ## 🐳 Docker Actions
 
+[![GHAction Container Scan](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-container-scan.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-container-scan.yml)
+
+[GHAction Container Scan](https://github.com/marketplace/actions/container-scan): GitHub Action to check for vulnerabilities in a container image with [Trivy](https://github.com/aquasecurity/trivy).
+
 [![Hadolint](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/hadolint.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/hadolint.yml)
 
 [Hadolint](https://github.com/burdzwastaken/hadolint-action): Github Action to run Hadolint and reports violations given a Dockerfile within a repository on a pull request.
