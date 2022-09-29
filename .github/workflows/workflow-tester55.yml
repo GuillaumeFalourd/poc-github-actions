@@ -4,13 +4,16 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
 
+# opened: when the PR is opened
+# reopened: when the PR is reopened
+# synchronize: when the PR description or files are edited
+# edited: when editing the title
+
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub Event
-        run: echo ${{ github.event }}
-
+      - run: echo "GITHUB ACTION:" ${{ github.event.action }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
@@ -18,7 +21,7 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.edited == true
+    if: github.event.action == 'edited'
     steps:
       - run: |
           echo "Pull Request EDITED"
@@ -26,7 +29,7 @@ jobs:
 
   job3:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.edited != true
+    if: github.event.action != 'edited'
     steps:
       - run: |
           echo "Pull Request NOT EDITED"
