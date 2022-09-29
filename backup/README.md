@@ -142,7 +142,11 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![GHAction Dump Context](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-dump-context.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-dump-context.yml)
 
-[Git Auto Commit](https://github.com/marketplace/actions/dump-context): GitHub Action to dump context of your workflow (which allows to check all variables available using the `github.event` syntax in the workflow).
+[GHAction Dump Context](https://github.com/marketplace/actions/dump-context): GitHub Action to dump context of your workflow (which allows to check all variables available using the `github.event` syntax in the workflow).
+
+[![GHAction Github Status](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml)
+
+[GHAction Github Status](https://github.com/marketplace/actions/github-status): GitHub Action to check [GitHub Status](https://www.githubstatus.com/) in workflows.
 
 [![Git Auto Commit](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml)
 
