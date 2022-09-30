@@ -1,33 +1,25 @@
-name: Test 55 #Related to SO https://stackoverflow.com/questions/73643836/prevent-a-job-in-github-action-workflow-file-to-run-in-case-of-an-event
+name: Test 56 #Related to SO https://stackoverflow.com/questions/73727910/invalid-workflow-file-github-actions-cf-cli
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, edited]
+  push:
+    branches:
+    - main
 
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub Event
-        run: echo ${{ github.event }}
+  build:
+    runs-on: ubuntu-18.04
+    # Build your app here
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-  job2:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.edited == true
+  deploy:
+    runs-on: ubuntu-18.04
+    needs: build
+    
     steps:
-      - run: |
-          echo "Pull Request EDITED"
-          echo ${{ github.event }}
-
-  job3:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.edited != true
-    steps:
-      - run: |
-          echo "Pull Request NOT EDITED"
-          echo ${{ github.event }}
+    - uses: citizen-of-planet-earth/cf-cli-action@master
+      with:
+        cf_api: https://api.my-cloud-foundry.com
+        cf_username: ${{ secrets.CF_USER }}
+        cf_password: ${{ secrets.CF_PASSWORD }}
+        cf_org: AwesomeApp
+        cf_space: Development
+        command: push -f manifest-dev.yml
