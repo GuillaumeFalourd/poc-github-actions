@@ -140,6 +140,14 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Get Workflow Origin](https://github.com/potiuk/get-workflow-origin): Github Action to provide information about the pull requests that triggered the workflow for the `pull_request` and `pull_request_review` events or for the `workflow_run` event that is triggered by one of those events.
 
+[![GHAction Dump Context](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-dump-context.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-dump-context.yml)
+
+[GHAction Dump Context](https://github.com/marketplace/actions/dump-context): GitHub Action to dump context of your workflow (which allows to check all variables available using the `github.event` syntax in the workflow).
+
+[![GHAction Github Status](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml)
+
+[GHAction Github Status](https://github.com/marketplace/actions/github-status): GitHub Action to check [GitHub Status](https://www.githubstatus.com/) in workflows, allowinf to trigger error if GitHub services are down.
+
 [![Git Auto Commit](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml)
 
 [Git Auto Commit](https://github.com/marketplace/actions/git-auto-commit): GitHub Action to detect changed files during a Workflow run and to commit and push them back to the GitHub repository. By default, the commit is made in the name of "GitHub Actions" and co-authored by the user that made the last commit.
@@ -231,6 +239,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 ***
 
 ## 🐳 Docker Actions
+
+[![GHAction Container Scan](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-container-scan.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-container-scan.yml)
+
+[GHAction Container Scan](https://github.com/marketplace/actions/container-scan): GitHub Action to check for vulnerabilities in a container image with [Trivy](https://github.com/aquasecurity/trivy).
 
 [![Hadolint](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/hadolint.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/hadolint.yml)
 
