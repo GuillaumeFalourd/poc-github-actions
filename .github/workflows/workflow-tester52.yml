@@ -28,7 +28,7 @@ jobs:
           DEV_SERVERS: '["products", "pull_request"]'
 
   call_reusable:
-    if: ${{contains(fromJson('["products", "pull_request"]'), $SERVICE_NAME)}}
+    if: ${{contains(fromJson('["products", "pull_request"]'), 'productss')}}
     needs:
       - print
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
