@@ -1,7 +1,6 @@
 name: Test 52 #Related to SO https://stackoverflow.com/questions/73305126/passing-variable-inputs-to-a-resuable-workflow
 
 on:
-  push:
   workflow_dispatch:
 
 env:
@@ -25,7 +24,7 @@ jobs:
           echo "::set-output name=another_var::$ANOTHER_VAR"
 
   call_reusable:
-    if: ${{contains('abc', 'products')}}
+    if: ${{contains(fromJson('["push", "pull_request"]'), 'products')}}
     needs:
       - print
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
