@@ -1,7 +1,7 @@
 name: 42 - Download Release Private Repo
 
 # Controls when the workflow will run
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
   get-asset:

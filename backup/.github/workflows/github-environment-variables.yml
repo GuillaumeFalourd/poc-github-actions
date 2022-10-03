@@ -1,6 +1,6 @@
 name: Github Environment Variables
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   linux:
@@ -48,7 +48,7 @@ jobs:
           echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
           echo "GITHUB_WORKFLOW=$GITHUB_WORKFLOW"
           echo "GITHUB_ACTION=$GITHUB_ACTION"
-  
+
   windows:
     runs-on: windows-latest
     steps:
@@ -94,7 +94,7 @@ jobs:
           echo "GITHUB_RUN_NUMBER=$Env:GITHUB_RUN_NUMBER"
           echo "GITHUB_WORKFLOW=$Env:GITHUB_WORKFLOW"
           echo "GITHUB_ACTION=$Env:GITHUB_ACTION"
-  
+
   macos:
     runs-on: macos-latest
     steps:

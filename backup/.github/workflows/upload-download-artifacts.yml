@@ -1,10 +1,8 @@
 name: Upload & Download Artifacts
 
-on: [push, workflow_dispatch]
-
+on: [workflow_dispatch]
 
 jobs:
-
   job_1:
     name: Add 3 and 7
     runs-on: ubuntu-latest

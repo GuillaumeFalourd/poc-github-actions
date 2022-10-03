@@ -1,6 +1,6 @@
 name: Create JSON
 
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
   build:
@@ -11,6 +11,6 @@ jobs:
       - name: create-json
         uses: jsdaniell/create-json@1.1.2
         with:
-          name: "file.json"
+          name: 'file.json'
           json: '{"appId":"foofoo", "secret_token":"${{ secrets.SECRET_TEST }}"}'
       - run: cat file.json
