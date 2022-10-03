@@ -20,10 +20,12 @@ jobs:
       - name: Print inputs passed to the reusable workflow
         id: step1
         run: |
-          echo "some var: $SOME_VAR"
-          echo "::set-output name=some_var::$SOME_VAR"
-          echo "another var: $ANOTHER_VAR"
-          echo "::set-output name=another_var::$ANOTHER_VAR"
+          for server in ${{ env.DEV_SERVERS }};
+          do
+            echo "$(dirname ${server})"
+          done
+        env:
+          DEV_SERVERS: '["products", "pull_request"]'
 
   call_reusable:
     if: ${{contains(fromJson('["products", "pull_request"]'), $SERVICE_NAME)}}
