@@ -22,7 +22,7 @@ jobs:
         run: |
           for server in ${{ env.DEV_SERVERS }};
           do
-             echo "${{ server }}"
+             echo '"${{ server }}"'
           done
         env:
           DEV_SERVERS: '["products", "pull_request"]'
