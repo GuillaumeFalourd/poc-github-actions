@@ -1,9 +1,10 @@
 name: 28 - Create Pull Request
 
 on:
-  push:
-    branches:
-      - feature/*
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - feature/*
 
 jobs:
   create-pull-request:
@@ -17,7 +18,7 @@ jobs:
         id: open-pr
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: "main"
-          pr_title: "[example] test_create_pull_request"
-          pr_body: "test body."
+          destination_branch: 'main'
+          pr_title: '[example] test_create_pull_request'
+          pr_body: 'test body.'
           github_token: ${{ secrets.GITHUB_TOKEN }}

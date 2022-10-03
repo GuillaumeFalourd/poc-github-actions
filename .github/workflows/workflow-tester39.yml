@@ -1,7 +1,8 @@
 name: Test 39 # Related to https://stackoverflow.com/questions/72613951/in-a-github-action-can-i-extract-a-recurring-variable-or-condition
 
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 env:
   BRANCH: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/features/lrd') }}
@@ -14,7 +15,7 @@ jobs:
         if: ${{ env.BRANCH }}
         run: echo ${{ env.BRANCH }}
 
-  # job2: 
+  # job2:
   #   runs-on: ubuntu-latest
   #   if: ${{ env.BRANCH }} # Won't work
   #   steps:

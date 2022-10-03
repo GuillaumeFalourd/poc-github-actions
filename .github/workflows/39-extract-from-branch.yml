@@ -1,8 +1,9 @@
 name: 39 - Extract from branch
 
 on:
-  push:
-    branches: [release-*]
+  workflow_dispatch:
+  # push:
+  #   branches: [release-*]
 
 jobs:
   call-release-prod:

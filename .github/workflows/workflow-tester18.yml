@@ -2,7 +2,7 @@ name: Test 18 #https://stackoverflow.com/questions/70326569/github-workflow-how-
 
 on:
   workflow_dispatch:
-  push:
+  #push:
 
 jobs:
   setup-job:

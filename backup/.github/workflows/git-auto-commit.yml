@@ -1,9 +1,9 @@
 name: Git Auto Commit
 
 on:
-  push:
-    branches:
-    - main
+  # push:
+  #   branches:
+  #   - main
   workflow_dispatch:
 
 jobs:
@@ -74,6 +74,6 @@ jobs:
           # Optional. Skip internal call to `git fetch`
           skip_fetch: true
 
-          # Optional. Prevents the shell from expanding filenames. 
+          # Optional. Prevents the shell from expanding filenames.
           # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
           disable_globbing: true

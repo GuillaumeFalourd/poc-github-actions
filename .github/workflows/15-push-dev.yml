@@ -1,9 +1,10 @@
 name: 15 - Push Dev
 
 on:
-  push:
-    branches:
-    - 'dev'
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #   - 'dev'
 
 jobs:
   build:
@@ -14,7 +15,7 @@ jobs:
         run: |
           echo "Hello World"
           echo "This workflow only runs for push to the dev branch"
-          
+
   test:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/dev' }}

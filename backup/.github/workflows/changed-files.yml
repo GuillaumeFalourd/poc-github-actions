@@ -1,21 +1,21 @@
 name: Changed Files
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   pull_request:
     branches:
       - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # windows-latest | macos-latest
+    runs-on: ubuntu-latest # windows-latest | macos-latest
     name: Test changed-files
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
 
       - name: Get changed files
         id: changed-files

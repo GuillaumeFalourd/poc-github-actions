@@ -1,7 +1,8 @@
 name: 48 - Trigger reusables
 
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 jobs:
   workflow-1:

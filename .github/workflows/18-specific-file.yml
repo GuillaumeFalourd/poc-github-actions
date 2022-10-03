@@ -1,10 +1,11 @@
 name: 18 - Specific File
 
 on:
-  push:
-    paths:
-      - '**/report.txt'
-      - '**/README.md'
+  workflow_dispatch:
+  # push:
+  #   paths:
+  #     - '**/report.txt'
+  #     - '**/README.md'
   pull_request:
     paths:
       - '**/report.txt'

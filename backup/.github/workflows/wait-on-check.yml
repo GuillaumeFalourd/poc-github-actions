@@ -1,7 +1,8 @@
 name: Wait on Check
 
-on: 
-  push:
+on:
+  workflow_dispatch:
+  #push:
 
 jobs:
   wait-on-check:
@@ -21,5 +22,5 @@ jobs:
     needs:
       - wait-on-check
     runs-on: ubuntu-latest
-    steps:      
+    steps:
       - run: echo "Will run after other workflows or jobs finished."

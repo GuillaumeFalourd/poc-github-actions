@@ -1,9 +1,10 @@
 name: 26 - Create release branch on another repo
 
 on:
-  push:
-    tags:
-      - '*.*.*'
+  workflow_dispatch:
+  # push:
+  #   tags:
+  #     - '*.*.*'
 
 jobs:
   # release-git-commands:

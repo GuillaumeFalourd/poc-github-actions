@@ -1,7 +1,8 @@
 name: 46 - Print Env
 
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 jobs:
   github-actions-environment-variables-ubuntu:

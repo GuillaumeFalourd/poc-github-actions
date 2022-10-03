@@ -1,6 +1,6 @@
 name: 38 - Get PR Number on PUSH event
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   push:

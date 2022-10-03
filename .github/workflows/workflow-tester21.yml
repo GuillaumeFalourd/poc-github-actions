@@ -2,7 +2,7 @@ name: Test 21
 
 on:
   workflow_dispatch:
-  push:
+  #push:
 
 jobs:
   rpm:

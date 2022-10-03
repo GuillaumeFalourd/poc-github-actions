@@ -1,7 +1,7 @@
 name: 35 - Github Config
 
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
@@ -25,5 +25,3 @@ jobs:
       #     git add .
       #     git commit -m "Update checkout workflow file"
       #     git push
-
-

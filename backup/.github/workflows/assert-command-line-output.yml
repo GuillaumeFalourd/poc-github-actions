@@ -1,12 +1,11 @@
 name: Assert Command Line Output
 
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
-
-# On UBUNTU runners
+  # On UBUNTU runners
   PASSED-assert-file-ubuntu:
     runs-on: ubuntu-latest
     steps:
@@ -69,7 +68,7 @@ jobs:
           contains: error
           expected_result: FAILED
 
-# On MACOS runners
+  # On MACOS runners
   PASSED-assert-file-macos:
     runs-on: macos-latest
     steps:
@@ -132,7 +131,7 @@ jobs:
           contains: error
           expected_result: FAILED
 
-# On WINDOWS runners
+  # On WINDOWS runners
   PASSED-assert-file-windows:
     runs-on: windows-latest
     steps:

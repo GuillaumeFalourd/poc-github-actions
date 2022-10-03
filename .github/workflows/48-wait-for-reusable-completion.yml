@@ -1,7 +1,8 @@
 name: 48 - Wait for Completion
 
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 jobs:
   wait-job-reusable-1:
