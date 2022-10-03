@@ -6,13 +6,14 @@ on:
 env:
   SOME_VAR: bla_bla_bla
   ANOTHER_VAR: stuff_stuff
+  SERVICE_NAME: service
 
 jobs:
   print:
     runs-on: ubuntu-latest
     outputs:
       some_var: ${{ steps.step1.outputs.some_var }}
-      another_var: ${{ steps.step1.outputs.another_var }}   
+      another_var: ${{ steps.step1.outputs.another_var }}
     steps:
       - name: Print inputs passed to the reusable workflow
         id: step1
@@ -21,8 +22,9 @@ jobs:
           echo "::set-output name=some_var::$SOME_VAR"
           echo "another var: $ANOTHER_VAR"
           echo "::set-output name=another_var::$ANOTHER_VAR"
-  
+
   call_reusable:
+    if: contains(fromJSON('["products"]'), env.SERVICE_NAME)
     needs:
       - print
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
