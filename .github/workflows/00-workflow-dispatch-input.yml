@@ -1,4 +1,4 @@
-name: 00 - Workflow Dispatch
+name: 00 - Workflow Dispatchs
 
 on:
   workflow_dispatch:
