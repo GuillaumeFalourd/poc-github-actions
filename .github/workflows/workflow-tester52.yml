@@ -7,7 +7,7 @@ on:
 env:
   SOME_VAR: bla_bla_bla
   ANOTHER_VAR: stuff_stuff
-  SERVICE_NAME: service
+  SERVICE_NAME: products
 
 jobs:
   print:
@@ -15,6 +15,7 @@ jobs:
     outputs:
       some_var: ${{ steps.step1.outputs.some_var }}
       another_var: ${{ steps.step1.outputs.another_var }}
+      service: products
     steps:
       - name: Print inputs passed to the reusable workflow
         id: step1
@@ -25,7 +26,7 @@ jobs:
           echo "::set-output name=another_var::$ANOTHER_VAR"
 
   call_reusable:
-    if: ${{contains(fromJson('["push", "pull_request"]'), 'pushs')}}
+    if: ${{contains(fromJson('["push", "pull_request"]'), ${{ needs.print.outputs.service }})}}
     needs:
       - print
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
