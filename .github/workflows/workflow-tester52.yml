@@ -22,13 +22,13 @@ jobs:
         run: |
           for server in ${{ env.DEV_SERVERS }};
           do
-             echo '"${{ server }}"'
+            echo "$(dirname ${server})"
           done
         env:
           DEV_SERVERS: '["products", "pull_request"]'
 
   call_reusable:
-    if: ${{contains(fromJson('["products", "pull_request"]'), 'productss')}}
+    if: ${{contains(fromJson('["products", "pull_request"]'), 'products')}}
     needs:
       - print
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
