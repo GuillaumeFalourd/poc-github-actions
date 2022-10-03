@@ -5,10 +5,10 @@ inputs:
     required: false
     description: "Name"
 
-outputs:
-  random:
-    description: "Random number output"
-    value: ${{ steps.step1.outputs.random }}
+# outputs:
+#   random:
+#     description: "Random number output"
+#     value: ${{ steps.step1.outputs.random }}
 
 runs:
   using: "composite"
