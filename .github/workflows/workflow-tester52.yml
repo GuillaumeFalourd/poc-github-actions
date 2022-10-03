@@ -26,7 +26,7 @@ jobs:
           echo "::set-output name=another_var::$ANOTHER_VAR"
 
   call_reusable:
-    if: ${{contains(fromJson('["products", "pull_request"]'), env.SERVICE_NAME)}}
+    if: ${{contains(fromJson('["products", "pull_request"]'), $SERVICE_NAME)}}
     needs:
       - print
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
