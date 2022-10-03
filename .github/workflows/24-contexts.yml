@@ -1,6 +1,6 @@
 name: 24 - Github Context
 
-on: [workflow_dispatch, push, pull_request, issues, deployment_status]
+on: [workflow_dispatch, pull_request, issues, deployment_status]
 
 jobs:
   github-context:
