@@ -1,6 +1,7 @@
 name: Test 52 #Related to SO https://stackoverflow.com/questions/73305126/passing-variable-inputs-to-a-resuable-workflow
 
 on:
+  push:
   workflow_dispatch:
 
 env:
