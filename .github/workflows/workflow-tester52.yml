@@ -20,7 +20,7 @@ jobs:
       - name: Print inputs passed to the reusable workflow
         id: step1
         run: |
-          for server in ${{ env.DEV_SERVERS }};
+          for server in fromJson('["products", "pull_request"]');
           do
             echo "$(dirname ${server})"
           done
