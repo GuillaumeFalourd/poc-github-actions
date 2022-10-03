@@ -15,7 +15,7 @@ jobs:
     outputs:
       some_var: ${{ steps.step1.outputs.some_var }}
       another_var: ${{ steps.step1.outputs.another_var }}
-      service: push
+      service: products
     steps:
       - name: Print inputs passed to the reusable workflow
         id: step1
