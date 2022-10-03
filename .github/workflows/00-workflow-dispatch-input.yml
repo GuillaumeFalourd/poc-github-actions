@@ -1,12 +1,12 @@
-name: 00 - Workflow Dispatchs
+name: 00 - Workflow Dispatch
 
 on:
   workflow_dispatch:
     inputs:
       input:
-        description: "Test"
+        description: 'Test'
         required: false
-        default: "World"
+        default: 'World'
 
 jobs:
   job1:
