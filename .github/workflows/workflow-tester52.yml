@@ -11,21 +11,19 @@ env:
 
 jobs:
   print:
+    strategy:
+      matrix:
+        dev: [test2, test3]
+        staging: [test4, test5]
     runs-on: ubuntu-latest
     outputs:
       some_var: ${{ steps.step1.outputs.some_var }}
       another_var: ${{ steps.step1.outputs.another_var }}
       service: products
     steps:
-      - name: Print inputs passed to the reusable workflow
-        id: step1
-        run: |
-          for server in ${{ env.DEV_SERVERS }};
-          do
-            echo $server
-          done
-        env:
-          DEV_SERVERS: '["products", "pull_request"]'
+      - run: |
+          echo ${{ matrix.dev }}
+          python --version
 
   call_reusable:
     if: ${{contains(fromJson('["products", "pull_request"]'), 'products')}}
