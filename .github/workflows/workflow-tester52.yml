@@ -31,7 +31,6 @@ jobs:
         run: |
           echo ${{ env.STAGE }}
           python --version
-        if: ${{ matrix.stage == 'dev'}}
         env:
           STAGE: ${{  matrix.stage == 'dev' && 'dev' || 'prod' }}
 
