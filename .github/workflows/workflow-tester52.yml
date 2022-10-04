@@ -28,10 +28,10 @@ jobs:
       service: products
     steps:
       - name: Run matrix
-        if: ${{ matrix.stage == 'dev'}}
         run: |
           echo ${{ matrix.server }}
           python --version
+        if: ${{ matrix.stage == 'dev'}}
 
   call_reusable:
     if: ${{contains(fromJson('["products", "pull_request"]'), 'products')}}
