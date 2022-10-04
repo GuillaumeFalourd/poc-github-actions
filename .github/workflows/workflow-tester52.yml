@@ -11,6 +11,7 @@ env:
 
 jobs:
   print:
+    name: xyx
     strategy:
       matrix:
         include:
@@ -26,7 +27,8 @@ jobs:
       another_var: ${{ steps.step1.outputs.another_var }}
       service: products
     steps:
-      - if: ${{ matrix.stage == 'dev'}}
+      - name: Run matrix
+        if: ${{ matrix.stage == 'dev'}}
         run: |
           echo ${{ matrix.server }}
           python --version
