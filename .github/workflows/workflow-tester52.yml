@@ -17,6 +17,8 @@ jobs:
         include:
           - server: test2
             stage: dev
+          - server: test4
+            stage: dev
           - server: test3
             stage: staging
     runs-on: ubuntu-latest
