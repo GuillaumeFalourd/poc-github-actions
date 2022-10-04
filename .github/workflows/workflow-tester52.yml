@@ -21,6 +21,7 @@ jobs:
       another_var: ${{ steps.step1.outputs.another_var }}
       service: products
     steps:
+      - if: ${{ matrix.dev}}
       - run: |
           echo ${{ matrix.dev }}
           python --version
