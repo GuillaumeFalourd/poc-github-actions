@@ -43,4 +43,3 @@ jobs:
     with:
       input_var: ${{ needs.print.outputs.some_var }}
       another_input_var: ${{ needs.print.outputs.another_var }}
-      STAGE: ${{ github.ref == 'refs/heads/master' && 'prod' || 'dev' }}
