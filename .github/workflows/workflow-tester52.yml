@@ -22,7 +22,7 @@ jobs:
       service: products
     steps:
       - if: ${{ matrix.dev}}
-      - run: |
+        run: |
           echo ${{ matrix.dev }}
           python --version
 
