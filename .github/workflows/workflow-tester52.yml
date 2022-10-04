@@ -27,7 +27,7 @@ jobs:
     steps:
       - if: ${{ matrix.dev}}
         run: |
-          echo ${{ matrix.dev }}
+          echo ${{ matrix.server }}
           python --version
 
   call_reusable:
