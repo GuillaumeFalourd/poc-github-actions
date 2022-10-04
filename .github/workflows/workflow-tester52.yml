@@ -13,8 +13,12 @@ jobs:
   print:
     strategy:
       matrix:
-        dev: [test2, test3]
-        staging: [test4, test5]
+        stage: [dev, staging, production]
+        include:
+          - server: test2
+            stage: dev
+          - server: test3
+            stage: staging
     runs-on: ubuntu-latest
     outputs:
       some_var: ${{ steps.step1.outputs.some_var }}
