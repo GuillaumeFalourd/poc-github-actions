@@ -30,9 +30,11 @@ jobs:
     steps:
       - name: Run matrix
         run: |
-          echo ${{ matrix.server }}
+          echo ${{ env.STAGE }}
           python --version
         if: ${{ matrix.stage == 'dev'}}
+        env:
+          STAGE: ${{  matrix.stage == 'dev' && 'dev' || 'prod' }}
 
   call_reusable:
     if: ${{contains(fromJson('["products", "pull_request"]'), 'products')}}
@@ -42,3 +44,4 @@ jobs:
     with:
       input_var: ${{ needs.print.outputs.some_var }}
       another_input_var: ${{ needs.print.outputs.another_var }}
+      STAGE: ${{ github.ref == 'refs/heads/master' && 'prod' || 'dev' }}
