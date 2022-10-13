@@ -2,6 +2,11 @@ name: Test 59 # Related to https://stackoverflow.com/questions/74057478/github-a
 
 on:
   workflow_dispatch:
+    inputs:
+      input:
+        description: "test"
+        required: false
+        default: "test"
   push:
 
 concurrency:
@@ -24,6 +29,29 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: test
+    env:
+       REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+    steps:
+      - name: Show repo env secret
+        run: |
+          echo ${{ env.REPO_ENV_SECRET }}
+          echo ${{ secrets.REPO_ENV_SECRET }}
+
+  job3:
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ inputs.input }}
+    env:
+       REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+    steps:
+      - name: Show repo env secret
+        run: |
+          echo ${{ env.REPO_ENV_SECRET }}
+          echo ${{ secrets.REPO_ENV_SECRET }}
+
+  job4:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.input }}
     env:
        REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
     steps:
