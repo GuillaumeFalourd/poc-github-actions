@@ -1,0 +1,33 @@
+name: Test 59 # Related to https://stackoverflow.com/questions/74057478/github-action-secrets-environnment-cant-be-retreived
+
+on:
+  workflow_dispatch:
+  push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+jobs:  
+  job1:
+    runs-on: ubuntu-latest
+    environment: test
+    env:
+       REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+    steps:
+      - name: Show repo env secret
+        run: |
+          echo ${{ env.REPO_ENV_SECRET }}
+          echo ${{ secrets.REPO_ENV_SECRET }}
+
+  job2:
+    runs-on: ubuntu-latest
+    environment: 
+      name: test
+    env:
+       REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+    steps:
+      - name: Show repo env secret
+        run: |
+          echo ${{ env.REPO_ENV_SECRET }}
+          echo ${{ secrets.REPO_ENV_SECRET }}
