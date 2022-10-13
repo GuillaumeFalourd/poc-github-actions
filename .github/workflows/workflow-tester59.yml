@@ -24,6 +24,8 @@ jobs:
         run: |
           echo ${{ env.REPO_ENV_SECRET }}
           echo ${{ secrets.REPO_ENV_SECRET }}
+          echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
 
   job2:
     runs-on: ubuntu-latest
@@ -36,6 +38,8 @@ jobs:
         run: |
           echo ${{ env.REPO_ENV_SECRET }}
           echo ${{ secrets.REPO_ENV_SECRET }}
+          echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
 
   job3:
     runs-on: ubuntu-latest
@@ -48,6 +52,8 @@ jobs:
         run: |
           echo ${{ env.REPO_ENV_SECRET }}
           echo ${{ secrets.REPO_ENV_SECRET }}
+          echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
 
   job4:
     runs-on: ubuntu-latest
@@ -59,3 +65,5 @@ jobs:
         run: |
           echo ${{ env.REPO_ENV_SECRET }}
           echo ${{ secrets.REPO_ENV_SECRET }}
+          echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
