@@ -10,20 +10,20 @@ on:
         required: true
 
 jobs:
-  job1: # will always run
+  reusable-job1: # will always run
     runs-on: ubuntu-latest
     steps:
         - run: |
             echo ${{ inputs.stg_image_build }}
 
-  job2: # will only run on a workflow_dispatch event, if stg_image_build input is true
+  reusable-job2: # will only run on a workflow_dispatch event, if stg_image_build input is true
     runs-on: ubuntu-latest
     if: ${{ inputs.stg_image_build }}
     steps:
         - run: |
             echo ${{ inputs.stg_image_build }}
 
-  job3: # will only run on a workflow_dispatch event, if stg_image_build input is false
+  reusable-job3: # will only run on a workflow_dispatch event, if stg_image_build input is false
     runs-on: ubuntu-latest
     if: ${{ ! inputs.stg_image_build }}
     steps:
