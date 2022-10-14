@@ -1,0 +1,31 @@
+name: Test 62
+
+on:
+  workflow_call:
+    inputs:
+      push_to_stg:
+        description: "Build and push image to staging registry"
+        type: boolean
+        default: false
+        required: true
+
+jobs:
+  job1: # will always run
+    runs-on: ubuntu-latest
+    steps:
+        - run: |
+            echo ${{ inputs.push_to_stg }}
+
+  job2: # will only run on a workflow_dispatch event, if push_to_stg input is true
+    runs-on: ubuntu-latest
+    if: ${{ inputs.push_to_stg }}
+    steps:
+        - run: |
+            echo ${{ inputs.push_to_stg }}
+
+  job3: # will only run on a workflow_dispatch event, if push_to_stg input is false
+    runs-on: ubuntu-latest
+    if: ${{ ! inputs.push_to_stg }}
+    steps:
+        - run: |
+            echo ${{ inputs.push_to_stg }}
