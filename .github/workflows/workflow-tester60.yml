@@ -1,0 +1,34 @@
+name: Test 60 # Related to https://stackoverflow.com/questions/74072206/github-actions-use-variables-in-matrix-definition
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  ZEROCOPY_MSRV: 1.61.0
+  ZEROCOPY_CURRENT_STABLE: 1.64.0
+  ZEROCOPY_CURRENT_NIGHTLY: nightly-2022-09-26
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # See `INTERNAL.md` for an explanation of these pinned toolchain
+        # versions.
+        channel: [ "${{ env.ZEROCOPY_MSRV }}", "${{ env.ZEROCOPY_CURRENT_STABLE }}", "${{ env.ZEROCOPY_CURRENT_NIGHTLY }}" ]
+        target: [ "i686-unknown-linux-gnu", "x86_64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "aarch64-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "powerpc64-unknown-linux-gnu", "wasm32-wasi" ]
+        features: [ "" , "alloc,simd", "alloc,simd,simd-nightly" ]
+        exclude:
+          # Exclude any combination which uses a non-nightly toolchain but
+          # enables nightly features.
+          - channel: ${{ env.ZEROCOPY_MSRV }}
+            features: "alloc,simd,simd-nightly"
+          - channel: ${{ env.ZEROCOPY_CURRENT_STABLE }}
+            features: "alloc,simd,simd-nightly"
+    steps:
+      - run: |
+          echo ${{ matrix.channel }}
+          echo ${{ matrix.target }}
+          echo ${{ matrix.features }}
