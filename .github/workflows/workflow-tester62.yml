@@ -1,9 +1,9 @@
-name: Test 62
+name: Test 62 reusable # Related to https://stackoverflow.com/questions/74074371/boolean-input-not-passed-correctly-to-reusable-workflow
 
 on:
   workflow_call:
     inputs:
-      push_to_stg:
+      stg_image_build:
         description: "Build and push image to staging registry"
         type: boolean
         default: false
@@ -14,18 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - run: |
-            echo ${{ inputs.push_to_stg }}
+            echo ${{ inputs.stg_image_build }}
 
-  job2: # will only run on a workflow_dispatch event, if push_to_stg input is true
+  job2: # will only run on a workflow_dispatch event, if stg_image_build input is true
     runs-on: ubuntu-latest
-    if: ${{ inputs.push_to_stg }}
+    if: ${{ inputs.stg_image_build }}
     steps:
         - run: |
-            echo ${{ inputs.push_to_stg }}
+            echo ${{ inputs.stg_image_build }}
 
-  job3: # will only run on a workflow_dispatch event, if push_to_stg input is false
+  job3: # will only run on a workflow_dispatch event, if stg_image_build input is false
     runs-on: ubuntu-latest
-    if: ${{ ! inputs.push_to_stg }}
+    if: ${{ ! inputs.stg_image_build }}
     steps:
         - run: |
-            echo ${{ inputs.push_to_stg }}
+            echo ${{ inputs.stg_image_build }}
