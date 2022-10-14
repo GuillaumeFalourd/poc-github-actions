@@ -3,6 +3,19 @@ name: Test 60 # Related to https://stackoverflow.com/questions/74072206/github-a
 on:
   push:
   workflow_dispatch:
+    inputs:
+      test1:
+        description: "Test1"
+        required: false
+        default: "test1"
+      test2:
+        description: "Test2"
+        required: false
+        default: "test2"
+      test3:
+        description: "Test3"
+        required: false
+        default: "test3"
 
 env:
   CARGO_TERM_COLOR: always
@@ -15,17 +28,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # See `INTERNAL.md` for an explanation of these pinned toolchain
-        # versions.
-        channel: [ "${{ env.ZEROCOPY_MSRV }}", "${{ env.ZEROCOPY_CURRENT_STABLE }}", "${{ env.ZEROCOPY_CURRENT_NIGHTLY }}" ]
+        # See `INTERNAL.md` for an explanation of these pinned toolchain versions.
+        channel: [ "${{ inputs.test1 }}", "${{ inputs.test2 }}", "${{ inputs.test3 }}" ]
         target: [ "i686-unknown-linux-gnu", "x86_64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "aarch64-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "powerpc64-unknown-linux-gnu", "wasm32-wasi" ]
         features: [ "" , "alloc,simd", "alloc,simd,simd-nightly" ]
         exclude:
-          # Exclude any combination which uses a non-nightly toolchain but
-          # enables nightly features.
-          - channel: ${{ env.ZEROCOPY_MSRV }}
+          # Exclude any combination which uses a non-nightly toolchain but enables nightly features.
+          - channel: ${{ inputs.test1 }}
             features: "alloc,simd,simd-nightly"
-          - channel: ${{ env.ZEROCOPY_CURRENT_STABLE }}
+          - channel: ${{ inputs.test2 }}
             features: "alloc,simd,simd-nightly"
     steps:
       - run: |
