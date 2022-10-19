@@ -8,7 +8,7 @@ env:
   SOME_VAR: bla_bla_bla
   ANOTHER_VAR: stuff_stuff
   SERVICE_NAME: products
-  BRANCH_NAME: '${GITHUB_BRANCH##*/}'
+  BRANCH_NAME: ${GITHUB_REF##*/}
 
 jobs:
   print:
@@ -29,9 +29,7 @@ jobs:
       service: products
     steps:
       - name: Prints the current branch name
-        run: echo "${GITHUB_BRANCH##*/}"
-        env:
-          GITHUB_BRANCH: ${{ github.ref }}
+        run: echo "${BRANCH_NAME}"
       - name: Run matrix
         run: |
           echo ${{ env.STAGE }}
