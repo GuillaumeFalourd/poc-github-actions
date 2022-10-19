@@ -21,7 +21,7 @@ jobs:
           -'${{ github.sha }}'
           EOF
           )
-          echo MESSAGE_SHA=MESSAGE >> $GITHUB_ENV
+          echo MESSAGE_SHA=$MESSAGE >> $GITHUB_ENV
 
       - name: Check env var
         run: |
