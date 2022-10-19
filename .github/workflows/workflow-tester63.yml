@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Check context var
         run: |
-          echo ${{ github.event.head_commit.message }}
-          echo ${{ github.sha }}
+          echo '${{ github.event.head_commit.message }}'
+          echo '${{ github.sha }}'
       
       - name: Setup env var
         run: |
