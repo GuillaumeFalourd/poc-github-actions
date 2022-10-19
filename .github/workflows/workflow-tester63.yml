@@ -14,7 +14,7 @@ jobs:
       
       - name: Setup env var
         run: |
-          echo MESSAGE_SHA=(${{ github.event.head_commit.message }}-${{ github.sha }}) >> $GITHUB_ENV
+          echo MESSAGE_SHA=${{ github.event.head_commit.message }}-${{ github.sha }} >> $GITHUB_ENV
 
       - name: Check env var
         run: |
