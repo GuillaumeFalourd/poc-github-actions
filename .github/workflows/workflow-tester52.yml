@@ -19,7 +19,7 @@ jobs:
             stage: dev
           # - server: test4
           #   stage: dev
-          # - server: test3
+          # - server: test34
           #   stage: staging
     runs-on: ubuntu-latest
     outputs:
