@@ -36,7 +36,7 @@ jobs:
           echo ${{ env.STAGE }}
           python --version
         env:
-          STAGE: ${{  matrix.stage == 'dev' && format('{0}/{1}.{2}', 'https://', matrix.server, '.mytools.aleno.me/graphql') 'https://'matrix.server'' || 'https://graphql.aleno.me/graphql' }}
+          STAGE: dev
 
   call_reusable:
     if: ${{contains(fromJson('["products", "pull_request"]'), 'products')}}
