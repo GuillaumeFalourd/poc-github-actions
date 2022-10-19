@@ -18,10 +18,10 @@ jobs:
         include:
           - server: test2
             stage: dev
-          - server: test4
-            stage: dev
-          - server: test3
-            stage: staging
+          # - server: test4
+          #   stage: dev
+          # - server: test3
+          #   stage: staging
     runs-on: ubuntu-latest
     outputs:
       some_var: ${{ steps.step1.outputs.some_var }}
