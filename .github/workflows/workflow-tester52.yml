@@ -8,7 +8,7 @@ env:
   SOME_VAR: bla_bla_bla
   ANOTHER_VAR: stuff_stuff
   SERVICE_NAME: products
-  BRANCH_NAME:
+  BRANCH_NAME: '${env:GITHUB_BRANCH##*/}'
 
 jobs:
   print:
@@ -28,6 +28,7 @@ jobs:
       another_var: ${{ steps.step1.outputs.another_var }}
       service: products
     steps:
+      - run: echo ${{ env.BRANCH_NAME }}
       - name: Prints the current branch name
         run: echo "${GITHUB_BRANCH##*/}"
         env:
