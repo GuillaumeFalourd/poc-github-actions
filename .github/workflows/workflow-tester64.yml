@@ -19,8 +19,12 @@ jobs:
         id: test1
         run: python new-output.py
 
-      - run: |
+      - name: Check output
+        run: |
           echo ${{steps.test1.outputs.test}}
+
+      - name: Check env
+        run: |
           echo ${{env.TEST1}}
 
   job2:

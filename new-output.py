@@ -1,5 +1,12 @@
-hello = 'hello'
+import os
 
-print(f"test={hello} >> $GITHUB_OUTPUT")
+env_file = os.getenv('GITHUB_ENV')
+output_file = os.getenv('GITHUB_OUTPUT')
 
-print(f"test={hello} >> $GITHUB_ENV")
+hello='hello'
+
+with open(env_file, "a") as myfile:
+    myfile.write(f"TEST={hello}")
+    
+with open(output_file, "a") as myfile:
+    myfile.write(f"TEST={hello}")
