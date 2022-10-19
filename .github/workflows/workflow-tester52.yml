@@ -8,6 +8,7 @@ env:
   SOME_VAR: bla_bla_bla
   ANOTHER_VAR: stuff_stuff
   SERVICE_NAME: products
+  BRANCH_NAME: '${GITHUB_BRANCH##*/}'
 
 jobs:
   print:
@@ -16,7 +17,7 @@ jobs:
       matrix:
         include:
           - server: test2
-            stage: dev
+            stage: dev1
           - server: test4
             stage: dev
           - server: test3
@@ -27,22 +28,23 @@ jobs:
       another_var: ${{ steps.step1.outputs.another_var }}
       service: products
     steps:
+      - run: echo "${GITHUB_REF_NAME}"
       - name: Prints the current branch name
         run: echo "${GITHUB_BRANCH##*/}"
         env:
           GITHUB_BRANCH: ${{ github.ref }}
-      - name: Run matrix
-        run: |
-          echo ${{ env.STAGE }}
-          python --version
-        env:
-          STAGE: dev
+      # - name: Run matrix
+      #   run: |
+      #     echo ${{ env.STAGE }}
+      #     python --version
+      #   env:
+      #     STAGE: ${{  matrix.stage == 'dev' && format('{0}{1}{2}', 'https://', matrix.server, '.mytools.aleno.me/graphql') || 'https://graphql.aleno.me/graphql' }}
 
-  call_reusable:
-    if: ${{contains(fromJson('["products", "pull_request"]'), 'products')}}
-    needs:
-      - print
-    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
-    with:
-      input_var: ${{ needs.print.outputs.some_var }}
-      another_input_var: ${{ needs.print.outputs.another_var }}
+  # call_reusable:
+  #   if: ${{contains(fromJson('["products", "pull_request"]'), 'products')}}
+  #   needs:
+  #     - print
+  #   uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
+  #   with:
+  #     input_var: ${{ needs.print.outputs.some_var }}
+  #     another_input_var: ${{ needs.print.outputs.another_var }}
