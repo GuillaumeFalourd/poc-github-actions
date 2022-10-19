@@ -16,11 +16,12 @@ jobs:
 
       - name: Setup env var
         run: |
-          MESSAGE_SHA=$(cat << EOF
-          '${{ github.event.head_commit.message }}''
-          -'${{ github.sha }}''
+          MESSAGE=$(cat << EOF
+          '${{ github.event.head_commit.message }}'
+          -'${{ github.sha }}'
           EOF
-          ) >> $GITHUB_ENV
+          )
+          echo MESSAGE_SHA=MESSAGE >> $GITHUB_ENV
 
       - name: Check env var
         run: |
