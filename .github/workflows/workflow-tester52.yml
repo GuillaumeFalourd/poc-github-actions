@@ -28,7 +28,6 @@ jobs:
       another_var: ${{ steps.step1.outputs.another_var }}
       service: products
     steps:
-      - run: echo ${{ env.BRANCH_NAME }}
       - name: Prints the current branch name
         run: echo "${GITHUB_BRANCH##*/}"
         env:
