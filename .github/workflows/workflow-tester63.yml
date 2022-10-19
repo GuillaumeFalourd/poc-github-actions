@@ -1,7 +1,8 @@
 name: Test 63 # Related to https://stackoverflow.com/questions/74117204/how-to-generate-a-new-string-by-combine-github-action-workflow-variables
 
 on:
-  push:
+  #push:
+  workflow_dispatch:
 
 jobs:
   job1:
