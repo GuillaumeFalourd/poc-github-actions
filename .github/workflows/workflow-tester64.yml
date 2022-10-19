@@ -19,4 +19,17 @@ jobs:
         id: test1
         run: python new-output.py
 
-      - run: echo ${{steps.test1.outputs.test}}
+      - run: |
+          echo ${{steps.test1.outputs.test}}
+          echo ${{env.TEST1}}
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - id: step1
+        run: echo "test=hello" >> $GITHUB_OUTPUT
+      - id: step2
+        run: echo "test=world" >> $GITHUB_OUTPUT
+      - run: |
+          echo ${{steps.step1.outputs.test}}
+          echo ${{steps.step2.outputs.test}}
