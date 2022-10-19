@@ -28,8 +28,6 @@ jobs:
       another_var: ${{ steps.step1.outputs.another_var }}
       service: products
     steps:
-      - name: Prints the current branch name
-        run: echo "${BRANCH_NAME}"
       - name: Run matrix
         run: |
           echo ${{ env.STAGE }}
