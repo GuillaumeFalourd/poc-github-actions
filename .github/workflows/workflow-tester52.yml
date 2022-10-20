@@ -3,12 +3,16 @@ name: Test 52 #Related to SO https://stackoverflow.com/questions/73305126/passin
 on:
   push:
   workflow_dispatch:
+    inputs:
+      branch-to-deploy:
+        required: true
+        description: The branch to deploy
 
 env:
   SOME_VAR: bla_bla_bla
   ANOTHER_VAR: stuff_stuff
   SERVICE_NAME: products
-  BRANCH_NAME: ${{GITHUB_REF_NAME}}
+  BRANCH_NAME: '${inputs.branch-to-deploy}'
 
 jobs:
   print:
