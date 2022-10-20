@@ -12,7 +12,7 @@ env:
   SOME_VAR: bla_bla_bla
   ANOTHER_VAR: stuff_stuff
   SERVICE_NAME: products
-  BRANCH_NAME: '${inputs.branch-to-deploy}'
+  BRANCH_NAME: ${{github.event.inputs.branch-to-deploy}}
 
 jobs:
   print:
