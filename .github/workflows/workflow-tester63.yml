@@ -27,3 +27,19 @@ jobs:
       - name: Check env var
         run: |
           echo ${{ env.MESSAGE_SHA }}
+
+# Testing same implementation for OUTPUT
+
+      - name: Setup output var
+        id: test1
+        run: |
+          MESSAGE=$(cat << EOF
+          '${{ github.event.head_commit.message }}'
+          -'${{ github.sha }}'
+          EOF
+          )
+          echo MESSAGE_SHA=$MESSAGE >> $GITHUB_OUTPUT
+
+      - name: Check env var
+        run: |
+          echo ${{steps.test1.outputs.MESSAGE_SHA}}
