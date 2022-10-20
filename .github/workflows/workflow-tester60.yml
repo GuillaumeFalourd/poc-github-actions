@@ -1,7 +1,7 @@
 name: Test 60 # Related to https://stackoverflow.com/questions/74072206/github-actions-use-variables-in-matrix-definition
 
 on:
-  push:
+  #push:
   workflow_dispatch:
     inputs:
       test1:

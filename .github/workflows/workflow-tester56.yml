@@ -1,9 +1,11 @@
 name: Test 56 #Related to SO https://stackoverflow.com/questions/73727910/invalid-workflow-file-github-actions-cf-cli
 
 on:
-  push:
-    branches:
-    - main
+  # push:
+  #   branches:
+  #   - main
+  workflow_dispatch:
+
 
 jobs:
   build:
