@@ -1,7 +1,7 @@
 name: Test 54 #Related to SO https://stackoverflow.com/questions/73611201/how-to-get-inputs-in-github-yml
 
 on:
-  push:
+  #push:
   workflow_dispatch:
     inputs:
        test1:

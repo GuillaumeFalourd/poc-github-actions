@@ -7,7 +7,7 @@ on:
         description: "test"
         required: false
         default: "test"
-  push:
+  #push:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
