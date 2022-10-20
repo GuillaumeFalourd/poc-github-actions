@@ -2,7 +2,7 @@ name: Test Install Poetry Action # Related to https://github.com/snok/install-po
 
 on:
   workflow_dispatch:
-  push:
+  #push:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

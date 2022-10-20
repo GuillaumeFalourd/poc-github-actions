@@ -1,0 +1,29 @@
+name: Test 63 # Related to https://stackoverflow.com/questions/74117204/how-to-generate-a-new-string-by-combine-github-action-workflow-variables
+
+on:
+  #push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check context var
+        run: |
+          echo '${{ github.event.head_commit.message }}'
+          echo '${{ github.sha }}'
+
+#      echo MESSAGE_SHA='${{ github.event.head_commit.message }}'-'${{ github.sha }}' >> $GITHUB_ENV
+
+      - name: Setup env var
+        run: |
+          MESSAGE=$(cat << EOF
+          '${{ github.event.head_commit.message }}'
+          -'${{ github.sha }}'
+          EOF
+          )
+          echo MESSAGE_SHA=$MESSAGE >> $GITHUB_ENV
+
+      - name: Check env var
+        run: |
+          echo ${{ env.MESSAGE_SHA }}
