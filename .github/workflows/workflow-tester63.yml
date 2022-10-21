@@ -68,7 +68,7 @@ jobs:
         id: test4
         continue-on-error: true
         #run: echo -e "TEST4=first line\n second line\n third line" >> $GITHUB_OUTPUT
-        run: sh -c 'echo -e "TEST4=first line\n second line\n third line" >> $GITHUB_OUTPUT'
+        run: sh -c 'echo -e "TEST4=first line\n second line\n third line"' >> $GITHUB_OUTPUT
 
       - name: Check output var4
         run: |
