@@ -52,7 +52,7 @@ jobs:
 
       - name: Check output var2
         run: |
-          echo ${{steps.test2.outputs.MESSAGE_SHA}}
+          echo ${{steps.test2.outputs.TEST2}}
 
       - name: Setup output var3
         id: test3
@@ -62,4 +62,13 @@ jobs:
           third line" >> $GITHUB_OUTPUT
 
       - name: Check output var3
-        run: echo ${{steps.test3.outputs.TEST1}}
+        run: echo ${{steps.test3.outputs.TEST3}}
+
+      - name: Setup output var4
+        id: test4
+        continue-on-error: true
+        run: echo -e "TEST4=first line\n second line\n third line" >> $GITHUB_OUTPUT
+
+      - name: Check output var4
+        run: |
+          echo ${{steps.test2.outputs.TEST4}}
