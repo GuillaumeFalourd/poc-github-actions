@@ -43,3 +43,23 @@ jobs:
       - name: Check output var
         run: |
           echo ${{steps.test1.outputs.MESSAGE_SHA}}
+
+# Testing other syntaxes
+
+      - name: Setup output var2
+        id: test2 
+        run: echo -e "TEST2=first line\n second line\n third line" >> $GITHUB_OUTPUT
+
+      - name: Check output var2
+        run: |
+          echo ${{steps.test2.outputs.MESSAGE_SHA}}
+
+      - name: Setup output var3
+        id: test3
+        run: |
+          echo "TEST3=first line \
+          second line \
+          third line" >> $GITHUB_OUTPUT
+
+      - name: Check output var3
+        run: echo ${{steps.test3.outputs.TEST1}}
