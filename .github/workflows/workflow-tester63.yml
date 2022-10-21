@@ -71,4 +71,4 @@ jobs:
 
       - name: Check output var4
         run: |
-          echo ${{steps.test2.outputs.TEST4}}
+          echo ${{steps.test4.outputs.TEST4}}
