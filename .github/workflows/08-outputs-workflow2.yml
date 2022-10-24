@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: step-1
         id: xyz
-        run: echo "ip-address::$(curl -s ifconfig.me)" >> $GITHUB_OUTPUT
+        run: echo "ip-address=$(curl -s ifconfig.me)" >> $GITHUB_OUTPUT
       - name: step-2
         run: echo "${{ steps.xyz.outputs.ip-address }}"
       - name: step-3
@@ -52,7 +52,7 @@ jobs:
       
       - name: step-1
         id: xyz
-        run: echo "acc::$(echo $RANDOM)" >> $GITHUB_OUTPUT
+        run: echo "acc=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       
       - name: step-2
         if: steps.xyz.outputs.acc < 1
