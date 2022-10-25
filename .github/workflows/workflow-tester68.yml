@@ -27,9 +27,16 @@ jobs:
       # - name: Build
       #   run: dotnet build --configuration Release
 
-      - name: Unit Test
+      - name: Unit Test 1
+        continue-on-error: true
         run: dotnet --no-restore --verbosity normal
 
       - name: Extract exit Code
-        if: always()
         run: echo $?
+
+      - name: Unit Test 2
+        continue-on-error: true
+        run: 
+          dotnet --no-restore --verbosity normal || true
+          echo "Check"
+          echo $?
