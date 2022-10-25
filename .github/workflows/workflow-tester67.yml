@@ -6,6 +6,7 @@ on:
 
 env:
   REGISTRY: 'ghcr.io'
+  TEST: test.test
 
 jobs:
   Publish:
@@ -13,3 +14,6 @@ jobs:
     steps:
       - name: Log into Container registry ${{ env.REGISTRY }}
         run: echo "Ok"
+
+      - name: Log ${{ env.TEST }}
+        run: echo "TEST"
