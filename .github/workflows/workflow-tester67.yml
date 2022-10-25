@@ -1,7 +1,7 @@
 name: Test 67 # Related to https://stackoverflow.com/questions/74188647/add-variable-value-to-github-action-name
 
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 env:
