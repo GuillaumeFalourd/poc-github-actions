@@ -9,7 +9,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-image
-  TAG_PREXIX: ${{ github.ref##*/ }}-v
+  TAG_PREXIX: ${GITHUB_REF##*/}-v
 
 jobs:
   job1:
