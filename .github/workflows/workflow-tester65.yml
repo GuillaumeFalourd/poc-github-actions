@@ -1,7 +1,8 @@
 name: Test 65 # Related to https://stackoverflow.com/questions/18995854/how-can-i-use-github-api-to-get-all-tags-or-releases-for-a-project
 
 on:
-  push:
+  #push:
+  workflow_dispatch:
 
 jobs:
   job1:
