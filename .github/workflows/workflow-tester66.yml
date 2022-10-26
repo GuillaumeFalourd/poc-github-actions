@@ -1,7 +1,8 @@
 name: Test 66 # Related to https://stackoverflow.com/questions/74157458/git-throws-error-if-nothing-to-commit-how-to-surpress
 
 on:
-  push:
+  #push:
+  workflow_dispatch:
 
 jobs:
   job1:
