@@ -16,4 +16,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.actor }}
+      - run: |
+          echo ${{ github.actor }}
+          echo ${{ github.triggering_actor }}
+          echo ${{ github.event.comment.user.login }}
