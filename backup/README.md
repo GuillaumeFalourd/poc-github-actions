@@ -168,7 +168,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Horusec](https://github.com/marketplace/actions/horusec): Github Action to identify vulnerabilities in your project.
 
-[![Manual Approval](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/paths-filter.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml)
+[![Manual Approval](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml)
 
 [Manual Approval](https://github.com/marketplace/actions/manual-workflow-approval): Github Action to pause a workflow and require manual approval from **one or more** approvers before continuing.
 
