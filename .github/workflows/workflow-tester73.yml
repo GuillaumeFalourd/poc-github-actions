@@ -15,9 +15,36 @@ jobs:
     steps:
       - run: echo ${{ inputs.skip }}
 
-  build:
-    name: build
+  build1:
+    name: build1
     if: ${{ inputs.skip == 'false' }}
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
+    with:
+      input_var: 'something'
+      another_input_var: 'something else'
+    secrets: inherit
+
+  build2:
+    name: build2
+    if: ${{ inputs.skip == false }}
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
+    with:
+      input_var: 'something'
+      another_input_var: 'something else'
+    secrets: inherit
+
+  build3:
+    name: build3
+    if: ${{ ! inputs.skip }}
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
+    with:
+      input_var: 'something'
+      another_input_var: 'something else'
+    secrets: inherit
+
+  build4:
+    name: build4
+    if: ${{ inputs.skip }}
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
     with:
       input_var: 'something'
