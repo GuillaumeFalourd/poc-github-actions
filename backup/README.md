@@ -52,6 +52,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Assert command line output](https://github.com/marketplace/actions/assert-command-line-output): Github Action to assert / check a command line output.
 
+[![Auto Accept Collabs](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-accept-collabs.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-accept-collabs.yml)
+
+[Auto Accept Collabs](https://github.com/marketplace/actions/auto-accept-collabs): Github Action to accept automatically all collaboration invites. Useful for a bot account.
+
 [![Auto approve](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-approve.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-approve.yml)
 
 [Auto Approve](https://github.com/marketplace/actions/auto-approve): Github Action to automatically approve pull requests.
