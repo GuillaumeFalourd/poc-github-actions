@@ -35,7 +35,7 @@ jobs:
           GITHUB_BRANCH: ${{ github.ref }}
       - name: Run matrix
         run: |
-          echo ${{ env.STAGE }}
+          echo ${{ matrix.server }}
           python --version
         env:
           STAGE: ${{  matrix.stage == 'dev' && format('{0}{1}{2}', 'https://', matrix.server, '.mytools.aleno.me/graphql') || 'https://graphql.aleno.me/graphql' }}
