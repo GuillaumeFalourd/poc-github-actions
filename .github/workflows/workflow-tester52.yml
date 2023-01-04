@@ -20,7 +20,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - server: [test2, test3]
+          - server: test2
+            stage: dev
+          - server: test3
             stage: dev
     runs-on: ubuntu-latest
     outputs:
