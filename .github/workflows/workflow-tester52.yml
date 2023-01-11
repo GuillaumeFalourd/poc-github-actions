@@ -36,7 +36,7 @@ jobs:
         env:
           GITHUB_BRANCH: ${{ github.ref }}
       - name: Run matrix
-        if: matrix.server == inputs.branch-to-deploy
+        if: ${{ matrix.server == inputs.branch-to-deploy }}
         run: |
           echo ${{ matrix.server }}
           python --version
