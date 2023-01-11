@@ -16,6 +16,7 @@ env:
 
 jobs:
   print:
+    if: ${{ matrix.server == inputs.branch-to-deploy }}
     name: xyx
     strategy:
       matrix:
@@ -36,7 +37,6 @@ jobs:
         env:
           GITHUB_BRANCH: ${{ github.ref }}
       - name: Run matrix
-        if: ${{ matrix.server == inputs.branch-to-deploy }}
         run: |
           echo ${{ matrix.server }}
           python --version
