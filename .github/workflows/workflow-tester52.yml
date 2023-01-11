@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - server: test2
+          - server: test-branch
             stage: dev
           - server: test3
             stage: dev
