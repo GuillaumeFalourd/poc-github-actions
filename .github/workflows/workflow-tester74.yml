@@ -35,6 +35,7 @@ jobs:
                 headers = {
                     "Accept": "application/vnd.github.v3+json",
                     "Authorization" : authorization,
+                    "X-GitHub-Api-Version": "2022-11-28",
                     }
                 r = requests.get(
                     url = url_public_key,
@@ -53,6 +54,7 @@ jobs:
                         headers = headers
                         )
                     if r.status_code == 201 or r.status_code == 204:
+                        print(r.status_code)
                         print(f"✅ Secret \033[36m{secret_name}\033[0m successfully added to {owner}'s \033[36m{repository}\033[0m repository")
                     else:
                         print("❌ Couldn't add the secret to the repository")
