@@ -16,7 +16,7 @@ env:
 
 jobs:
   print:
-    if: startsWith(${{ inputs.branch-to-deploy }}, 'He')
+    if: startsWith(inputs.branch-to-deploy, 'He')
     name: xyx
     strategy:
       matrix:
