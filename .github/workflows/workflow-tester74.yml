@@ -10,7 +10,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'        
       - name: Pip Install
         shell: pwsh
         run : |
@@ -65,7 +67,7 @@ jobs:
                 encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
                 return b64encode(encrypted).decode("utf-8")
             
-            run($TOKEN, "GuillaumeFalourd", "poc-github-actions", "TEST_2", "MyNameIsGeovaniGeorgio")
+            run("${{ env.TOKEN }}", "GuillaumeFalourd", "poc-github-actions", "TEST_2", "MyNameIsGeovaniGeorgio")
      
       - name: TestShow
         shell: bash
