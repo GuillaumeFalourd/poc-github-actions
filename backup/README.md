@@ -52,6 +52,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Assert command line output](https://github.com/marketplace/actions/assert-command-line-output): Github Action to assert / check a command line output.
 
+[![Auto Accept Collabs](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-accept-collabs.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-accept-collabs.yml)
+
+[Auto Accept Collabs](https://github.com/marketplace/actions/auto-accept-collabs): Github Action to accept automatically all collaboration invites. Useful for a bot account.
+
 [![Auto approve](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-approve.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-approve.yml)
 
 [Auto Approve](https://github.com/marketplace/actions/auto-approve): Github Action to automatically approve pull requests.
@@ -167,6 +171,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Horusec](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/horusec.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/horusec.yml)
 
 [Horusec](https://github.com/marketplace/actions/horusec): Github Action to identify vulnerabilities in your project.
+
+[![Manual Approval](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml)
+
+[Manual Approval](https://github.com/marketplace/actions/manual-workflow-approval): Github Action to pause a workflow and require manual approval from **one or more** approvers before continuing.
 
 [![Paths Filter](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/paths-filter.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/paths-filter.yml)
 

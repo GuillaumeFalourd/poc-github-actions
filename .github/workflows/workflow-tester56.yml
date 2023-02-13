@@ -2,9 +2,6 @@ name: Test 56 #Related to SO https://stackoverflow.com/questions/73727910/invali
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #   - main
 
 jobs:
   build:
