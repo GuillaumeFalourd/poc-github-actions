@@ -2,7 +2,7 @@ name: 12 - Run Workflow
 
 on:
   workflow_run:
-    workflows: ["Workflow Tester"]
+    workflows: ['Test 52']
     types: [completed] #requested
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - run: echo "First workflow was a success"
-  
+
   on-failure:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
