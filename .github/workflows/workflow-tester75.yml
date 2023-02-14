@@ -18,5 +18,5 @@ jobs:
               MY_VAR: Three
     steps:
       - run: |
-          echo ${{ env.MY_VAR }} is equal to "$MY_VAR"
+          echo "$MY_VAR" # is equal to ${{ env.MY_VAR }}
           echo ${{ matrix.env.MY_VAR }}
