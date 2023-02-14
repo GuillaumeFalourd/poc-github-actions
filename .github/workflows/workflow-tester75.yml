@@ -12,9 +12,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - MY_VAR: Two
-          - MY_VAR: Three
+          - env:
+              MY_VAR: Two
+          - env:
+              MY_VAR: Three
     steps:
       - run: |
-          echo "$MY_VAR"
+          echo ${{ env.MY_VAR }} is equal to "$MY_VAR"
           echo ${{ matrix.MY_VAR }}
+          echo ${{ matrix.env }}
