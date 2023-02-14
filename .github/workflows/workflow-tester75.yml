@@ -13,6 +13,7 @@ jobs:
       matrix:
         include:
           - MY_VAR: Two
+          - MY_VAR: Three
     steps:
       - run: |
           echo "$MY_VAR"
