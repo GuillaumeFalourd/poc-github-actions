@@ -281,3 +281,7 @@ This workflows illustrates how to use **expressions** when setting env variables
 [![59 - Step Context](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/59-step-context.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/59-step-context.yml)
 
 This workflows illustrates how to use **[step context](https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context)**, which contains detail about the execution of each step by default. Using the `outcome` property of each step we can check the result of its execution.
+
+[![60 - Save secrets variables](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/60-save-secrets-variables.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/60-save-secrets-variables.yml)
+
+This workflow illustrates how to save secrets in artifacts to use on later jobs.
