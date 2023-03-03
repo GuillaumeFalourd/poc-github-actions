@@ -1,18 +1,12 @@
 name: Create release
 
-# on:
-  # push:
-  #   branches:
-  #     - main
-  #   paths-ignore:
-  #     - 'docs/**'
-  #     - 'openApi/**'
-  #     - 'README.md'
-  #     - 'CONTRIBUTING.md'
-  #     - 'DEVELOPER_GUIDE.md'
+on:
+  pull_request:
+    branches: [main]
 
 jobs:
   tag:
+    if: contains(github.ref, 'release-') && contains(github.base_ref, 'main') && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.version.outputs.tag }}
@@ -20,7 +14,7 @@ jobs:
       - name: Extract branch tag
         id: tag
         run: |
-          BRANCH=${GITHUB_REF##*/}
+          BRANCH=${{ github.base_ref }}
           TAG="${BRANCH//release-/""}"
           echo $TAG
           echo "tag=$TAG" >> $GITHUB_OUTPUT
