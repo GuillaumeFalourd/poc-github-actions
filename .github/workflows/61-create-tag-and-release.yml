@@ -5,8 +5,6 @@ on:
     types:
       - closed
 
-# TEST
-
 jobs:
   github-context:
     name: job-context
@@ -18,7 +16,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
   tag:
-    if: contains(github.ref, 'release-') && contains(github.base_ref, 'main') && github.event.action == 'closed' && github.event.pull_request.merged == true
+    if: contains(github.head_ref, 'release-') && contains(github.base_ref, 'main') && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.version.outputs.tag }}
@@ -26,7 +24,7 @@ jobs:
       - name: Extract branch tag
         id: tag
         run: |
-          BRANCH=${{ github.base_ref }}
+          BRANCH=${{ github.head_ref }}
           TAG="${BRANCH//release-/""}"
           echo $TAG
           echo "tag=$TAG" >> $GITHUB_OUTPUT
