@@ -5,6 +5,8 @@ on:
     types:
       - closed
 
+# TEST
+
 jobs:
   github-context:
     name: job-context
