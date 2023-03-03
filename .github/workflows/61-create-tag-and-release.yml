@@ -5,9 +5,16 @@ on:
     types:
       - closed
 
-# TEST
-
 jobs:
+  github-context:
+    name: job-context
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
   tag:
     if: contains(github.ref, 'release-') && contains(github.base_ref, 'main') && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
