@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: [main]
 
+# TEST
+
 jobs:
   tag:
     if: contains(github.ref, 'release-') && contains(github.base_ref, 'main') && github.event.action == 'closed' && github.event.pull_request.merged == true
