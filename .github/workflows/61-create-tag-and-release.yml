@@ -43,7 +43,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.1
         with:
           custom_tag: ${{ env.TAG }}
-          token: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Create release
         uses: softprops/action-gh-release@v1
