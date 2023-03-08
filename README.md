@@ -285,3 +285,7 @@ This workflows illustrates how to use **[step context](https://docs.github.com/e
 [![60 - Save secrets variables](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/60-save-secrets-variables.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/60-save-secrets-variables.yml)
 
 This workflow illustrates how to save secrets in artifacts to use on later jobs.
+
+[![61 - Create Tag and Release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/61-create-tag-and-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/61-create-tag-and-release.yml) [![62 - Create Trigger on release other workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/62-trigger-on-release-other-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/62-trigger-on-release-other-workflow.yml)
+
+Those workflows illustrate how to **trigger a release creation** (with tag based on a branch syntax) where the release publication could **trigger a deployment pipeline**.
