@@ -1,7 +1,7 @@
 name: Test 76 # Related to https://stackoverflow.com/questions/75675348/can-i-use-github-secrets-in-my-npmrc-file-if-so-how/75675523#75675523
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   test:
