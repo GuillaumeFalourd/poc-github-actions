@@ -5,16 +5,16 @@ on:
     # Map the workflow outputs to job outputs
     outputs:
       project-id:
-        description: "description"
+        required: true
         type: string
       environment:
-        description: "environment"
+        required: true
         type: string
       cluster-name:
-        description: "cluster name"
+        required: true
         type: string
       region:
-        description: "region"
+        required: true
         type: string
 
 jobs:
