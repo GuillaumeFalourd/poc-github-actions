@@ -8,6 +8,6 @@ jobs:
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester78.yml@main
     with:
       project-id: ${{ vars.PROJECT_ID }}
-      environment: development
+      environment: other
       cluster-name: ${{ vars.CLUSTER_NAME }}
       region: ${{ vars.REGION }}

@@ -26,10 +26,21 @@ jobs:
           echo "${{ inputs.environment }}"
           echo "${{ inputs.cluster-name }}"
           echo "${{ inputs.region }}"
+  
   test-env:
     runs-on: ubuntu-latest
     environment:
       name: other
+    steps:
+      - run: |
+          echo "${{ vars.PROJECT_ID }}"
+          echo "${{ vars.CLUSTER_NAME }}"
+          echo "${{ vars.REGION }}"
+
+  test-dynamic-env:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
     steps:
       - run: |
           echo "${{ vars.PROJECT_ID }}"
