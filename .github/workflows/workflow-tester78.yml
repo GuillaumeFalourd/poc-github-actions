@@ -3,7 +3,7 @@ name: Test 78 # Related to https://stackoverflow.com/questions/75720251/setup-en
 on:
   workflow_call:
     # Map the workflow outputs to job outputs
-    outputs:
+    inputs:
       project-id:
         required: true
         type: string
