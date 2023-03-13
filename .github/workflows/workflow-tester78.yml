@@ -6,15 +6,19 @@ on:
     outputs:
       project-id:
         description: "description"
+        type: string
         required: true
       environment:
-        description: "enviro,ment"
+        description: "environment"
+        type: string
         required: true
       cluster-name:
         description: "cluster name"
+        type: string
         required: true
       region:
         description: "region"
+        type: string
         required: true
 
 jobs:
