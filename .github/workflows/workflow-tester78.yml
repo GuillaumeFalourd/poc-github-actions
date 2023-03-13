@@ -20,6 +20,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment:
+      name: other
     steps:
       - run: |
           echo "${{ inputs.project-id }}"
