@@ -5,7 +5,7 @@ on:
 
 jobs:
   job1:
-    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/57-reusable-workflow.yml@main
+    uses: ./.github/workflows/57-reusable-workflow.yml
 
   job2:
     runs-on: ubuntu-latest
