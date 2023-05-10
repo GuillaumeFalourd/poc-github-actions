@@ -1,9 +1,7 @@
 name: 48 - Trigger reusables
 
 on:
-  push:
-  schedule:
-    - cron: '00,30 * * * *'
+  workflow_dispatch:
 
 jobs:
   workflow-1:
