@@ -8,8 +8,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
-# TODO: extract folder ARRAY
   setup:
     runs-on: ubuntu-latest
     outputs: 
@@ -44,7 +42,6 @@ jobs:
           echo "array=$myArray" >> $GITHUB_OUTPUT
         shell: bash
 
-# TODO: test using ARRAY as MATRIX
   build:
     needs: [setup]
     strategy:
