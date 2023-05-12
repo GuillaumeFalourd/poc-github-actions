@@ -50,7 +50,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        folder: ${{ needs.setup.outputs.folders }}
+        folder: ${{ fromJSON(needs.setup.outputs.folders) }}
     uses: ./.github/workflows/63-reusable.yml
     with:
       path: ${{ matrix.folder }}
@@ -61,5 +61,5 @@ jobs:
     steps:
       - name: echo output
         run: echo ${{ needs.setup.outputs.folders }}
-      - name: echp fromJSON
+      - name: echo fromJSON
         run: ${{ fromJSON(needs.setup.outputs.folders) }}
