@@ -2,6 +2,9 @@ name: 63 - Matrix folder
 
 on:
   push:
+    paths:
+      - 'folder1/**'
+      - 'folder2/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
