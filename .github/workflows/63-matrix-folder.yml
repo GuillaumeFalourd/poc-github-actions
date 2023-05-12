@@ -41,7 +41,7 @@ jobs:
           fi
           myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
           echo "Updated folder list: $myArray"
-          echo "array=$myArray" >> GITHUB_OUTPUT
+          echo "array=$myArray" >> $GITHUB_OUTPUT
         shell: bash
 
 # TODO: test using ARRAY as MATRIX
