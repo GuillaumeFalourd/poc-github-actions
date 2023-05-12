@@ -1,0 +1,43 @@
+name: 63 - Matrix folder
+
+on:
+  push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+# TODO: extract folder ARRAY
+  setup:
+    runs-on: ubuntu-latest
+    outputs: 
+      folder1: ${{ steps.changes.outputs.folder1 }}
+      folder2: ${{ steps.changes.outputs.folder2 }}
+      folders: ${{ steps.array.outputs.array }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            folder1:
+              - 'folder1/**'
+            folder2:
+              - 'folder2/**'
+
+      - id: array
+        run: |
+          myArray=("${{ steps.changes.outputs.folder1 }}" "${{ steps.changes.outputs.folder2 }}")
+          echo "array=$myArray" >> GITHUB_OUTPUT
+
+# TODO: test using ARRAY as MATRIX
+  build:
+    needs: [setup]
+    strategy:
+      fail-fast: false
+      matrix:
+        folder: ${{ fromJSON(needs.setup.outputs.folders) }}
+    uses: ./.github/workflows/63-reusable.yml@main
+    with:
+        - path: ${{ matrix.folder }}
