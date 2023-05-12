@@ -3,9 +3,9 @@ name: 63 - Reusable
 on:
   workflow_call:
     inputs:
-        path:
-          required: true
-          type: string
+      path:
+        required: true
+        type: string
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}

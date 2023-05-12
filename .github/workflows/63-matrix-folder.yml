@@ -40,4 +40,4 @@ jobs:
         folder: ${{ fromJSON(needs.setup.outputs.folders) }}
     uses: ./.github/workflows/63-reusable.yml
     with:
-        - path: ${{ matrix.folder }}
+      path: ${{ matrix.folder }}
