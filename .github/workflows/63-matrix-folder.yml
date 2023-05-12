@@ -50,7 +50,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        folder: ${{ fromJSON(needs.setup.outputs.folders) }}
+        folder: ${{ needs.setup.outputs.folders }}
     uses: ./.github/workflows/63-reusable.yml
     with:
       path: ${{ matrix.folder }}
+
+  check:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo output
+        run: echo ${{ needs.setup.outputs.folders }}
+      - name: echp fromJSON
+        run: ${{ fromJSON(needs.setup.outputs.folders) }}
