@@ -31,18 +31,15 @@ jobs:
         id: array
         run: |
           myArray=()
-          echo "Updated folder list: $myArray"
           if [ "${{ steps.changes.outputs.folder1 }}" = "true" ]
           then
             myArray+=("folder1")
-            myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
           fi
-          echo "Updated folder list: $myArray"
           if [ "${{ steps.changes.outputs.folder2 }}" = "true" ]
           then
             myArray+=("folder2")
-            myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
           fi
+          myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
           echo "Updated folder list: $myArray"
           echo "array=$myArray" >> GITHUB_OUTPUT
         shell: bash
