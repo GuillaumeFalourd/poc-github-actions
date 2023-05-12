@@ -30,11 +30,11 @@ jobs:
       - id: array
         run: |
           myArray=()
-          if [ "${{ steps.changes.outputs.folder1 }}" = "true "]
+          if [ "${{ steps.changes.outputs.folder1 }}" = "true" ]
           then
             myArray+=("folder1")
           fi
-          if [ "${{ steps.changes.outputs.folder2 }}" = "true "]
+          if [ "${{ steps.changes.outputs.folder2 }}" = "true" ]
           then
             myArray+=("folder2")
           fi
