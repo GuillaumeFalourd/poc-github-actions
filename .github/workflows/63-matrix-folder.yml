@@ -29,7 +29,14 @@ jobs:
 
       - id: array
         run: |
-          myArray=("${{ steps.changes.outputs.folder1 }}" "${{ steps.changes.outputs.folder2 }}")
+          myArray=()
+          if [ "${{ steps.changes.outputs.folder1 }}" = "true "]
+            myArray+=("folder1")
+          fi
+          if [ "${{ steps.changes.outputs.folder2 }}" = "true "]
+            myArray+=("folder2")
+          fi
+          echo "Updated folder list: $myArray" 
           echo "array=$myArray" >> GITHUB_OUTPUT
 
 # TODO: test using ARRAY as MATRIX
