@@ -17,6 +17,7 @@ This repository contains various proofs of concept using a Github Actions throug
 - [Como usar condicionais nos workflows do Github Actions ](https://www.zup.com.br/blog/como-usar-condicionais-workflows-github-actions)
 - [10 boas práticas e dicas para usar o GitHub Actions](https://www.zup.com.br/blog/github-actions-dicas-boas-praticas)
 - [Quando usar Reusable Workflow ou Composite Action no GitHub Actions?](https://www.zup.com.br/blog/reusable-workflow-e-composite-action)
+- [Git Flow customizado no Github Actions](https://www.zup.com.br/blog/git-flow)
 
 ## Workflow YAML Basic Structure Explanation
 
