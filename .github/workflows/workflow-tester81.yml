@@ -20,5 +20,11 @@ jobs:
         uses: actions/checkout@v3
       - id: run-script
         run: echo "${{env.KEY}}=test" >> $GITHUB_OUTPUT
-      - name: Check
-        run: echo {{ steps.run-script.outputs.${{env.KEY}} }}
+
+  test:
+    runs-on: "ubuntu-latest"
+    needs: mainjob1
+    steps:
+      - run: |
+          echo "App name: ${{ needs.mainjob1.outputs.app_name }}"
+
