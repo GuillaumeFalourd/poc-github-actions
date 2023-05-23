@@ -13,10 +13,10 @@ jobs:
     outputs:
       app_namexx: ${{ steps.run-script.outputs.inputs.key_name }}  
     steps:        
-      - name: Checkout  repository
+      - name: Checkout repository
         uses: actions/checkout@v3
       - id: run-script
-        run: echo "${{inputs.key_name}}=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+        run: echo "${{inputs.key_name}}=test" >> $GITHUB_OUTPUT
       - run: |
           echo "App name: ${{ steps.run-script.outputs.inputs.key_name }}"
 
