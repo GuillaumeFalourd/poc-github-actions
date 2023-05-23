@@ -7,24 +7,25 @@ on:
         required: true
         default: 'app_name'
 
-env:
-   KEY: ${{inputs.key_name}}
-
 jobs:
   mainjob1:
     runs-on: "ubuntu-latest"
+    env:
+      KEY_NAME: ${{inputs.key_name}}
     outputs:
-      app_namexx: ${{ steps.run-script.outputs.${{env.KEY}} }}  
+      app_namexx: ${{ steps.run-script.outputs.${{env.KEY_NAME}} }}  
     steps:        
       - name: Checkout  repository
         uses: actions/checkout@v3
       - id: run-script
-        run: echo "${{env.KEY}}=test" >> $GITHUB_OUTPUT
+        run: echo "$KEY_NAME=test" >> $GITHUB_OUTPUT
+        env:
+          KEY_NAME: ${{inputs.key_name}}
 
   test:
     runs-on: "ubuntu-latest"
     needs: mainjob1
     steps:
       - run: |
-          echo "App name: ${{ needs.mainjob1.outputs.app_name }}"
+          echo "App name: ${{ needs.mainjob1.outputs.app_namexx }}"
 
