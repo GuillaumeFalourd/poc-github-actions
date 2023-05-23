@@ -7,22 +7,19 @@ on:
         required: true
         default: 'app_name'
 
-env:
-  KEY_NAME: ${{ inputs.key_name }}
-
 jobs:
   mainjob1:
     runs-on: "ubuntu-latest"
     outputs:
-      app_namexx: ${{ steps.run-script.outputs.env.KEY_NAME }}  
+      app_namexx: ${{ steps.run-script.outputs.inputs.key_name }}  
     steps:        
       - name: Checkout repository
         uses: actions/checkout@v3
       - id: run-script
-        run: echo "${{env.KEY_NAME}}=test" >> $GITHUB_OUTPUT
+        run: echo "${{inputs.key_name}}=test" >> $GITHUB_OUTPUT
       - run: |
-          echo "App name: ${{ steps.run-script.outputs.env.KEY_NAME }}"
-          echo "App name: ${{ steps.run-script.outputs.app_name }}"
+          echo "App name as expected: ${{ steps.run-script.outputs.inputs.key_name }}"
+          echo "App name hardcoded: ${{ steps.run-script.outputs.app_name }}"
 
   test:
     runs-on: "ubuntu-latest"
