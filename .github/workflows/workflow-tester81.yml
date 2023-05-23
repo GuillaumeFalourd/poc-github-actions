@@ -10,10 +10,8 @@ on:
 jobs:
   mainjob1:
     runs-on: "ubuntu-latest"
-    env:
-      KEY_NAME: ${{inputs.key_name}}
     outputs:
-      app_namexx: ${{ steps.run-script.outputs.${{env.KEY_NAME}} }}  
+      app_namexx: ${{ steps.run-script.outputs.${{inputs.KEY_NAME}} }}  
     steps:        
       - name: Checkout  repository
         uses: actions/checkout@v3
