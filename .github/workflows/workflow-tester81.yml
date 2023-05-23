@@ -1,0 +1,20 @@
+name: Test 81 # Related to https://stackoverflow.com/questions/76313404/how-to-replace-hard-coded-value-with-dynamic-input-variable-in-the-outputs-git
+on:
+  workflow_dispatch:   
+    inputs:
+      key_name:
+        required: true
+        default: 'app_name'
+   
+jobs:
+  mainjob1:
+    runs-on: "ubuntu-latest"
+    outputs:
+      app_namexx: ${{ steps.run-script.outputs.${{inputs.key_name}} }}  
+    steps:        
+      - name: Checkout  repository
+        uses: actions/checkout@v3
+      - id: run-script
+        run: echo "${{inputs.key_name}}=test" >> $GITHUB_OUTPUT
+      - name: Check
+        run: echo {{ steps.run-script.outputs.${{inputs.key_name}} }}
