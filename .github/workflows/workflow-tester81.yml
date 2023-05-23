@@ -11,7 +11,7 @@ jobs:
   mainjob1:
     runs-on: "ubuntu-latest"
     outputs:
-      app_namexx: ${{ steps.run-script.outputs.${{inputs.KEY_NAME}} }}  
+      app_namexx: ${{ steps.run-script.outputs.inputs.key_name }}  
     steps:        
       - name: Checkout  repository
         uses: actions/checkout@v3
