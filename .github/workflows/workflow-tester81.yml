@@ -16,9 +16,9 @@ jobs:
       - name: Checkout  repository
         uses: actions/checkout@v3
       - id: run-script
-        run: echo "$KEY_NAME=test" >> $GITHUB_OUTPUT
-        env:
-          KEY_NAME: ${{inputs.key_name}}
+        run: echo "${{inputs.key_name}}=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      - run: |
+          echo "App name: ${{ steps.run-script.outputs.inputs.key_name }}"
 
   test:
     runs-on: "ubuntu-latest"
