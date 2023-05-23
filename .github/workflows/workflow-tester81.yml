@@ -22,6 +22,7 @@ jobs:
         run: echo "${{env.KEY_NAME}}=test" >> $GITHUB_OUTPUT
       - run: |
           echo "App name: ${{ steps.run-script.outputs.env.KEY_NAME }}"
+          echo "App name: ${{ steps.run-script.outputs.app_name }}"
 
   test:
     runs-on: "ubuntu-latest"
