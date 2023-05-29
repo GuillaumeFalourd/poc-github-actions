@@ -7,6 +7,15 @@ on:
   repository_dispatch:
 
 jobs:
+  github-context:
+    name: job-context
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
   producer:
     if: github.event.action != 'Workflow Response'
     runs-on: ubuntu-latest
@@ -16,7 +25,7 @@ jobs:
           curl -X POST https://api.github.com/repos/GuillaumeFalourd/poc-remote-workflow/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "Start Workflow", "client_payload": { "repo": "'"$GITHUB_REPOSITORY"'" }}'
+          --data '{"event_type": "Start Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
   
   receiver:
     if: github.event.action == 'Workflow Response'
