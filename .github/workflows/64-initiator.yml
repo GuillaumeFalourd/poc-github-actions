@@ -1,7 +1,7 @@
 name: 64 - Initiator
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
   schedule:
     - cron: '0 1 * * MON-FRI' # Runs at 1:00 UTC
   repository_dispatch:
