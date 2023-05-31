@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: echo ${{ env.my-input }}
-#     - name: Test gh action 5
-#       uses: ./.github/actions/test-action
-#       with:
-#         my-input-with-default: ${{ env.my-input }}
+    - name: Test gh action 5
+      uses: ./.github/actions/test-action
+      with:
+        my-input-with-default: ${{ env.my-input }}
