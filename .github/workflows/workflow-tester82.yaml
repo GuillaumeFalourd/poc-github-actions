@@ -5,7 +5,7 @@ on:
 
 env:
   APPNAME: 'myapp1'
-  APPURL: "https://mybank/$APPNAME/widgets/hello.json" # This won't work as expected
+  APPURL: "https://mybank/$APPNAME/widgets/hello.json"
 
 jobs:
   run:
