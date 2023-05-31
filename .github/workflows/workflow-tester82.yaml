@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Check APPURL value
         run: |
-          echo "APPURL is: ${{env.APPURL}}" # Will return the string "https://mybank/myapp1/widgets/hello.json"   
+          echo "APPURL is: ${{env.APPURL}}" # Will return "https://mybank/myapp1/widgets/hello.json"   
     
       - name: Concatenate values to environment file
         run: |
@@ -21,15 +21,15 @@ jobs:
       
       - name: Check environment variable is available
         run: |
-          echo "${{ env.URL }}"  # Should return https://mybank/myapp1/widgets/hello.json
+          echo "${{ env.URL }}" # Will return https://mybank/myapp1/widgets/hello.json
           
   test:
     runs-on: windows-latest
     steps:
       - name: Print variables (Powershell)
         run: |
-          echo "APPURL is: ${{ env.APPURL }}"
+          echo "APPURL is: ${{ env.APPURL }}" # Will return https://mybank//widgets/hello.json
       - name: Print variables (Bash)
         run: |
-          echo "APPURL is: ${{ env.APPURL }}"
+          echo "APPURL is: ${{ env.APPURL }}" # Will return https://mybank/myapp1/widgets/hello.json
         shell: bash
