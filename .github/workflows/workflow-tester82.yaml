@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Check APPURL value
         run: |
-          echo "APPURL is: ${{env.APPURL}}" # Will return the string "https://mybank/myapp1/widgets/hello.json" instead of the concatenated value    
+          echo "APPURL is: ${{env.APPURL}}" # Will return the string "https://mybank/myapp1/widgets/hello.json"   
     
       - name: Concatenate values to environment file
         run: |
