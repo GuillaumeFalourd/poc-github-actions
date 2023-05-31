@@ -29,7 +29,6 @@ jobs:
       - name: Print variables (Powershell)
         run: |
           echo "APPURL is: ${{ env.APPURL }}"
-        shell: bash
       - name: Print variables (Bash)
         run: |
           echo "APPURL is: ${{ env.APPURL }}"
