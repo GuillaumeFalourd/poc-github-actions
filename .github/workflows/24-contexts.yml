@@ -41,5 +41,5 @@ jobs:
           echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
           echo "github.repository: ${{ github.repository }}"
           echo "github.repository_owner: ${{ github.repository_owner }}"
-          echo "GITHUB_REPOSITORY: $GITHUB.REPOSITORY"
+          echo "GITHUB.REPOSITORY: $GITHUB.REPOSITORY"
           echo "GITHUB.REPOSITORY_OWNER: $GITHUB.REPOSITORY_OWNER"
