@@ -6,7 +6,7 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
-    matrix:
+    outputs:
       versions: ${{ steps.array.outputs.array }}
     steps:
       - id: array
