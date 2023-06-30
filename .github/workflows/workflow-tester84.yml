@@ -1,7 +1,7 @@
 name: Test 84 # Related to SO question https://stackoverflow.com/questions/76588045/github-workflow-confused-about-tojson-and-fromjson-im-doing-a-json-ouput-and
 
 on: 
-  push:
+  workflow_dispatch:
 
 jobs:
   setup:
