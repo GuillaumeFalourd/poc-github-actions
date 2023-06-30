@@ -6,7 +6,6 @@ on:
 jobs:
   matrix:
     runs-on: ubuntu-latest
-    name: Setup
     outputs:
       php-versions: ${{ steps.array.outputs.array }}
     steps:
@@ -32,6 +31,7 @@ jobs:
           myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
           echo "Updated array list: $myArray"
           echo "array=$myArray" >> $GITHUB_OUTPUT
+        shell: bash
 
   build:
     runs-on: ubuntu-latest
@@ -39,6 +39,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ${{ fromJson(needs.matrix.outputs.php-version) }}
+        version: ${{ fromJSON(needs.matrix.outputs.php-version) }}
     steps:
       - run: echo ${{ matrix.version }}
