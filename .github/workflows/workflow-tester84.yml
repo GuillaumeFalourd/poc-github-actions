@@ -7,7 +7,7 @@ jobs:
   matrix:
     runs-on: ubuntu-latest
     setup:
-      versions: ${{ steps.array.outputs.array }}
+      versions: ${{ toJSON('steps.array.outputs.array') }}
     steps:
       - id: array
         run: |
