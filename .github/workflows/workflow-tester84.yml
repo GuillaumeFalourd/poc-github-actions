@@ -6,8 +6,8 @@ on:
 jobs:
   matrix:
     runs-on: ubuntu-latest
-    outputs:
-      php-versions: ${{ steps.array.outputs.array }}
+    setup:
+      versions: ${{ steps.array.outputs.array }}
     steps:
       - id: array
         run: |
@@ -35,10 +35,10 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: matrix
+    needs: [setup]
     strategy:
       fail-fast: false
       matrix:
-        version: ${{ fromJSON(needs.matrix.outputs.php-version) }}
+        version: ${{ fromJSON(needs.setup.outputs.versions) }}
     steps:
       - run: echo ${{ matrix.version }}
