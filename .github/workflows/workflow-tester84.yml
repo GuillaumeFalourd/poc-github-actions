@@ -19,6 +19,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ${{ fromJson(needs.matrix.outputs.php-versions) }}
+        version: ${{ needs.matrix.outputs.php-versions }}
     steps:
       - run: echo ${{ matrix.version }}
