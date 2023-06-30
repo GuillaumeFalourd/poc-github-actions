@@ -39,6 +39,6 @@ jobs:
       fail-fast: false
       matrix:
         version: ${{ fromJSON(needs.setup.outputs.versions) }}
-    if: ${{ matrix.version == '8.1 }}
+    if: ${{ matrix.version == '8.1' }}
     steps:
       - run: echo ${{ matrix.version }}
