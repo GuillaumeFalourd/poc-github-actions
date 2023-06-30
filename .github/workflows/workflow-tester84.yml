@@ -4,10 +4,10 @@ on:
   push:
 
 jobs:
-  matrix:
+  setup:
     runs-on: ubuntu-latest
-    setup:
-      versions: ${{ toJSON('steps.array.outputs.array') }}
+    matrix:
+      versions: ${{ steps.array.outputs.array }}
     steps:
       - id: array
         run: |
