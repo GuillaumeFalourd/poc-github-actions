@@ -1,7 +1,7 @@
-name: Test 64 # Related to https://stackoverflow.com/questions/74125082/new-format-of-output-in-custom-github-actions-since-set-output-is-going-to-be-de
+name: Test 85 # Related to https://stackoverflow.com/questions/76925353/invalid-syntax-on-github-output?noredirect=1#comment135621975_76925353
 
 on:
-  #push:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
 
       - name: Execute Python script # Run the run.py to get the latest data
         id: test1
-        run: python new-output.py
+        run: python scripts/list-output.py
 
       - name: Check output
         run: |
