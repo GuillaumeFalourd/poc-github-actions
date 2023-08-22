@@ -35,4 +35,6 @@ jobs:
     steps:
     # use environment specific secrets here for each stage
       - name: Execute task ${{ matrix.stage }}
-        run: echo "Perform job executing task ${{ matrix.stage }}"
+        run: |
+          echo "Perform job executing task ${{ matrix.stage }}"
+          sleep 60
