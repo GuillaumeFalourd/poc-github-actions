@@ -23,6 +23,7 @@ jobs:
   
   deploy:
     runs-on: ubuntu-latest
+    needs: [orchestration]
     strategy:
       matrix:
         stage: ${{ fromJSON(needs.orchestration.outputs.tasks) }}
