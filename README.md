@@ -294,3 +294,7 @@ Those workflows illustrate how to **trigger a release creation** (with tag based
 [![63 - Matrix folder](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/63-matrix-folder.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/63-matrix-folder.yml)
 
 This workflow illustrates how to identify updated folders to perfom a similar behavior based on the folder through a reusable workflow with a matrix strategy.
+
+[![65 - Sequential Matrix](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/65-sequential-matrix.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/65-sequential-matrix.yml)
+
+This workflow illustrates how to execute sequencial jobs in specific order using matrix with `max-parallel: 1` strategy.
