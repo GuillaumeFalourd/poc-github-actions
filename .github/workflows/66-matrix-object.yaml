@@ -41,24 +41,24 @@ jobs:
           NAME=$(jq '.name' task.json)
           echo $NAME
           echo "taskId=$NAME" >> $GITHUB_OUTPUT
-          TYPE=$(jq '.type' task.json)
-          echo $TYPE
-          echo "type=$TYPE" >> $GITHUB_OUTPUT
+          # TYPE=$(jq '.type' task.json)
+          # echo $TYPE
+          # echo "type=$TYPE" >> $GITHUB_OUTPUT
           rm task.json
 
-      - if: steps.task.outputs.type == 'IAC'
+      - if: contains( matrix.stage , 'IAC')
         uses: stack-spot/runtime-github-action-iac@v1
         with:
           FEATURES_LEVEL_LOG: debug
           INPUT_PATH: ${{ steps.task.outputs.taskId }}
 
-      - if: steps.task.outputs.type == 'DEPLOY'
+      - if: contains( matrix.stage , 'DEPLOY')
         uses: stack-spot/runtime-github-action-deploy@v1
         with:
           FEATURES_LEVEL_LOG: debug
           INPUT_PATH: ${{ steps.task.outputs.taskId }}
 
-      - if: steps.task.outputs.type == 'DESTROY'
+      - if: contains( matrix.stage , 'DESTROY')
         uses: stack-spot/runtime-github-action-destroy@v1
         with:
           FEATURES_LEVEL_LOG: debug
