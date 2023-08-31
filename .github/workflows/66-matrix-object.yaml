@@ -37,8 +37,8 @@ jobs:
       - name: Execute task ${{ matrix.stage }}
         run: |
           echo "Perform job executing task ${{ matrix.stage }}"
-          NAME=$(echo jq '.name' ${{ matrix.stage }})
+          NAME=$(jq '.name' ${{ matrix.stage }})
           echo $NAME
-          TYPE=$(echo jq '.type' ${{ matrix.stage }})
+          TYPE=$(jq '.type' ${{ matrix.stage }})
           echo $TYPE
           sleep 3
