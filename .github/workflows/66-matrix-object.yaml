@@ -36,9 +36,9 @@ jobs:
     # use environment specific secrets here for each stage
       - name: Execute task ${{ matrix.stage }}
         run: |
-          echo "Perform job executing task ${{ matrix.stage }}"
-          NAME=$(jq '.name' ${{ matrix.stage }})
+          ${{ matrix.stage }} >> ${{ matrix.stage }}.json
+          NAME=$(jq '.name' ${{ matrix.stage }}.json)
           echo $NAME
-          TYPE=$(jq '.type' ${{ matrix.stage }})
+          TYPE=$(jq '.type' ${{ matrix.stage }}.json)
           echo $TYPE
           sleep 3
