@@ -46,19 +46,19 @@ jobs:
           echo "type=$TYPE" >> $GITHUB_OUTPUT
           rm task.json
 
-      - if: steps.task.outputs.type == "IAC"
+      - if: steps.task.outputs.type == IAC
         uses: stack-spot/runtime-github-action-iac@v1
         with:
           FEATURES_LEVEL_LOG: debug
           INPUT_PATH: ${{ steps.task.outputs.taskId }}
 
-      - if: steps.task.outputs.type == "DEPLOY"
+      - if: steps.task.outputs.type == DEPLOY
         uses: stack-spot/runtime-github-action-deploy@v1
         with:
           FEATURES_LEVEL_LOG: debug
           INPUT_PATH: ${{ steps.task.outputs.taskId }}
 
-      - if: steps.task.outputs.type == "DESTROY"
+      - if: steps.task.outputs.type == DESTROY
         uses: stack-spot/runtime-github-action-destroy@v1
         with:
           FEATURES_LEVEL_LOG: debug
