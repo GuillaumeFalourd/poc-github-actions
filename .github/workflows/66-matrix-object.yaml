@@ -47,19 +47,19 @@ jobs:
           rm task.json
 
       - if: contains( matrix.stage , 'IAC')
-        uses: stack-spot/runtime-github-action-iac@v1
+        uses: stack-spot/runtime-github-action-iac@v2
         with:
           FEATURES_LEVEL_LOG: debug
           INPUT_PATH: ${{ steps.task.outputs.taskId }}
 
       - if: contains( matrix.stage , 'DEPLOY')
-        uses: stack-spot/runtime-github-action-deploy@v1
+        uses: stack-spot/runtime-github-action-deploy@v2
         with:
           FEATURES_LEVEL_LOG: debug
           INPUT_PATH: ${{ steps.task.outputs.taskId }}
 
       - if: contains( matrix.stage , 'DESTROY')
-        uses: stack-spot/runtime-github-action-destroy@v1
+        uses: stack-spot/runtime-github-action-destroy@v2
         with:
           FEATURES_LEVEL_LOG: debug
           INPUT_PATH: ${{ steps.task.outputs.taskId }}
