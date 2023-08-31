@@ -36,7 +36,7 @@ jobs:
     # use environment specific secrets here for each stage
       - name: Execute task ${{ matrix.stage }}
         run: |
-          ${{ matrix.stage }} >> task.json
+          echo ${{ matrix.stage }} >> task.json
           NAME=$(jq '.name' task.json)
           echo $NAME
           TYPE=$(jq '.type' task.json)
