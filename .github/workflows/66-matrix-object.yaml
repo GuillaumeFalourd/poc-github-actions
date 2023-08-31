@@ -41,9 +41,6 @@ jobs:
           NAME=$(jq '.name' task.json)
           echo $NAME
           echo "taskId=$NAME" >> $GITHUB_OUTPUT
-          # TYPE=$(jq '.type' task.json)
-          # echo $TYPE
-          # echo "type=$TYPE" >> $GITHUB_OUTPUT
           rm task.json
 
       - if: contains( matrix.stage , 'IAC')
