@@ -23,3 +23,9 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "Start Dispatch Event Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show workflow_run
+        run: echo ${{ github.event.workflow_run }}
