@@ -28,4 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show workflow_run
-        run: echo ${{ github.event.workflow_run }}
+        env:
+          WORKFLOW_CONTEXT: ${{ toJSON(github.event.workflow_run) }}
+        run: |
+          echo ${{ github.event.workflow_run }}
+          echo $WORKFLOW_CONTEXT
