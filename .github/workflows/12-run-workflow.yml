@@ -2,7 +2,7 @@ name: 12 - Run Workflow
 
 on:
   workflow_run:
-    workflows: ["Workflow Tester"]
+    workflows: ["12 - Workflow Tester"]
     types: [completed] #requested
 
 jobs:
