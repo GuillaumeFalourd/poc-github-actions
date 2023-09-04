@@ -1,0 +1,10 @@
+name: 12 - Workflow Tester
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "OK"
