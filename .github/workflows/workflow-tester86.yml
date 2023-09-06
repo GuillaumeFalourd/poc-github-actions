@@ -1,0 +1,40 @@
+name: Test 86 # Related to https://stackoverflow.com/questions/77043578/using-array-from-a-job-as-matrix-in-another-job?noredirect=1#comment135819303_77043578
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  identify-changes:
+    runs-on: ubuntu-latest
+    outputs: 
+      matrix: ${{ steps.extract.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Extract Dockerfile paths
+        id: extract
+        run: |
+          json_array_str="['directory1/Dockerfile','directory2/Dockerfile']"
+
+          # Save JSON array to output
+          echo "matrix=$json_array_str" >> $GITHUB_OUTPUT
+          echo $json_array_str
+
+  build:
+    runs-on: ubuntu-latest
+    needs: identify-changes
+    continue-on-error : true
+
+    strategy:
+      matrix:
+        dockerfile: ${{ fromJSON(needs.identify-changes.outputs.matrix) }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Echo Docker images
+        run: |
+          echo ${{ matrix.dockerfile }}
