@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://stackspot/stk-cli-debian:5.4.7
+      options: --user root
     steps:
       - name: Show STK CLI version (1)
-        continue-on-error: true
         run: /home/stk/.stk/bin/stk --version
 
   # deploy:
