@@ -17,6 +17,8 @@ jobs:
     steps:
       # - name: Checkout
       #   uses: actions/checkout@v3
+      - run:
+          apt-get install sudo
       - name: Setup upterm session
         uses: lhotari/action-upterm@v1
       # - name: Setup STK CLI 
@@ -32,5 +34,15 @@ jobs:
       #       https://stk.stackspot.com/5.4.7/linux/stk.deb
       #     sudo dpkg --install /tmp/stk.deb || echo installed
       #     rm --force /tmp/stk.deb
+      - name: Show STK CLI  version
+        run: $HOME/.stk/bin/stk --version
+
+
+  deploy-infra-ubuntu:
+    name: StackSpot Runtime Infra (v1)
+    runs-on: ubuntu-latest
+    container:
+      image: docker://stackspot/stk-cli-ubuntu:5.4.7
+    steps:
       - name: Show STK CLI  version
         run: $HOME/.stk/bin/stk --version
