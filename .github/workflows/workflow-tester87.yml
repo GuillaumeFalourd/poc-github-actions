@@ -9,34 +9,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy-infra:
+  test:
     name: StackSpot Runtime Infra Debian (v1)
     runs-on: ubuntu-latest
-    container:
-      image: docker://stackspot/stk-cli-debian:5.4.7
-      options: --user root
     steps:
       - name: Show STK CLI version (1)
-        run: /home/stk/.stk/bin/stk --version
-
-  # deploy:
-  #   name: deploy
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Show STK CLI version (1)
-  #       continue-on-error: true
-  #       run: docker run stackspot/stk-cli-debian:5.4.7 --version
-
-  # test:
-  #   name: test
-  #   runs-on: ubuntu-latest
-  #   container: stackspot/stk-cli-debian:5.4.7
-  #   steps:
-  #     - name: Show STK CLI version (1)
-  #       continue-on-error: true
-  #       run: --version
-  #     - name: Show STK CLI version (2)
-  #       continue-on-error: true
-  #       run: .stk/bin/stk --version
-  #     - name: Show STK CLI version (3)
-  #       run: stk --version
+        run: |
+          docker run -t --entrypoint /bin/bash -v $(pwd):/data stackspot/stk-cli-debian:5.4.7 -c '
+            cd /data
+            ~/.stk/bin/stk -v
+        env:
+          HTTP_ENABLE_DEBUG: true
