@@ -19,22 +19,6 @@ jobs:
         continue-on-error: true
         run: $HOME/.stk/bin/stk --version
       - name: Show STK CLI version (2)
-        continue-on-error: true
-        run: stk --version
-
-
-  deploy-infra-ubuntu:
-    name: StackSpot Runtime Infra Ubuntu (v1)
-    runs-on: ubuntu-latest
-    container:
-      image: docker://stackspot/stk-cli-ubuntu:5.4.7
-    steps:
-      - name: Show STK CLI version (1)
-        continue-on-error: true
-        run: $HOME/.stk/bin/stk --version
-      - name: Show STK CLI version (2)
-        continue-on-error: true
-        run: stk --version
 
   deploy:
     name: deploy
@@ -47,8 +31,13 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
-    container:
-      image: docker://stackspot/stk-cli-debian:5.4.7
+    container: stackspot/stk-cli-debian:5.4.7
     steps:
-      - name: Show STK CLI  version
+      - name: Show STK CLI version (1)
+        continue-on-error: true
         run: --version
+      - name: Show STK CLI version (2)
+        continue-on-error: true
+        run: .stk/bin/stk --version
+      - name: Show STK CLI version (3)
+        run: stk --version
