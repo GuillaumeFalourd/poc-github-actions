@@ -9,16 +9,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy-infra:
-    name: StackSpot Runtime Infra Debian (v1)
-    runs-on: ubuntu-latest
-    container:
-      image: docker://stackspot/stk-cli-debian:5.4.7
-    steps:
-      - name: Show STK CLI version (1)
-        continue-on-error: true
-        run: $HOME/.stk/bin/stk --version
-      - name: Show STK CLI version (2)
+  # deploy-infra:
+  #   name: StackSpot Runtime Infra Debian (v1)
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: docker://stackspot/stk-cli-debian:5.4.7
+  #   steps:
+  #     - name: Show STK CLI version (1)
+  #       continue-on-error: true
+  #       run: $HOME/.stk/bin/stk --version
 
   deploy:
     name: deploy
