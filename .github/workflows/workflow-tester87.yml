@@ -18,5 +18,6 @@ jobs:
           docker run -t --entrypoint /bin/bash -v $(pwd):/data stackspot/stk-cli-debian:5.4.7 -c '
             cd /data
             ~/.stk/bin/stk -v
+          '
         env:
           HTTP_ENABLE_DEBUG: true
