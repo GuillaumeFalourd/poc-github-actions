@@ -43,3 +43,12 @@ jobs:
       - name: Show STK CLI version (1)
         continue-on-error: true
         run: docker run stackspot/stk-cli-debian:5.4.7 --version
+
+  test:
+    name: StackSpot Runtime Infra Debian (v1)
+    runs-on: ubuntu-latest
+    container:
+      image: docker://stackspot/stk-cli-debian:5.4.7
+    steps:
+      - name: Show STK CLI  version
+        run: --version
