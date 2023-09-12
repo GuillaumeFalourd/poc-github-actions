@@ -37,7 +37,7 @@ jobs:
         run: stk --version
 
   deploy:
-    name: StackSpot Runtime Infra Debian (v1)
+    name: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Show STK CLI version (1)
@@ -45,7 +45,7 @@ jobs:
         run: docker run stackspot/stk-cli-debian:5.4.7 --version
 
   test:
-    name: StackSpot Runtime Infra Debian (v1)
+    name: test
     runs-on: ubuntu-latest
     container:
       image: docker://stackspot/stk-cli-debian:5.4.7
