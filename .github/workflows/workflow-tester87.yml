@@ -1,0 +1,30 @@
+name: Test STK installation
+
+on:
+  push:
+  workflows_dispatch:
+
+jobs:
+  deploy-infra:
+    name: StackSpot Runtime Infra (v1)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
+      - name: Setup STK CLI 
+        run: |
+          curl \
+            --fail \
+            --http2-prior-knowledge \
+            --location \
+            --output /tmp/stk.deb \
+            --silent \
+            --show-error \
+            --tlsv1.3 \
+            https://stk.stackspot.com/5.4.7/linux/stk.deb
+          sudo dpkg --install /tmp/stk.deb || echo installed
+          rm --force /tmp/stk.deb
+      - name: Show STK CLI  version
+        run: $HOME/.stk/bin/stk --version
