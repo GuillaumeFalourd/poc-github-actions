@@ -1,8 +1,8 @@
-name: Test STK installation
+name: Test 87
 
 on:
   push:
-  workflows_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy-infra:
