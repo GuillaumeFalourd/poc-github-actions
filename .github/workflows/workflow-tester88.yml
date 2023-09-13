@@ -32,7 +32,7 @@ jobs:
       matrix:
         environment: ${{ fromJSON(needs.common-matrix-job.outputs.environments) }}
       fail-fast: true
-      # max-parallel: 1
+      max-parallel: 1
     # environment:
     #   name: ${{ matrix.environment }}
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester88-reusable.yml@main
