@@ -1,4 +1,4 @@
-name: Test 87 # Related to SO: https://stackoverflow.com/questions/72537896/github-actions-create-matrix-of-multiple-sequential-jobs
+name: Test 88 # Related to SO: https://stackoverflow.com/questions/72537896/github-actions-create-matrix-of-multiple-sequential-jobs
 
 on:
   push:
@@ -27,7 +27,6 @@ jobs:
         shell: bash
   
   reusable:
-    runs-on: ubuntu-latest
     needs: [matrix]
     strategy:
       matrix:
