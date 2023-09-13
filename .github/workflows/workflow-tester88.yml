@@ -42,13 +42,6 @@ jobs:
   common-job:
     needs: [common-matrix-job, reusable]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        environment: ${{ fromJSON(needs.common-matrix.outputs.environments) }}
-      fail-fast: true
-      max-parallel: 1
-    # environment:
-    #   name: ${{ matrix.environment }}
     steps:
       - name: Do something
-        run: echo "Do something with ${{ matrix.environment }}"
+        run: echo "Do something"
