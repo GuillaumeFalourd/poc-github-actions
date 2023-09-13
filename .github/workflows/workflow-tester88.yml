@@ -1,0 +1,41 @@
+name: Test 87 # Related to SO: https://stackoverflow.com/questions/72537896/github-actions-create-matrix-of-multiple-sequential-jobs
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    outputs: 
+      environments: ${{ steps.environments.outputs.environments }}
+    steps:
+      - name: Build Environments Array
+        id: environments
+        run: |
+          myArray=()
+          myArray+=("env1")
+          myArray+=("env2")
+          myArray+=("env3")
+          myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
+          echo "Updated environments list: $myArray"
+          echo "environments=$myArray" >> $GITHUB_OUTPUT
+        shell: bash
+  
+  reusable:
+    runs-on: ubuntu-latest
+    needs: [matrix]
+    strategy:
+      matrix:
+        environment: ${{ fromJSON(needs.matrix.outputs.environments) }}
+      fail-fast: true
+      max-parallel: 1
+    # environment:
+    #   name: ${{ matrix.environment }}
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester88-reusable.yml@main
+    with:
+      stage: ${{ matrix.environment }}
