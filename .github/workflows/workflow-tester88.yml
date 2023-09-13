@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  matrix:
+  common-matrix-job:
     runs-on: ubuntu-latest
     outputs: 
       environments: ${{ steps.environments.outputs.environments }}
@@ -27,10 +27,10 @@ jobs:
         shell: bash
   
   reusable:
-    needs: [matrix]
+    needs: [common-matrix-job]
     strategy:
       matrix:
-        environment: ${{ fromJSON(needs.matrix.outputs.environments) }}
+        environment: ${{ fromJSON(needs.common-matrix-job.outputs.environments) }}
       fail-fast: true
       max-parallel: 1
     # environment:
@@ -38,3 +38,17 @@ jobs:
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester88-reusable.yml@main
     with:
       stage: ${{ matrix.environment }}
+
+  common-job:
+    needs: [common-matrix, reusable]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: ${{ fromJSON(needs.common-matrix.outputs.environments) }}
+      fail-fast: true
+      max-parallel: 1
+    # environment:
+    #   name: ${{ matrix.environment }}
+    steps:
+      - name: Do something
+        run: echo "Do something with ${{ matrix.environment }}"
