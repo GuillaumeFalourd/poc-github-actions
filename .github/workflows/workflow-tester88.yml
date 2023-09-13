@@ -40,7 +40,7 @@ jobs:
       stage: ${{ matrix.environment }}
 
   common-job:
-    needs: [common-matrix, reusable]
+    needs: [common-matrix-job, reusable]
     runs-on: ubuntu-latest
     strategy:
       matrix:
