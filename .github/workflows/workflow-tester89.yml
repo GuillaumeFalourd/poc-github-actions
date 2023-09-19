@@ -16,7 +16,7 @@ jobs:
       - name: Check Day of the Week
         id: check_day
         run: |
-          echo date +%u
+          echo $(date +%u)
           echo "day=$(date +%u)" >> $GITHUB_OUTPUT
   
   reusable:
