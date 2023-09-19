@@ -15,11 +15,13 @@ jobs:
     steps:
       - name: Check Day of the Week
         id: check_day
-        run: echo "::set-output name=day::$(date +%u)"
+        run: |
+          echo date +%u
+          echo "day=$(date +%u)" >> $GITHUB_OUTPUT
   
   reusable:
     needs: [bd_scan]
-    if: ${{ needs.bd_scan.outputs.day < '5' }} 
+    if: ${{ needs.bd_scan.outputs.day < 5 }} 
     uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester88-reusable.yml@main
     with:
       stage: ${{ needs.bd_scan.outputs.day }}
