@@ -298,3 +298,11 @@ This workflow illustrates how to identify updated folders to perfom a similar be
 [![65 - Sequential Matrix](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/65-sequential-matrix.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/65-sequential-matrix.yml)
 
 This workflow illustrates how to execute sequencial jobs in specific order using matrix with `max-parallel: 1` strategy.
+
+[![66 - Matrix Object](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/66-matrix-object.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/66-matrix-object.yml)
+
+This workflow illustrates how to manipulate matrix object to perform different operation according to a object type.
+
+[![67 - From JSON Env Var](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/67-fromjson-env-var.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/67-fromjson-env-var.yml)
+
+This workflow illustrates how to extract a specific item from a JSON list stored in a environment variable dynamically.
