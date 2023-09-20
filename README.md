@@ -306,3 +306,7 @@ This workflow illustrates how to manipulate matrix object to perform different o
 [![67 - From JSON Env Var](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/67-fromjson-env-var.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/67-fromjson-env-var.yml)
 
 This workflow illustrates how to extract a specific item from a JSON list stored in a environment variable dynamically.
+
+[![68 - OS Types](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/68-ostypes.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/68-ostypes.yml)
+
+This workflow shows the os type value for each github runner os.
