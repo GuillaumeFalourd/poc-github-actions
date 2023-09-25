@@ -1,4 +1,4 @@
-name: Replace Value Action
+name: Replace Values Action
 
 on: [push, workflow_dispatch]
 
@@ -14,4 +14,4 @@ jobs:
           parameters: |
             #{SECRET_TOKEN}# >> SECRET_VALUE
             blabla >> my_app_id
-       
+      - run: cat ./file.json 
