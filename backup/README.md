@@ -208,6 +208,8 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Replace Token](https://github.com/marketplace/actions/replace-tokens): GitHub Action for replacing tokens in files.
 
+[![Replace Values Action](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml): Github Action to replace values in files (secrets or fields).
+
 [![Repository-Dispatch](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml) [![Repository-Dispatch-Triggered](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml)
 
 [Repository-Dispatch](https://github.com/marketplace/actions/repository-dispatch): GitHub Action to create a repository dispatch event.
