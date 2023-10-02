@@ -10,6 +10,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 - [Useful Actions](https://github.com/GuillaumeFalourd/useful-actions#-useful-actions)
   - [Global Actions](https://github.com/GuillaumeFalourd/useful-actions#-global-actions)
   - [Docker Actions](https://github.com/GuillaumeFalourd/useful-actions#-docker-actions)
+  - [Other Tools Actions](https://github.com/GuillaumeFalourd/useful-actions#-other-tools-actions)
 - [How to create new actions](https://github.com/GuillaumeFalourd/useful-actions#-how-to-create-new-actions)
 - [How to debug workflows](https://github.com/GuillaumeFalourd/useful-actions#%EF%B8%8F-how-to-debug-workflows)
 - [How to test actions locally](https://github.com/GuillaumeFalourd/useful-actions#-how-to-test-actions-locally)
@@ -269,6 +270,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Publish Docker](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/publish-docker.yml)
 
 [Publish Docker](https://github.com/marketplace/actions/publish-docker): Github Action to build and push containers.
+
+## 🦾 Other Tools Actions
+
+_TODO_
 
 ***
 
