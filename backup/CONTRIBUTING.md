@@ -15,7 +15,7 @@ according to the following guide:
 
 - Contents should be written in English.
 
-- Add new actions on the [Global Actions section](https://github.com/GuillaumeFalourd/useful-actions#-global-actions) or on the [Docker Actions section](https://github.com/GuillaumeFalourd/useful-actions#-docker-actions) on the main README file (respect an `alphabetical` order).
+- Add new actions on the [Global Actions section](https://github.com/GuillaumeFalourd/useful-actions#-global-actions), the [Docker Actions section](https://github.com/GuillaumeFalourd/useful-actions#-docker-actions) or on the [Other Tools Actions section](https://github.com/GuillaumeFalourd/useful-actions#-other-tools-actions) on the main README file (respect an `alphabetical` order).
 
 - New actions should be associated to a workflow example on the `.github/workflows` directory of the [Useful Actions](https://github.com/GuillaumeFalourd/useful-actions) repository, based on the official action repository examples.
 
