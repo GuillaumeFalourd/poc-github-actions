@@ -19,4 +19,4 @@ according to the following guide:
 
 - New actions should be associated to a workflow example on the `.github/workflows` directory of the [Useful Actions](https://github.com/GuillaumeFalourd/useful-actions) repository, based on the official action repository examples.
 
-_Observation: If the action can be triggered through a `workflow_dispacth` event, please add it to the trigger options on the workflow implementation. It will make tests easier._
+_Observation: If the action can be triggered through a `workflow_dispatch` event, please add it to the trigger options on the workflow implementation. It will make tests easier._
