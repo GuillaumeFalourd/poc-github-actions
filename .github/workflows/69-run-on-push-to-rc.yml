@@ -20,7 +20,7 @@ jobs:
         run: |
           BRANCH=${{ github.ref }}
           echo $BRANCH
-          TAG="${BRANCH//rc\//""}"
+          TAG="${BRANCH//refs\/heads\/rc\//""}"
           echo $TAG
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
