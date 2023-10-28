@@ -3,7 +3,7 @@ name: 69 - Run on push to rc
 on:
   push:
     branches:
-      - 'rc/*.*.*'
+      - 'rc/*.*.*' 
 
 jobs:
   release-candidate-tag:
@@ -11,6 +11,10 @@ jobs:
     outputs:
       tag: ${{ steps.tag.outputs.tag }}
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Extract branch tag if necessary
         id: tag
         run: |
