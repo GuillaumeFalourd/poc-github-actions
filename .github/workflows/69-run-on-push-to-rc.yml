@@ -32,4 +32,4 @@ jobs:
       TAG: ${{ needs.release-candidate-tag.outputs.tag }}
     steps:
       - name: echo TAG
-        run: Echo ${{ env.TAG }}
+        run: echo ${{ env.TAG }}
