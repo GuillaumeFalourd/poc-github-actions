@@ -12,7 +12,7 @@ jobs:
 
   post-failure:
     runs-on: ubuntu-latest
-    if: failure()
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
     steps:
       - name: Do something
         run: echo "Do something"
