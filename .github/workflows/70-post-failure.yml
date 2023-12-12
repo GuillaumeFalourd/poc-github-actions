@@ -1,0 +1,18 @@
+name: 70 - Post Failure
+
+on:
+  workflow_dispatch:
+
+jobs:    
+  force-failure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Force job failure
+        run: exit 1
+
+  post-failure:
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Do something
+        run: echo "Do something"
