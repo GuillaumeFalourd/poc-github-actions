@@ -12,6 +12,7 @@ jobs:
 
   post-failure:
     runs-on: ubuntu-latest
+    needs: force-failure
     if: ${{ always() && contains(needs.*.result, 'failure') }}
     steps:
       - name: Do something
