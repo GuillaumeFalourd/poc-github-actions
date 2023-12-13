@@ -1,0 +1,27 @@
+name: 71 - Many Outputs Python
+
+on:
+  workflow_dispatch:
+
+jobs:    
+  python-script:
+    runs-on: ubuntu-latest
+    outputs:
+      test1: ${{ steps.script.outputs.TEST1 }}
+      test2: ${{ steps.script.outputs.TEST2 }}
+      test3: ${{ steps.script.outputs.TEST3 }} 
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute Python script
+        id: script
+        run: python output_function.py
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: python-script
+    steps:
+      - name: Print outputs
+        run: |
+          echo ${{ needs.python-script.outputs.test1 }}
+          echo ${{ needs.python-script.outputs.test2 }}
+          echo ${{ needs.python-script.outputs.test3 }}
