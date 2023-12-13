@@ -310,3 +310,15 @@ This workflow illustrates how to extract a specific item from a JSON list stored
 [![68 - OS Types](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/68-ostypes.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/68-ostypes.yml)
 
 This workflow shows the os type value for each github runner os.
+
+[![69 - Run on Push to RC](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/69-run-on-push-to-rc.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/69-run-on-push-to-rc.yml)
+
+This workflow illustrates how to extract a semantic version from a Release Candidate branch name.
+
+[![70 - Post Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml)
+
+This workflow illustrates how to execute a job when a previous job fails (post failure operations).
+
+[![71 - Many Outputs Python](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/71-many-outputs-python.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/71-many-outputs-python.yml)
+
+This workflow illustrates how to save many outputs using a python script and the GITHUB_OUTPUT file.
