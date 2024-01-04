@@ -1,4 +1,4 @@
-name: Gitleaks
+name: GPT Review
 
 on: 
     pull_request:
