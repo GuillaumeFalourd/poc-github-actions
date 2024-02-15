@@ -323,6 +323,6 @@ This workflow illustrates how to execute a job when a previous job fails (post f
 
 This workflow illustrates how to save many outputs using a python script and the GITHUB_OUTPUT file.
 
-[![72 - Trigger on comment](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-triggger-on-comment.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml)
+[![72 - Trigger on comment](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml)
 
 This workflow illustrates how to start a workflow by commenting using a specific keyword in a Pull Request review.
