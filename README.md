@@ -173,7 +173,7 @@ This workflow illustrates how to create a new Pull Request based on a branch nam
 
 This workflow illustrates how to add a comment on a new Pull Request based on the github actor name after a PR event.
 
-[![30 - Webhook Release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-releaseh.yml)
+[![30 - Webhook Release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-release.yml) - DEPRECATED
 
 This workflow illustrates how to call a webhook on each release extracting the release tag.
 
@@ -235,11 +235,11 @@ This workflow illustrates how to list all files from a specific extension (here,
 
 This workflow illustrates how to list all env variables set in the runner.
 
-[![47 - Force Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml)
+[![47 - Force Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml) - AS EXPECTED
 
 This workflow illustrates how to force a workflow failure if a condition isn't met.
 
-[![48 - Wait for reusable completion](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml)
+[![48 - Wait for reusable completion](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml) - DEPRECATED
 
 This workflow illustrates how to wait for other workflows completion before executing some operation (using reusable workflows).
 
@@ -315,10 +315,14 @@ This workflow shows the os type value for each github runner os.
 
 This workflow illustrates how to extract a semantic version from a Release Candidate branch name.
 
-[![70 - Post Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml)
+[![70 - Post Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml) - AS EXPECTED
 
 This workflow illustrates how to execute a job when a previous job fails (post failure operations).
 
 [![71 - Many Outputs Python](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/71-many-outputs-python.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/71-many-outputs-python.yml)
 
 This workflow illustrates how to save many outputs using a python script and the GITHUB_OUTPUT file.
+
+[![72 - Trigger on comment](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml)
+
+This workflow illustrates how to start a workflow by commenting using a specific keyword in a Pull Request review.
