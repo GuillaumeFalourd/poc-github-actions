@@ -71,7 +71,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Auto merge](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-merge.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-merge.yml)
 
-[Auto Merge](https://github.com/marketplace/actions/merge-pull-requests): GitHub action to automatically merge pull requests when they are ready (`automerged` label).
+[Auto Merge](https://github.com/marketplace/actions/merge-pull-requests): GitHub Action to automatically merge pull requests when they are ready (`automerged` label).
 
 [![Branch Names](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml)
 
@@ -107,7 +107,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Copycat](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/copycat.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/copycat.yml)
 
-[Copycat](https://github.com/marketplace/actions/copycat-action): GitHub action to copy files from your repository to another external repository. It is also possible to copy files from/to repository Wikis.
+[Copycat](https://github.com/marketplace/actions/copycat-action): GitHub Action to copy files from your repository to another external repository. It is also possible to copy files from/to repository Wikis.
 
 [![Create JSON](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-json.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-json.yml)
 
@@ -115,15 +115,15 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Create Pull Request](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml)
 
-[Create Pull Request](https://github.com/marketplace/actions/create-pull-request): GitHub action to create a pull request for changes to your repository in the actions workspace.
+[Create Pull Request](https://github.com/marketplace/actions/create-pull-request): GitHub Action to create a pull request for changes to your repository in the actions workspace.
 
 [![Curl](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/curl.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/curl.yml)
 
-[Curl](https://github.com/marketplace/actions/github-action-for-curl): GitHub action to use the curl CLI to perform http requests.
+[Curl](https://github.com/marketplace/actions/github-action-for-curl): GitHub Action to use the curl CLI to perform http requests.
 
 [![Debug](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/debug.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/debug.yml)
 
-[Debug](https://github.com/marketplace/actions/debug-action): GitHub action to print the environment variables and the event payload. Useful for developing or debugging GitHub Actions.
+[Debug](https://github.com/marketplace/actions/debug-action): GitHub Action to print the environment variables and the event payload. Useful for developing or debugging GitHub Actions.
 
 [![Delete Artifacts](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml)
 
@@ -131,11 +131,11 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Enforce PR labels](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml)
 
-[Enforce PR labels](https://github.com/marketplace/actions/enforce-pr-labels): GitHub action to enforce assigning labels before merging PR's. Useful for generating automatic changelog and release notes with `github-release-notes`.
+[Enforce PR labels](https://github.com/marketplace/actions/enforce-pr-labels): GitHub Action to enforce assigning labels before merging PR's. Useful for generating automatic changelog and release notes with `github-release-notes`.
 
 [![Env Vars](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/env-vars.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/env-vars.yml)
 
-[Env Vars](https://github.com/marketplace/actions/github-environment-variables-action): GitHub action to expose useful environment variables.
+[Env Vars](https://github.com/marketplace/actions/github-environment-variables-action): GitHub Action to expose useful environment variables.
 
 [![File Existence](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/file-existence.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/file-existence.yml)
 
