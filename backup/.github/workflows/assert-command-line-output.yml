@@ -10,8 +10,8 @@ jobs:
   PASSED-assert-file-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: cat README.md
           assert_file_path: README.md
@@ -20,8 +20,8 @@ jobs:
   FAILED-assert-file-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -30,8 +30,8 @@ jobs:
   PASSED-specific-line-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: cat README.md
           assert_file_path: README.md
@@ -41,8 +41,8 @@ jobs:
   FAILED-specific-line-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -52,8 +52,8 @@ jobs:
   PASSED-contains-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           contains: runner
@@ -62,8 +62,8 @@ jobs:
   FAILED-contains-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           contains: error
@@ -73,8 +73,8 @@ jobs:
   PASSED-assert-file-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: cat README.md
           assert_file_path: README.md
@@ -83,8 +83,8 @@ jobs:
   FAILED-assert-file-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -93,8 +93,8 @@ jobs:
   PASSED-specific-line-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: cat README.md
           assert_file_path: README.md
@@ -104,8 +104,8 @@ jobs:
   FAILED-specific-line-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -115,8 +115,8 @@ jobs:
   PASSED-contains-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           contains: runner
@@ -125,8 +125,8 @@ jobs:
   FAILED-contains-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           contains: error
@@ -136,8 +136,8 @@ jobs:
   PASSED-assert-file-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: cat README.md
           assert_file_path: README.md
@@ -146,8 +146,8 @@ jobs:
   FAILED-assert-file-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -156,8 +156,8 @@ jobs:
   PASSED-specific-line-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: cat README.md
           assert_file_path: README.md
@@ -167,8 +167,8 @@ jobs:
   FAILED-specific-line-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -178,8 +178,8 @@ jobs:
   PASSED-contains-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           contains: runner
@@ -188,8 +188,8 @@ jobs:
   FAILED-contains-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.2
         with:
           command_line: ls -lha
           contains: error
