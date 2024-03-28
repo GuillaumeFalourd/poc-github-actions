@@ -1,0 +1,17 @@
+name: Replace Values Action
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Replace multiple values in a specific file
+        uses: GuillaumeFalourd/replace-values-action@v1.1
+        with:
+          file_path: ./file.json
+          parameters: |
+            #{SECRET_TOKEN}# >> SECRET_VALUE
+            blabla >> my_app_id
+      - run: cat ./file.json 

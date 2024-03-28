@@ -1,0 +1,30 @@
+name: Test 88 (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      stage:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build in ${{ inputs.stage }}
+        run: |
+          echo "Build in ${{ inputs.stage }}"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test in ${{ inputs.stage }}
+        run: |
+          echo "Test in ${{ inputs.stage }}"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy in ${{ inputs.stage }}
+        run: |
+          echo "Deploy in ${{ inputs.stage }}"

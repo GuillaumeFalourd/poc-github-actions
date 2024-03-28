@@ -1,0 +1,24 @@
+name: Test 28 # Related to https://stackoverflow.com/questions/71493577/how-can-i-access-environment-variable-set-in-external-bash-script-in-github-acti
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - run: sh ./scripts/test_workflow28.sh
+    - id: jira_ticket_reject
+      continue-on-error: true
+      run: |
+        env # searched for it also here - it doesn't exist.
+        echo ${{ env.jira_ticket_exists }} # this returns nothing
+        if [ ${{ env.jira_ticket_exists }} == "true" ]; then
+          echo "Jira ticket found"
+          exit 0
+        else
+          echo "Jira ticket not found"
+          exit 1
+        fi

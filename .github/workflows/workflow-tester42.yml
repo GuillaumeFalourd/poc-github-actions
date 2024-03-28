@@ -1,0 +1,15 @@
+name: Test 42 # Related to https://stackoverflow.com/questions/72743504/why-shell-for-loop-doesnt-work-in-github-actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run a loop
+        run: |
+          for run in {1..3}; do
+            date;sleep 1;
+          done
+        shell: bash

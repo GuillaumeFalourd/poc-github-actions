@@ -1,0 +1,14 @@
+name: 49 - Rename on Release # https://stackoverflow.com/questions/71270252/rename-a-file-based-on-release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: env list
+        run: env
+      - run: echo $GITHUB_REF_NAME

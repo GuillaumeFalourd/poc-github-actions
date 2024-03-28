@@ -1,0 +1,29 @@
+name: 42 - Download Release Private Repo
+
+# Controls when the workflow will run
+on: [push, workflow_dispatch]
+
+jobs:
+  get-asset:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Releases
+        run: gh release list --repo GuillaumeFalourd/formulas-training # private repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Check asset
+        run: gh release view 2.13.3 --repo GuillaumeFalourd/formulas-training
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Fetch latest asset
+        run: gh release download 2.13.3 --repo GuillaumeFalourd/formulas-training
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: See what we downloaded
+        run: ls
+
+      - name: Inspect content
+        run: cat README.md

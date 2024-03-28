@@ -1,0 +1,13 @@
+name: Test 51 #Related to SO https://stackoverflow.com/questions/73240847/github-action-workflow-executed-without-being-called-in-on-statement
+
+on:
+  pull_request_review:
+    types: [submitted, edited]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Triggered"
+          echo ${{ github.event }}

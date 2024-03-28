@@ -1,0 +1,24 @@
+name: 47 - Force Failure
+
+on: [pull_request]
+
+jobs:
+
+  print-message:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.commits[0].message }}
+
+  api-tests:
+    if: contains(github.event.commits[0].message, '[test_api]')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello world
+    
+  not-api-tests:
+    if: "!contains(github.event.commits[0].message, '[test_api]')"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - name: Force job failure
+      run: exit 1

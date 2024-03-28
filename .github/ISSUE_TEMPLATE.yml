@@ -1,0 +1,33 @@
+name: "Test"
+description: Test 
+title: "Test"
+labels: ["test1","test2"]
+assignees:
+  - ${{github.author}}
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Formulário padrão
+      
+  - type: input
+    id: name
+    attributes:
+      label: ">>Name<<"
+      description: Name
+      placeholder: myname
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: template
+    attributes:
+      label: ">>Template<<"
+      description: Select an option
+      options:
+        - option1
+        - option2
+        - option3
+
+    validations:
+      required: true
