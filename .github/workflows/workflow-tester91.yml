@@ -1,0 +1,24 @@
+name: Test 91
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Clone GuillaumeFalourd/formulas-training PRIVATE repository
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+        with:
+          owner: 'GuillaumeFalourd'
+          repository: 'formulas-training'
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+  
+      - name: Access cloned repository content
+        run: |
+          Set-Location formulas-training
+          Get-ChildItem -Force
