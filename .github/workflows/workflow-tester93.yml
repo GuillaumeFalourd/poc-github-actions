@@ -12,15 +12,14 @@ on:
 
 env:
   PATH: ${{ inputs.PATH }}
-  
-defaults:
-  run:
-    shell: bash  
-    working-directory: ${{ env.PATH }}
     
 jobs:
   job1:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash  
+        working-directory: ${{ env.PATH }}
     steps:
       - name: Run Commands with various variables
         run: |
