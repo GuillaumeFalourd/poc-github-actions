@@ -1,0 +1,28 @@
+name: 73 - Run Step if File Exists
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_file_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step to run if file exists
+      - name: Run if file exists
+        if: success() && runner.os == 'Linux' && fileExists('path/to/your/file.txt')
+        run: |
+          # Your command to run if the file exists
+          echo "File exists, running additional steps..."
+
+      # Step to run if file does not exist
+      - name: File does not exist
+        if: success() && runner.os == 'Linux' && !fileExists('path/to/your/file.txt')
+        run: |
+          # Your command to run if the file does not exist
+          echo "File does not exist, skipping additional steps..."
