@@ -29,6 +29,9 @@ jobs:
         run: |
           # Your command to run if the file does not exist
           echo "File does not exist, skipping additional steps..."
+          echo ${{ hashFiles('does-not-exist-fail.txt') }}
+          echo ${{ hashFiles('does-not-exist-fail.txt') != '' }}
+          echo ${{ !hashFiles('does-not-exist-fail.txt') != '' }}
 
       # Step to run if file does not exist
       - name: File does not exist (Should never run)
