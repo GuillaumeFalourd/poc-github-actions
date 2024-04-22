@@ -15,14 +15,14 @@ jobs:
 
       # Step to run if file exists
       - name: Run if file exists
-        if: success() && runner.os == 'Linux' && fileExists('path/to/your/file.txt')
+        if: ${{ success() && hashFiles('does-not-exist-fail.xml') != '' }}
         run: |
           # Your command to run if the file exists
           echo "File exists, running additional steps..."
 
       # Step to run if file does not exist
       - name: File does not exist
-        if: success() && runner.os == 'Linux' && !fileExists('path/to/your/file.txt')
+        if: ${{ success() && !hashFiles('does-not-exist-fail.xml') != ''}}
         run: |
           # Your command to run if the file does not exist
           echo "File does not exist, skipping additional steps..."
