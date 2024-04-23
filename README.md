@@ -326,3 +326,7 @@ This workflow illustrates how to save many outputs using a python script and the
 [![72 - Trigger on comment](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml)
 
 This workflow illustrates how to start a workflow by commenting using a specific keyword in a Pull Request review.
+
+[![73 - Check if file exists](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/73-if-file-exists.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/73-if-file-exists.yml) - AS EXPECTED
+
+This workflow illustrates how to check if a file exists in a workflow after a failure, to perform some custom operations.
