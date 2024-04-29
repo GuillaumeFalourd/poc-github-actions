@@ -13,7 +13,7 @@ on:
           - 'prod'
         default : 'dev'
 
-run-name: Trial - ${{ inputs.environment }}ˆˆ     
+run-name: Trial - $(echo "${{ inputs.environment }}" | sed 's/.*/\U&/')   
 
 jobs:
   build-and-deploy:
