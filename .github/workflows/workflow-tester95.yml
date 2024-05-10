@@ -34,11 +34,12 @@ jobs:
     steps:
       - id: set-matrix
         run: |
-          input_replay="${{ inputs.stsReplay }}"
+          input_replay="${{ inputs.stsReplay }}""
           echo "input_replay: $input_replay"
-          values=$(echo '${REPLAY_MAP}' | jq -r '.$["input_replay"]')
-          echo "values: $values"
-          $values >> $GITHUB_OUTPUT
+          # Accessing the value of $input_replay using string interpolation
+          values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay]')
+          echo "values:$values"
+          echo "values=$values" >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
