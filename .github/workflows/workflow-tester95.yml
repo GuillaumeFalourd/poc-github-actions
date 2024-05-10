@@ -38,8 +38,7 @@ jobs:
           echo "input_replay: $input_replay"
           values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay]')
           echo "values: $values"
-          json_values=$(echo "$values" | jq -Rsc 'split("\n")[:-1] | join(", ")')
-          echo "values=[$json_values]" >> "$GITHUB_OUTPUT"
+          echo "values=$values" >> "$GITHUB_OUTPUT"
   
   job2:
     needs: job1
