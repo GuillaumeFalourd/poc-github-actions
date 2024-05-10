@@ -38,17 +38,13 @@ jobs:
           myArray=()
 
           # Get the array associated with the current key
-          players=$(jq -r '."${{ inputs.stsReplay }}"[]' <<< "$ENV_JSON")
-
+          players=$(jq -r '."${{ inputs.stsReplay }}"[]' <<< "$REPLAY_MAP_JSON")
           # Add each player to myArray
           while IFS= read -r player; do
               myArray+=("\"$player\"")
           done <<< "$players"
-
-
           # Convert myArray to a JSON array using jq
           myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
-
           # Output the updated tasks list
           echo "Updated tasks list: $myArray"
           echo "values=$myArray" >> "$GITHUB_OUTPUT"
