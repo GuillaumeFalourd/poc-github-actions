@@ -44,6 +44,6 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ needs.job1.outputs.values }}
+      matrix: ${{fromJson(needs.job1.outputs.values)}}
     steps:
       - run: echo "Player ${{ matrix}}"
