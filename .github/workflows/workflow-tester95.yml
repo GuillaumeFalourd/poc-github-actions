@@ -34,20 +34,11 @@ jobs:
     steps:
       - id: set-matrix
         run: |
-          # Initialize an empty array
-          myArray=()
-
-          # Get the array associated with the current key
-          players=$(jq -r '."${{ inputs.stsReplay }}"[]' <<< "$REPLAY_MAP_JSON")
-          # Add each player to myArray
-          while IFS= read -r player; do
-              myArray+=("\"$player\"")
-          done <<< "$players"
-          # Convert myArray to a JSON array using jq
-          myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
-          # Output the updated tasks list
-          echo "Updated tasks list: $myArray"
-          echo "values=$myArray" >> "$GITHUB_OUTPUT"
+          input_replay="real-madrid"
+          echo "input_replay: $input_replay"
+          values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay] | map("\"\(.)\"") | join(", ")')
+          echo "values:[$values]"
+          echo "values=[$values]" >> $GITHUB_OUTPUT
   
   job2:
     needs: job1
@@ -56,11 +47,3 @@ jobs:
       matrix: ${{ needs.job1.outputs.values }}
     steps:
       - run: echo "Player ${{ matrix}}"
-
-  job3:
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo OUTPUT ${{ needs.job1.outputs.values }}
-          echo JSON OUTPUT ${{ fromJSON(needs.job1.outputs.values) }}
