@@ -34,9 +34,8 @@ jobs:
     steps:
       - id: set-matrix
         run: |
-          input_replay="${{ inputs.stsReplay }}""
+          input_replay="${{ inputs.stsReplay }}"
           echo "input_replay: $input_replay"
-          # Accessing the value of $input_replay using string interpolation
           values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay]')
           echo "values:$values"
           echo "values=$values" >> $GITHUB_OUTPUT
