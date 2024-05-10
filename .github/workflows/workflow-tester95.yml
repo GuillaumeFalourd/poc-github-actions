@@ -30,7 +30,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.values }}
+      values: ${{ steps.set-matrix.outputs.values }}
     steps:
       - id: set-matrix
         run: |
@@ -39,10 +39,19 @@ jobs:
           values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay] | map("\"\(.)\"") | join(", ")')
           echo "values:[$values]"
           echo "values=[$values]" >> $GITHUB_OUTPUT
+  
   job2:
     needs: job1
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+      matrix: ${{ fromJSON(needs.job1.outputs.values) }}
     steps:
       - run: echo "Player ${{ matrix}}"
+
+  job3:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo OUTPUT ${{ needs.job1.outputs.values }}
+          echo JSON OUTPUT ${{ fromJSON(needs.job1.outputs.values) }}
