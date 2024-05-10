@@ -30,13 +30,13 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      matrix: ${{ steps.set-matrix.outputs.values }}
     steps:
       - id: set-matrix
         run: |
           input_replay="${{ inputs.stsReplay }}"
           echo "input_replay: $input_replay"
-          values=$(jq -r ".\"${input_replay}\"[]" <<< "${REPLAY_MAP}")
+          values=$(echo '${REPLAY_MAP}' | jq -r '.$input_replay')
           echo "values: $values"
           $values >> $GITHUB_OUTPUT
   job2:
