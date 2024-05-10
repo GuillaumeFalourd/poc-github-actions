@@ -30,21 +30,43 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      values: ${{ steps.set-matrix.outputs.values }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
         run: |
-          input_replay="real-madrid"
+          input_replay="${{ inputs.stsReplay }}"
           echo "input_replay: $input_replay"
-          values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay] | map("\"\(.)\"") | join(", ")')
-          echo "values:[$values]"
-          echo "values=[$values]" >> $GITHUB_OUTPUT
-  
+          values=$(jq -r ".\"${input_replay}\"[]" <<< "${REPLAY_MAP}")
+          echo "values: $values"
+          echo "matrix=$values" >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        players: ${{fromJson(needs.job1.outputs.values)}}
+        player: ${{fromJson(needs.job1.outputs.matrix)}}
     steps:
-      - run: echo "Player ${{ matrix.players}}"
+      - run: echo "Player ${{ matrix.player}}"
+
+# jobs:
+#   job1:
+#     runs-on: ubuntu-latest
+#     outputs:
+#       values: ${{ steps.set-matrix.outputs.values }}
+#     steps:
+#       - id: set-matrix
+#         run: |
+#           input_replay="real-madrid"
+#           echo "input_replay: $input_replay"
+#           values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay] | map("\"\(.)\"") | join(", ")')
+#           echo "values:[$values]"
+#           echo "values=[$values]" >> $GITHUB_OUTPUT
+  
+#   job2:
+#     needs: job1
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix: 
+#         players: ${{fromJson(needs.job1.outputs.values)}}
+#     steps:
+#       - run: echo "Player ${{ matrix.players}}"
