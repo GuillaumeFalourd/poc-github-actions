@@ -30,7 +30,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      values: ${{ steps.set-matrix.outputs.values }}
+      players: ${{ steps.set-matrix.outputs.values }}
     steps:
       - id: set-matrix
         run: |
@@ -45,6 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        players: ${{fromJson(needs.job1.outputs.values)}}
+        players: ${{fromJson(needs.job1.outputs.players)}}
     steps:
       - run: echo "Player ${{ matrix.players}}"
