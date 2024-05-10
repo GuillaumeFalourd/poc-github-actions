@@ -36,7 +36,7 @@ jobs:
         run: |
           input_replay="${{ inputs.stsReplay }}"
           echo "input_replay: $input_replay"
-          values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay]')
+          values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay] | join(", ")')
           echo "values:$values"
           echo "values=$values" >> $GITHUB_OUTPUT
   job2:
