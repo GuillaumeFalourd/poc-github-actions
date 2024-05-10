@@ -1,0 +1,48 @@
+name: Test 95 # Related to SO https://stackoverflow.com/questions/78461104/how-can-i-configure-a-github-actions-strategy-matrix-to-dynamically-read-a-json
+
+on:
+  workflow_dispatch:
+    inputs:
+      stsReplay:
+        description: 'team to pick'
+        required: true
+        default: 'real-madrid'
+        type: choice
+        options:
+          - 'manu'
+          - 'chelsea'
+          - 'real-madrid'
+          - 'fc-barcelona'
+          - 'bayern'
+          - 'ac-milan'
+
+env:
+  REPLAY_MAP_JSON: |
+    {
+      "manu": ["casemiro","dalot","rashford"],
+      "chelsea": ["sterling","james","silva"],
+      "real-madrid": ["vini-jr","modric","kroos"],
+      "bayern": ["sane","kane","alphonso"],
+      "ac-milan": ["rafael-leao","giroud","pulisic"]
+    }
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: |
+          input_replay="${{ inputs.stsReplay }}"
+          echo "input_replay: $input_replay"
+          values=$(jq -r ".\"${input_replay}\"[]" <<< "${REPLAY_MAP}")
+          echo "values: $values"
+          $values >> $GITHUB_OUTPUT
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+    steps:
+      - run: echo "Player ${{ matrix}}"
