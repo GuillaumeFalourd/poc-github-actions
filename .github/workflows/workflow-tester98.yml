@@ -41,3 +41,18 @@ jobs:
       cacheName: ${{ matrix.iteration.cacheName }}
       expirationType: ${{ matrix.iteration.expirationType }}
       expirationTime: ${{ matrix.iteration.expirationTime }}
+
+  check:
+    needs: [build]
+    runs-on: [ubuntu-latest]
+    strategy:
+      matrix: 
+        iteration: ${{fromJson(needs.build.outputs.iterations)}}
+    steps:
+      - name: Do something
+        run: |
+          echo Iteration
+          echo ${{ matrix.iteration }}
+          echo ${{ matrix.iteration.cacheName }}
+          echo ${{ matrix.iteration.expirationType }}
+          echo ${{ matrix.iteration.expirationType }}
