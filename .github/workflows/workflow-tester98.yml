@@ -18,7 +18,7 @@ jobs:
       run: |
         echo Saving iteration list output as Array
         # Join the array elements into a single JSON array
-        json_array=[{"cacheName":"iteration1","expirationType":"iteration1","expirationTime":"iteration1"}, {"cacheName":"iteration2","expirationType":"iteration2","expirationTime":"iteration2"}, {"cacheName":"iteration3","expirationType":"iteration3","expirationTime":"iteration3"}]
+        json_array='[{"cacheName":"iteration1","expirationType":"iteration1","expirationTime":"iteration1"}, {"cacheName":"iteration2","expirationType":"iteration2","expirationTime":"iteration2"}, {"cacheName":"iteration3","expirationType":"iteration3","expirationTime":"iteration3"}]'
         echo "List: $json_array"
         echo "values=$json_array" >> $GITHUB_OUTPUT
     - name: Check list
