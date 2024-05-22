@@ -26,7 +26,7 @@ jobs:
         myArray+=('{"cacheName":"iteration3","expirationType":"iteration3","expirationTime":"iteration3"}')
 
         # Join the array elements into a single JSON array
-        json_array=$(printf "%s\n" "${myArray[@]}" | jq --slurp '.')
+        json_array=$(printf "%s" "${myArray[@]}" | jq --slurp '.')
 
         # Output the JSON array
         echo "Updated tasks list: $json_array"
