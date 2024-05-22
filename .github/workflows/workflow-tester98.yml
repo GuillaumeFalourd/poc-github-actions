@@ -18,6 +18,9 @@ jobs:
       run: |
         echo Saving iteration list output
         echo "values=[{"cacheName":"iteration1", "expirationType":"iteration1", "expirationTime":"iteration1"},{"cacheName":"iteration2", "expirationType":"iteration2", "expirationTime":"iteration2"},{"cacheName":"iteration3", "expirationType":"iteration3", "expirationTime":"iteration3"}]" >> $GITHUB_OUTPUT
+    - name: Check list
+      run: |
+        echo ${{ steps.set-iterations.outputs.values }}
 
   call-ASGW-Config-Cache:
     needs: [build]
