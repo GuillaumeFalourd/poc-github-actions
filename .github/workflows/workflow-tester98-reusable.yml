@@ -7,14 +7,12 @@ on:
         type: string
         description: 'Provide Cache Name'
       expirationType:
-        type: choice
-        options:
-          - timeoutInSec
-          - timeOfDay
-          - date
+        type: string
+        description: 'Provide Expiration Type'
       expirationTime:
         type: string
-        description: 'Provide Expiration Time in Secods'
+        description: 'Provide Expiration Time in Seconds'
+
   workflow_call:
     inputs:
       cacheName:
@@ -22,9 +20,10 @@ on:
         description: 'Provide Cache Name'
       expirationType:
         type: string
+        description: 'Provide Expiration Type'
       expirationTime:
         type: string
-        description: 'Provide Expiration Time in Secods'
+        description: 'Provide Expiration Time in Seconds'
 
 jobs:
   Create_Update-Cache:
@@ -32,6 +31,7 @@ jobs:
     steps:
       - name: Do something
         run: |
+          echo Iteration
           echo ${{ inputs.cacheName }}
           echo ${{ inputs.expirationType }}
-          echo ${{ inputs.expirationTime }}.
+          echo ${{ inputs.expirationTime }}
