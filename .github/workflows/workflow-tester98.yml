@@ -17,19 +17,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo Saving iteration list output as Array
-        # Initialize an empty array
-        myArray=()
-
-        # Append JSON objects as strings to the array
-        myArray+=('{"cacheName":"iteration1","expirationType":"iteration1","expirationTime":"iteration1"}')
-        myArray+=('{"cacheName":"iteration2","expirationType":"iteration2","expirationTime":"iteration2"}')
-        myArray+=('{"cacheName":"iteration3","expirationType":"iteration3","expirationTime":"iteration3"}')
-
         # Join the array elements into a single JSON array
-        json_array=$(printf "%s" "${myArray[@]}" | jq -c --slurp '.')
-
-        # Output the JSON array
-        echo "Updated tasks list: $json_array"
+        json_array=[{"cacheName":"iteration1","expirationType":"iteration1","expirationTime":"iteration1"}, {"cacheName":"iteration2","expirationType":"iteration2","expirationTime":"iteration2"}, {"cacheName":"iteration3","expirationType":"iteration3","expirationTime":"iteration3"}]
+        echo "List: $json_array"
         echo "values=$json_array" >> $GITHUB_OUTPUT
     - name: Check list
       run: |
