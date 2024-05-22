@@ -17,13 +17,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo Saving iteration list output as Array
-        myArray=()
-        myArray+=("{\"cacheName\":\"iteration1\",\"expirationType\":\"iteration1\",\"expirationTime\":\"iteration1\"}")
-        myArray+=("{\"cacheName\":\"iteration2\",\"expirationType\":\"iteration2\",\"expirationTime\":\"iteration2\"}")
-        myArray+=("{\"cacheName\":\"iteration3\",\"expirationType\":\"iteration3\",\"expirationTime\":\"iteration3\"}")
-        myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
-        echo "Updated tasks list: $myArray"
-        echo "values=$myArray" >> $GITHUB_OUTPUT
+        # Join the array elements into a single JSON array
+        json_array='[{"cacheName":"iteration1","expirationType":"iteration1","expirationTime":"iteration1"}, {"cacheName":"iteration2","expirationType":"iteration2","expirationTime":"iteration2"}, {"cacheName":"iteration3","expirationType":"iteration3","expirationTime":"iteration3"}]'
+        echo "List: $json_array"
+        echo "values=$json_array" >> $GITHUB_OUTPUT
     - name: Check list
       run: |
         echo ${{ steps.set-iterations.outputs.values }}
