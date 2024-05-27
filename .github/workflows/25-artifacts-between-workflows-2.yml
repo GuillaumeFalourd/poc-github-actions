@@ -2,7 +2,7 @@ name: "25 - Artifacts between workflows 2"
 
 on:
   workflow_run:
-    workflows: ['Artifacts between workflows 1']
+    workflows: ['25 - Artifacts between workflows 1']
     types: 
       - completed
 
