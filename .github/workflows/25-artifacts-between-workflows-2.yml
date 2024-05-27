@@ -13,14 +13,13 @@ jobs:
       - name: Download workflow artifact
         uses: actions/download-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           name: pr_num
           path: ./pr_num/pr_num.txt
           run-id: ${{ github.event.workflow_run.id }}
 
       - name: Read the pr_num file
         id: pr_num_reader
-        uses: juliangruber/read-file-action@v1.0.0
+        uses: juliangruber/read-file-action@v1.1.7
         with:
           path: ./pr_num/pr_num.txt
 
