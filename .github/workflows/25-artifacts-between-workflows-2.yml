@@ -13,6 +13,8 @@ jobs:
       - name: Download workflow artifact
         uses: actions/download-artifact@v4
         with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          name: pr_num
           path: ./pr_num/pr_num.txt
           run-id: ${{ github.event.workflow_run.id }}
 
