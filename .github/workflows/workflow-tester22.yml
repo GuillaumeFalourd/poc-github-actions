@@ -1,0 +1,20 @@
+name: Test 22 # Related to https://stackoverflow.com/questions/71045674/how-to-check-if-an-optional-workflow-dispatch-input-is-set-or-not
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Test"
+        required: false
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print variable if not empty
+        if: "${{ github.event.inputs.test != '' }}"
+        run: echo Test value is ${{ github.event.inputs.test }}
+
+      - name: Print message if empty
+        if: "${{ github.event.inputs.test == '' }}"
+        run: echo Value is empty

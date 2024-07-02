@@ -1,0 +1,22 @@
+name: Horusec
+
+on: [push, workflow_dispatch]
+
+jobs:
+  checking_code:
+    runs-on: ubuntu-latest
+    name: Horusec Scan
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2.3.4
+      with: # Required when commit authors is enabled
+        fetch-depth: 0
+#     - name: Run Horusec
+#       id: run_horusec
+#       uses: fike/horusec-action@main
+#       with:
+#         arguments: -p="./" --ignore="**/.vscode/**, **/*.env, **/.mypy_cache/**, **/tests/**"
+    - name: Running Horusec Security
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+        horusec start -p="./" -e="true" --ignore="**/.vscode/**, **/*.env, **/.mypy_cache/**, **/tests/**"
