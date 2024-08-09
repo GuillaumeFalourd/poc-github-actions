@@ -1,0 +1,27 @@
+name: 'Demo Action'
+description: 'Related to https://stackoverflow.com/questions/73193320/use-input-parameter-as-condition-to-skip-a-step'
+
+inputs:
+  dry_run:
+    type: boolean
+    description: 'Skips creation of a release'
+    default: false
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Input is ${{inputs.dry_run}} "
+      shell: bash
+
+    - name: 'Not false'
+      if: ${{ inputs.dry_run != 'false' }}
+      run: echo "IS NOT FALSE"
+      shell: bash
+      # uses: actions/upload-release-asset@v1
+      # if: inputs.dry_run != 'false'
+
+    - name: 'False'
+      if: ${{ inputs.dry_run == 'false' }}
+      run: echo "IS FALSE"
+      shell: bash

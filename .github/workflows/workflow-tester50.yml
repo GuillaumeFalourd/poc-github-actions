@@ -1,0 +1,15 @@
+name: Test 50 #Related to SO https://stackoverflow.com/questions/73232652/validate-crontab-with-github-action
+
+on:
+  workflow_dispatch:
+
+env:
+  CRONTAB_FILE : './crontab'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run crontab command from file
+        run : crontab < $CRONTAB_FILE

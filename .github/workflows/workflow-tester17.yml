@@ -1,0 +1,35 @@
+name: Test 17 #https://stackoverflow.com/questions/60316124/is-it-possible-to-create-a-if-statement-when-setting-an-action-input-on-github-a
+
+on:
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: api
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check environment
+      id: check
+      run: |
+        if [ ${{ github.ref }} != 'refs/heads/main' ]; then
+          echo "IS NOT main branch"
+          echo "environment a"
+          echo "::set-output name=environment::a"
+        else
+          echo "IS main branch"
+          echo "environment b"
+          echo "::set-output name=environment::b"
+        fi
+      shell: bash
+    # - name: My action
+    #   uses: myAction@v1
+    #   with:
+    #     config 1: some config identical to other step
+    #     config 2: some other config identical to other step
+    #     environment: ${{ steps.check.outputs.environment }}
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Test
+      run: echo "${{ steps.check.outputs.environment }}"

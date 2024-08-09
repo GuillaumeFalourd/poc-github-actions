@@ -1,0 +1,17 @@
+name: Read File
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read checkout-workflow.txt
+        id: txt
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./checkout-workflow.txt
+      - name: Echo checkout-workflow.txt
+        run: echo "${{ steps.txt.outputs.content }}"

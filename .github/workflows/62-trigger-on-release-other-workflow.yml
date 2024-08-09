@@ -1,0 +1,21 @@
+name: 62 - Trigger on release other workflow
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  github-context:
+    name: job-context
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+  
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Publish Process"
