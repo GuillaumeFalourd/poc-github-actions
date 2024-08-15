@@ -13,7 +13,7 @@ jobs:
   some-test-rerun:
     needs: [some-test]
     runs-on: ubuntu-latest
-    if: always() && ${{ needs.some-test.result }} == 'failure'
+    if: ${{ always() && needs.some-test.result == 'failure' }}
     steps:
       - name: Retry
         run: | 
