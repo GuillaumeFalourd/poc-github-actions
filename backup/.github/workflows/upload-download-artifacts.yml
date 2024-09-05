@@ -13,7 +13,7 @@ jobs:
         run: |
           expr 3 + 7 > math-homework.txt
       - name: Upload math result for job 1
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: homework
           path: math-homework.txt
@@ -24,7 +24,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download math result for job 1
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.8
         with:
           name: homework
       - shell: bash
@@ -32,7 +32,7 @@ jobs:
           value=`cat math-homework.txt`
           expr $value \* 9 > math-homework.txt
       - name: Upload math result for job 2
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: homework
           path: math-homework.txt
@@ -43,7 +43,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Download math result for job 2
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.8
         with:
           name: homework
       - name: Print the final result
