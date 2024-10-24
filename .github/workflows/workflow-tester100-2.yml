@@ -11,7 +11,7 @@ jobs:
       - name: Step 1
         run: echo "This step will succeed"
       - name: Step 2
-        run: exit 1  # This step will fail, but the job will continue
+        run: exit 1  # This step will fail, and the job won't continue
 
   run-ui-tests:
     name: Android Tests
