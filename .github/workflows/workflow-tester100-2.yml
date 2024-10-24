@@ -1,4 +1,4 @@
-name: Test 100 (1) # https://stackoverflow.com/questions/79119626/how-to-run-github-action-job-only-if-all-previous-jobs-are-successful
+name: Test 100 (2) # https://stackoverflow.com/questions/79119626/how-to-run-github-action-job-only-if-all-previous-jobs-are-successful
 
 on:
   workflow_dispatch:
