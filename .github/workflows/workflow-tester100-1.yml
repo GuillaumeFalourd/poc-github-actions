@@ -1,0 +1,40 @@
+name: Test 100 (1) # https://stackoverflow.com/questions/79119626/how-to-run-github-action-job-only-if-all-previous-jobs-are-successful
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-debug-tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Step 1
+        run: echo "This step will succeed"
+      - name: Step 2
+        run: exit 1  # This step will fail, but the job will continue
+
+  run-ui-tests:
+    name: Android Tests
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+      - name: Step 1
+        run: echo "This step will succeed"
+
+  lint:
+    name: Lint check
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Step 1
+        run: echo "This step will succeed"
+
+  build_job:
+   name: Building the APK
+   runs-on: ubuntu-latest
+   needs: [run-debug-tests, run-ui-tests, lint]
+   if: ${{ needs.run-debug-tests.result == 'success' && needs.run-ui-tests.result == 'success' && needs.lint.result == 'success' }}
+   steps:
+    - name: Step 1
+      run: echo "This step will succeed"
