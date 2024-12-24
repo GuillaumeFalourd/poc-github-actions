@@ -1,0 +1,12 @@
+name: Curl
+
+on: [push, workflow_dispatch]
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@v1.1.1
+      with:
+        args: https://httpbin.org/get
