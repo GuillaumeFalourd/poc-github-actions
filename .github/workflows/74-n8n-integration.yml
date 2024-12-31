@@ -1,0 +1,31 @@
+name: 73 - Run Step if File Exists
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Name"
+        required: false
+        default: "John Doe"
+      email:
+        description: "Email"
+        required: false
+        default: "john.doe@example.com"
+      message:
+        description: "Message"
+        required: false
+        default: "Hello, this is a test message!"
+
+jobs:
+  n8n-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send POST request to N8N workflow using cURL
+        run: |
+          curl -X POST https://${{secrets.N8N_ACCOUNT}}.app.n8n.cloud/webhook/${{ secrets.N8N_PATH}} \
+          -H "Content-Type: application/json" \
+          -d '{
+            "name": "${{ inputs.name }}",
+            "email": "${{ inputs.email }}",
+            "message": "${{ inputs.message }}"
+          }'
