@@ -31,7 +31,7 @@ jobs:
             "name": "${{ inputs.name }}",
             "email": "${{ inputs.email }}",
             "message": "${{ inputs.message }}"
-            "workflow_url": "'"$WORKFLOW_URL"'"
+            "workflow_url": "${{ env.WORKFLOW_URL }}"
           }'
           if [ $? -ne 0 ]; then
             echo "Error: cURL request failed."
