@@ -30,7 +30,7 @@ jobs:
           -d '{
             "name": "${{ inputs.name }}",
             "email": "${{ inputs.email }}",
-            "message": "${{ inputs.message }}"
+            "message": "${{ inputs.message }}",
             "workflow_url": "${{ env.WORKFLOW_URL }}"
           }' \
           --fail --show-error
