@@ -32,7 +32,8 @@ jobs:
             "email": "${{ inputs.email }}",
             "message": "${{ inputs.message }}"
             "workflow_url": "${{ env.WORKFLOW_URL }}"
-          }'
+          }' \
+          --fail --show-error
           if [ $? -ne 0 ]; then
             echo "Error: cURL request failed."
             exit 1
