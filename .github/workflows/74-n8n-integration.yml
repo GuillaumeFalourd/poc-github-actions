@@ -20,12 +20,20 @@ jobs:
   n8n-integration:
     runs-on: ubuntu-latest
     steps:
-      - name: Send POST request to N8N workflow using cURL
+      - name: Send POST request to N8N workflow using cURL to open an issue on this repository
+        env:
+          WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          echo "Workflow URL: $WORKFLOW_URL"
           curl -X POST https://${{secrets.N8N_ACCOUNT}}.app.n8n.cloud/webhook/${{ secrets.N8N_PATH}} \
           -H "Content-Type: application/json" \
           -d '{
             "name": "${{ inputs.name }}",
             "email": "${{ inputs.email }}",
             "message": "${{ inputs.message }}"
+            "workflow_url": "'"$WORKFLOW_URL"'"
           }'
+          if [ $? -ne 0 ]; then
+            echo "Error: cURL request failed."
+            exit 1
+          fi
