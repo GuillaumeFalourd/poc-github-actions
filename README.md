@@ -330,3 +330,7 @@ This workflow illustrates how to start a workflow by commenting using a specific
 [![73 - Check if file exists](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/73-if-file-exists.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/73-if-file-exists.yml) - AS EXPECTED
 
 This workflow illustrates how to check if a file exists in a workflow after a failure, to perform some custom operations.
+
+[![74 - n8N integration](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/74-n8n-integration.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/74-n8n-integration.yml) - AS EXPECTED
+
+This workflow illustrates how to integrate github actions with a n8n workflow automation (http://n8n.io) using a webhook.
