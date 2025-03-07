@@ -2,7 +2,7 @@ name: 06 - Docker Image Workflow
 
 on:
   schedule:
-  - cron: "0 5 * * *" # Runs at 5:00 UTC everyday
+  - cron: "0 5 * * MON-FRI" # Runs at 5:00 UTC
   workflow_dispatch:
 
 jobs:
