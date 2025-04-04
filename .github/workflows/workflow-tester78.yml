@@ -1,0 +1,48 @@
+name: Test 78 # Related to https://stackoverflow.com/questions/75720251/setup-environment-to-use-variable-context-when-calling-a-reusable-workflow
+
+on:
+  workflow_call:
+    # Map the workflow outputs to job outputs
+    inputs:
+      project-id:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+      cluster-name:
+        required: true
+        type: string
+      region:
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{ inputs.project-id }}"
+          echo "${{ inputs.environment }}"
+          echo "${{ inputs.cluster-name }}"
+          echo "${{ inputs.region }}"
+  
+  test-env:
+    runs-on: ubuntu-latest
+    environment:
+      name: other
+    steps:
+      - run: |
+          echo "${{ vars.PROJECT_ID }}"
+          echo "${{ vars.CLUSTER_NAME }}"
+          echo "${{ vars.REGION }}"
+
+  test-dynamic-env:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+    steps:
+      - run: |
+          echo "${{ vars.PROJECT_ID }}"
+          echo "${{ vars.CLUSTER_NAME }}"
+          echo "${{ vars.REGION }}"
