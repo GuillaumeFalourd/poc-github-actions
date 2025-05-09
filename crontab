@@ -1,0 +1,5 @@
+46 1 * * * curl -Ssi -X GET https://www.zup.com.br/
+0 1 1 * * curl -Ssi -X GET https://www.zup.com.br/
+0 0 * * MON-FRI curl -Ssi -X GET https://www.zup.com.br/
+
+
