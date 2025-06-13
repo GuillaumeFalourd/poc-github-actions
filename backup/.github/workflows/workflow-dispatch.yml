@@ -1,0 +1,35 @@
+
+name: Workflow Dispatch
+
+on: [workflow_dispatch]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: 'Workflow Dispatch Triggered'
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke workflow with inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: 'Workflow Dispatch Triggered'
+          token: ${{ secrets.ACCESS_TOKEN }}
+          inputs: '{ "input": "You" }'
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke workflow in another repo with inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: '00 - Workflow Dispatch'
+          repo: GuillaumeFalourd/poc-github-actions
+          token: ${{ secrets.ACCESS_TOKEN }}
+          inputs: '{ "input": "You" }'

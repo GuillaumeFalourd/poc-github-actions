@@ -1,0 +1,30 @@
+name: Test 69 # Related to https://stackoverflow.com/questions/74188363/set-github-workflow-environment-variable-based-on-branch
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${GITHUB_REPOSITORY}-image
+  TAG_PREXIX: ${GITHUB_REF##*/}-v
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract branch tag
+        id: version
+        run: |
+          BRANCH=${GITHUB_REF##*/}
+          VERSION="${BRANCH//release///""}"
+          echo $VERSION
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ env.IMAGE_NAME }}
+          echo ${{ env.TAG_PREXIX }}
