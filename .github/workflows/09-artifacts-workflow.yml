@@ -38,6 +38,7 @@ jobs:
         with:
           name: homework
           path: math-homework.txt
+          overwrite: true
 
   result:
     name: Display results
