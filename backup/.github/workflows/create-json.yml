@@ -1,0 +1,16 @@
+name: Create JSON
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cat file.json
+      - name: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "file.json"
+          json: '{"appId":"foofoo", "secret_token":"${{ secrets.SECRET_TEST }}"}'
+      - run: cat file.json
