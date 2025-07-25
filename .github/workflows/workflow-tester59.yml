@@ -1,0 +1,77 @@
+name: Test 59 # Related to https://stackoverflow.com/questions/74057478/github-action-secrets-environnment-cant-be-retreived
+
+on:
+  workflow_dispatch:
+    inputs:
+      input:
+        description: "test"
+        required: false
+        default: "test"
+  #push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+jobs:  
+  # job1:
+  #   runs-on: ubuntu-latest
+  #   environment: test
+  #   env:
+  #      REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+  #   steps:
+  #     - name: Show repo env secret
+  #       run: |
+  #         echo ${{ env.REPO_ENV_SECRET }}
+  #         echo ${{ secrets.REPO_ENV_SECRET }}
+  #         echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+  #         echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
+  #         echo ${{ env.NO_SECRET }}
+  #         echo ${{ secrets.NO_SECRET }}
+
+  job1:
+    runs-on: ubuntu-latest
+    environment: 
+      name: test
+    env:
+       REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+    steps:
+      - name: Show repo env secret
+        run: |
+          echo ${{ env.REPO_ENV_SECRET }}
+          echo ${{ secrets.REPO_ENV_SECRET }}
+          echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo ${{ env.NO_SECRET }}
+          echo ${{ secrets.NO_SECRET }}
+
+  job2:
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ inputs.input }}
+    env:
+       REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+    steps:
+      - name: Show repo env secret
+        run: |
+          echo ${{ env.REPO_ENV_SECRET }}
+          echo ${{ secrets.REPO_ENV_SECRET }}
+          echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
+          echo ${{ env.NO_SECRET }}
+          echo ${{ secrets.NO_SECRET }}
+
+  # job4:
+  #   runs-on: ubuntu-latest
+  #   environment: ${{ inputs.input }}
+  #   env:
+  #      REPO_ENV_SECRET: ${{ secrets.REPO_ENV_SECRET }}
+  #   steps:
+  #     - name: Show repo env secret
+  #       run: |
+  #         echo ${{ env.REPO_ENV_SECRET }}
+  #         echo ${{ secrets.REPO_ENV_SECRET }}
+  #         echo "Secret value env:" ${{ env.REPO_ENV_SECRET }} | sed 's/./& /g'
+  #         echo "Secret value secret:" ${{ secrets.REPO_ENV_SECRET }} | sed 's/./& /g'
+  #         echo ${{ env.NO_SECRET }}
+  #         echo ${{ secrets.NO_SECRET }}
