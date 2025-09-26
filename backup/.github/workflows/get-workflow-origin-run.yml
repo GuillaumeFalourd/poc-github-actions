@@ -1,0 +1,44 @@
+name: Get Workflow Origin Information (Run)
+
+on:
+  workflow_run:
+    workflows: ['Get information']
+    types: ['requested']
+
+jobs:
+  get-info:
+    name: "Get information about the source run"
+    runs-on: ubuntu-latest
+    outputs:
+      sourceHeadRepo: ${{ steps.source-run-info.outputs.sourceHeadRepo }}
+      sourceHeadBranch: ${{ steps.source-run-info.outputs.sourceHeadBranch }}
+      sourceHeadSha: ${{ steps.source-run-info.outputs.sourceHeadSha }}
+      mergeCommitSha: ${{ steps.source-run-info.outputs.mergeCommitSha }}
+      targetCommitSha: ${{ steps.source-run-info.outputs.targetCommitSha }}
+      pullRequestNumber: ${{ steps.source-run-info.outputs.pullRequestNumber }}
+      pullRequestLabels: ${{ steps.source-run-info.outputs.pullRequestLabels }}
+      targetBranch: ${{ steps.source-run-info.outputs.targetBranch }}
+      sourceEvent: ${{ steps.source-run-info.outputs.sourceEvent }}
+    steps:
+      - name: "Get information about the origin 'CI' run"
+        uses: potiuk/get-workflow-origin@v1_1
+        id: source-run-info
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sourceRunId: ${{ github.event.workflow_run.id }}```
+
+  test-info:
+    runs-on: ubuntu-latest
+    needs: get-info
+    steps:
+      - name: Output
+        run: |
+          echo ${{needs.get-info.outputs.sourceHeadRepo}}
+          echo ${{needs.get-info.outputs.sourceHeadBranch}}
+          echo ${{needs.get-info.outputs.sourceHeadSha}}
+          echo ${{needs.get-info.outputs.mergeCommitSha}}
+          echo ${{needs.get-info.outputs.targetCommitSha}}
+          echo ${{needs.get-info.outputs.pullRequestNumber}}
+          echo ${{needs.get-info.outputs.pullRequestLabels}}
+          echo ${{needs.get-info.outputs.targetBranch}}
+          echo ${{needs.get-info.outputs.sourceEvent}}
