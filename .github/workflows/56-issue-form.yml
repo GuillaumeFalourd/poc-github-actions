@@ -1,0 +1,68 @@
+name: 56 - Issue Form
+
+# Example using the ISSUE FORM available on Github Enterprise (using the .github/ISSUE_TEMPLATE.yml file)
+
+on:
+  issues:
+    types: [opened, reopened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.issue.labels.*.name, 'urbancode') && !contains(github.event.issue.labels.*.name, 'stackspot') }}
+    steps:
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Follow the run through: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
+          reactions: '+1'
+
+  form-to-json:
+    name: Convert Form Issue to JSON
+    runs-on: ubuntu-latest
+    needs: [comment]
+    outputs:
+      payload-parsed: ${{ steps.payload.outputs.json_var }}
+    steps:
+      - name: Run Issue form parser
+        id: parse
+        uses: peter-murray/issue-forms-body-parser@v2.0.0
+        with:
+          issue_id: ${{ github.event.issue.number }}
+          separator: '###'
+          label_marker_start: '>>'
+          label_marker_end: '<<'
+
+      - name: Set output
+        id: payload
+        run: echo ::set-output name=json_var::'${{ steps.parse.outputs.payload }}'
+
+      - name: Show output
+        run: echo "${{ toJson(steps.payload.outputs.json_var) }}"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [form-to-json]
+    steps:
+      - name: Test echo form fields
+        run: |
+          echo ${{ fromJson(needs.form-to-json.outputs.payload-parsed)['Name'] }}
+          echo ${{ fromJson(needs.form-to-json.outputs.payload-parsed)['Template'] }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      
+  auto-closing-issue:
+    needs: [test]
+    name: Auto-closing Issue
+    runs-on: ubuntu-latest
+    steps:           
+      - name: Close Issue
+        id: parse
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: Close automatically through https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
