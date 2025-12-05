@@ -1,0 +1,28 @@
+name: Test 25 # Related to https://stackoverflow.com/questions/71341486/github-action-assign-a-variable-of-type-env-an-array-of-strings
+
+on:
+  workflow_dispatch:
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2 # Checkout the repository content to github runner.
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14 # Install the node version needed
+
+      - name: set multiline env var
+        run: |
+          echo 'URL<<EOF' >> $GITHUB_ENV
+          node scripts/test_workflow25.js >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      - name: use env var
+        run: echo "${{ env.URL }}"
+
+      - name: use env var directly
+        run: echo "$URL"
