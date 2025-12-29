@@ -8,7 +8,7 @@ on:
 
 jobs:
   job1:
-    if: github.event.review.state == 'approved' && startsWith(github.event,review.pull_request.base.ref, 'main')
+    if: github.event.review.state == 'approved' && startsWith(github.event.review.pull_request.base.ref, 'main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
