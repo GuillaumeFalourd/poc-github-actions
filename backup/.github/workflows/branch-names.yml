@@ -6,10 +6,10 @@ jobs:
   branch-names:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Get branch names
         id: branch-name
-        uses: tj-actions/branch-names@v7.0.7
+        uses: tj-actions/branch-names@v9.0.0
         
       - name: Running on the default branch.
         if: steps.branch-name.outputs.is_default == 'true'
