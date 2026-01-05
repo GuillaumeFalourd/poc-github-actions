@@ -173,13 +173,9 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Gitleaks](https://github.com/marketplace/actions/gitleaks): Github Action to detect hardcoded secrets like passwords, api keys, and tokens in git repos.
 
-[![GPT Review](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/gpt-review.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/gpt-review.yml)
+[![GPT Review](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/gpt-review.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/gpt-review.yml) - QUOTA EXCEEDED
 
 [GPT Review](https://github.com/marketplace/actions/chat-gpt-code-peer-review): Github Action enabling automatic code reviewing in your repository by sending the git diff patches between a head ref and a base ref to OpenAI's API for annotation using Chat GPT (needs [OpenAi API Key](https://www.maisieai.com/help/how-to-get-an-openai-api-key-for-chatgpt)).
-
-[![Horusec](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/horusec.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/horusec.yml)
-
-[Horusec](https://github.com/marketplace/actions/horusec): Github Action to identify vulnerabilities in your project.
 
 [![Manual Approval](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml)
 
