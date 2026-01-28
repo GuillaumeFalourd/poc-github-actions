@@ -1,19 +1,19 @@
 name: 19 - Push Event
 
 on:
-  push:
-    branches:
-      - '*' # for all branches
-      - '!main' # Except the main branch
+  # push:
+  #   branches:
+  #     - '*' # for all branches
+  #     - '!main' # Except the main branch
   schedule:
-    - cron: "0 2 * * *" # Runs at 02:00 UTC everyday
+    - cron: "0 2 * * MON-FRI" # Runs at 02:00 UTC from Monday to Friday
   workflow_dispatch:
 
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
       - run: |
