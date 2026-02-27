@@ -1,0 +1,16 @@
+name: Test 53 #Related to SO https://stackoverflow.com/questions/73591118/github-actions-dependent-jobs-not-running-sequentially
+
+on:
+  workflow_dispatch:
+
+jobs:
+  laravel_tests:
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo test
+
+  forge_deploy:
+    needs: laravel_tests
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo test

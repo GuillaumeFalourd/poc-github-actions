@@ -31,3 +31,38 @@ jobs:
     if: contains( needs.job1.outputs.tag_version , 'prod-')
     steps:
       - run: echo "${{needs.job1.outputs.tag_version}}"
+
+  job4:
+    runs-on: ubuntu-latest
+    outputs:
+      tag_version: ${{ steps.get_tag_version.outputs.version }}
+    steps:
+      - name: Get the version
+        id: get_tag_version
+        run: echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
+
+  job5:
+    runs-on: ubuntu-latest
+    needs: [job4]
+    if: contains( needs.job4.outputs.tag_version , 'dev-')
+    steps:
+      - run: echo "${{needs.job4.outputs.tag_version}}"
+
+  job6:
+    runs-on: ubuntu-latest
+    needs: [job4]
+    if: contains( needs.job4.outputs.tag_version , 'prod-')
+    steps:
+      - run: echo "${{needs.job4.outputs.tag_version}}"
+
+  job7:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract branch tag
+        id: version
+        run: |
+          BRANCH=${GITHUB_REF##*/}
+          VERSION="123"
+          echo $VERSION
+          echo "tag=$VERSION" >> $GITHUB_OUTPUT
+      - run: echo ${{ steps.version.outputs.tag }}

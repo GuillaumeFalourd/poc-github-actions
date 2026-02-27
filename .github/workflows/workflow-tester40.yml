@@ -1,0 +1,42 @@
+name: Test 40 # Related to https://stackoverflow.com/questions/72633058/parameterize-runs-on-value-for-github-action
+
+on:
+  workflow_dispatch:
+
+env:
+  MAC_OS_RUNNER: ${{ secrets.MAC_OS_RUNNER }}
+
+jobs:
+  test-matrix:
+    runs-on: ${{ matrix.test }}
+    strategy:
+      matrix:
+        # test: ${{ env.MAC_OS_RUNNER }}
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: [2.7, 3.7, 3.8, 3.9]
+    steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
+      - run: |
+          echo $OSTYPE
+          python --version
+        shell: bash
+
+  # test-include:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       org: [apples, bananas, carrots] #Array of org mnemonics to use below
+  #       include:
+  #         # includes a new variable for each org (this is effectively a switch statement)
+  #         - org: apples
+  #           test_secret: MAC_OS_RUNNER
+  #         - org: bananas
+  #           test_secret: MAC_OS_RUNNER
+  #         - org: carrots
+  #           test_secret: MAC_OS_RUNNER
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Install SFDX CLI and authorize org
+  #       run: ${{ secrets[matrix.MAC_OS_RUNNER] }}

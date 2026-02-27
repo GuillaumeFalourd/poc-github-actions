@@ -1,0 +1,29 @@
+name: Test 26 # Related to https://stackoverflow.com/questions/71357973/github-actions-set-two-output-names-from-custom-action-in-golang-code
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Version:
+    name: Calculate Version
+    runs-on: ubuntu-latest
+    outputs:
+      repo_version_env: ${{ steps.version.outputs.repo_tag }}
+      ecr_version_env: ${{ steps.version.outputs.ecr_tag }}
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Calculate version
+      id: version
+      run: go run ./scripts/test_workflow26.go
+
+  Build:
+    needs:
+      - Version
+    name: Build Image
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build
+      run: |
+        echo ${{ needs.Version.outputs.ecr_version_env }}
+        echo ${{ needs.Version.outputs.repo_version_env }}

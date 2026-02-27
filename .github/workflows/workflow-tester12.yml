@@ -1,0 +1,38 @@
+name: Test 12 #https://stackoverflow.com/questions/69608041/run-command-taking-output-from-previous-step-on-github-actions?noredirect=1#comment123057564_69608041
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      hash: ${{ steps.ipfs-pin.outputs.hash }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: jakejarvis/hugo-build-action@master
+        with:
+          args: --minify --buildDrafts
+      - uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4
+        id: ipfs-pin
+        with:
+          pin-name: '[my-pin-name]'
+          path: './public'
+          pinata-api-key: 'API Key'
+          pinata-secret-api-key: 'secret API Key'
+          verbose: true
+          remove-old: true
+
+  saves-hash-on-file:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: echo ${{steps.build.outputs.hash}} > /.github/ipfs-hash.txt

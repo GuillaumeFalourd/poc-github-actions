@@ -1,0 +1,30 @@
+name: Test 90 # Related to SO: https://stackoverflow.com/questions/78233438/github-action-cannot-get-timeout-status-from-previous-step
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Spectacles Job
+        id: spectaclesJob
+        timeout-minutes: 1
+        continue-on-error: true
+        run: |
+          echo "Waiting 1 minute 30 seconds..."
+          sleep 90
+  
+      - name: Print conclusion
+        run: echo ${{ steps.spectaclesJob.conclusion }}
+  
+      - name: Print outcome
+        run: echo ${{ steps.spectaclesJob.outcome }}
+  
+      - name: Why does this step not run
+        if: ${{ steps.spectaclesJob.conclusion == 'timeout' }}
+        run: echo "And why is the conclusion 'success'"

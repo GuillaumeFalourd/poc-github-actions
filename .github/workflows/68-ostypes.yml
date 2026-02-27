@@ -1,0 +1,15 @@
+name: 68 - OS TYPES
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-ostype:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - run: |
+          echo $OSTYPE
+        shell: bash

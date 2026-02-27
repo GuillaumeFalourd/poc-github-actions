@@ -1,0 +1,17 @@
+name: '40 - Invoked Workflow Dispatch'
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release version (e.g.: 0.0.0)'
+        required: true
+
+env:
+  RELEASE_VERSION: ${{ github.event.inputs.tag }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ env.RELEASE_VERSION }}

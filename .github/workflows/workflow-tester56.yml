@@ -1,0 +1,30 @@
+name: Test 56 #Related to SO https://stackoverflow.com/questions/73727910/invalid-workflow-file-github-actions-cf-cli
+
+on:
+  # push:
+  #   branches:
+  #   - main
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Build your app here
+      run: echo "..."
+
+  deploy:
+    runs-on: ubuntu-18.04
+    needs: build
+    steps:
+    - name: Deploy your app here
+      run: echo "..."
+    # - uses: citizen-of-planet-earth/cf-cli-action@master
+    #   with:
+    #     cf_api: https://api.my-cloud-foundry.com
+    #     cf_username: ${{ secrets.CF_USER }}
+    #     cf_password: ${{ secrets.CF_PASSWORD }}
+    #     cf_org: AwesomeApp
+    #     cf_space: Development
+    #     command: push -f manifest-dev.yml

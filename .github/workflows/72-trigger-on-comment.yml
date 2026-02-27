@@ -1,0 +1,17 @@
+name: 72 - Trigger on comment
+
+on:
+  issue_comment:
+    types: [ created ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: ./.github/workflows/63-reusable.yml
+    if: contains(github.event.comment.body, '/retest')
+    secrets: inherit
+    with:
+        path: path/example
+    

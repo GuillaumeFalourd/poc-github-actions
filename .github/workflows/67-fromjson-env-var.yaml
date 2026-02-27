@@ -1,0 +1,17 @@
+name: 67 - FromJSON env var
+
+on:
+  workflow_dispatch:
+
+env:
+  myjson: '{"foo1" : "bar1", "foo2": "bar2"}'
+  var_foo: 'foo2'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ fromJSON(env.myjson).foo2 }}
+      - run: echo ${{ fromJSON(env.myjson)[env.var_foo] }}
+
+# REF: https://stackoverflow.com/questions/77123861/github-actions-workflow-how-to-access-fromjson-dictionary-value-using-the-key-s

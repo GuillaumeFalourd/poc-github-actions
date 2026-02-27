@@ -1,0 +1,16 @@
+name: Test 36 # Related to https://stackoverflow.com/questions/72532083/how-to-access-this-json-object-field-in-github-actions
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Access GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+

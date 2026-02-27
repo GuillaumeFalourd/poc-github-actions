@@ -1,0 +1,43 @@
+name: Test 72 # Related to https://stackoverflow.com/questions/74386773/github-actions-job-is-skipped-although-all-needs-succeeded
+
+on:
+  push:
+
+jobs:
+  auto-versioning:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'auto-versioning'
+
+  set-deployment-env:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'set-deployment-env'
+
+  terraform-apply:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'terraform-apply'
+
+  build-test-api:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/48-reusable-workflow-1.yml@main
+    needs: [set-deployment-env, auto-versioning]
+    if: |
+      always() &&
+      (needs.set-deployment-env.result == 'success') &&
+      (needs.auto-versioning.result == 'success' || needs.auto-versioning.result == 'skipped')
+
+  debug-deploy-api:
+    runs-on: ubuntu-latest
+    needs: [build-test-api, terraform-apply, set-deployment-env]
+    if: always() # Had to add this, otherwise it would be skipped just as "deploy-api".
+    steps:
+      - run: |
+          echo "Result of auto-versioning: ${{ needs.auto-versioning.result }}"
+          echo "Result of build-test-api: ${{ needs.build-test-api.result }}"
+          echo "Result of terraform-apply: ${{ needs.terraform-apply.result }}"
+          echo "Result of set-deployment-env: ${{ needs.set-deployment-env.result }}"
+
+  deploy-api: #always skipped
+    needs: [build-test-api, terraform-apply, set-deployment-env]
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/48-reusable-workflow-1.yml@main

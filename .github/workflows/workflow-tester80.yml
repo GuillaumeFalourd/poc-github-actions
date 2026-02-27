@@ -1,0 +1,39 @@
+name: Test 80 # Related to https://stackoverflow.com/questions/76307553/github-actions-failing-on-dependencies
+on:
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.10' # set this to the python version to use (supports 3.6, 3.7, 3.8)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python version
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Execute Python script # Run the run.py to get the latest data
+        run: python run.py
+
+      # Optional: Add step to run tests here
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          name: python-app
+          path: |
+            . 
+            !venv/

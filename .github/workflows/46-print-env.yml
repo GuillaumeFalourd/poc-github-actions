@@ -1,0 +1,23 @@
+name: 46 - Print Env
+
+on:
+  push:
+
+jobs:
+  github-actions-environment-variables-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ubuntu GitHub Actions environment variables List
+        run: env
+
+  github-actions-environment-variables-windows:
+    runs-on: windows-latest
+    steps:
+      - name: List of the GitHub Actions environment variables on Windows
+        run: env
+
+  github-actions-environment-variables-macos:
+    runs-on: macos-latest
+    steps:
+      - name: MacOS List of GitHub Actions environment variables
+        run: env
