@@ -70,27 +70,27 @@
             echo "::set-output name=ECS_TASK_DEFINITION_FILE::task-definition-${{ github.event.inputs.microservice }}.json"
             echo "::set-output name=ECS_CONTAINER_NAME::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
 
-  setup2:
-    name: Setup PROD Variables
-    runs-on: ubuntu-latest
-    environment:
-      name: Production
-      url: 'http://dev.myapp.com'
-    outputs:
-      APP_NAME: ${{ steps.setvars.outputs.APP_NAME }}
-      AWS_REGION: ${{ steps.setvars.outputs.AWS_REGION }}
-      SHA8: ${{ steps.setvars.outputs.SHA8 }}
-      BUILD_DIR: ${{ steps.setvars.outputs.BUILD_DIR }}
-      ECR_REPOSITORY: ${{ steps.setvars.outputs.ECR_REPOSITORY }}
-      ECS_CLUSTER: ${{ steps.setvars.outputs.ECS_CLUSTER }}
-      ECS_SERVICE: ${{ steps.setvars.outputs.ECS_SERVICE }}
-      ECS_TASK_DEFINITION: ${{ steps.setvars.outputs.ECS_TASK_DEFINITION }}
-      ECS_TASK_DEFINITION_FILE: ${{ steps.setvars.outputs.ECS_TASK_DEFINITION_FILE }}
-      ECS_CONTAINER_NAME: ${{ steps.setvars.outputs.ECS_CONTAINER_NAME }}
-    steps:
-    - name: Set Vars
-      id: setvars
-      run: |
+    setup2:
+      name: Setup PROD Variables
+      runs-on: ubuntu-latest
+      environment:
+        name: Production
+        url: 'http://dev.myapp.com'
+      outputs:
+        APP_NAME: ${{ steps.setvars.outputs.APP_NAME }}
+        AWS_REGION: ${{ steps.setvars.outputs.AWS_REGION }}
+        SHA8: ${{ steps.setvars.outputs.SHA8 }}
+        BUILD_DIR: ${{ steps.setvars.outputs.BUILD_DIR }}
+        ECR_REPOSITORY: ${{ steps.setvars.outputs.ECR_REPOSITORY }}
+        ECS_CLUSTER: ${{ steps.setvars.outputs.ECS_CLUSTER }}
+        ECS_SERVICE: ${{ steps.setvars.outputs.ECS_SERVICE }}
+        ECS_TASK_DEFINITION: ${{ steps.setvars.outputs.ECS_TASK_DEFINITION }}
+        ECS_TASK_DEFINITION_FILE: ${{ steps.setvars.outputs.ECS_TASK_DEFINITION_FILE }}
+        ECS_CONTAINER_NAME: ${{ steps.setvars.outputs.ECS_CONTAINER_NAME }}
+      steps:
+      - name: Set Vars
+        id: setvars
+        run: |
           echo "::set-output name=APP_NAME::${{ github.event.inputs.microservice }}"
           echo "::set-output name=AWS_REGION::us-east-1"
           echo "::set-output name=SHA8::${{ github.sha }} | cut -c1-8)"

@@ -11,6 +11,13 @@ This repository contains various proofs of concept using a Github Actions throug
 - [Github Actions – variáveis de ambiente e secrets](https://www.zup.com.br/blog/github-actions-variaveis-de-ambiente-e-secrets)
 - [Como manipular outputs no GitHub Actions](https://www.zup.com.br/blog/manipular-outputs-github-actions)
 - [Workflows no GitHub Actions: como usar events e triggers](https://www.zup.com.br/blog/workflows-no-github-actions)
+- [Como manipular outputs no GitHub Actions](https://www.zup.com.br/blog/manipular-outputs-github-actions)
+- [Como usar imagens do Docker com workflows no Github Actions](https://www.zup.com.br/blog/github-actions-docker)
+- [Como gerenciar artefatos nos workflows do Github Actions](https://www.zup.com.br/blog/artefatos-github-actions)
+- [Como usar condicionais nos workflows do Github Actions ](https://www.zup.com.br/blog/como-usar-condicionais-workflows-github-actions)
+- [10 boas práticas e dicas para usar o GitHub Actions](https://www.zup.com.br/blog/github-actions-dicas-boas-praticas)
+- [Quando usar Reusable Workflow ou Composite Action no GitHub Actions?](https://www.zup.com.br/blog/reusable-workflow-e-composite-action)
+- [Git Flow customizado no Github Actions](https://www.zup.com.br/blog/git-flow)
 
 ## Workflow YAML Basic Structure Explanation
 
@@ -166,7 +173,7 @@ This workflow illustrates how to create a new Pull Request based on a branch nam
 
 This workflow illustrates how to add a comment on a new Pull Request based on the github actor name after a PR event.
 
-[![30 - Webhook Release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-releaseh.yml)
+[![30 - Webhook Release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/30-webhook-release.yml) - DEPRECATED
 
 This workflow illustrates how to call a webhook on each release extracting the release tag.
 
@@ -228,11 +235,11 @@ This workflow illustrates how to list all files from a specific extension (here,
 
 This workflow illustrates how to list all env variables set in the runner.
 
-[![47 - Force Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml)
+[![47 - Force Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/47-force-failure.yml) - AS EXPECTED
 
 This workflow illustrates how to force a workflow failure if a condition isn't met.
 
-[![48 - Wait for reusable completion](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml)
+[![48 - Wait for reusable completion](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/48-wait-for-reusable-completion.yml) - DEPRECATED
 
 This workflow illustrates how to wait for other workflows completion before executing some operation (using reusable workflows).
 
@@ -247,3 +254,83 @@ This workflow illustrates how to simply create a tag in a job.
 [![51 - Concurrency](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/51-concurrency.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/51-concurrency.yml)
 
 This workflow illustrates how to use concurrency to avoid the same workflow to run in parallel for different push to the same branch (for example to limit Github actions runner usage in private repo).
+
+[![52 - Print Secret](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/52-print-secret.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/52-print-secret.yml)
+
+This workflow illustrates how to print secrets values on a workflow run. To harden the security of your github actions, have a look at [this guide](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) on the Github Official Documentation.
+
+[![53 - Concatenation](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/53-concatenation.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/53-concatenation.yml)
+
+This workflow illustrates how to concatenate `env` variables using the environment file.
+
+[![54 - Permissiom](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/54-permission.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/54-permission.yml)
+
+This workflow illustrates how to use the `permission` field at the workflow level. Giving the GITHUB_TOKEN a specific permission scope during the workflow execution.
+
+[![55 - Create Issue](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-create-issue.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-create-issue.yml) [![55 - Read Issue](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-read-issue.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/55-read-issue.yml)
+
+These workflows illustrate how to **create** and **read** an issue body variable according to a specific [issue template](https://github.com/GuillaumeFalourd/poc-github-actions/blob/main/.github/ISSUE_TEMPLATE_DEPLOYMENT.md).
+
+[![57 - Reusable outputs](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/57-reusable-outputs.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/57-reusable-outputs.yml)
+
+This workflow illustrates how to use **outputs** with reusable workflows.
+
+[![58 - Env Expressions](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/58-env-expressions.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/58-env-expressions.yml)
+
+This workflows illustrates how to use **expressions** when setting env variables ath the workflow level, according to the trigger event.
+
+[![59 - Step Context](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/59-step-context.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/59-step-context.yml)
+
+This workflows illustrates how to use **[step context](https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context)**, which contains detail about the execution of each step by default. Using the `outcome` property of each step we can check the result of its execution.
+
+[![60 - Save secrets variables](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/60-save-secrets-variables.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/60-save-secrets-variables.yml)
+
+This workflow illustrates how to save secrets in artifacts to use on later jobs.
+
+[![61 - Create Tag and Release](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/61-create-tag-and-release.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/61-create-tag-and-release.yml) [![62 - Create Trigger on release other workflow](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/62-trigger-on-release-other-workflow.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/62-trigger-on-release-other-workflow.yml)
+
+Those workflows illustrate how to **trigger a release creation** (with tag based on a branch syntax) where the release publication could **trigger a deployment pipeline**.
+
+[![63 - Matrix folder](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/63-matrix-folder.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/63-matrix-folder.yml)
+
+This workflow illustrates how to identify updated folders to perfom a similar behavior based on the folder through a reusable workflow with a matrix strategy.
+
+[![65 - Sequential Matrix](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/65-sequential-matrix.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/65-sequential-matrix.yml)
+
+This workflow illustrates how to execute sequencial jobs in specific order using matrix with `max-parallel: 1` strategy.
+
+[![66 - Matrix Object](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/66-matrix-object.yaml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/66-matrix-object.yaml)
+
+This workflow illustrates how to manipulate matrix object to perform different operation according to a object type.
+
+[![67 - From JSON Env Var](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/67-fromjson-env-var.yaml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/67-fromjson-env-var.yaml)
+
+This workflow illustrates how to extract a specific item from a JSON list stored in a environment variable dynamically.
+
+[![68 - OS Types](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/68-ostypes.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/68-ostypes.yml)
+
+This workflow shows the os type value for each github runner os.
+
+[![69 - Run on Push to RC](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/69-run-on-push-to-rc.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/69-run-on-push-to-rc.yml)
+
+This workflow illustrates how to extract a semantic version from a Release Candidate branch name.
+
+[![70 - Post Failure](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/70-post-failure.yml) - AS EXPECTED
+
+This workflow illustrates how to execute a job when a previous job fails (post failure operations).
+
+[![71 - Many Outputs Python](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/71-many-outputs-python.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/71-many-outputs-python.yml)
+
+This workflow illustrates how to save many outputs using a python script and the GITHUB_OUTPUT file.
+
+[![72 - Trigger on comment](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/72-trigger-on-comment.yml)
+
+This workflow illustrates how to start a workflow by commenting using a specific keyword in a Pull Request review.
+
+[![73 - Check if file exists](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/73-if-file-exists.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/73-if-file-exists.yml) - AS EXPECTED
+
+This workflow illustrates how to check if a file exists in a workflow after a failure, to perform some custom operations.
+
+[![74 - n8N integration](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/74-n8n-integration.yml/badge.svg)](https://github.com/GuillaumeFalourd/poc-github-actions/actions/workflows/74-n8n-integration.yml) - AS EXPECTED
+
+This workflow illustrates how to integrate github actions with a n8n workflow automation (http://n8n.io) using a webhook.
