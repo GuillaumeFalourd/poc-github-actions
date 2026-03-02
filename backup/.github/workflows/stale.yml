@@ -8,7 +8,8 @@ jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v3
+      - uses: actions/stale@v9.1.0
         with:
           stale-issue-message: 'Message to comment on stale issues. If none provided, will not mark issues stale'
           stale-pr-message: 'Message to comment on stale PRs. If none provided, will not mark PRs stale'
+          close-issue-reason: 'not_planned'
