@@ -7,7 +7,7 @@ on:
       - 'v*.*.*'
 
 jobs:
-  build:
+  wandalen-retry:
     runs-on: ubuntu-latest
     steps:
       - name : Retry action
@@ -18,3 +18,14 @@ jobs:
             node-version : 16.x
           attempt_limit : 3
           attempt_delay: 1000
+
+  # nick-fields-retry:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name : Retry action
+  #       uses: nick-fields/retry@v2
+  #       with:
+  #         timeout_seconds: 15
+  #         max_attempts: 3
+  #         retry_on: error
+  #         command: npm run some-typically-fast-script

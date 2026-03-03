@@ -10,6 +10,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 - [Useful Actions](https://github.com/GuillaumeFalourd/useful-actions#-useful-actions)
   - [Global Actions](https://github.com/GuillaumeFalourd/useful-actions#-global-actions)
   - [Docker Actions](https://github.com/GuillaumeFalourd/useful-actions#-docker-actions)
+  - [Other Tools Actions](https://github.com/GuillaumeFalourd/useful-actions#-other-tools-actions)
 - [How to create new actions](https://github.com/GuillaumeFalourd/useful-actions#-how-to-create-new-actions)
 - [How to debug workflows](https://github.com/GuillaumeFalourd/useful-actions#%EF%B8%8F-how-to-debug-workflows)
 - [How to test actions locally](https://github.com/GuillaumeFalourd/useful-actions#-how-to-test-actions-locally)
@@ -52,6 +53,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Assert command line output](https://github.com/marketplace/actions/assert-command-line-output): Github Action to assert / check a command line output.
 
+[![Auto Accept Collabs](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-accept-collabs.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-accept-collabs.yml)
+
+[Auto Accept Collabs](https://github.com/marketplace/actions/auto-accept-collabs): Github Action to accept automatically all collaboration invites. Useful for a bot account.
+
 [![Auto approve](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-approve.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-approve.yml)
 
 [Auto Approve](https://github.com/marketplace/actions/auto-approve): Github Action to automatically approve pull requests.
@@ -66,7 +71,7 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Auto merge](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-merge.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/auto-merge.yml)
 
-[Auto Merge](https://github.com/marketplace/actions/merge-pull-requests): GitHub action to automatically merge pull requests when they are ready (`automerged` label).
+[Auto Merge](https://github.com/marketplace/actions/merge-pull-requests): GitHub Action to automatically merge pull requests when they are ready (`automerged` label).
 
 [![Branch Names](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml)
 
@@ -102,23 +107,35 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Copycat](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/copycat.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/copycat.yml)
 
-[Copycat](https://github.com/marketplace/actions/copycat-action): GitHub action to copy files from your repository to another external repository. It is also possible to copy files from/to repository Wikis.
+[Copycat](https://github.com/marketplace/actions/copycat-action): GitHub Action to copy files from your repository to another external repository. It is also possible to copy files from/to repository Wikis.
+
+[![Create JSON](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-json.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-json.yml)
+
+[Create JSON](https://github.com/marketplace/actions/create-json): GitHub Action to create a .json file dynamically on your workflow.
 
 [![Create Pull Request](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/create-pull-request.yml)
 
-[Create Pull Request](https://github.com/marketplace/actions/create-pull-request): GitHub action to create a pull request for changes to your repository in the actions workspace.
+[Create Pull Request](https://github.com/marketplace/actions/create-pull-request): GitHub Action to create a pull request for changes to your repository in the actions workspace.
+
+[![Curl](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/curl.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/curl.yml)
+
+[Curl](https://github.com/marketplace/actions/github-action-for-curl): GitHub Action to use the curl CLI to perform http requests.
 
 [![Debug](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/debug.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/debug.yml)
 
-[Debug](https://github.com/marketplace/actions/debug-action): GitHub action to print the environment variables and the event payload. Useful for developing or debugging GitHub Actions.
+[Debug](https://github.com/marketplace/actions/debug-action): GitHub Action to print the environment variables and the event payload. Useful for developing or debugging GitHub Actions.
+
+[![Delete Artifacts](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml)
+
+[Delete Artifacts](https://github.com/marketplace/actions/delete-artifact): GitHub Action to delete artifacts within a workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
 
 [![Enforce PR labels](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml)
 
-[Enforce PR labels](https://github.com/marketplace/actions/enforce-pr-labels): GitHub action to enforce assigning labels before merging PR's. Useful for generating automatic changelog and release notes with `github-release-notes`.
+[Enforce PR labels](https://github.com/marketplace/actions/enforce-pr-labels): GitHub Action to enforce assigning labels before merging PR's. Useful for generating automatic changelog and release notes with `github-release-notes`.
 
 [![Env Vars](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/env-vars.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/env-vars.yml)
 
-[Env Vars](https://github.com/marketplace/actions/github-environment-variables-action): GitHub action to expose useful environment variables.
+[Env Vars](https://github.com/marketplace/actions/github-environment-variables-action): GitHub Action to expose useful environment variables.
 
 [![File Existence](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/file-existence.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/file-existence.yml)
 
@@ -131,6 +148,14 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Get Workflow Origin](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/get-workflow-origin.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/get-workflow-origin.yml) [![Get Workflow Origin Information](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/get-workflow-origin-run.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/get-workflow-origin-run.yml)
 
 [Get Workflow Origin](https://github.com/potiuk/get-workflow-origin): Github Action to provide information about the pull requests that triggered the workflow for the `pull_request` and `pull_request_review` events or for the `workflow_run` event that is triggered by one of those events.
+
+[![GHAction Dump Context](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-dump-context.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-dump-context.yml)
+
+[GHAction Dump Context](https://github.com/marketplace/actions/dump-context): GitHub Action to dump context of your workflow (which allows to check all variables available using the `github.event` syntax in the workflow).
+
+[![GHAction Github Status](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-github-status.yml)
+
+[GHAction Github Status](https://github.com/marketplace/actions/github-status): GitHub Action to check [GitHub Status](https://www.githubstatus.com/) in workflows, allowinf to trigger error if GitHub services are down.
 
 [![Git Auto Commit](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/git-auto-commit.yml)
 
@@ -148,9 +173,13 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Gitleaks](https://github.com/marketplace/actions/gitleaks): Github Action to detect hardcoded secrets like passwords, api keys, and tokens in git repos.
 
-[![Horusec](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/horusec.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/horusec.yml)
+[![GPT Review](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/gpt-review.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/gpt-review.yml) - QUOTA EXCEEDED
 
-[Horusec](https://github.com/marketplace/actions/horusec): Github Action to identify vulnerabilities in your project.
+[GPT Review](https://github.com/marketplace/actions/chat-gpt-code-peer-review): Github Action enabling automatic code reviewing in your repository by sending the git diff patches between a head ref and a base ref to OpenAI's API for annotation using Chat GPT (needs [OpenAi API Key](https://www.maisieai.com/help/how-to-get-an-openai-api-key-for-chatgpt)).
+
+[![Manual Approval](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml)
+
+[Manual Approval](https://github.com/marketplace/actions/manual-workflow-approval): Github Action to pause a workflow and require manual approval from **one or more** approvers before continuing.
 
 [![Paths Filter](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/paths-filter.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/paths-filter.yml)
 
@@ -175,6 +204,12 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Release](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/release.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/release.yml)
 
 [Release](https://github.com/marketplace/actions/gh-release): GitHub Action for creating GitHub Releases on Linux, Windows, and macOS virtual environments.
+
+[![Replace Token](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-token.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-token.yml)
+
+[Replace Token](https://github.com/marketplace/actions/replace-tokens): GitHub Action for replacing tokens in files.
+
+[![Replace Values Action](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml): Github Action to replace values in files (secrets or fields).
 
 [![Repository-Dispatch](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml) [![Repository-Dispatch-Triggered](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml)
 
@@ -220,6 +255,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 ## 🐳 Docker Actions
 
+[![GHAction Container Scan](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-container-scan.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ghaction-container-scan.yml)
+
+[GHAction Container Scan](https://github.com/marketplace/actions/container-scan): GitHub Action to check for vulnerabilities in a container image with [Trivy](https://github.com/aquasecurity/trivy).
+
 [![Hadolint](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/hadolint.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/hadolint.yml)
 
 [Hadolint](https://github.com/burdzwastaken/hadolint-action): Github Action to run Hadolint and reports violations given a Dockerfile within a repository on a pull request.
@@ -231,6 +270,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Publish Docker](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/publish-docker.yml)
 
 [Publish Docker](https://github.com/marketplace/actions/publish-docker): Github Action to build and push containers.
+
+## 🦾 Other Tools Actions
+
+_TODO_
 
 ***
 
