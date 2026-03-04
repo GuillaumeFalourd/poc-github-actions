@@ -18,8 +18,8 @@ jobs:
       folder2: ${{ steps.changes.outputs.folder2 }}
       folders: ${{ steps.array.outputs.array }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: dorny/paths-filter@v2
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3.0.2
         id: changes
         with:
           filters: |
