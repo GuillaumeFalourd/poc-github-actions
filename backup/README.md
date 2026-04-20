@@ -181,6 +181,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Manual Approval](https://github.com/marketplace/actions/manual-workflow-approval): Github Action to pause a workflow and require manual approval from **one or more** approvers before continuing.
 
+[![NHS Score Check](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/nhs-score-check.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/nhs-score-check.yml)
+
+[NHS Score Check](https://github.com/marketplace/actions/nhs-agentic-readiness-check): GitHub Action to fetch a site's agentic readiness score from [Not Human Search](https://nothumansearch.ai) and fail the build if it drops below a minimum threshold. Similar in spirit to Lighthouse CI, but for AI-agent signals (`llms.txt`, `ai-plugin.json`, OpenAPI, MCP server, schema.org, AI-aware `robots.txt`). Useful as a CI guardrail so a regression in agent-readable metadata gets caught before merge.
+
 [![Paths Filter](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/paths-filter.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/paths-filter.yml)
 
 [Paths Filter](https://github.com/marketplace/actions/paths-changes-filter): Github Action that enables conditional execution of workflow steps and jobs, based on the files modified by pull request, on a feature branch, or by the recently pushed commits.
