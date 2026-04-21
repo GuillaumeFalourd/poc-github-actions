@@ -137,6 +137,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Env Vars](https://github.com/marketplace/actions/github-environment-variables-action): GitHub Action to expose useful environment variables.
 
+[![FailureMemory](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/failurememory.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/failurememory.yml)
+
+[FailureMemory](https://github.com/marketplace/actions/failurememory): GitHub Action for recurring CI failure fingerprinting and memory-backed triage so maintainers can turn repeated GitHub Actions failures into short recurrence briefs instead of re-reading the same CI noise from scratch.
+
 [![File Existence](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/file-existence.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/file-existence.yml)
 
 [File Existence](https://github.com/marketplace/actions/file-existence): Github Action to check if files exists or not.
