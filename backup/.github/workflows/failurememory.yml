@@ -1,0 +1,45 @@
+name: FailureMemory
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+
+jobs:
+  fingerprint-failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Restore prior FailureMemory history
+        uses: actions/cache/restore@v4
+        with:
+          path: .failurememory
+          key: failurememory-${{ github.repository }}-${{ github.event.workflow_run.head_branch }}-${{ github.event.workflow_run.id }}
+          restore-keys: |
+            failurememory-${{ github.repository }}-${{ github.event.workflow_run.head_branch }}-
+
+      - name: Fingerprint the failing run
+        id: failurememory
+        uses: UnguisAI/failurememory@v0
+        with:
+          fetch_mode: github
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_run_id: ${{ github.event.workflow_run.id }}
+
+      - name: Save updated FailureMemory history
+        if: ${{ always() }}
+        uses: actions/cache/save@v4
+        with:
+          path: .failurememory
+          key: failurememory-${{ github.repository }}-${{ github.event.workflow_run.head_branch }}-${{ github.run_id }}
+
+      - name: Print summary
+        run: |
+          echo "fingerprint=${{ steps.failurememory.outputs.fingerprint }}"
+          echo "seen_count=${{ steps.failurememory.outputs.seen_count }}"
+          cat "${{ steps.failurememory.outputs.summary_path }}"
