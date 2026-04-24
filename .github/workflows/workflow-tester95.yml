@@ -1,0 +1,50 @@
+name: Test 95 # Related to SO https://stackoverflow.com/questions/78461104/how-can-i-configure-a-github-actions-strategy-matrix-to-dynamically-read-a-json
+
+on:
+  workflow_dispatch:
+    inputs:
+      stsReplay:
+        description: 'team to pick'
+        required: true
+        default: 'real-madrid'
+        type: choice
+        options:
+          - 'manu'
+          - 'chelsea'
+          - 'real-madrid'
+          - 'fc-barcelona'
+          - 'bayern'
+          - 'ac-milan'
+
+env:
+  REPLAY_MAP_JSON: |
+    {
+      "manu": ["casemiro","dalot","rashford"],
+      "chelsea": ["sterling","james","silva"],
+      "real-madrid": ["vini-jr","modric","kroos"],
+      "bayern": ["sane","kane","alphonso"],
+      "ac-milan": ["rafael-leao","giroud","pulisic"]
+    }
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      players: ${{ steps.set-matrix.outputs.values }}
+    steps:
+      - id: set-matrix
+        run: |
+          input_replay="real-madrid"
+          echo "input_replay: $input_replay"
+          values=$(echo "${REPLAY_MAP_JSON}" | jq -r --arg input_replay "$input_replay" '.[$input_replay] | map("\"\(.)\"") | join(", ")')
+          echo "values:[$values]"
+          echo "values=[$values]" >> $GITHUB_OUTPUT
+  
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        players: ${{fromJson(needs.job1.outputs.players)}}
+    steps:
+      - run: echo "Player ${{ matrix.players}}"
