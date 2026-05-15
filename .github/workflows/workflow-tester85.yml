@@ -1,0 +1,29 @@
+name: Test 85 # Related to https://stackoverflow.com/questions/76925353/invalid-syntax-on-github-output?noredirect=1#comment135621975_76925353
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v3 # Checkout the repository content to github runner.
+
+      - name: Setup Python Version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 # Install the python version needed
+
+      - name: Execute Python script # Run the run.py to get the latest data
+        id: test1
+        run: python scripts/list-output.py
+
+      - name: Check output
+        run: |
+          echo ${{steps.test1.outputs.test}}
+
+      - name: Check env
+        run: |
+          echo ${{env.TEST}}

@@ -1,0 +1,26 @@
+name: 64 - Initiator
+
+on:
+  # workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * MON-FRI' # Runs at 1:00 UTC
+  repository_dispatch:
+
+jobs:
+  producer:
+    if: github.event.action != 'Workflow Response'
+    runs-on: ubuntu-latest
+    steps:
+      - name: INIT REMOTE WORKFLOW 
+        run: |
+          curl -X POST https://api.github.com/repos/GuillaumeFalourd/poc-remote-workflow/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.ACCESS_TOKEN }} \
+          --data '{"event_type": "Start Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+  
+  receiver:
+    if: github.event.action == 'Workflow Response'
+    runs-on: ubuntu-latest
+    steps:
+      - name: RESPONSE REMOTE WORKFLOW
+        run: echo "RESPONSE received from '${{ github.event.client_payload.repository }}'"

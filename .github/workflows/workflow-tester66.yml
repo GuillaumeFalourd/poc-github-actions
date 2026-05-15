@@ -1,0 +1,39 @@
+name: Test 66 # Related to https://stackoverflow.com/questions/74157458/git-throws-error-if-nothing-to-commit-how-to-surpress
+
+on:
+  #push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: date > report.txt
+      - run: |
+          if [[ `git status --porcelain` ]]; then            
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .
+            git commit -m "generated checkout workflow file"
+            git push      
+          else
+            echo "WARNING: No changes were detected. git commit push action aborted."
+          fi
+        shell: bash
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          if [[ `git status --porcelain` ]]; then            
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .
+            git commit -m "generated checkout workflow file"
+            git push      
+          else
+            echo "WARNING: No changes were detected. git commit push action aborted."
+          fi
+        shell: bash
