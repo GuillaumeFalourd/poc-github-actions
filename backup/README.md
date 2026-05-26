@@ -181,6 +181,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [GPT Review](https://github.com/marketplace/actions/chat-gpt-code-peer-review): Github Action enabling automatic code reviewing in your repository by sending the git diff patches between a head ref and a base ref to OpenAI's API for annotation using Chat GPT (needs [OpenAi API Key](https://www.maisieai.com/help/how-to-get-an-openai-api-key-for-chatgpt)).
 
+[![Issue AI Agent](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/issue-ai-agent.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/issue-ai-agent.yml)
+
+[Issue AI Agent](https://github.com/marketplace/issue-ai-agent): GitHub Action to auto-classify, label, and reply to issues using AI (Claude/OpenAI). Detects duplicates and handles follow-up comments. BYOK.
+
 [![Manual Approval](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/manual-approval.yml)
 
 [Manual Approval](https://github.com/marketplace/actions/manual-workflow-approval): Github Action to pause a workflow and require manual approval from **one or more** approvers before continuing.
