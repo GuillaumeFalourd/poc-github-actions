@@ -1,0 +1,11 @@
+name: Test 14 #https://stackoverflow.com/questions/70101203/github-actions-workflow-syntax-not-working-as-expected?noredirect=1#70101203
+on:
+    push:
+      paths:
+        - '**\/abc**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test"

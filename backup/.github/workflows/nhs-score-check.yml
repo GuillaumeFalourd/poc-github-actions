@@ -1,0 +1,16 @@
+name: NHS Score Check
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  nhs-score-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check agentic readiness score
+        uses: unitedideas/nhs-score-check-action@v1
+        with:
+          domain: example.com
+          min-score: '0'
