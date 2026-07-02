@@ -1,0 +1,19 @@
+name: Test 23 # Related to https://stackoverflow.com/questions/71041571/github-action-how-to-get-value-from-expression-evaluation-and-assign-it-to-the/71042503?noredirect=1#comment125620374_71042503
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git log -n1 --pretty='%h'
+      - run: echo git describe --exact-match --tags $(git log -n1 --pretty='%h')
+      - name: set up env var
+        run: |
+          TAG=$(echo git describe --exact-match --tags $(git log -n1 --pretty='%h'))
+          echo $TAG
+          echo "TAG=$TAG" >> $GITHUB_ENV
+      - name: use env var
+        run: echo ${{ env.TAG }}

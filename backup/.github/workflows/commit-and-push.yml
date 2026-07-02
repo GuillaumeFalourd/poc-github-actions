@@ -1,0 +1,31 @@
+name: Commit and Push
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  commit-and-push:
+    name: commit-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Make changes
+        run: date > commit-and-push-workflow.txt
+
+      - name: Push code
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'main'
+          commit-message: 'commit and push updated report'
+          force-add: 'true'
+          files: commit-and-push-workflow.txt
+          name: ${{ github.actor }}
+          email: ${{ github.actor }}@users.noreply.github.com

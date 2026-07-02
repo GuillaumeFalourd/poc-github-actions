@@ -1,0 +1,34 @@
+name: 29 - Check Actor on PR or PUSH
+
+on: [push, pull_request]
+
+jobs:
+    job1:
+        name: Check1
+        runs-on: ubuntu-latest
+        if: ${{ github.actor != 'GuillaumeFalourd' }}
+        steps:
+          - run: echo "Actor isn't GuillaumeFalourd"
+
+    job2:
+        name: Check2
+        runs-on: ubuntu-latest
+        if: ${{ github.actor == 'GuillaumeFalourd' }}
+        steps:
+          - run: echo "Actor is GuillaumeFalourd"
+
+    job3:
+      if: github.event_name == 'pull_request' && github.actor != 'GuillaumeFalourd' && github.actor != 'user1' && github.actor != 'user2' && github.actor != 'user3'
+      runs-on: ubuntu-latest
+      steps:
+      - name: PR Comment
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: ${{ github.event.number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: ':warning: Have you followed the [contributions guidance](<url_to_contribution_guidance>)? Content PRs should generally be made against the the [source repo](https://github.com/<owner>/<repo>).'
+            })
