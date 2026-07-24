@@ -1,0 +1,51 @@
+name: 32 - PR approved and labeled
+
+on:
+  pull_request:
+    types: [labeled]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ (github.event.review.state == 'approved') && (contains(github.event.pull_request.labels.*.name, 'test')) }}
+    steps:
+      - run: echo "Do something"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - run: echo ${{ github.event.review.state }}
+
+  no-build:
+    runs-on: ubuntu-latest
+    if: ${{ (github.event.review.state != 'approved') || (!contains(github.event.pull_request.labels.*.name, 'test')) }}
+    steps:
+      - run: echo "Don't do it"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - run: ${{ github.event.review.state }}
+
+  test-1:
+    runs-on: ubuntu-latest
+    if: github.event.review.state == 'approved'
+    steps:
+      - run: echo "Approved!"
+
+  test-2:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'test')
+    steps:
+      - run: echo "Contains test label!"
+
+  test-3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: approved or not
+        if: github.event.review.state == 'approved'
+        run: |
+          echo "approved" ...

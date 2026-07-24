@@ -1,0 +1,16 @@
+name: Github Action Github Status
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check GitHub Status
+        uses: crazy-max/ghaction-github-status@v3
+        with:
+          overall_threshold: minor
+          pages_threshold: partial_outage
+      
+      - name: Checkout
+        uses: actions/checkout@v3

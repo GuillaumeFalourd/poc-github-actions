@@ -1,0 +1,36 @@
+name: Test 43 # Related to https://stackoverflow.com/questions/72800296/use-outputs-of-multiline-run-commands-in-github-actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Test
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Config variables
+          VERSION_NAME=$(echo MY_VERSION)
+          LATEST_TAG=$(git tag --list | head -n 1)
+          CHANGE_LOG=$(echo changelog $LATEST_TAG)
+
+          # Check variables 
+          echo $VERSION_NAME
+          echo $LATEST_TAG
+          echo $CHANGE_LOG
+          echo $GITHUB_RUN_NUMBER
+        shell: bash
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${GITHUB_RUN_NUMBER}
+          echo ${{ github.run_number }}
+          echo $GITHUB_RUN_NUMBER
+          TEST=$((1000 + $GITHUB_RUN_NUMBER))
+          echo $TEST
