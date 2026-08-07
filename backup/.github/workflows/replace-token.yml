@@ -1,0 +1,16 @@
+name: Replace Token
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cat file.json
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: 'file.json'
+        env:
+          SECRET_TOKEN: ${{ secrets.SECRET_TEST }}
+      - run: cat file.json

@@ -1,0 +1,13 @@
+name: 48 - Reusable workflow 2
+
+on:
+  workflow_call:
+
+jobs:
+  job-reusable-2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Waiting 1 minute 30 seconds..."
+          sleep 90
+          echo "Hello World"

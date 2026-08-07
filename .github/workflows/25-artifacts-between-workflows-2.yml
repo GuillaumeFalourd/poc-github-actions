@@ -2,7 +2,7 @@ name: "25 - Artifacts between workflows 2"
 
 on:
   workflow_run:
-    workflows: ['Artifacts between workflows 1']
+    workflows: ['25 - Artifacts between workflows 1']
     types: 
       - completed
 
@@ -11,15 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.11.0
+        uses: actions/download-artifact@v4.1.8
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          workflow: peek_icons.yml
-          run_id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          name: pr_num
+          path: ./pr_num
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Read the pr_num file
         id: pr_num_reader
-        uses: juliangruber/read-file-action@v1.0.0
+        uses: juliangruber/read-file-action@v1.1.7
         with:
           path: ./pr_num/pr_num.txt
 
