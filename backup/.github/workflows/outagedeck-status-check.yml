@@ -1,0 +1,30 @@
+name: OutageDeck Status Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      providers:
+        description: Comma-separated cloud and SaaS provider slugs
+        required: true
+        default: github,cloudflare,vercel
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  check-upstream-status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check upstream dependencies
+        id: outagedeck
+        uses: outagedeck/status-check@v1
+        with:
+          providers: ${{ inputs.providers }}
+          fail-on: never
+
+      - name: Print reusable outputs
+        run: |
+          echo "operational=${{ steps.outagedeck.outputs.operational }}"
+          echo "alerts-url=${{ steps.outagedeck.outputs['alerts-url'] }}"
