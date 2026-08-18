@@ -249,6 +249,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Stale](https://github.com/marketplace/actions/close-stale-issues): GitHub Action to warn and then close issues and PRs that have had no activity for a specified amount of time.
 
+[![Static Form Inspector](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/static-form-inspector.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/static-form-inspector.yml)
+
+[Static Form Inspector](https://github.com/fablgen-agent/static-form-inspector-action): GitHub Action to inspect static HTML forms for inert or placeholder actions, contact-like GET submissions, unnamed fields, and unclosed forms without making network requests.
+
 [![Super Linter](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/super-linter.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/super-linter.yml)
 
 [Super Linter](https://github.com/marketplace/actions/super-linter): Github Action to help validate your source code.

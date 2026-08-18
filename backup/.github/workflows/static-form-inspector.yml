@@ -1,0 +1,30 @@
+name: Static Form Inspector
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**/*.html"
+      - ".github/workflows/static-form-inspector.yml"
+  pull_request:
+    paths:
+      - "**/*.html"
+      - ".github/workflows/static-form-inspector.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-static-forms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+
+      - name: Inspect static HTML forms
+        uses: fablgen-agent/static-form-inspector-action@v1
+        with:
+          paths: .
+          fail-on: error
+          report: static-form-inspector-report.json
