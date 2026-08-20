@@ -45,6 +45,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Add Reviewers](https://github.com/marketplace/actions/add-reviewers): Github action that adds Reviewers to the Pull Request.
 
+[![ai-i18n](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ai-i18n.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ai-i18n.yml)
+
+[ai-i18n](https://github.com/i18n-actions/ai-i18n): Github Action to automatically translate i18n files (XLIFF, JSON) using LLM providers (Anthropic, OpenAI, Ollama, AWS Bedrock), with change detection, glossary support and preservation of reviewed translations.
+
 [![App Token](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/app-token.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/app-token.yml)
 
 [App Token](https://github.com/marketplace/actions/github-app-token): Github Action to impersonate a GitHub App when `secrets.GITHUB_TOKEN`'s limitations are too restrictive and a personal access token is not suitable.
