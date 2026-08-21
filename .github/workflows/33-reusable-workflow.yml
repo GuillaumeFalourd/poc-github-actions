@@ -1,0 +1,39 @@
+name: 33 - Reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
+  workflow_dispatch:
+    inputs:
+      username:
+        required: true
+        type: string
+
+jobs:
+  test:
+    name: Pass input and secrets to my-action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inputs username (workflow call)
+        if: ${{ inputs.username }} != ''
+        run: echo ${{ inputs.username }}
+
+      - name: Inputs username (workflow dispatch)
+        if: ${{ github.event.inputs.username }} != ''
+        run: echo ${{ github.event.inputs.username }}
+
+      - uses: actions/checkout@v2.3.4 # Necessary to access local action
+      
+      - name: Local Action Call Without Input
+        id: local-action
+        uses: ./.github/actions/local-action
+        with:
+          name: "World"
+      - name: Local Action Output
+        run: echo "${{ steps.local-action.outputs.random }}"

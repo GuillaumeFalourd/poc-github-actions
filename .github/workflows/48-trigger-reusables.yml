@@ -1,0 +1,14 @@
+name: 48 - Trigger reusables
+
+on:
+  workflow_dispatch:
+
+jobs:
+  workflow-1:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/48-reusable-workflow-1.yml@main
+
+  workflow-2:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/48-reusable-workflow-2.yml@main
+
+  workflow-3:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/48-reusable-workflow-3.yml@main

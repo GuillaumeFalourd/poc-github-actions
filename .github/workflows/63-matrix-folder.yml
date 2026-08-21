@@ -1,0 +1,56 @@
+name: 63 - Matrix folder
+
+on:
+  push:
+    paths:
+      - 'folder1/**'
+      - 'folder2/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs: 
+      folder1: ${{ steps.changes.outputs.folder1 }}
+      folder2: ${{ steps.changes.outputs.folder2 }}
+      folders: ${{ steps.array.outputs.array }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            folder1:
+              - 'folder1/**'
+            folder2:
+              - 'folder2/**'
+
+      - name: Build Array
+        id: array
+        run: |
+          myArray=()
+          if [ "${{ steps.changes.outputs.folder1 }}" = "true" ]
+          then
+            myArray+=("folder1")
+          fi
+          if [ "${{ steps.changes.outputs.folder2 }}" = "true" ]
+          then
+            myArray+=("folder2")
+          fi
+          myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
+          echo "Updated folder list: $myArray"
+          echo "array=$myArray" >> $GITHUB_OUTPUT
+        shell: bash
+
+  build:
+    needs: [setup]
+    strategy:
+      fail-fast: false
+      matrix:
+        folder: ${{ fromJSON(needs.setup.outputs.folders) }}
+    uses: ./.github/workflows/63-reusable.yml
+    with:
+      path: ${{ matrix.folder }}

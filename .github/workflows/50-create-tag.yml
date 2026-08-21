@@ -1,0 +1,16 @@
+name: 50 - Create Tag
+
+on:
+  workflow_dispatch:
+
+jobs:
+  CREATE-TAG:
+    env:
+      RELEASE_VERSION: 1.1.1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tag commit
+        uses: tvdias/github-tagger@v0.0.1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.RELEASE_VERSION }}
