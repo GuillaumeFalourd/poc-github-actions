@@ -141,6 +141,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Delete Artifacts](https://github.com/marketplace/actions/delete-artifact): GitHub Action to delete artifacts within a workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
 
+[![DOS Verify Gate](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml)
+
+[DOS Verify Gate](https://github.com/anthony-chaudhary/dos-kernel/tree/master/verify-action): Github Action to fail a PR when a commit's message claims work its own diff doesn't contain (deterministic claim-vs-diff audit, abstains on commits with no checkable claim).
+
 [![Enforce PR labels](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml)
 
 [Enforce PR labels](https://github.com/marketplace/actions/enforce-pr-labels): GitHub Action to enforce assigning labels before merging PR's. Useful for generating automatic changelog and release notes with `github-release-notes`.
