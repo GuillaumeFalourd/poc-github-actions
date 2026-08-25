@@ -77,6 +77,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Auto Merge](https://github.com/marketplace/actions/merge-pull-requests): GitHub Action to automatically merge pull requests when they are ready (`automerged` label).
 
+[![Automation Integration Preflight](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/automation-integration-preflight.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/automation-integration-preflight.yml)
+
+[Automation Integration Preflight](https://github.com/tinyopsstudio/automation-integration-preflight-action): GitHub Action to check a public page for bounded automation-readiness evidence and save a structured JSON report.
+
 [![Branch Names](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml)
 
 [Branch Names](https://github.com/marketplace/actions/branch-names): Github Action to get branch or tag information without the `/ref/*` prefix.
