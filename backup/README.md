@@ -101,6 +101,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Checkout](https://github.com/marketplace/actions/checkout): Github Action to checks-out your repository under `$GITHUB_WORKSPACE`, so your workflow can access it.
 
+[![CI Health Audit](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ci-health-audit.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ci-health-audit.yml)
+
+[CI Health Audit](https://github.com/marketplace/actions/ci-health-audit): Zero-dependency static audit for common GitHub Actions security and reliability risks.
+
 [![Close Pull Request](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/close-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/close-pull-request.yml)
 
 [Close Pull Request](https://github.com/marketplace/actions/close-pull-request): Github Action to automatically close a pull request (for example if modifying _untouchable files_).
