@@ -1,0 +1,40 @@
+name: Automation Integration Preflight
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Public HTTP or HTTPS page to inspect
+        required: true
+        default: https://example.com
+        type: string
+      mode:
+        description: Report mode
+        required: true
+        default: analyze
+        type: choice
+        options:
+          - analyze
+          - acceptance-pack
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check automation readiness
+        uses: tinyopsstudio/automation-integration-preflight-action@v1
+        with:
+          url: ${{ inputs.url }}
+          rapidapi-key: ${{ secrets.AUTOMATION_PREFLIGHT_RAPIDAPI_KEY }}
+          mode: ${{ inputs.mode }}
+          objective: Identify integration evidence and practical launch gates.
+          output-file: reports/automation-preflight.json
+      - name: Upload JSON report
+        uses: actions/upload-artifact@v4
+        with:
+          name: automation-preflight-report
+          path: reports/automation-preflight.json
