@@ -77,6 +77,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Auto Merge](https://github.com/marketplace/actions/merge-pull-requests): GitHub Action to automatically merge pull requests when they are ready (`automerged` label).
 
+[![Automation Integration Preflight](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/automation-integration-preflight.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/automation-integration-preflight.yml)
+
+[Automation Integration Preflight](https://github.com/tinyopsstudio/automation-integration-preflight-action): GitHub Action to check a public page for bounded automation-readiness evidence and save a structured JSON report.
+
 [![Branch Names](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/branch-names.yml)
 
 [Branch Names](https://github.com/marketplace/actions/branch-names): Github Action to get branch or tag information without the `/ref/*` prefix.
@@ -96,6 +100,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Checkout](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/checkout.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/checkout.yml)
 
 [Checkout](https://github.com/marketplace/actions/checkout): Github Action to checks-out your repository under `$GITHUB_WORKSPACE`, so your workflow can access it.
+
+[![CI Health Audit](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ci-health-audit.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/ci-health-audit.yml)
+
+[CI Health Audit](https://github.com/marketplace/actions/ci-health-audit): Zero-dependency static audit for common GitHub Actions security and reliability risks.
 
 [![Close Pull Request](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/close-pull-request.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/close-pull-request.yml)
 
@@ -132,6 +140,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![Delete Artifacts](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/delete-artifact.yml)
 
 [Delete Artifacts](https://github.com/marketplace/actions/delete-artifact): GitHub Action to delete artifacts within a workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
+
+[![DOS Verify Gate](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml)
+
+[DOS Verify Gate](https://github.com/anthony-chaudhary/dos-kernel/tree/master/verify-action): Github Action to fail a PR when a commit's message claims work its own diff doesn't contain (deterministic claim-vs-diff audit, abstains on commits with no checkable claim).
 
 [![Enforce PR labels](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/enforce-labels.yml)
 
