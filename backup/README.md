@@ -129,6 +129,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Create Pull Request](https://github.com/marketplace/actions/create-pull-request): GitHub Action to create a pull request for changes to your repository in the actions workspace.
 
+[![CSV Preflight](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/csv-preflight.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/csv-preflight.yml)
+
+[CSV Preflight](https://github.com/softpeanut/csv-preflight-action): GitHub Action to check one UTF-8 CSV for structural problems and save normalized output locally on the runner.
+
 [![Curl](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/curl.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/curl.yml)
 
 [Curl](https://github.com/marketplace/actions/github-action-for-curl): GitHub Action to use the curl CLI to perform http requests.
