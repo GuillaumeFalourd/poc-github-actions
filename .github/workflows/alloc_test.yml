@@ -1,0 +1,164 @@
+# This is a test workflow
+name: Performance-Test-WF 
+
+# Controls when the workflow will run
+on:
+       
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      instance:
+        description: db instance 
+        required: true
+        type: choice
+        options:
+          - 'PP1560.IKEADT.COM'
+          - 'TE20504.IKEADT.COM'
+          - 'TE21190.IKEADT.COM'
+          - 'TE21320.IKEADT.COM'          
+        default: 'PP1560.IKEADT.COM'
+
+      uniq_test_id:
+        description: unique test id(without space) 
+        required: true      
+      
+      repository:
+        type: string
+        description: repository name
+        default: git.build.ingka.ikea.com/CA-ILO-CWIS/CWIS.git
+        required: true        
+env:
+  BASE: false
+
+  ORACLE_HOME: /opt/oracle/instantclient_19_6
+  LD_LIBRARY_PATH: /opt/oracle/instantclient_19_6:/opt/oracle/instantclient_19_6/lib
+  TNS_ADMIN: /opt/oracle/instantclient_19_6/network/admin  
+    
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: [self-hosted]
+    environment: Development
+    env:
+      # Create an environment variable, because the schema name does not match the secret name
+      wis_gcp_obj_pwd: WIS_GCP_OBJ_PWD
+      wis_data_pwd: WIS_DATA_PWD
+      wis_testprocs_pwd: WIS_TESTPROCS_PWD
+      iip_obj_pwd: IIP_OBJ_PWD
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout action
+        uses: actions/checkout@v3
+      
+      - name: Set Environment Variable
+        run: |
+          echo "env_to_deploy=true" >> $GITHUB_ENV
+
+      # setup the runner to use sqlplus using a reusable action
+      - name: Setup sqlplus in ${{ inputs.instance }}
+        uses: ./.github/actions/sqlplus-setup
+  
+      - name: Verifying Unique Test ID ${{ inputs.uniq_test_id }}
+        run: |
+          echo "
+          WHENEVER SQLERROR EXIT sql.sqlcode
+          WHENEVER OSERROR EXIT
+
+          declare
+            v_cnt number;
+          begin
+          select count(1) into v_cnt from ta_results where upper(id) = 'INPUT_TEST_ID_UNIQUE';
+          if v_cnt != 0 then
+            raise_application_error(-20111, 'Input Passed for Unique ID already exists...');
+          end if;
+          end;
+          /" > file1.sql
+          echo "Replacing the input variable"
+          sed -i 's/INPUT_TEST_ID_UNIQUE/${{ inputs.uniq_test_id }}/g' file1.sql
+          
+          sqlplus -s WIS_TESTPROCS/${{secrets[env.wis_testprocs_pwd]}}@${{ inputs.instance }} @file1.sql
+          echo "Executed..."  
+
+      - name: Index rebuild in WIS_GCP_OBJ
+        run: |
+          echo "alter index CTRL_ORDERS_LINE_EVENTS_PK rebuild online" > file1.sql
+          #echo "$file" | awk '{print "prompt "$0"\n""@"$0}' >> file1.sql
+          
+          sqlplus -s WIS_GCP_OBJ/${{secrets[env.wis_gcp_obj_pwd]}}@${{ inputs.instance }} @file1.sql
+          echo "Executed..."
+          
+      - name: Index rebuild in WIS_DATA
+        run: |
+          echo " alter index STOCK_VAL_REQUESTS_PK rebuild online;
+          alter index STOCK_VAL_REQUESTS_IDX01 rebuild online;" > file1.sql
+          #echo "$file" | awk '{print "prompt "$0"\n""@"$0}' >> file1.sql
+          
+          sqlplus -s WIS_DATA/${{secrets[env.wis_data_pwd]}}@${{ inputs.instance }} @file1.sql
+          echo "Executed..."
+          
+      - name: Clean-up in WIS_TESTPROCS
+        run: |
+          echo "
+          WHENEVER SQLERROR EXIT sql.sqlcode
+          WHENEVER OSERROR EXIT
+
+          begin
+          update order_lines 
+          set ordl_status = 80 
+          where ordl_status < 80
+          and ord_id in (select ord_id 
+                           from orders
+                          where lu_tk in (select lu_tk
+                                            from logistic_units
+                                           where (bu_code,bu_type) in (select bu_code, bu_type 
+                                                                         from wis_testprocs.ta_bu_list
+                                                                       )
+                                         )
+                                         --                     and ord_date_cre > trunc(sysdate)
+                         )
+                         ;
+                         commit;
+                         end;
+                         /" > file1.sql
+          #echo "$file" | awk '{print "prompt "$0"\n""@"$0}' >> file1.sql
+          
+          sqlplus -s WIS_TESTPROCS/${{secrets[env.wis_testprocs_pwd]}}@${{ inputs.instance }} @file1.sql
+          echo "Executed..."
+          cat file1.sql
+          
+      - name: Stock Processing in WIS_TESTPROCS with unique name
+        run: |
+          echo "
+          WHENEVER SQLERROR EXIT sql.sqlcode
+          WHENEVER OSERROR EXIT
+
+          DECLARE
+            v_run_id   VARCHAR2 (30) := 'INPUT_TEST_ID_UNIQUE'; -- Set a unique test id.
+          BEGIN
+            test_automation.ta_make_i_stock;
+
+            FOR bu_rec IN (SELECT bu_code, bu_type, name FROM ta_bu_list WHERE active = 'Y')
+            LOOP
+              SYS.DBMS_SCHEDULER.SET_JOB_ARGUMENT_VALUE (
+                job_name         => 'PERF_TEST_STOCK_REP' || bu_rec.bu_code,
+                argument_name    => 'RUN_ID_IN',
+                argument_value   => v_run_id);
+              SYS.DBMS_SCHEDULER.SET_JOB_ARGUMENT_VALUE (
+                job_name         => 'PERF_TEST_STOCK_REP' || bu_rec.bu_code,
+                argument_name    => 'NAME_IN',
+                argument_value   => bu_rec.name);
+              SYS.DBMS_SCHEDULER.RUN_JOB ('PERF_TEST_STOCK_REP' || bu_rec.bu_code,
+                                          FALSE);
+            END LOOP;
+          END;
+          /" > file1.sql
+          #echo "$file" | awk '{print "prompt "$0"\n""@"$0}' >> file1.sql
+          echo "Replacing the input variable"
+          sed -i 's/INPUT_TEST_ID_UNIQUE/${{ inputs.uniq_test_id }}/g' file1.sql
+          echo "Printing after replacing the value"
+          cat file1.sql  
+
+          sqlplus -s WIS_TESTPROCS/${{secrets[env.wis_testprocs_pwd]}}@${{ inputs.instance }} @file1.sql
+          echo "Executed..."
+       
