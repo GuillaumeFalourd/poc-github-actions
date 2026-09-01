@@ -259,6 +259,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Retry Action](https://github.com/marketplace/actions/retry-action): GitHub Action to rerun another GitHub Actions and commands.
 
+[![Scrape Diagnose](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/scrape-diagnose.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/scrape-diagnose.yml)
+
+[Scrape Diagnose](https://github.com/sanjayamaharjancodes/scrape-diagnose): GitHub Action to diagnose blocked, challenged, empty, or incomplete public-page fetches.
+
 [![Set Secrets](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/set-secrets.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/set-secrets.yml)
 
 [Set Secrets](https://github.com/marketplace/actions/set-action-secret): Github Action to Create or edit actions secrets in repository or organizations.
