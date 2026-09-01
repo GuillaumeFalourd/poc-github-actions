@@ -247,6 +247,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Replace Values Action](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml): Github Action to replace values in files (secrets or fields).
 
+[![RepoDoctor CI](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repodoctor-ci.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repodoctor-ci.yml)
+
+[RepoDoctor CI](https://github.com/marketplace/actions/repodoctor-ci): GitHub Action to score repository health and enforce configurable CI quality gates across security, testing, dependencies, documentation, configuration, and architecture.
+
 [![Repository-Dispatch](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch.yml) [![Repository-Dispatch-Triggered](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repository-dispatch-triggered.yml)
 
 [Repository-Dispatch](https://github.com/marketplace/actions/repository-dispatch): GitHub Action to create a repository dispatch event.
