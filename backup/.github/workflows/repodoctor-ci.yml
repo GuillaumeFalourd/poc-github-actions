@@ -1,0 +1,21 @@
+name: RepoDoctor CI
+
+on: [workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  repository-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Scan repository health
+        uses: BLCCoreStudio/RepoDoctor@60eec782d18c5a5efd696f20e730aee7ce08165e # v0.1.3
+        with:
+          path: .
+          format: terminal
+          language: en
