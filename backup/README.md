@@ -247,6 +247,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [![Replace Values Action](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/replace-values-action.yml): Github Action to replace values in files (secrets or fields).
 
+[![Repo Agent Kit AGENTS.md Check](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repo-agent-kit-agents-md-check.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repo-agent-kit-agents-md-check.yml)
+
+[Repo Agent Kit AGENTS.md Check](https://github.com/sunxiayi/agents-md-starter-kit): GitHub Action to score `AGENTS.md` readiness, add a job summary, and enforce an optional threshold without sending file contents off the runner.
+
 [![RepoDoctor CI](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repodoctor-ci.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/repodoctor-ci.yml)
 
 [RepoDoctor CI](https://github.com/marketplace/actions/repodoctor-ci): GitHub Action to score repository health and enforce configurable CI quality gates across security, testing, dependencies, documentation, configuration, and architecture.
