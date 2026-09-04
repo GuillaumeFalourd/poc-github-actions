@@ -1,0 +1,142 @@
+name: Github Environment Variables
+
+on: [push, pull_request]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Print environment variables exposed by this action
+        run: |
+          echo "CI_REPOSITORY_SLUG=$CI_REPOSITORY_SLUG"
+          echo "CI_REPOSITORY_OWNER=$CI_REPOSITORY_OWNER"
+          echo "CI_REPOSITORY_OWNER_SLUG=$CI_REPOSITORY_OWNER_SLUG"
+          echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
+          echo "CI_REPOSITORY_NAME_SLUG=$CI_REPOSITORY_NAME_SLUG"
+          echo "CI_REPOSITORY=$CI_REPOSITORY"
+          echo "CI_REF_SLUG=$CI_REF_SLUG"
+          echo "CI_ACTION_REF_NAME=$CI_ACTION_REF_NAME"
+          echo "CI_ACTION_REF_NAME_SLUG=$CI_ACTION_REF_NAME_SLUG"
+          echo "CI_REF_NAME=$CI_REF_NAME"
+          echo "CI_REF_NAME_SLUG=$CI_REF_NAME_SLUG"
+          echo "CI_REF=$CI_REF"
+          echo "CI_HEAD_REF_SLUG=$CI_HEAD_REF_SLUG"
+          echo "CI_HEAD_REF=$CI_HEAD_REF"
+          echo "CI_BASE_REF_SLUG=$CI_BASE_REF_SLUG"
+          echo "CI_BASE_REF=$CI_BASE_REF"
+          echo "CI_SHA_SHORT=$CI_SHA_SHORT"
+          echo "CI_SHA=$CI_SHA"
+          echo "CI_PR_TITLE=$CI_PR_TITLE"
+          echo "CI_PR_DESCRIPTION=$CI_PR_DESCRIPTION"
+          echo "CI_ACTOR=$CI_ACTOR"
+          echo "CI_EVENT_NAME=$CI_EVENT_NAME"
+          echo "CI_RUN_ID=$CI_RUN_ID"
+          echo "CI_RUN_NUMBER=$CI_RUN_NUMBER"
+          echo "CI_WORKFLOW=$CI_WORKFLOW"
+          echo "CI_ACTION=$CI_ACTION"
+      - name: Print environment variables exposed by GitHub
+        run: |
+          echo "GITHUB_ACTOR=$GITHUB_ACTOR"
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
+          echo "GITHUB_BASE_REF=$GITHUB_BASE_REF"
+          echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
+          echo "GITHUB_RUN_ID=$GITHUB_RUN_ID"
+          echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+          echo "GITHUB_WORKFLOW=$GITHUB_WORKFLOW"
+          echo "GITHUB_ACTION=$GITHUB_ACTION"
+  
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Print environment variables exposed by this action
+        run: |
+          echo "CI_REPOSITORY_SLUG=$Env:CI_REPOSITORY_SLUG"
+          echo "CI_REPOSITORY_OWNER=$Env:CI_REPOSITORY_OWNER"
+          echo "CI_REPOSITORY_OWNER_SLUG=$Env:CI_REPOSITORY_OWNER_SLUG"
+          echo "CI_REPOSITORY_NAME=$Env:CI_REPOSITORY_NAME"
+          echo "CI_REPOSITORY_NAME_SLUG=$Env:CI_REPOSITORY_NAME_SLUG"
+          echo "CI_REPOSITORY=$Env:CI_REPOSITORY"
+          echo "CI_REF_SLUG=$Env:CI_REF_SLUG"
+          echo "CI_ACTION_REF_NAME=$Env:CI_ACTION_REF_NAME"
+          echo "CI_ACTION_REF_NAME_SLUG=$Env:CI_ACTION_REF_NAME_SLUG"
+          echo "CI_REF_NAME=$Env:CI_REF_NAME"
+          echo "CI_REF_NAME_SLUG=$Env:CI_REF_NAME_SLUG"
+          echo "CI_REF=$Env:CI_REF"
+          echo "CI_HEAD_REF_SLUG=$Env:CI_HEAD_REF_SLUG"
+          echo "CI_HEAD_REF=$Env:CI_HEAD_REF"
+          echo "CI_BASE_REF_SLUG=$Env:CI_BASE_REF_SLUG"
+          echo "CI_BASE_REF=$Env:CI_BASE_REF"
+          echo "CI_SHA_SHORT=$Env:CI_SHA_SHORT"
+          echo "CI_SHA=$Env:CI_SHA"
+          echo "CI_PR_TITLE=$Env:CI_PR_TITLE"
+          echo "CI_PR_DESCRIPTION=$Env:CI_PR_DESCRIPTION"
+          echo "CI_ACTOR=$Env:CI_ACTOR"
+          echo "CI_EVENT_NAME=$Env:CI_EVENT_NAME"
+          echo "CI_RUN_ID=$Env:CI_RUN_ID"
+          echo "CI_RUN_NUMBER=$Env:CI_RUN_NUMBER"
+          echo "CI_WORKFLOW=$Env:CI_WORKFLOW"
+          echo "CI_ACTION=$Env:CI_ACTION"
+      - name: Print environment variables exposed by GitHub
+        run: |
+          echo "GITHUB_ACTOR=$Env:GITHUB_ACTOR"
+          echo "GITHUB_REPOSITORY=$Env:GITHUB_REPOSITORY"
+          echo "GITHUB_SHA=$Env:GITHUB_SHA"
+          echo "GITHUB_REF=$Env:GITHUB_REF"
+          echo "GITHUB_HEAD_REF=$Env:GITHUB_HEAD_REF"
+          echo "GITHUB_BASE_REF=$Env:GITHUB_BASE_REF"
+          echo "GITHUB_EVENT_NAME=$Env:GITHUB_EVENT_NAME"
+          echo "GITHUB_RUN_ID=$Env:GITHUB_RUN_ID"
+          echo "GITHUB_RUN_NUMBER=$Env:GITHUB_RUN_NUMBER"
+          echo "GITHUB_WORKFLOW=$Env:GITHUB_WORKFLOW"
+          echo "GITHUB_ACTION=$Env:GITHUB_ACTION"
+  
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Print environment variables exposed by this action
+        run: |
+          echo "CI_REPOSITORY_SLUG=$CI_REPOSITORY_SLUG"
+          echo "CI_REPOSITORY_OWNER=$CI_REPOSITORY_OWNER"
+          echo "CI_REPOSITORY_OWNER_SLUG=$CI_REPOSITORY_OWNER_SLUG"
+          echo "CI_REPOSITORY_NAME=$CI_REPOSITORY_NAME"
+          echo "CI_REPOSITORY_NAME_SLUG=$CI_REPOSITORY_NAME_SLUG"
+          echo "CI_REPOSITORY=$CI_REPOSITORY"
+          echo "CI_REF_SLUG=$CI_REF_SLUG"
+          echo "CI_ACTION_REF_NAME=$CI_ACTION_REF_NAME"
+          echo "CI_ACTION_REF_NAME_SLUG=$CI_ACTION_REF_NAME_SLUG"
+          echo "CI_REF_NAME=$CI_REF_NAME"
+          echo "CI_REF_NAME_SLUG=$CI_REF_NAME_SLUG"
+          echo "CI_REF=$CI_REF"
+          echo "CI_HEAD_REF_SLUG=$CI_HEAD_REF_SLUG"
+          echo "CI_HEAD_REF=$CI_HEAD_REF"
+          echo "CI_BASE_REF_SLUG=$CI_BASE_REF_SLUG"
+          echo "CI_BASE_REF=$CI_BASE_REF"
+          echo "CI_SHA_SHORT=$CI_SHA_SHORT"
+          echo "CI_SHA=$CI_SHA"
+          echo "CI_PR_TITLE=$CI_PR_TITLE"
+          echo "CI_PR_DESCRIPTION=$CI_PR_DESCRIPTION"
+          echo "CI_ACTOR=$CI_ACTOR"
+          echo "CI_EVENT_NAME=$CI_EVENT_NAME"
+          echo "CI_RUN_ID=$CI_RUN_ID"
+          echo "CI_RUN_NUMBER=$CI_RUN_NUMBER"
+          echo "CI_WORKFLOW=$CI_WORKFLOW"
+          echo "CI_ACTION=$CI_ACTION"
+      - name: Print environment variables exposed by GitHub
+        run: |
+          echo "GITHUB_ACTOR=$GITHUB_ACTOR"
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
+          echo "GITHUB_BASE_REF=$GITHUB_BASE_REF"
+          echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
+          echo "GITHUB_RUN_ID=$GITHUB_RUN_ID"
+          echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+          echo "GITHUB_WORKFLOW=$GITHUB_WORKFLOW"
+          echo "GITHUB_ACTION=$GITHUB_ACTION"

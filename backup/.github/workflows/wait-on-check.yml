@@ -1,0 +1,25 @@
+name: Wait on Check
+
+on: 
+  push:
+
+jobs:
+  wait-on-check:
+    name: Wait on check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Multiply by 9 job (Upload & Download Artifacts workflow) to succeed
+        uses: lewagon/wait-on-check-action@v1.1.1
+        with:
+          ref: main
+          check-name: 'Multiply by 9'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 5
+
+  after-wait-on-check:
+    name: After wait on check
+    needs:
+      - wait-on-check
+    runs-on: ubuntu-latest
+    steps:      
+      - run: echo "Will run after other workflows or jobs finished."

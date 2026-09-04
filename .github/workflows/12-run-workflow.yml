@@ -2,7 +2,7 @@ name: 12 - Run Workflow
 
 on:
   workflow_run:
-    workflows: ["Workflow Tester"]
+    workflows: ["12 - Workflow Tester"]
     types: [completed] #requested
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - run: echo "First workflow was a success"
-  
+
   on-failure:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
@@ -23,3 +23,13 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "Start Dispatch Event Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show workflow_run
+        env:
+          WORKFLOW_CONTEXT: ${{ toJSON(github.event.workflow_run) }}
+        run: |
+          echo ${{ github.event.workflow_run }}
+          echo $WORKFLOW_CONTEXT

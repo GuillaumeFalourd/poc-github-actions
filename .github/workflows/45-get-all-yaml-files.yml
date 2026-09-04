@@ -1,0 +1,32 @@
+name: 45 - Get all yaml files #Related to https://stackoverflow.com/questions/71036449/how-to-scan-entire-github-repository-for-certain-files
+
+on: [workflow_dispatch]
+
+jobs:
+  yml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: List yml files
+        run: git ls-files '*.yml' > yml-files.txt
+      - name: Check list
+        run: cat yml-files.txt
+      - name: Upload yml-files
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          name: yml-files
+          path: yml-files.txt
+
+  yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: List yaml files
+        run: git ls-files '*.yaml' > yaml-files.txt
+      - name: Check list
+        run: cat yaml-files.txt
+      - name: Upload yaml-files
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          name: yaml-files
+          path: yaml-files.txt

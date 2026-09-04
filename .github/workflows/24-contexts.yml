@@ -4,6 +4,7 @@ on: [workflow_dispatch, push, pull_request, issues, deployment_status]
 
 jobs:
   github-context:
+    name: job-context
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
@@ -30,3 +31,15 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+
+# Testing comment on https://stackoverflow.com/questions/67503656/echo-github-action-environment-variables/67504712?noredirect=1#comment134718086_67504712
+  context-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "GITHUB_REPOSITORY_OWNER: $GITHUB_REPOSITORY_OWNER"
+          echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
+          echo "github.repository: ${{ github.repository }}"
+          echo "github.repository_owner: ${{ github.repository_owner }}"
+          echo "GITHUB.REPOSITORY: $GITHUB.REPOSITORY"
+          echo "GITHUB.REPOSITORY_OWNER: $GITHUB.REPOSITORY_OWNER"
