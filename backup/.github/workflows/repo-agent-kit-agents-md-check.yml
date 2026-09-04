@@ -1,0 +1,44 @@
+name: Repo Agent Kit AGENTS.md Check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-instructions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create an example AGENTS.md
+        run: |
+          printf '%s\n' \
+            '# Repository instructions' \
+            '' \
+            'This Node project ships a small application for maintainers.' \
+            '' \
+            '## Architecture' \
+            '- `src/`: application code and module boundaries.' \
+            '' \
+            '## Commands' \
+            '- `npm test`: run the test suite.' \
+            '- `npm run build`: build production output.' \
+            '' \
+            '## Validation' \
+            'Verify tests pass before completing a change.' \
+            '' \
+            '## Change boundaries' \
+            'Keep changes scoped and preserve the existing architecture.' \
+            '' \
+            '## Safety' \
+            'Never expose secrets or credentials. Do not delete user changes.' \
+            '' \
+            '## Definition of done' \
+            'Done when behavior is verified, tests pass, and the handoff states what changed and any remaining risk.' \
+            > AGENTS.md
+
+      - name: Check AGENTS.md readiness
+        uses: sunxiayi/agents-md-starter-kit@7a7368cf82bf7069ba2cbdfad6e30543afae670e
+        with:
+          path: AGENTS.md
+          fail_below: '86'
