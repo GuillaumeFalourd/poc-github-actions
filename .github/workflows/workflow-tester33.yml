@@ -1,0 +1,19 @@
+name: Test 33 # Related to https://stackoverflow.com/questions/72333992/why-a-static-array-doesnt-work-with-github-contains-workflow-expression
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        foo: [ '1', '2', '3', '4', '5', '6', '7', '8' ]
+    steps:
+      - name: OK
+        if: contains(fromJson('["6", "7", "8"]'), matrix.foo)
+        run: echo OK
+      - name: NOK
+        if: ${{ ! contains(fromJson('["6", "7", "8"]'), matrix.foo) }}
+        run: echo NOK

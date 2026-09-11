@@ -1,0 +1,40 @@
+name: Test 47
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: windows-latest
+    steps:
+      - run: c:\windows\system32\wbem\wmic.exe csproduct get uuid
+      
+      - name: Checkout repository content
+        uses: actions/checkout@v3
+
+      - name: Setup Python Version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Execute Python script
+        run: python shell.py
+
+
+  job2:
+    runs-on: windows-latest
+    steps:
+      - run: /c/windows/system32/wbem/wmic.exe csproduct get uuid 
+        shell: bash
+
+      - name: Checkout repository content
+        uses: actions/checkout@v3
+
+      - name: Setup Python Version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Execute Python script
+        run: python shell.py
+        shell: bash   

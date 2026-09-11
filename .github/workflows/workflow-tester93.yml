@@ -1,0 +1,27 @@
+name: Test 93 # Related to SO https://stackoverflow.com/questions/78337398/github-default-working-directory-with-variable
+
+on:
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT:
+        default: development
+        type: string 
+      PATH:
+        default: test
+        type: string 
+
+env:
+  PATH: ${{ inputs.PATH }}
+    
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash  
+        working-directory: ${{ env.PATH }}
+    steps:
+      - name: Run Commands with various variables
+        run: |
+          echo "Hello World"
+          echo "${{ inputs.ENVIRONMENT}}/${{ inputs.PATH }} "

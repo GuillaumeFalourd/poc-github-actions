@@ -1,0 +1,196 @@
+name: Assert Command Line Output
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+
+# On UBUNTU runners
+  PASSED-assert-file-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: cat README.md
+          assert_file_path: README.md
+          expected_result: PASSED
+
+  FAILED-assert-file-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+
+  PASSED-specific-line-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: cat README.md
+          assert_file_path: README.md
+          expected_result: PASSED
+          specific_line: 1
+
+  FAILED-specific-line-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+          specific_line: 2
+
+  PASSED-contains-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          contains: runner
+          expected_result: PASSED
+
+  FAILED-contains-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          contains: error
+          expected_result: FAILED
+
+# On MACOS runners
+  PASSED-assert-file-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: cat README.md
+          assert_file_path: README.md
+          expected_result: PASSED
+
+  FAILED-assert-file-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+
+  PASSED-specific-line-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: cat README.md
+          assert_file_path: README.md
+          expected_result: PASSED
+          specific_line: 1
+
+  FAILED-specific-line-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+          specific_line: 2
+
+  PASSED-contains-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          contains: runner
+          expected_result: PASSED
+
+  FAILED-contains-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          contains: error
+          expected_result: FAILED
+
+# On WINDOWS runners
+  PASSED-assert-file-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: cat README.md
+          assert_file_path: README.md
+          expected_result: PASSED
+
+  FAILED-assert-file-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+
+  PASSED-specific-line-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: cat README.md
+          assert_file_path: README.md
+          expected_result: PASSED
+          specific_line: 1
+
+  FAILED-specific-line-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+          specific_line: 2
+
+  PASSED-contains-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          contains: runner
+          expected_result: PASSED
+
+  FAILED-contains-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GuillaumeFalourd/assert-command-line-output@v2.3
+        with:
+          command_line: ls -lha
+          contains: error
+          expected_result: FAILED

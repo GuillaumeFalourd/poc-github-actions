@@ -1,0 +1,23 @@
+name: 59 - Step Context 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        id: hello
+        run: echo Hello 
+        continue-on-error: true
+      - name: Step 2
+        id: world
+        run: exit 1
+        continue-on-error: true
+      - name: Check on failures
+        if: steps.hello.outcome != 'success' || steps.world.outcome != 'success'
+        run: exit 1
+      - name: Success
+        if: steps.hello.outcome == 'success' || steps.world.outcome == 'success'
+        run: echo Hello World

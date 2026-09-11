@@ -1,0 +1,35 @@
+name: Skip Duplicate
+
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+
+jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: ./
+        id: skip_check
+        with:
+          concurrent_skipping: 'never'
+          # skip_after_successful_duplicate: 'true'
+          # paths_ignore: '["**/README.md", "**/docs/**"]'
+          # do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
+          cancel_others: true
+
+  main_job_not_skipped:
+    needs: pre_job
+    if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "There is something to do here (not skipped)"
+
+  main_job_skipped:
+    needs: pre_job
+    if: ${{ needs.pre_job.outputs.should_skip == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "There is nothing to do here (skipped)"

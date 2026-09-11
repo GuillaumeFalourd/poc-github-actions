@@ -1,0 +1,12 @@
+name: Test 15 #https://stackoverflow.com/questions/70290183/github-actions-pull-request-when-base-branch-has-name-something-not-target
+
+on:
+  pull_request:
+    branches:
+      - 'something\/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test"

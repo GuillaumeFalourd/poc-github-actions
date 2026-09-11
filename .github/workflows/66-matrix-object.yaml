@@ -1,0 +1,62 @@
+name: 66 - Matrix Object
+
+on:
+  workflow_dispatch:
+
+jobs:
+  orchestration:
+    runs-on: ubuntu-latest
+    outputs: 
+      tasks: ${{ steps.tasks.outputs.tasks }}
+    steps:
+      - name: Build Tasks Array
+        id: tasks
+        run: |
+          myArray=()
+          myArray+=("{\"name\": \"task1\", \"type\":\"IAC\"}")
+          myArray+=("{\"name\": \"task2\", \"type\":\"DEPLOY\"}")
+          myArray+=("{\"name\": \"task3\", \"type\":\"DESTROY\"}")
+          myArray=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${myArray[@]}")
+          echo "Updated tasks list: $myArray"
+          echo "tasks=$myArray" >> $GITHUB_OUTPUT
+        shell: bash
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [orchestration]
+    strategy:
+      matrix:
+        stage: ${{ fromJSON(needs.orchestration.outputs.tasks) }}
+      fail-fast: true
+      max-parallel: 1
+    # set the environment to use (environment must exist and be named the same as the stage here)
+    # environment:
+    #   name: ${{ matrix.stage }}
+    steps:
+    # use environment specific secrets here for each stage
+      - name: Execute task ${{ matrix.stage }}
+        id: task
+        run: |
+          echo '${{ matrix.stage }}' > task.json
+          NAME=$(jq '.name' task.json)
+          echo $NAME
+          echo "taskId=$NAME" >> $GITHUB_OUTPUT
+          rm task.json
+
+      - if: contains( matrix.stage , 'IAC')
+        uses: stack-spot/runtime-github-action-iac@v2
+        with:
+          FEATURES_LEVEL_LOG: debug
+          INPUT_PATH: ${{ steps.task.outputs.taskId }}
+
+      - if: contains( matrix.stage , 'DEPLOY')
+        uses: stack-spot/runtime-github-action-deploy@v2
+        with:
+          FEATURES_LEVEL_LOG: debug
+          INPUT_PATH: ${{ steps.task.outputs.taskId }}
+
+      - if: contains( matrix.stage , 'DESTROY')
+        uses: stack-spot/runtime-github-action-destroy@v2
+        with:
+          FEATURES_LEVEL_LOG: debug
+          INPUT_PATH: ${{ steps.task.outputs.taskId }}

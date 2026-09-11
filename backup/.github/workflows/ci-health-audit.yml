@@ -1,0 +1,20 @@
+name: CI Health Audit
+
+on: [workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Audit GitHub Actions workflows
+        uses: sdxiaomage/ci-health-audit@5272a910684ba066f46c3f16df2782fc7d5d0cb3 # v1.0.0
+        with:
+          path: .github/workflows
+          fail-on: none
