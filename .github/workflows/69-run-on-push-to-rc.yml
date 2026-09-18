@@ -1,0 +1,35 @@
+name: 69 - Run on push to rc
+
+on:
+  push:
+    branches:
+      - 'rc/*.*.*' 
+
+jobs:
+  release-candidate-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Extract branch tag if necessary
+        id: tag
+        run: |
+          BRANCH=${{ github.ref }}
+          echo $BRANCH
+          TAG="${BRANCH//refs\/heads\/rc\//""}"
+          echo $TAG
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+  release:
+    needs:
+      - release-candidate-tag
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ needs.release-candidate-tag.outputs.tag }}
+    steps:
+      - name: echo TAG
+        run: echo ${{ env.TAG }}

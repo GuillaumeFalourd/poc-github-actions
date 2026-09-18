@@ -1,0 +1,22 @@
+name: Test 38 # Related to https://stackoverflow.com/questions/72558396/custom-default-value-for-github-actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-notes:
+        description: 'Release Notes'
+        required: false
+        # default: ${{ github.actor }}
+
+env:
+  DEFAULT_NOTES: Build by ${{ github.actor }}
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print default value
+        if: ${{ inputs.release-notes }} != ''
+        run: echo $DEFAULT_NOTES
+
+

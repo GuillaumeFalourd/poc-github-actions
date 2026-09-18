@@ -1,0 +1,61 @@
+name: Test 10
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  windows-1:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Install Ritchie Windows Powershell
+        run: |
+          md .os
+          ls
+          echo "= = = DOWNLOAD = = = "
+          Invoke-WebRequest -Uri "https://v3.ritchiecli.io/3.1.0/windows/rit.exe" -OutFile rit.exe
+          ls
+          echo "= = = MOVE = = = "
+          move .\\rit.exe .\\.os
+          ls
+          echo "= = = OS = = = "
+          cd .os
+          ls
+          echo "= = = PWD = = = "
+          # set CurrentDir="%~dp0"
+          $PWD = Get-Location
+          echo "PWD:" $PWD
+          # echo "= = = SET PATH = = = "
+          # $PATH = [Environment]::GetEnvironmentVariable("PATH")
+          # [Environment]::SetEnvironmentVariable("PATH", "$PATH;$PWD")
+          echo "= = = ALIAS = = = "
+          Set-Alias -Name rit -Value $PWD\rit.exe
+          rit --version
+        shell: powershell
+      - name: Teste 1
+        if: always()
+        run: |
+          cd .os
+          .\rit.exe --version
+        
+  windows-2:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Create binary from branch
+        run: |
+         git clone https://github.com/Microsoft/vcpkg.git
+         cd vcpkg
+         ./bootstrap-vcpkg.sh
+         ./vcpkg integrate install
+         vcpkg install curl[tool]
+         cd $GITHUB_WORKSPACE
+         curl https://commons-repo.ritchiecli.io/2.11.3/windows/rit.exe --output rit.exe
+         echo '{"addCommons":false, "sendMetrics":true, "runType":"local"}' | ./rit.exe init --stdin
+         echo "= = = ALIAS = = = "
+         PWD = $(pwd)
+         PATH=$PATH:$PWD
+         echo "= = = VERSION = = = "
+         rit --version
+        shell: bash

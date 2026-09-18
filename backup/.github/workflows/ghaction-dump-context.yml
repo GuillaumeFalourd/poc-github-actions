@@ -1,0 +1,13 @@
+name: Github Action Dump Context
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Dump context
+        uses: crazy-max/ghaction-dump-context@v1
