@@ -1,0 +1,35 @@
+name: Test 82 # Related to SO question https://stackoverflow.com/questions/76370265/how-to-interpolate-workflow-level-variable-into-another-workflow-level-variable
+
+on:
+  workflow_dispatch:
+
+env:
+  APPNAME: 'myapp1'
+  APPURL: "https://mybank/$APPNAME/widgets/hello.json"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check APPURL value
+        run: |
+          echo "APPURL is: ${{env.APPURL}}" # Will return "https://mybank/myapp1/widgets/hello.json"   
+    
+      - name: Concatenate values to environment file
+        run: |
+          echo "URL=https://mybank/${{ env.APPNAME }}/widgets/hello.json" >> $GITHUB_ENV
+      
+      - name: Check environment variable is available
+        run: |
+          echo "${{ env.URL }}" # Will return https://mybank/myapp1/widgets/hello.json
+          
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Print variables (Powershell)
+        run: |
+          echo "APPURL is: ${{ env.APPURL }}" # Will return https://mybank//widgets/hello.json
+      - name: Print variables (Bash)
+        run: |
+          echo "APPURL is: ${{ env.APPURL }}" # Will return https://mybank/myapp1/widgets/hello.json
+        shell: bash

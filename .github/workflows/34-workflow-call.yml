@@ -1,0 +1,26 @@
+name: 34 - Workflow call
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-workflow-commit-hash:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@cbbb8b5aee55749081b51d947236e78a15e7dffe
+    with:
+      username: Guillaume
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  call-workflow-branch-ref:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@main
+    with:
+      username: Guillaume
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  call-workflow-tag:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/33-reusable-workflow.yml@1.1.0
+    with:
+      username: Guillaume
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

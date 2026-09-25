@@ -1,0 +1,25 @@
+name: Test 31 # Related to https://stackoverflow.com/questions/71961921/specify-runner-to-be-used-depending-on-condition-in-a-github-actions-workflow?noredirect=1#comment127177119_71961921
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      runner: ${{ steps.step1.outputs.runner }}
+    steps:
+      - name: Check branch
+        id: step1
+        run: |
+          if [ ${{ github.ref }} == 'refs/heads/main' ]; then
+            echo "::set-output name=runner::ubuntu-latest"
+          else
+            echo "::set-output name=runner::macos-latest"
+          fi
+
+  job1:
+    needs: [setup]
+    runs-on: ${{ needs.setup.outputs.runner }}
+    steps:
+      - run: echo "My runner is ${{ needs.setup.outputs.runner }}"

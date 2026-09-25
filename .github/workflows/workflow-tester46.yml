@@ -1,0 +1,14 @@
+name: Test 46 # Related to https://stackoverflow.com/questions/73041315/is-there-a-way-to-override-github-context-variables-in-github-actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $GITHUB_EVENT_NAME
+      - run: echo "GITHUB_EVENT_NAME=1234" >> $GITHUB_ENV
+      - run: echo "${{ env.GITHUB_EVENT_NAME }}"
+      - run: echo $GITHUB_EVENT_NAME
+        

@@ -1,0 +1,89 @@
+name: 08 - Outputs Workflow 2
+
+on:
+  schedule:
+    - cron: "0 6 * * MON-FRI" # Runs at 6:00 UTC
+  workflow_dispatch:
+
+jobs:
+
+  job1:
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
+    steps:
+    - id: step1
+      run: echo "test=hello" >> $GITHUB_OUTPUT
+    - id: step2
+      run: echo "test=world" >> $GITHUB_OUTPUT
+
+  job2:
+    runs-on: ubuntu-latest
+    # Wait from the job1 to be completed before starting job2
+    needs: job1
+    steps:
+    - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: [job1, job2]
+    steps:
+    - run: echo "Goodbye"
+
+  job4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-1
+        id: xyz
+        run: echo "ip-address=$(curl -s ifconfig.me)" >> $GITHUB_OUTPUT
+      - name: step-2
+        run: echo "${{ steps.xyz.outputs.ip-address }}"
+      - name: step-3
+        run: |
+          echo '{
+            "ip-address": "${{ steps.xyz.outputs.ip-address }}"
+          }'
+
+  job5:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: step-1
+        id: xyz
+        run: echo "acc=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      
+      - name: step-2
+        if: steps.xyz.outputs.acc < 1
+        run: |
+          echo "Number lower than 1"
+          echo "${{ steps.xyz.outputs.acc }}"
+      
+      - name: step-3
+        if: steps.xyz.outputs.acc > 1
+        run: |
+          echo "Number higher than 1"
+          echo "${{ steps.xyz.outputs.acc }}"
+          
+  job6:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup multiline output
+        id: test
+        run: |
+          echo "TEST=first line \
+          second line \
+          third line" >> $GITHUB_OUTPUT
+
+      - name: Check multiline output
+        run: echo ${{steps.test.outputs.TEST}}
+
+      - name: Setup multiline output 2
+        id: test2 
+        run: echo "TEST=first line\n second line\n third line" >> $GITHUB_OUTPUT
+
+      - name: Check multiline output 2
+        run: |
+          echo ${{steps.test2.outputs.TEST}} # Will keep the n from the \n
+          echo -e "${{steps.test2.outputs.TEST}}" # Will break the line from the \n

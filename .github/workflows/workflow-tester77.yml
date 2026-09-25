@@ -1,0 +1,13 @@
+name: Test 77 # Related to https://stackoverflow.com/questions/75720251/setup-environment-to-use-variable-context-when-calling-a-reusable-workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_deploy:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester78.yml@main
+    with:
+      project-id: ${{ vars.PROJECT_ID }}
+      environment: other
+      cluster-name: ${{ vars.CLUSTER_NAME }}
+      region: ${{ vars.REGION }}

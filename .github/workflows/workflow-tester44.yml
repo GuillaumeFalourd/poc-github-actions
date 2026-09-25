@@ -1,0 +1,23 @@
+name: Test 44 # Related to https://stackoverflow.com/questions/72805799/add-github-run-number-to-a-file-in-github-repo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: Execute Python script to update test.py file
+        run: python .github/scripts/update_file.py
+        env:
+          WORKSPACE: ${{ github.workspace }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+
+      - run: cat test.py

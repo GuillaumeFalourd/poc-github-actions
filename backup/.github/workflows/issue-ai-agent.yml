@@ -1,0 +1,19 @@
+name: Issue AI Agent
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  issue-ai-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: alexyan0431/issue-ai-agent@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          llm-provider: anthropic

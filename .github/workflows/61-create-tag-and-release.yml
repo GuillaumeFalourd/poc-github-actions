@@ -1,0 +1,55 @@
+name: 61 - Create release
+
+on:
+  pull_request:
+    types:
+      - closed
+
+#TEST
+
+jobs:
+  github-context:
+    name: job-context
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  tag:
+    if: contains(github.head_ref, 'release-') && contains(github.base_ref, 'main') && github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - name: Extract branch tag
+        id: tag
+        run: |
+          BRANCH=${{ github.head_ref }}
+          TAG="${BRANCH//release-/""}"
+          echo $TAG
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+  release:
+    needs:
+      - TAG
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ needs.TAG.outputs.tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Push tag
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          custom_tag: ${{ env.TAG }}
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ env.TAG }}
+          tag_name: ${{ env.TAG }}
+          token: ${{ secrets.ACCESS_TOKEN }}
