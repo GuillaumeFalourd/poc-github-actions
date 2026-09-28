@@ -157,6 +157,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Env Vars](https://github.com/marketplace/actions/github-environment-variables-action): GitHub Action to expose useful environment variables.
 
+[![ExecSurface](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/execsurface.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/execsurface.yml)
+
+[ExecSurface](https://github.com/AETHERXGLOBAL/execsurface): GitHub Action for detecting observed runtime execution-surface drift in CI/CD, dependencies, developer tools and AI-assisted workflows on Linux x86_64.
+
 [![FailureMemory](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/failurememory.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/failurememory.yml)
 
 [FailureMemory](https://github.com/marketplace/actions/failurememory): GitHub Action for recurring CI failure fingerprinting and memory-backed triage so maintainers can turn repeated GitHub Actions failures into short recurrence briefs instead of re-reading the same CI noise from scratch.
