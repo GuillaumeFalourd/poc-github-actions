@@ -16,7 +16,7 @@ jobs:
 
       - name: Install ExecSurface
         run: |
-          VERSION=v0.1.0-alpha.3
+          VERSION=v0.1.0-alpha.4
           TARGET=x86_64-unknown-linux-gnu
           ASSET="execsurface-${VERSION}-${TARGET}.tar.gz"
 
