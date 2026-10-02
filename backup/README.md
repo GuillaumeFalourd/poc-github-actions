@@ -137,6 +137,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Curl](https://github.com/marketplace/actions/github-action-for-curl): GitHub Action to use the curl CLI to perform http requests.
 
+[![Darkmoon Pentest](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/darkmoon.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/darkmoon.yml)
+
+[Darkmoon Pentest](https://github.com/marketplace/actions/darkmoon-pentest): GitHub Action that runs autonomous AI penetration testing (DAST) against an authorized target in CI, synthesizes SARIF for code scanning and fails the build on findings by severity. Works with the open source Darkmoon CLI (self-hosted) or the Darkmoon Pro API.
+
 [![Debug](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/debug.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/debug.yml)
 
 [Debug](https://github.com/marketplace/actions/debug-action): GitHub Action to print the environment variables and the event payload. Useful for developing or debugging GitHub Actions.
