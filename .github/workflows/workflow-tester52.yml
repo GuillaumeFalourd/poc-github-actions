@@ -1,0 +1,31 @@
+name: Test 52 #Related to SO https://stackoverflow.com/questions/73305126/passing-variable-inputs-to-a-resuable-workflow
+
+on:
+  workflow_dispatch:
+
+env:
+  SOME_VAR: bla_bla_bla
+  ANOTHER_VAR: stuff_stuff
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    outputs:
+      some_var: ${{ steps.step1.outputs.some_var }}
+      another_var: ${{ steps.step1.outputs.another_var }}   
+    steps:
+      - name: Print inputs passed to the reusable workflow
+        id: step1
+        run: |
+          echo "some var: $SOME_VAR"
+          echo "::set-output name=some_var::$SOME_VAR"
+          echo "another var: $ANOTHER_VAR"
+          echo "::set-output name=another_var::$ANOTHER_VAR"
+  
+  call_reusable:
+    needs:
+      - print
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester52-reusable.yml@main
+    with:
+      input_var: ${{ needs.print.outputs.some_var }}
+      another_input_var: ${{ needs.print.outputs.another_var }}

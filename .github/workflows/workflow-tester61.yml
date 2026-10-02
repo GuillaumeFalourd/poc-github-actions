@@ -1,0 +1,16 @@
+name: Test 61 # Related to https://stackoverflow.com/questions/74074371/boolean-input-not-passed-correctly-to-reusable-workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      push_to_stg:
+        description: "test"
+        type: boolean
+        default: false
+        required: true
+
+jobs:
+  main:
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester62.yml@main
+    with:
+      stg_image_build: ${{ inputs.push_to_stg }}

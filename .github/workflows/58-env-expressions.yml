@@ -1,0 +1,15 @@
+name: 58 - Env Expressions
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  TOKEN: "${{ github.event_name == 'push' && 'TOKEN_ON_PUSH' || 'TOKEN_NOT_ON_PUSH' }}"
+
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $TOKEN

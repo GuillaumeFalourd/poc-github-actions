@@ -1,0 +1,21 @@
+name: DOS Verify Gate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dos-commit-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # commit-audit reads git ancestry
+
+      # Audits the tip commit's message against its own diff. Observe-only here
+      # (fail-on: none) so the example always passes; on a pull_request event the
+      # action defaults to auditing base..head - set fail-on: unwitnessed to make
+      # it a blocking gate.
+      - uses: anthony-chaudhary/dos-kernel/verify-action@master
+        with:
+          mode: commit-audit
+          fail-on: none

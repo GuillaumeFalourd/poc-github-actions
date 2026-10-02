@@ -1,0 +1,17 @@
+name: 55 - Read Issue
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      #- name: Get Version
+      #  run: |         
+      #    $str=(${{ github.event.issue.body }} | grep Version:)
+      #    echo "VERSION=$str" >> $GITHUB_ENV
+      - name: Run a one-line script
+        if: contains(github.event.issue.labels.*.name, 'deployment')
+        run: echo Version is ${{ github.event.issue.body }}

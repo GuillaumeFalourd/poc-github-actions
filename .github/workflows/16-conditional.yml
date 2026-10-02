@@ -27,7 +27,7 @@ jobs:
         
       - name: Upload file status_job1.txt as an artifact
         if: always()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: pass_status_job1
           path: status_job1.txt
@@ -56,7 +56,7 @@ jobs:
           echo ${{ job.status }} > status_job2.txt
       - name: Upload file status_job2.txt as an artifact
         if: always()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: pass_status_job2
           path: status_job2.txt
@@ -73,7 +73,7 @@ jobs:
             echo ${{ job.status }} > status_job3.txt
          - name: Upload file status_job3.txt as an artifact
            if: always()
-           uses: actions/upload-artifact@v1
+           uses: actions/upload-artifact@v4.4.0
            with:
             name: pass_status_job3
             path: status_job3.txt
@@ -84,17 +84,17 @@ jobs:
     if: always()
     steps:
       - name: Download artifact pass_status_job1
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.8
         with:
           name: pass_status_job1
 
       - name: Download artifact pass_status_job2
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.8
         with:
           name: pass_status_job2
           
       - name: Download artifact pass_status_job3
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.8
         with:
           name: pass_status_job3
 
@@ -111,6 +111,40 @@ jobs:
           echo "status_job1 = ${{ steps.set_outputs.outputs.status_job1 }}"
           echo "status_job2 = ${{ steps.set_outputs.outputs.status_job2 }}"
           echo "status_job3 = ${{ steps.set_outputs.outputs.status_job3 }}"
-      
 
-  
+  check-secret:
+      runs-on: ubuntu-latest
+      outputs:
+        my-key: ${{ steps.my-key.outputs.defined }}
+      steps:
+          - id: my-key
+            env:
+                MY_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            if: "${{ env.MY_KEY != '' }}"
+            run: echo "defined=true" >> $GITHUB_OUTPUT
+
+  job5:
+      runs-on: ubuntu-latest
+      needs: [check-secret]
+      if: needs.check-secret.outputs.my-key == 'true'
+      steps:
+        - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS NOT empty"
+
+  job6:
+      runs-on: ubuntu-latest
+      needs: [check-secret]
+      if: needs.check-secret.outputs.my-key != 'true'
+      steps:
+        - run: echo "This command is executed if AWS_ACCESS_KEY_ID secret IS empty"
+        
+  job7:
+      runs-on: ubuntu-latest
+      steps:
+          - id: step1
+            run: echo "test=hello" >> $GITHUB_OUTPUT
+          - name: step 2
+            if: contains(steps.step1.outputs.test, 'hello')
+            run: echo 'is executed'
+          - name: step 3
+            if: contains(steps.step1.outputs.test, 'not_hello')
+            run: echo 'not executed'

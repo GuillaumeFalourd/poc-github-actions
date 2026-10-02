@@ -1,0 +1,17 @@
+name: 44 - Check if PR from Fork
+
+on: [pull_request]
+
+jobs:
+  fork:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.fork == true
+    steps:
+    - run: echo "This workflow run if PR is from a fork repo"
+
+  not-fork:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.fork == false
+    steps:
+    - run: echo "This workflow run if PR is NOT from a fork repo"
+

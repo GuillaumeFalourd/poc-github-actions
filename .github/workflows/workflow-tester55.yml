@@ -1,0 +1,33 @@
+name: Test 55 #Related to SO https://stackoverflow.com/questions/73643836/prevent-a-job-in-github-action-workflow-file-to-run-in-case-of-an-event
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub Event
+        run: echo ${{ github.event }}
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  job2:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.edited == true
+    steps:
+      - run: |
+          echo "Pull Request EDITED"
+          echo ${{ github.event }}
+
+  job3:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.edited != true
+    steps:
+      - run: |
+          echo "Pull Request NOT EDITED"
+          echo ${{ github.event }}

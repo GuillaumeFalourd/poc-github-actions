@@ -1,0 +1,37 @@
+name: Test 98 reusable # Related to SO https://stackoverflow.com/questions/78513070/how-to-send-variables-to-called-workflow-from-the-caller-workflow/78514014?noredirect=1#comment138421206_78514014
+
+on:
+  workflow_dispatch:
+    inputs:
+      cacheName:
+        type: string
+        description: 'Provide Cache Name'
+      expirationType:
+        type: string
+        description: 'Provide Expiration Type'
+      expirationTime:
+        type: string
+        description: 'Provide Expiration Time in Seconds'
+
+  workflow_call:
+    inputs:
+      cacheName:
+        type: string
+        description: 'Provide Cache Name'
+      expirationType:
+        type: string
+        description: 'Provide Expiration Type'
+      expirationTime:
+        type: string
+        description: 'Provide Expiration Time in Seconds'
+
+jobs:
+  Create_Update-Cache:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Do something
+        run: |
+          echo Iteration
+          echo ${{ inputs.cacheName }}
+          echo ${{ inputs.expirationType }}
+          echo ${{ inputs.expirationTime }}

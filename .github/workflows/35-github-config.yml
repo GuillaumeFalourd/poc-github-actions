@@ -1,0 +1,29 @@
+name: 35 - Github Config
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - name: Check logs
+        run: |
+          git log -n 1 --pretty=format:%an    # username
+          git log -n 1 --pretty=format:%ae    # email
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
+          git config --list
+      # - run: |
+      #     date > report.txt
+      #     git config user.name "$(git log -n 1 --pretty=format:%an)"
+      #     git config user.email "$(git log -n 1 --pretty=format:%ae)"
+      #     git add .
+      #     git commit -m "Update checkout workflow file"
+      #     git push
+
+

@@ -1,0 +1,65 @@
+name: Test 29 # Related to https://stackoverflow.com/questions/71561915/github-action-skipped-job
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        type: choice
+        required: true
+        description: the os that will be tested.
+        default: ANDROID
+        options:
+        - IOS
+        - ANDROID
+jobs:
+
+  LA_CHECKS:
+    strategy:
+      fail-fast: false
+      matrix:
+        la_checks: [[la, las331],[la2,las993]]
+    name: ${{ matrix.la[1] }}
+    # runs-on: DOCKER
+    runs-on: ubuntu-latest
+    # container: scripts
+    steps:
+      - uses: actions/checkout@v2
+      # - uses: ./.github/templates/la_check
+      #   with:
+      #     precondition: ${{ matrix.la_checks[0] }}
+
+
+  Install_FR1:
+    if: ${{ always() && github.event.inputs.os == 'ANDROID' }}
+    needs: [LA_CHECKS]
+    # runs-on: DOCKER
+    runs-on: ubuntu-latest
+    # container: scripts
+    steps:
+      - uses: actions/checkout@v2
+      # - uses: ./.github/templates/install
+      #   with:
+      #     d_id: fr1
+
+  FR1_EXEC:
+    needs: [Install_FR1]
+    if: needs.Install_FR1.result == 'success'
+    # runs-on: DOCKER
+    runs-on: ubuntu-latest
+    # container: scripts
+    steps:
+      - uses: actions/checkout@v2
+      # - uses: ./.github/templates/device
+      #   with:
+      #     d_id: fr1
+
+  Uninstall_FR1:
+    # if: ${{ always() && github.event.inputs.os == 'ANDROID' }}
+    needs: [FR1_EXEC]
+    # runs-on: DOCKER
+    runs-on: ubuntu-latest
+    # container: scripts
+    steps:
+      - uses: actions/checkout@v2
+      # - uses: ./.github/templates/uninstall
+      #   with:
+      #     device_id: fr1

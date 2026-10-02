@@ -1,0 +1,61 @@
+name: Test 54 #Related to SO https://stackoverflow.com/questions/73611201/how-to-get-inputs-in-github-yml
+
+on:
+  #push:
+  workflow_dispatch:
+    inputs:
+       test1:
+         description: test1
+         required: false
+         default: false
+         type: boolean
+       test2:
+         description: test2 
+         required: false
+         default: true
+         type: boolean
+
+jobs:
+  job1: # will always run
+    runs-on: ubuntu-latest
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
+
+  job2: # will only run on a workflow_dispatch event, if test1 input is true
+    runs-on: ubuntu-latest
+    if: ${{ inputs.test1 }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
+
+  job3: # will only run on a workflow_dispatch event, if test2 input is true
+    runs-on: ubuntu-latest
+    if: ${{ inputs.test2 }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
+
+  job4: # will only run on a push event
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}
+
+  job5: # will only run on a push event OR if inputs.test2 is true on a workflow_dispatch event
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || inputs.test2 }}
+    steps:
+        - run: |
+            echo ${{ inputs.test1 }}
+            echo ${{ inputs.test2 }}
+            echo ${{ github.event_name }}

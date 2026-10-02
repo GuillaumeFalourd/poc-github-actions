@@ -1,0 +1,17 @@
+name: Scrape Diagnose
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Diagnose this repository's public page
+        uses: sanjayamaharjancodes/scrape-diagnose@abe305a38cee37a0287d5bb9d1097964759b8c72
+        with:
+          target-url: https://github.com/GuillaumeFalourd/useful-actions
+          expect-text: useful-actions
+          live: "false"

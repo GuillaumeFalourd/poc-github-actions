@@ -1,0 +1,23 @@
+name: Test 94 # Related to SO https://stackoverflow.com/questions/78401891/modify-the-run-name-into-uppercase-of-workflow-github-actions?noredirect=1#comment138222651_78401891
+
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: choice
+        description: Select the environment
+        options:
+          - 'dev'
+          - 'test'
+          - 'prod'
+        default : 'dev'
+
+run-name: Trial - ${{ inputs.environment == 'dev' && 'DEV' || inputs.environment == 'test' && 'TEST' || 'PROD' }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy workflow
+        run: echo "dummy workflow"

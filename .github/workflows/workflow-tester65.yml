@@ -1,0 +1,17 @@
+name: Test 65 # Related to https://stackoverflow.com/questions/18995854/how-can-i-use-github-api-to-get-all-tags-or-releases-for-a-project
+
+on:
+  #push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $TOKEN" \
+            https://api.github.com/repos/GuillaumeFalourd/poc-github-actions/tags
+        env:
+          TOKEN: ${{ secrets.ACCESS_TOKEN }}

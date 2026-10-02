@@ -1,0 +1,31 @@
+name: Test 27 # Related to https://stackoverflow.com/questions/71418790/github-action-is-failing-when-the-personal-access-token-is-passed-as-a-secret
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # create-pull-request-1:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: GuillaumeFalourd/pull-request-action@v1
+  #       with:
+  #         destination_branch: "feature/test"
+  #         pr_title: "[example] test_create_pull_request"
+  #         pr_body: "test body."
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+  create-pull-request-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create pull Request
+        uses: TheRealWaldo/pull-request@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          title: Automated Pull Request From main to feature/test Branch
+          base: feature/test
+          head: main
+          assignee: GuillaumeFalourd
+          body: Automated Pull Request From main to feature/test Branch

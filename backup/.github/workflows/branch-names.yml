@@ -1,0 +1,59 @@
+name: Branch Names
+
+on: [push, workflow_dispatch]
+
+jobs:
+  branch-names:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get branch names
+        id: branch-name
+        uses: tj-actions/branch-names@v9.0.0
+        
+      - name: Running on the default branch.
+        if: steps.branch-name.outputs.is_default == 'true'
+        run: |
+          echo "Running on default: ${{ steps.branch-name.outputs.current_branch }}"
+        # Outputs: "Running on default: main".
+      
+      - name: Running on a pull request branch.
+        if: steps.branch-name.outputs.is_default == 'false'
+        run: |
+          echo "Running on pr: ${{ steps.branch-name.outputs.current_branch }}"
+        # Outputs: "Running on pr: feature/test".
+      
+      - name: Current branch name
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "${{ steps.branch-name.outputs.current_branch }}"
+        # Outputs: "feature/test" current PR branch.
+      
+      - name: Current branch name
+        if: github.event_name == 'push'
+        run: |
+          echo "${{ steps.branch-name.outputs.current_branch }}"
+        # Outputs: "main" the branch that triggered the push event.
+      
+      - name: Get Ref branch name
+        run: |
+          echo "${{ steps.branch-name.outputs.ref_branch }}"
+        #  Outputs: "main" for non PR branches | "1/merge" for a PR branch
+
+      - name: Get Head Ref branch name
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "${{ steps.branch-name.outputs.head_ref_branch }}"
+        # Outputs: "feature/test" current PR branch.
+
+      - name: Get Base Ref branch name
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "${{ steps.branch-name.outputs.base_ref_branch }}"
+        # Outputs: "main" for main <- PR branch.
+        
+      - name: Get the current tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          echo "${{ steps.branch-name.outputs.tag }}"
+        # Outputs: "v0.0.1" OR "0.0.1"
