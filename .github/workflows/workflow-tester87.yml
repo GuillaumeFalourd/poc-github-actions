@@ -1,0 +1,23 @@
+name: Test 87
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: StackSpot Runtime Infra Debian (v1)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show STK CLI version (1)
+        run: |
+          docker run -t --entrypoint /bin/bash -v $(pwd):/data stackspot/stk-cli-debian:5.4.7 -c '
+            cd /data
+            ~/.stk/bin/stk -v
+          '
+        env:
+          HTTP_ENABLE_DEBUG: true

@@ -1,0 +1,41 @@
+name: ExecSurface
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  execsurface:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install ExecSurface
+        run: |
+          VERSION=v0.1.0-alpha.4
+          TARGET=x86_64-unknown-linux-gnu
+          ASSET="execsurface-${VERSION}-${TARGET}.tar.gz"
+
+          curl -fLO "https://github.com/AETHERXGLOBAL/execsurface/releases/download/${VERSION}/${ASSET}"
+          curl -fLO "https://github.com/AETHERXGLOBAL/execsurface/releases/download/${VERSION}/${ASSET}.sha256"
+          sha256sum -c "${ASSET}.sha256"
+          tar -xzf "${ASSET}"
+
+          echo "$PWD/execsurface-${VERSION}-${TARGET}" >> "$GITHUB_PATH"
+
+      - name: Learn baseline
+        run: |
+          execsurface learn \
+            --output execsurface.lock.json \
+            -- /bin/bash -lc 'true'
+
+      - name: ExecSurface check
+        uses: AETHERXGLOBAL/execsurface@v0.1
+        with:
+          command: "true"
+          baseline: execsurface.lock.json
+          upload-artifact: "false"

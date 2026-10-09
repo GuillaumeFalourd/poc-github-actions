@@ -1,0 +1,22 @@
+name: Test 75 # Related to https://stackoverflow.com/questions/75446952/github-workflows-changing-or-specifying-environment-variables-in-matrix-jobs
+
+on:
+  push:
+
+env:
+  MY_VAR: One
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - env:
+              MY_VAR: Two
+          - env:
+              MY_VAR: Three
+    steps:
+      - run: |
+          echo "$MY_VAR" # is equal to ${{ env.MY_VAR }}
+          echo ${{ matrix.env.MY_VAR }}

@@ -1,0 +1,22 @@
+name: Test 39 # Related to https://stackoverflow.com/questions/72613951/in-a-github-action-can-i-extract-a-recurring-variable-or-condition
+
+on:
+  push:
+
+env:
+  BRANCH: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/features/lrd') }}
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch and print it
+        if: ${{ env.BRANCH }}
+        run: echo ${{ env.BRANCH }}
+
+  # job2: 
+  #   runs-on: ubuntu-latest
+  #   if: ${{ env.BRANCH }} # Won't work
+  #   steps:
+  #     - name: Print branch
+  #       run: echo ${{ env.BRANCH }}

@@ -1,0 +1,256 @@
+  name: 'Test 20' # Related to https://stackoverflow.com/questions/70531237/github-actions-yaml-for-multiple-deployment-images-for-different-stages-with-the?noredirect=1#comment124678457_70531237
+  
+  on:
+    # push:
+    #   branches-ignore:
+    #     - '**'
+  
+    workflow_dispatch:
+      inputs:
+        git-ref:
+          description: Git Ref (Optional)
+          default: develop
+          required: false
+  
+        account:
+          description: slb-dev, slb-prod
+          default: slb-dev
+          required: true
+          
+        account_prod:
+          description: slb-dev, slb-prod
+          default: slb-prod
+          required: true
+  
+        environment:
+          description: development (main, int, qs), production (v1_demo, v1_rosecity, demo)
+          default: main
+          required: false
+  
+        microservice:
+          description: chroma, liquid, tenant, dashboard, lims, lims-simulator, client, logging, metrc
+          default: chroma
+          required: false
+  
+        builddir:
+          description: MicroChromatographyService/MicroChromatographyService, MicroLiquidHandlingService/MicroLiquidHandlingService, MicroTenantService/MicroTenantService, MicroDashboardService/MicroDashboardService, LIMSIntegrationService/LIMSIntegrationService, LIMSSimulatorService/LIMSSimulatorService, IntegrationHubClientService/IntegrationHubClientService, PerkinElmer.LoggingService/PerkinElmer.LoggingService, MetRCReportService/MetRCReportService
+          default: MicroChromatographyService/MicroChromatographyService
+          required: false
+  
+  jobs:
+    setup1:
+      name: Setup ENV Variables
+      runs-on: ubuntu-latest
+      environment:
+        name: dev
+        url: https://dev.test.com
+      outputs:
+        APP_NAME: ${{ steps.setprodvars.outputs.APP_NAME }}
+        AWS_REGION: ${{ steps.setprodvars.outputs.AWS_REGION }}
+        SHA8: ${{ steps.setprodvars.outputs.SHA8 }}
+        BUILD_DIR: ${{ steps.setprodvars.outputs.BUILD_DIR }}
+        ECR_REPOSITORY: ${{ steps.setprodvars.outputs.ECR_REPOSITORY }}
+        ECS_CLUSTER: ${{ steps.setprodvars.outputs.ECS_CLUSTER }}
+        ECS_SERVICE: ${{ steps.setprodvars.outputs.ECS_SERVICE }}
+        ECS_TASK_DEFINITION: ${{ steps.setprodvars.outputs.ECS_TASK_DEFINITION }}
+        ECS_TASK_DEFINITION_FILE: ${{ steps.setprodvars.outputs.ECS_TASK_DEFINITION_FILE }}
+        ECS_CONTAINER_NAME: ${{ steps.setprodvars.outputs.ECS_CONTAINER_NAME }}
+      steps:
+      - name: Set Prod Vars
+        id: setprodvars
+        run: |
+            echo "::set-output name=APP_NAME::${{ github.event.inputs.microservice }}"
+            echo "::set-output name=AWS_REGION::us-east-1"
+            echo "::set-output name=SHA8::${{ github.sha }} | cut -c1-8)"
+            echo "::set-output name=BUILD_DIR::${{ github.event.inputs.builddir }}"
+            echo "::set-output name=ECR_REPOSITORY::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+            echo "::set-output name=ECS_CLUSTER::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}"
+            echo "::set-output name=ECS_SERVICE::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+            echo "::set-output name=ECS_TASK_DEFINITION::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+            echo "::set-output name=ECS_TASK_DEFINITION_FILE::task-definition-${{ github.event.inputs.microservice }}.json"
+            echo "::set-output name=ECS_CONTAINER_NAME::${{ github.event.inputs.account_prod }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+
+    setup2:
+      name: Setup PROD Variables
+      runs-on: ubuntu-latest
+      environment:
+        name: Production
+        url: 'http://dev.myapp.com'
+      outputs:
+        APP_NAME: ${{ steps.setvars.outputs.APP_NAME }}
+        AWS_REGION: ${{ steps.setvars.outputs.AWS_REGION }}
+        SHA8: ${{ steps.setvars.outputs.SHA8 }}
+        BUILD_DIR: ${{ steps.setvars.outputs.BUILD_DIR }}
+        ECR_REPOSITORY: ${{ steps.setvars.outputs.ECR_REPOSITORY }}
+        ECS_CLUSTER: ${{ steps.setvars.outputs.ECS_CLUSTER }}
+        ECS_SERVICE: ${{ steps.setvars.outputs.ECS_SERVICE }}
+        ECS_TASK_DEFINITION: ${{ steps.setvars.outputs.ECS_TASK_DEFINITION }}
+        ECS_TASK_DEFINITION_FILE: ${{ steps.setvars.outputs.ECS_TASK_DEFINITION_FILE }}
+        ECS_CONTAINER_NAME: ${{ steps.setvars.outputs.ECS_CONTAINER_NAME }}
+      steps:
+      - name: Set Vars
+        id: setvars
+        run: |
+          echo "::set-output name=APP_NAME::${{ github.event.inputs.microservice }}"
+          echo "::set-output name=AWS_REGION::us-east-1"
+          echo "::set-output name=SHA8::${{ github.sha }} | cut -c1-8)"
+          echo "::set-output name=BUILD_DIR::${{ github.event.inputs.builddir }}"
+          echo "::set-output name=ECR_REPOSITORY::${{ github.event.inputs.account }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+          echo "::set-output name=ECS_CLUSTER::${{ github.event.inputs.account }}-${{ github.event.inputs.environment }}"
+          echo "::set-output name=ECS_SERVICE::${{ github.event.inputs.account }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+          echo "::set-output name=ECS_TASK_DEFINITION::${{ github.event.inputs.account }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+          echo "::set-output name=ECS_TASK_DEFINITION_FILE::task-definition-${{ github.event.inputs.microservice }}.json"
+          echo "::set-output name=ECS_CONTAINER_NAME::${{ github.event.inputs.account }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.microservice }}"
+
+    DeployDev:
+      name: Deploy to Dev 
+      needs: setup1
+      runs-on: ubuntu-latest
+      permissions:
+        packages: write
+        contents: write
+        id-token: write
+      environment: 
+        name: Dev
+        url: 'http://dev.myapp.com'
+      steps:
+      - name: Set Environments
+        run: |
+          if [[ "${{github.event.inputs.account}}" == "slb-dev" ]]; then
+            echo "AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+            echo "AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          fi
+  
+          if [[ "${{github.event.inputs.account}}" == "slb-prod" ]]; then
+            echo "AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+            echo "AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          fi
+  
+      - name: Clone Repository (Current branch)
+        uses: actions/checkout@v2
+        if: github.event.inputs.git-ref == ''
+  
+      - name: Clone Repository (Custom Ref)
+        uses: actions/checkout@v2
+        if: github.event.inputs.git-ref != ''
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
+  
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ needs.setup1.outputs.AWS_REGION }}
+  
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+  
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ needs.setup1.outputs.ECR_REPOSITORY }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          cd ${{ needs.setup1.outputs.BUILD_DIR }}
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+  
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ needs.setup1.outputs.ECS_TASK_DEFINITION }} --query taskDefinition > ${{ needs.setup1.outputs.ECS_TASK_DEFINITION_FILE }}
+  
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ needs.setup1.outputs.ECS_TASK_DEFINITION_FILE }}
+          container-name: ${{ needs.setup1.outputs.ECS_CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
+  
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ needs.setup1.outputs.ECS_SERVICE }}
+          cluster: ${{ needs.setup1.outputs.ECS_CLUSTER }}
+          wait-for-service-stability: true
+  
+  
+    DeployProd:
+      name: Deploy to Production 
+      needs: [setup2, DeployDev]
+      runs-on: ubuntu-latest
+      permissions:
+        packages: write
+        contents: write
+        id-token: write
+      environment: 
+        name: Production
+        url: 'http://dev.myapp.com'
+      steps:
+      - name: Set Environments
+        run: |
+          if [[ "${{github.event.inputs.account_prod}}" == "slb-dev" ]]; then
+            echo "AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+            echo "AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          fi
+          if [[ "${{github.event.inputs.account_prod}}" == "slb-prod" ]]; then
+            echo "AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+            echo "AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          fi
+      - name: Clone Repository (Current branch)
+        uses: actions/checkout@v2
+        if: github.event.inputs.git-ref == ''
+  
+      - name: Clone Repository (Custom Ref)
+        uses: actions/checkout@v2
+        if: github.event.inputs.git-ref != ''
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
+  
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ needs.setup2.outputs.AWS_REGION }}
+  
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+  
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ needs.setup2.outputs.ECR_REPOSITORY }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          cd ${{ needs.setup2.outputs.BUILD_DIR }}
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ needs.setup2.outputs.ECS_TASK_DEFINITION }} --query taskDefinition > ${{ needs.setup2.outputs.ECS_TASK_DEFINITION_FILE }}
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ needs.setup2.outputs.ECS_TASK_DEFINITION_FILE }}
+          container-name: ${{ needs.setup2.outputs.ECS_CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
+  
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ needs.setup2.outputs.ECS_SERVICE }}
+          cluster: ${{ needs.setup2.outputs.ECS_CLUSTER }}
+          wait-for-service-stability: true

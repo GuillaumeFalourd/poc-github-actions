@@ -1,0 +1,75 @@
+name: Test 63 # Related to https://stackoverflow.com/questions/74117204/how-to-generate-a-new-string-by-combine-github-action-workflow-variables
+
+on:
+  #push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check context var
+        run: |
+          echo '${{ github.event.head_commit.message }}'
+          echo '${{ github.sha }}'
+
+#      echo MESSAGE_SHA='${{ github.event.head_commit.message }}'-'${{ github.sha }}' >> $GITHUB_ENV
+
+      - name: Setup env var
+        run: |
+          MESSAGE=$(cat << EOF
+          '${{ github.event.head_commit.message }}'
+          -'${{ github.sha }}'
+          EOF
+          )
+          echo MESSAGE_SHA=$MESSAGE >> $GITHUB_ENV
+
+      - name: Check env var
+        run: |
+          echo ${{ env.MESSAGE_SHA }}
+
+# Testing same implementation for OUTPUT
+
+      - name: Setup output var
+        id: test1
+        run: |
+          MESSAGE=$(cat << EOF
+          '${{ github.event.head_commit.message }}'
+          -'${{ github.sha }}'
+          EOF
+          )
+          echo MESSAGE_SHA=$MESSAGE >> $GITHUB_OUTPUT
+
+      - name: Check output var
+        run: |
+          echo ${{steps.test1.outputs.MESSAGE_SHA}}
+
+# Testing other syntaxes
+
+      - name: Setup output var2
+        id: test2 
+        run: echo "TEST2=first line\n second line\n third line" >> $GITHUB_OUTPUT
+
+      - name: Check output var2
+        run: |
+          echo ${{steps.test2.outputs.TEST2}} #Will keep the n from the \n
+          echo -e "${{steps.test2.outputs.TEST2}}" #Will break the line from the \n
+
+      - name: Setup output var3
+        id: test3
+        run: |
+          echo "TEST3=first line \
+          second line \
+          third line" >> $GITHUB_OUTPUT
+
+      - name: Check output var3
+        run: echo ${{steps.test3.outputs.TEST3}}
+
+      - name: Setup output var4
+        id: test4
+        continue-on-error: true
+        run: echo TEST4=$(echo -e "first line\n second line\n third line") >> $GITHUB_OUTPUT
+
+      - name: Check output var4
+        run: |
+          echo ${{steps.test4.outputs.TEST4}}

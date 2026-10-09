@@ -1,0 +1,70 @@
+name: Test 16 #https://stackoverflow.com/questions/60364190/invalid-workflow-file
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+    - main
+
+env:
+  IMAGE_NAME: api
+
+jobs:
+  build:
+    name: Application build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository (#1)
+      uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Build API
+      run: dotnet build --configuration Release
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository (#2)
+      uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Run API Tests
+      run: dotnet test
+
+  auto-approve:
+    name: Auto approve pull request
+    runs-on: ubuntu-latest
+    steps:
+    - uses: hmarr/auto-approve-action@v2.0.0
+      with:
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+    - name: automerge
+      uses: "pascalgn/automerge-action@ccae530ae13b6af67a7a2009c266fe925844e658"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+  docker-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Push Docker image to registry
+      uses: jerray/publish-docker-action@master
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        registry: docker.pkg.github.com
+        repository: jerray/publish-docker-action
+        auto_tag: true

@@ -1,0 +1,23 @@
+name: GPT Review
+
+on: 
+    pull_request:
+
+jobs:
+  gpt-review:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+        - name: Chat GPT Code Peer Review
+          uses: edelauna/gpt-review@v1.2.1
+          with:
+            # OpenAI API key used for sending patch diffs for review.
+            # Required
+            openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+        
+            # The target branch for the git diff to run against.
+            # Default: ${{ github.base_ref }}
+            target_branch: ''
+        
+            # List of comma seperated values for files to ignore as part of the review process.
+            ignore_files: ''
