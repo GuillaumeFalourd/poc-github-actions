@@ -1,0 +1,18 @@
+name: 55 - Create Issue
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.4     
+    - name: Create an issue
+      uses: JasonEtco/create-an-issue@e6b4b190af80961b6462c725454e7828d0247a68
+      with:
+        filename: .github/ISSUE_TEMPLATE_DEPLOYMENT.md
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VERSION: ${{ github.RUN_NUMBER }}

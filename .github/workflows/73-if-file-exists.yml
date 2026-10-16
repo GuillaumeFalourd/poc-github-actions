@@ -1,0 +1,41 @@
+name: 73 - Run Step if File Exists
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_file_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step to run if file exists
+      - name: Run if file exists
+        if: ${{ !cancelled() && hashFiles('test.py') != '' }}
+        run: |
+          # Your command to run if the file exists
+          echo "File exists, running additional steps..."
+
+      - name: Force failure
+        run: exit 1
+
+      # Step to run if file does not exist
+      - name: File does not exist
+        if: ${{ !cancelled() && !hashFiles('does-not-exist-fail.txt') != ''}}
+        run: |
+          # Your command to run if the file does not exist
+          echo "File does not exist, skipping additional steps..."
+          echo ${{ hashFiles('does-not-exist-fail.txt') }}
+          echo ${{ hashFiles('does-not-exist-fail.txt') != '' }}
+          echo ${{ !hashFiles('does-not-exist-fail.txt') != '' }}
+
+      # Step to run if file does not exist
+      - name: File does not exist (Should never run)
+        if: ${{ !cancelled() && hashFiles('does-not-exist-fail.txt') != ''}}
+        run: |
+          # Your command to run if the file does not exist
+          echo "File does not exist, skipping additional steps..."

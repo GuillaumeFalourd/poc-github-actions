@@ -1,0 +1,22 @@
+name: Copycat
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Make changes
+        run: date > copycat-workflow.txt
+      - name: Copy
+        uses: andstor/copycat-action@v3
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
+          src_path: /.
+          dst_path: /backup/
+          dst_owner: GuillaumeFalourd
+          dst_repo_name: poc-github-actions
+          src_branch: main
+          dst_branch: main

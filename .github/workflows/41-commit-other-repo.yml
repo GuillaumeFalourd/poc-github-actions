@@ -1,0 +1,23 @@
+name: 41 - Commit other repo
+
+on: [workflow_dispatch]
+
+jobs:
+    commit-other-repo:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: |
+                  git config --global user.email "poc-github-actions-test@gmail.com"
+                  git config --global user.name "poc-github-actions-test"
+                  git config --global credential.helper cache
+                  git clone https://${{secrets.ACCESS_TOKEN}}@github.com/GuillaumeFalourd/formulas-4-tests
+                  cd formulas-4-tests
+                  date >> poc-github-actions-test.txt
+                  git add .
+                  git commit -m "$(date)"
+                  git push
+
+                # Example to copy file from current repo
+                # cp index.js clonedFolder/ -f
+                # cd clonedFolder
