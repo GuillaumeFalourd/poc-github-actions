@@ -1,0 +1,17 @@
+name: Auto Accept Collabs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 1 * * MON-FRI" # Runs at 01:00 UTC
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetching Local Repository
+        uses: actions/checkout@v3
+      - name: Auto Accept Collabs
+        uses: kbrashears5/github-action-auto-accept-collabs@857db86b3be636b6dedcb36726ec97e0139dc7d7
+        with:
+          TOKEN: ${{ secrets.ACCESS_TOKEN }}

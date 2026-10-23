@@ -1,0 +1,23 @@
+name: Test 83 # Related to SO question https://stackoverflow.com/questions/76372158/in-github-action-can-i-set-a-condition-to-initialize-a-step-input
+
+on: 
+  workflow_dispatch:
+    inputs:
+      my-input-dispatch:
+        description: 'Test input'
+        required: false
+        default: ''
+
+env:
+  my-input: ${{ inputs.my-input-dispatch != '' && inputs.my-input-dispatch }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: echo ${{ env.my-input }}
+    - name: Test gh action 5
+      uses: ./.github/workflows/test-action
+      with:
+        my-input-with-default: ${{ env.my-input }}

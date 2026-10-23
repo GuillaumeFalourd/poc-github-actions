@@ -1,0 +1,17 @@
+name: Test 34 # Related to https://stackoverflow.com/questions/72360263/how-to-checkout-a-repository-outside-of-the-workspace-in-github-actions?noredirect=1#comment127834668_72360263
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GuillaumeFalourd/clone-github-repo-action@v3
+        with:
+          owner: GuillaumeFalourd
+          repository: formulas-4-tests
+          path-to-clone: ${{ github.workspace }}/test
+      - run: |
+          cd ${{ github.workspace }}/test
+          ls -lha

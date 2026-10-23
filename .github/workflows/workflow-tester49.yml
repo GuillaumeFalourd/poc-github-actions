@@ -1,0 +1,18 @@
+name: Test 49 #Related to SO https://stackoverflow.com/questions/73213189/cannot-set-a-env-var-when-using-macos-runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: macos-latest
+    steps:
+    - name: Set variable
+      run: |
+        RUNDATEOSX=$(date -j -v-2d +%Y%m%d)
+        echo "RUNDATEOSX=$RUNDATEOSX" >> $GITHUB_ENV
+
+    - name: Print variable
+      run: |
+        echo "RUNDATEOSX:" ${{ env.RUNDATEOSX }}
+        echo "RUNDATEOSX:" $RUNDATEOSX

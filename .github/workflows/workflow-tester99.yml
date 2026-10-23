@@ -1,0 +1,20 @@
+name: Test 99 # https://stackoverflow.com/questions/78875784/github-action-stage-not-triggering-if-previous-stage-failed
+
+on:
+  workflow_dispatch:
+
+jobs:
+  some-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Force job failure
+        run: exit 1
+  
+  some-test-rerun:
+    needs: [some-test]
+    runs-on: ubuntu-latest
+    if: always() && needs.some-test.result == 'failure'
+    steps:
+      - name: Retry
+        run: | 
+          echo "retry"
