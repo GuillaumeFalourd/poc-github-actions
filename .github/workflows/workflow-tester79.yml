@@ -1,0 +1,31 @@
+name: Test 79 # Related to https://stackoverflow.com/questions/76018154/github-action-share-token-between-jobs-to-reuse
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: terraform validate
+    outputs:
+      installation_token: ${{ steps.get_installation_token.outputs.token }}
+      test_var: "Hello"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Generate token
+        id: get_installation_token
+        run: |
+          TOKEN=TEST
+          echo "token=$TOKEN" >> $GITHUB_OUTPUT
+
+  plan:
+    needs:
+      - validate
+    runs-on: ubuntu-latest
+    name: terraform plan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - run: echo "${{ needs.validate.outputs.installation_token }}"
+      - run: echo "${{ needs.validate.outputs.test_var }}"

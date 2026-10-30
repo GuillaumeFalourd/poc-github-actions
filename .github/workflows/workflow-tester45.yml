@@ -1,0 +1,17 @@
+name: Test 45 # Related to https://stackoverflow.com/questions/72803738/how-to-break-branch-name-for-building-alpha
+
+on:
+  push:
+    branches: [fix/NN-*]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract branch number
+        id: version
+        run: |
+          BRANCH=${GITHUB_REF}
+          echo $BRANCH
+          BUILD_NUMBER="${BRANCH//refs\/heads\/fix\/NN-/}"
+          echo $BUILD_NUMBER

@@ -1,0 +1,59 @@
+name: Darkmoon Pentest
+
+# Autonomous AI penetration testing (DAST) in CI with the open source Darkmoon CLI.
+# Action: https://github.com/ASCIT31/darkmoon-action  .  Project: https://dark-moon.org
+#
+# Darkmoon runs a REAL assessment against an AUTHORIZED target you control, then
+# fails the build on findings by severity and can synthesize SARIF for GitHub
+# code scanning. It needs one of:
+#   - a self-hosted runner co-located with the Darkmoon OSS CLI (mode: oss), or
+#   - a reachable Darkmoon Pro REST API (mode: pro, base-url + api-token).
+# Neither is available on a vanilla GitHub-hosted runner, so this example is wired
+# for workflow_dispatch and only runs the scan once you supply an authorized target
+# (and, for Pro, the DARKMOON_BASE_URL variable + DARKMOON_API_TOKEN secret).
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Authorized target URL to assess (e.g. a staging host you own)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  darkmoon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Darkmoon pentest (Pro REST API)
+        id: darkmoon
+        if: ${{ inputs.target != '' }}
+        uses: ASCIT31/darkmoon-action@v1
+        with:
+          mode: pro
+          base-url: ${{ vars.DARKMOON_BASE_URL }}
+          api-token: ${{ secrets.DARKMOON_API_TOKEN }}
+          target: ${{ inputs.target }}
+          focus: sqli,xss,idor
+          fail-on: critical,high
+          report-format: sarif
+
+      - name: Upload SARIF to code scanning
+        if: ${{ always() && inputs.target != '' }}
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: ${{ steps.darkmoon.outputs.report-path }}
+
+      - name: How to run
+        if: ${{ inputs.target == '' }}
+        run: |
+          echo "Dispatch this workflow with an authorized 'target' to run a real assessment."
+          echo "Pro: set the DARKMOON_BASE_URL variable and the DARKMOON_API_TOKEN secret."
+          echo "OSS: use mode: oss on a self-hosted runner co-located with the Darkmoon CLI."
+          echo "Docs: https://github.com/ASCIT31/darkmoon-action"

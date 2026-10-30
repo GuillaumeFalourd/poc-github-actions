@@ -1,0 +1,49 @@
+name: Test 70 # Related to https://stackoverflow.com/questions/74218808/create-a-json-map-using-bash?noredirect=1#comment131042179_74218808
+
+on:
+  workflow_dispatch:
+    inputs:
+      python_versions:
+        description: "Python Versions"
+        required: false
+        default: "3.7"
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      python_builds_full: ${{ steps.set-python-matrix.outputs.python_builds_full }}
+      python_builds_short: ${{ steps.set-python-matrix.outputs.python_builds_short }}
+    steps:
+     - name: get full python versions
+       id: set-python-matrix
+       env:
+        pversions: ${{ inputs.python_versions }}
+       shell: bash
+       run: |
+          OUT=""
+          for version in ${pversions//,/ }
+          do
+              docker pull python:${version}-buster
+              VER=$(docker inspect python:${version}-buster | jq '.[0].Config.Env' | grep PYTHON_VERSION | cut -d'=' -f2 | cut -d'"' -f 1)
+              OUT+="${VER},"
+          done
+          PYTHON_BUILDS=$(echo "\"${OUT::-1}\"" | jq -c 'split(",")')
+          echo "python_builds_full=${PYTHON_BUILDS}" >> $GITHUB_OUTPUT # save `major.minor`
+          
+          PYTHON_BUILDS_SHORT = $PYTHON_BUILDS # with expression to remove minor
+          echo "python_builds_short=${PYTHON_BUILDS_SHORT}" >> $GITHUB_OUTPUT # # `major.minor.patch`
+
+  job2:
+    name: build the python images
+    needs:
+      - job1
+    strategy:
+      matrix:
+        python-builds-full: ${{ fromJSON(needs.job1.outputs.python_builds_full) }} # `major.minor`
+        python-builds-short: ${{ fromJSON(needs.job2.outputs.python_builds_short) }} # `major.minor.patch`
+      fail-fast: true
+    uses: MyOrg/MyRepo/.github/workflows/reusable.yaml@master
+    with:
+      image_name: python-custom/${{ matrix.python-versions.python-builds-short }}} # <- here use `major.minor`
+      image_tag: ${{ matrix.python-versions.python-builds-full }}} # <- here use `major.minor.patch`

@@ -1,0 +1,55 @@
+name: Test 98 # Related to SO https://stackoverflow.com/questions/78513070/how-to-send-variables-to-called-workflow-from-the-caller-workflow/78514014?noredirect=1#comment138421206_78514014
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    outputs:
+      iterations: ${{ steps.set-iterations.outputs.values }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Read CSV and trigger workflows
+      id: set-iterations
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo Saving iteration list output as Array
+        # Join the array elements into a single JSON array
+        json_array='[{"cacheName":"iteration1","expirationType":"iteration1","expirationTime":"iteration1"}, {"cacheName":"iteration2","expirationType":"iteration2","expirationTime":"iteration2"}, {"cacheName":"iteration3","expirationType":"iteration3","expirationTime":"iteration3"}]'
+        echo "List: $json_array"
+        echo "values=$json_array" >> $GITHUB_OUTPUT
+    - name: Check list
+      run: |
+        echo ${{ steps.set-iterations.outputs.values }}
+
+  call-ASGW-Config-Cache:
+    needs: [build]
+    strategy:
+      matrix: 
+        iteration: ${{fromJson(needs.build.outputs.iterations)}}
+    uses: ./.github/workflows/workflow-tester98-reusable.yml
+    secrets: inherit
+    permissions:
+      contents: read
+    with: 
+      cacheName: ${{ matrix.iteration.cacheName }}
+      expirationType: ${{ matrix.iteration.expirationType }}
+      expirationTime: ${{ matrix.iteration.expirationTime }}
+
+  check:
+    needs: [build]
+    runs-on: [ubuntu-latest]
+    strategy:
+      matrix: 
+        iteration: ${{fromJson(needs.build.outputs.iterations)}}
+    steps:
+      - name: Do something
+        run: |
+          echo Iteration
+          echo ${{ matrix.iteration }}
+          echo ${{ matrix.iteration.cacheName }}
+          echo ${{ matrix.iteration.expirationType }}
+          echo ${{ matrix.iteration.expirationType }}

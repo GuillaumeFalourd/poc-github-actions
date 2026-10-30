@@ -1,0 +1,15 @@
+name: Test 67 # Related to https://stackoverflow.com/questions/74188647/add-variable-value-to-github-action-name
+
+on:
+  #push:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log into Container registry ${{ env.REGISTRY }}
+        run: echo "Ok"

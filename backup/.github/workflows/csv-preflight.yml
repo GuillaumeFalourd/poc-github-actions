@@ -1,0 +1,27 @@
+name: CSV Preflight
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create example CSV
+        run: printf '%s\n' 'sku,title,price' 'A-1,Blue mug,12.00' > "$RUNNER_TEMP/example.csv"
+      - name: Check CSV structure
+        uses: softpeanut/csv-preflight-action@eb04c527a46ce3bc8bfc711fde8e93ca947597ae
+        with:
+          path: ${{ runner.temp }}/example.csv
+          normalized_path: ${{ runner.temp }}/example.normalized.csv
+          report_path: ${{ runner.temp }}/example.issues.csv
+      - name: Upload normalized CSV and issue report
+        uses: actions/upload-artifact@v4
+        with:
+          name: csv-preflight-example
+          path: |
+            ${{ runner.temp }}/example.normalized.csv
+            ${{ runner.temp }}/example.issues.csv

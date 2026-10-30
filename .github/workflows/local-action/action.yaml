@@ -1,0 +1,31 @@
+name: 'Local Action'
+description: 'Runs a composite step action'
+inputs:
+  name:
+    required: false
+    description: "Name"
+
+outputs:
+  random:
+    description: "Random number output"
+    value: ${{ steps.step1.outputs.random }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Step operations
+      if: ${{ inputs.name != '' }}
+      id: step1
+      run: |
+        echo Hello ${{ inputs.name }}
+        echo List directory files
+        ls
+        echo "::set-output name=random::$(echo $RANDOM)"
+      shell: bash
+    - name: Step operations 2
+      if: ${{ inputs.name == '' }}
+      run: |
+        echo Input Name is empty: ${{ inputs.name }}
+      shell: bash

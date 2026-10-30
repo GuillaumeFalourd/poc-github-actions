@@ -1,0 +1,16 @@
+name: Test 97 # Related to SO https://stackoverflow.com/questions/78514157/can-we-put-if-else-condition-on-runs-on-for-the-choice-of-workflow-runner?noredirect=1#comment138418481_78514157
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.object.envRunner }}
+    strategy:
+      matrix:
+        object: [{"envName":"dev", "envRunner":"ubuntu-latest"}, {"envName":"stg", "envRunner":"windows-latest"}, {"envName":"prd", "envRunner":"macos-latest"}]
+      fail-fast: true
+      max-parallel: 1
+    steps:
+      - run: |
+          echo ${{ matrix.object.envName }}

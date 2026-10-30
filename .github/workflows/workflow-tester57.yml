@@ -1,0 +1,34 @@
+name: Test 57 #Related to SO https://stackoverflow.com/questions/73890119/gitaction-trigger-workflow-on-pr-approval-and-when-base-branch-is-main-and-csv
+
+on:
+  pull_request_review:
+    types: [submitted]
+    branches:
+      - main
+
+jobs:
+  job1:
+    if: github.event.review.state == 'approved' && startsWith(github.event.review.pull_request.base.ref, 'main')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.2.0
+      - name: Check if *.csv is modified
+        uses: dorny/paths-filter@v2.2.1
+        id: changes
+        with:
+          filters: |
+            csv:
+              - 'data/*.csv'    
+      - name: Run process bmv script
+        if: ${{ steps.changes.outputs.csv == 'true' }}
+        run: |
+          echo "-Started running script-"
+
+  github-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
