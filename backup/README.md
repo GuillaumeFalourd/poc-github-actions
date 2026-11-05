@@ -149,6 +149,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Delete Artifacts](https://github.com/marketplace/actions/delete-artifact): GitHub Action to delete artifacts within a workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
 
+[![Deploy-Drift Guard](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/deploy-drift-guard.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/deploy-drift-guard.yml)
+
+[Deploy-Drift Guard](https://github.com/marketplace/actions/deploy-drift-guard): GitHub Action to catch silent deploy failures — CI says "deployed", but production is still serving an old commit. Compares the commit SHA that should be live against a SHA your live app reports about itself. No API tokens, no deploy platform credentials, no secrets required.
+
 [![DOS Verify Gate](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml)
 
 [DOS Verify Gate](https://github.com/anthony-chaudhary/dos-kernel/tree/master/verify-action): Github Action to fail a PR when a commit's message claims work its own diff doesn't contain (deterministic claim-vs-diff audit, abstains on commits with no checkable claim).
