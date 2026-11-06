@@ -1,0 +1,19 @@
+name: Test 13
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
+          architecture: 'x64'
+      - uses: GuillaumeFalourd/ritchie-cli-action@v1
+        with:
+          rit_formula_command: rit test office365
+          rit_repo_url: https://github.com/GuillaumeFalourd/formulas-perso
+          access_token: ${{ secrets.ACCESS_TOKEN }}

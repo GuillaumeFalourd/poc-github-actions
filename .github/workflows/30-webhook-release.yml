@@ -1,0 +1,22 @@
+name: 30 - Webhook Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+      - name: Echo
+        run: echo "Tag:" ${{ steps.get_version.outputs.VERSION }}
+
+      - name: Trigger webhook
+        run: |
+          curl -X POST https://o2dla1l2qd.execute-api.us-east-1.amazonaws.com/prod/git \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          --data '{"zipURL": "https://github.com/GuillaumeFalourd/poc-github-actions/archive/refs/tags/${{ steps.get_version.outputs.VERSION }}.zip", "name": "workflow", "version": "${{ steps.get_version.outputs.VERSION }}"}'

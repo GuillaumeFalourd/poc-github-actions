@@ -1,0 +1,28 @@
+name: Test 89 # Related to SO: https://stackoverflow.com/questions/77133952/reusable-workflows-should-be-referenced-at-the-top-level-jobs-uses-key-not
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bd_scan:
+    runs-on: ubuntu-latest
+    outputs:
+      day: ${{ steps.check_day.outputs.day }}
+    steps:
+      - name: Check Day of the Week
+        id: check_day
+        run: |
+          echo $(date +%u)
+          echo "day=$(date +%u)" >> $GITHUB_OUTPUT
+  
+  reusable:
+    needs: [bd_scan]
+    if: ${{ needs.bd_scan.outputs.day < 5 }} 
+    uses: GuillaumeFalourd/poc-github-actions/.github/workflows/workflow-tester88-reusable.yml@main
+    with:
+      stage: ${{ needs.bd_scan.outputs.day }}
+    secrets: inherit
