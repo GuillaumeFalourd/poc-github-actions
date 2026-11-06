@@ -1,0 +1,15 @@
+name: Deploy-Drift Guard
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check deployed commit SHA matches expected
+        uses: foxscar-git-hub/deploy-drift-guard@v1
+        with:
+          url: 'https://example.com/api/version'
+          # Optional (defaults to the SHA that triggered this run).
+          # expected-sha: ${{ github.sha }}

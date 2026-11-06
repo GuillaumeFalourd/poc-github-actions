@@ -149,6 +149,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 
 [Delete Artifacts](https://github.com/marketplace/actions/delete-artifact): GitHub Action to delete artifacts within a workflow run. This can be useful when artifacts are shared across jobs, but are no longer needed when the workflow is complete.
 
+[![Deploy-Drift Guard](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/deploy-drift-guard.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/deploy-drift-guard.yml)
+
+[Deploy-Drift Guard](https://github.com/marketplace/actions/deploy-drift-guard): GitHub Action to catch silent deploy failures — CI says "deployed", but production is still serving an old commit. Compares the commit SHA that should be live against a SHA your live app reports about itself. No API tokens, no deploy platform credentials, no secrets required.
+
 [![DOS Verify Gate](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/dos-verify-gate.yml)
 
 [DOS Verify Gate](https://github.com/anthony-chaudhary/dos-kernel/tree/master/verify-action): Github Action to fail a PR when a commit's message claims work its own diff doesn't contain (deterministic claim-vs-diff audit, abstains on commits with no checkable claim).
@@ -220,6 +224,10 @@ This repository lists some useful generic Actions to use in your Github workflow
 [![NHS Score Check](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/nhs-score-check.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/nhs-score-check.yml)
 
 [NHS Score Check](https://github.com/marketplace/actions/nhs-agentic-readiness-check): GitHub Action to fetch a site's agentic readiness score from [Not Human Search](https://nothumansearch.ai) and fail the build if it drops below a minimum threshold. Similar in spirit to Lighthouse CI, but for AI-agent signals (`llms.txt`, `ai-plugin.json`, OpenAPI, MCP server, schema.org, AI-aware `robots.txt`). Useful as a CI guardrail so a regression in agent-readable metadata gets caught before merge.
+
+[![OpsScript Gate](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/opsscript-gate.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/opsscript-gate.yml)
+
+[OpsScript Gate](https://github.com/marketplace/actions/opsscript-gate): Run Linux shell installers across Debian, Ubuntu, and Alpine to catch runtime compatibility issues that static shell analysis cannot detect.
 
 [![OutageDeck Status Check](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/outagedeck-status-check.yml/badge.svg)](https://github.com/GuillaumeFalourd/useful-actions/actions/workflows/outagedeck-status-check.yml)
 
