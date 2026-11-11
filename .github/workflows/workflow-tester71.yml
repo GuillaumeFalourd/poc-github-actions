@@ -1,0 +1,22 @@
+name: Test 71 # Related to https://stackoverflow.com/questions/74252630/get-the-login-of-a-user-that-issued-a-comment-on-github-actions
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ github.actor }}
+          echo ${{ github.triggering_actor }}
+          echo ${{ github.event.comment.user.login }}

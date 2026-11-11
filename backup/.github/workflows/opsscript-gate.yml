@@ -1,0 +1,43 @@
+name: OpsScript Gate
+
+on:
+  push:
+    paths:
+      - ".github/fixtures/opsscript-gate.sh"
+      - ".github/workflows/opsscript-gate.yml"
+  pull_request:
+    paths:
+      - ".github/fixtures/opsscript-gate.sh"
+      - ".github/workflows/opsscript-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compatibility:
+    name: Cross-distro shell compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Run OpsScript Gate
+        uses: Mresyzz/opsscript-gate@v0.9.4
+        with:
+          script-path: .github/fixtures/opsscript-gate.sh
+          shell: auto
+          network: none
+          matrix: debian:12-slim,ubuntu:22.04,ubuntu:24.04,alpine:3.20
+          format: json
+          output: reports/opsscript-gate.json
+
+      - name: Upload compatibility report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: opsscript-gate-report
+          path: reports/opsscript-gate.json
+          if-no-files-found: error

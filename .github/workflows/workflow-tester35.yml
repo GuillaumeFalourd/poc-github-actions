@@ -1,0 +1,27 @@
+name: Test 35 # Related to https://stackoverflow.com/questions/72379994/github-actions-check-empty-dispatch-input
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      input1:
+        description: first input
+        required: false
+        type: string
+      input2:
+        description: second input
+        required: false
+        type: string
+
+jobs:
+  jobA:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.input1 != ''
+    steps:
+      - run: echo "Input 1 not empty"
+
+  jobB:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_dispatch' || github.event.inputs.input1 == ''
+    steps:
+      - run: echo "Input 1 is empty"

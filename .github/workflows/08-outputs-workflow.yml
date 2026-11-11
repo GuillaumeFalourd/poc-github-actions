@@ -2,7 +2,7 @@ name: 08 - Outputs Workflow
 
 on:
   schedule:
-    - cron: "0 6 * * *" # Runs at 6:00 UTC everyday
+    - cron: "0 6 * * MON-FRI" # Runs at 6:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -45,17 +45,6 @@ jobs:
           echo '{
             "ip-address": "${{ steps.xyz.outputs.ip-address }}"
           }'
-      # - name: step-4
-      #   id: wxyz
-      #   uses: actions/create-release@v1
-      #   with:
-      #     tag_name: 0.0.1
-      #     release_name: 0.0.1
-      #     body: "This is release 0.0.1"
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - name: step-5
-      #   run: echo "${{ steps.wxyz.outputs.html_url }}"
 
   job5:
     runs-on: ubuntu-latest
@@ -76,3 +65,19 @@ jobs:
         run: |
           echo "Number higher than 1"
           echo "${{ steps.xyz.outputs.acc }}"
+          
+#   job6:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: step-1
+#         id: wxyz
+#         uses: actions/create-release@v1
+#         with:
+#           tag_name: 0.0.1
+#           release_name: 0.0.1
+#           body: "This is release 0.0.1"
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: step-2
+#         run: echo "${{ steps.wxyz.outputs.html_url }}"
+

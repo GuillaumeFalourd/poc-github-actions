@@ -1,0 +1,29 @@
+name: Test 92 # Related to SO https://stackoverflow.com/questions/78257809/github-action-contains-conditional-issue
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Build 1
+        id: Build1
+        run: echo Build
+        continue-on-error: true
+      - name: Build 2
+        id: Build2
+        run: exit1
+        continue-on-error: true
+      - name: Check Build1 - 1
+        if: contains(steps.Build1.outcome, 'success')
+        run: echo ${{steps.Build1.outcome}}
+      - name: Check Build1 - 2
+        if: steps.Build1.outcome == 'success'
+        run: echo ${{steps.Build1.outcome}}
+      - name: Check Build2 - 1
+        if: contains(steps.Build2.outcome, 'failure')
+        run: echo ${{steps.Build2.outcome}}
+      - name: Check Build2 - 2
+        if: steps.Build2.outcome != 'success'
+        run: echo ${{steps.Build2.outcome}}

@@ -1,0 +1,29 @@
+{
+    "bundles":
+    [
+        {
+            "product":{
+                "name" : "Product1",
+                "proxies" : ["'Proxy1', 'Proxy2'"],
+                "attributes" : [{"name":"Test1","value":"abc"}]
+            },
+            "app":{
+                "name":"App1",
+                "attributes": [{"name": "attribute1","value": "null"}],
+                "developer": "rohit@example.com"
+            }
+        },
+        {
+            "product":{
+                "name" : "Product2",
+                "proxies" : ["'Proxy1', 'Proxy2'"],
+                "attributes" : [{"name":"Test2","value":"xyz"}]
+            },
+            "app":{
+                "name":"App1",
+                "attributes": [{"name": "attribute2","value": "null"}],
+                "developer": "guifalourd@example.com"
+            }
+        }
+    ]
+}

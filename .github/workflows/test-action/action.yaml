@@ -1,0 +1,19 @@
+name: 'Test Input'
+description: 'Test input values'
+
+inputs:
+  my-input-with-default:
+    description: 'Input with a default'
+    default: 'default value'
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Test Input with default
+      if: ${{ inputs.my-input-with-default }}
+      shell: bash
+      run: |
+        #!/usr/bin/env bash
+        set -euo pipefail
+        echo "my-input-with-default: '${{ inputs.my-input-with-default }}'"

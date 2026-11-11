@@ -1,0 +1,30 @@
+name: ai-i18n
+
+on:
+  workflow_dispatch:
+  # Typical trigger in a real project - translate whenever the source locale changes:
+  # push:
+  #   branches: [main]
+  #   paths: ['locales/en/**']
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    env:
+      # ai-i18n needs an LLM API key. This example repository has none configured,
+      # so the step is skipped (and the workflow passes) unless ANTHROPIC_API_KEY exists.
+      HAS_API_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Translate i18n files
+        if: env.HAS_API_KEY == 'true'
+        uses: i18n-actions/ai-i18n@v0.9.0
+        with:
+          provider: anthropic
+          api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          source-language: en
+          target-languages: de,fr,es
+          files: 'locales/en/**/*.json'
+          format: json-nested
+          dry-run: true # remove to write the translated files and commit them

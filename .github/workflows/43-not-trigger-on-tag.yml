@@ -1,0 +1,20 @@
+name: 43 - Not trigger on tag
+
+on:
+  push:
+    # This should disable running the workflow on tags, according to the
+    # on.<push|pull_request>.<branches|tags> GitHub Actions docs.
+    branches:
+      - "*"
+  pull_request:
+  schedule:
+    - cron: '48 6 * * *'
+
+    # If you define only tags/tag-ignore or only branches/branches-ignore, the workflow won't run for events affecting the undefined Git ref.
+    # Reference: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "Workflow run"

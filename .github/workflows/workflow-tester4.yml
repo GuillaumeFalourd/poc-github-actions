@@ -1,6 +1,9 @@
 name: Test 4
 
-on: [push]
+on:
+  push:
+    branches:
+    - 'dev'
 
 jobs:
   test:
@@ -10,4 +13,4 @@ jobs:
       - name: Run Commands
         run: |
           echo "Hello World"
-          echo "This workflow only runs for push to the MAIN branch"
+          echo "This workflow only runs for push to the DEV branch"
